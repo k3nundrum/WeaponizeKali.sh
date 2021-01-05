@@ -105,6 +105,7 @@ optional arguments:
 * [x] [rbcd_permissions](https://github.com/NinjaStyle82/rbcd_permissions)
 * [x] [rdp-tunnel](https://github.com/NotMedic/rdp-tunnel)
 * [x] [updog](https://github.com/sc0tfree/updog)
+* [x] [xc](https://github.com/xct/xc)
 
 ## `www`
 

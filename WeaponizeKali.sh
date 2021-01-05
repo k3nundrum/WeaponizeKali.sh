@@ -423,6 +423,21 @@ updog() {
 	pipx install "git+https://github.com/sc0tfree/updog.git" -f
 }
 
+xc() {
+	_pushd tools
+	go get golang.org/x/sys/windows
+	go get golang.org/x/text/encoding/unicode
+	go get github.com/hashicorp/yamux
+	go get github.com/ropnop/go-clr
+	pip3 install donut-shellcode
+	installDebPackage rlwrap
+	cloneRepository "https://github.com/xct/xc.git"
+	cd xc
+	make
+	cp xc xc.exe ../../www
+	_popd
+}
+
 tools() {
 	BloodHound
 	BloodHound.py
@@ -458,6 +473,7 @@ tools() {
 	rbcd_permissions
 	rdp-tunnel-tools
 	updog
+	xc
 }
 
 # -----------------------------------------------------------------------------
