@@ -10,7 +10,7 @@ Basic principles behind this project are:
 2. When installing 3rd party software, use isolated environments to minimize potential dependency hell.
 3. Keep Windows exploitation scripts and binaries on hand in case you find yourself in an "offline situation".
 
-The script will create two directories within CWD: `tools` and `www`. The [first](#tools) one contains all the tools that will be installed on Kali. The [second](#www) one contains all the scripts and binaries that may be transferred onto the victim host.
+The script will create two directories within CWD: `tools` and `www`. The [first](#tools) one contains all the tools that will be installed on Kali. The [second](#www) one contains all the scripts and binaries that will be downloaded and may be transferred onto the victim host later.
 
 # Usage
 
@@ -25,7 +25,7 @@ In order to launch the bleeding-edge version of a tool installed with pipx and n
   <img src="https://user-images.githubusercontent.com/23141800/103461896-b5e02000-4d32-11eb-936e-6764ceae1372.png" alt="sudoers.png" />
 </p>
 
-Now you can download WeaponizeKali.sh and run it from your home directory (pipenv may prompt for unlocking the keyring during the process). When it's done, you can check the results in `~/tools` and `~/www`:
+Now you can download WeaponizeKali.sh and run it from your home directory (pip may prompt for unlocking the keyring during the process). When it's done, you can check the results in `~/tools` and `~/www`:
 
 ```bash
 ~$ curl -L https://github.com/snovvcrash/WeaponizeKali.sh/raw/main/WeaponizeKali.sh | bash -s -- -idtw
@@ -58,8 +58,8 @@ optional arguments:
   -h                    show this help message and exit
   -i                    initialize filesystem (re-create ./tools and ./www directories)
   -d                    resolve dependencies
-  -t                    call "tools" module
-  -w                    call "www" module
+  -t                    download and install tools on Kali Linux
+  -w                    download scripts and binaries for transferring onto the victim host
 ```
 
 # Available Tools
