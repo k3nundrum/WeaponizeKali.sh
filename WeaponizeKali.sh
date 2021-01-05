@@ -208,6 +208,7 @@ CVE-2020-1472-checker() {
 	cd CVE-2020-1472-checker
 	# pipenv install -r requirements.txt
 	pip3 install -r requirements.txt # pipenv fails on this one
+	chmod +x zerologon_tester.py
 	_popd
 }
 
