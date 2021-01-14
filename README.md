@@ -32,9 +32,18 @@ Now you can download WeaponizeKali.sh and run it from your home directory (pip m
 ~$ ls -la ~/tools ~/www
 ```
 
-:warning: **Warning:** the 1st command above will delete existing `~/tools` and `~/www` directories, if they exist. 
+:warning: **Warning:** the 1st command above will delete existing `~/tools` and `~/www` directories. 
 
 It's recommended to run WeaponizeKali.sh on a clean installation of Kali Linux.
+
+## Rerun the Installations
+
+To execute WeaponizeKali.sh with full set of arguments again after it has already been ran once, remove the existent virtual environments first and then run the script:
+
+```bash
+~$ rm -rf ~/.local/pipx/ ~/.virtualenvs/
+~$ ./WeaponizeKali.sh -idtw
+```
 
 ## Help
 
