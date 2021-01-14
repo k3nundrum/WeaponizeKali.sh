@@ -2,7 +2,7 @@
   <img src="https://user-images.githubusercontent.com/23141800/103461895-b2e52f80-4d32-11eb-9e4b-f35304ececfa.png" alt="banner.png" />
 </p>
 
-**WeaponizeKali.sh** is a Bash script aimed at automating the process of downloading and installing extra tools for internal penetration tests on Kali Linux.
+**WeaponizeKali.sh** is a Bash script aimed at automating the process of downloading and installing extra tools for internal penetration tests with Kali Linux.
 
 Basic principles behind this project are:
 
@@ -28,11 +28,11 @@ In order to launch the bleeding-edge version of a tool installed with pipx and n
 Now you can download WeaponizeKali.sh and run it from your home directory (pip may prompt for unlocking the keyring during the process). When it's done, you can check the results in `~/tools` and `~/www`:
 
 ```bash
-~$ curl -L https://github.com/snovvcrash/WeaponizeKali.sh/raw/main/WeaponizeKali.sh | bash -s -- -idtw
+~$ curl -sL https://github.com/snovvcrash/WeaponizeKali.sh/raw/main/WeaponizeKali.sh | bash -s -- -idtw
 ~$ ls -la ~/tools ~/www
 ```
 
-:warning: **Warning:** the command above will delete existing `~/tools` and `~/www` directories, if they exist. 
+:warning: **Warning:** the 1st command above will delete existing `~/tools` and `~/www` directories, if they exist. 
 
 It's recommended to run WeaponizeKali.sh on a clean installation of Kali Linux.
 
@@ -97,6 +97,8 @@ optional arguments:
 * [ ] [krbrelayx](https://github.com/dirkjanm/krbrelayx)
 * [ ] [ldapdomaindump](https://github.com/dirkjanm/ldapdomaindump)
 * [x] [mitm6](https://github.com/fox-it/mitm6)
+* [x] [Nim](https://nim-lang.org/install_unix.html) via [choosenim](https://github.com/dom96/choosenim)
+* [x] [Nim-Scripts](https://github.com/S3cur3Th1sSh1t/Creds/tree/master/nim)
 * [x] [nullinux](https://github.com/m8r0wn/nullinux)
 * [ ] [odat](https://github.com/quentinhardy/odat)
 * [x] [pypykatz](https://github.com/skelsec/pypykatz)
@@ -126,6 +128,7 @@ optional arguments:
 * [x] [Invoke-SMBEnum.ps1](https://github.com/Kevin-Robertson/Invoke-TheHash/blob/master/Invoke-SMBEnum.ps1)
 * [x] [Invoke-SMBExec.ps1](https://github.com/Kevin-Robertson/Invoke-TheHash/blob/master/Invoke-SMBExec.ps1)
 * [x] [Invoke-WMIExec.ps1](https://github.com/Kevin-Robertson/Invoke-TheHash/blob/master/Invoke-WMIExec.ps1)
+* [ ] [jaws-enum.ps1](https://github.com/411Hall/JAWS/blob/master/jaws-enum.ps1)
 * [x] [Out-EncryptedScript.ps1 (PowerSploit)](https://github.com/PowerShellMafia/PowerSploit/blob/master/ScriptModification/Out-EncryptedScript.ps1)
 * [x] [PowerUp.ps1 (PowerSploit)](https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1)
 * [x] [PowerUpSQL.ps1](https://github.com/NetSPI/PowerUpSQL/blob/master/PowerUpSQL.ps1)
@@ -135,7 +138,9 @@ optional arguments:
 * [x] [PowerView4.ps1](https://github.com/ZeroDayLab/PowerSploit/blob/master/Recon/PowerView.ps1) [(ZeroDayLab)](https://exploit.ph/powerview.html)
 * [x] [Powermad.ps1](https://github.com/Kevin-Robertson/Powermad/blob/master/Powermad.ps1)
 * [x] [PrivescCheck.ps1](https://github.com/itm4n/PrivescCheck/blob/master/PrivescCheck.ps1)
+* [ ] [PrintSpoofer](https://github.com/itm4n/PrintSpoofer) · [Invoke-BadPotato.ps1 (PowerSharpPack)](https://github.com/S3cur3Th1sSh1t/PowerSharpPack/blob/master/PowerSharpBinaries/Invoke-BadPotato.ps1)
 * [x] [ProcDump (Sysinternals)](https://docs.microsoft.com/en-us/sysinternals/downloads/procdump)
+* [ ] [RoguePotato](https://github.com/antonioCoco/RoguePotato/)
 * [x] [Rubeus](https://github.com/GhostPack/Rubeus) · [Pre-Compiled](https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/blob/master/Rubeus.exe) · [Invoke-Rubeus.ps1 (Empire)](https://github.com/BC-SECURITY/Empire/blob/master/data/module_source/credentials/Invoke-Rubeus.ps1) · [Invoke-Rubeus.ps1 (PowerSharpPack)](https://github.com/S3cur3Th1sSh1t/PowerSharpPack/blob/master/PowerSharpBinaries/Invoke-Rubeus.ps1)
 * [x] [Seatbelt](https://github.com/GhostPack/Seatbelt) · [Pre-Compiled](https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/blob/master/Seatbelt.exe) · [Invoke-Seatbelt.ps1 (PowerSharpPack)](https://github.com/S3cur3Th1sSh1t/PowerSharpPack/blob/master/PowerSharpBinaries/Invoke-Seatbelt.ps1)
 * [x] [SessionGopher.ps1](https://github.com/Arvanaghi/SessionGopher/blob/master/SessionGopher.ps1)

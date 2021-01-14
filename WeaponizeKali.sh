@@ -31,7 +31,7 @@ echo
 # -----------------------------------------------------------------------------
 
 filesystem() {
-	rm -rf {tools,www}
+	sudo rm -rf {tools,www}
 	mkdir {tools,www}
 }
 
@@ -103,7 +103,7 @@ cloneRepository() {
 downloadRawFile() {
 	url=$1
 	filename=$2
-	if curl -Ls $url > $filename; then
+	if curl -sL $url > $filename; then
 		success "Downloaded raw file: $filename"
 	else
 		fail "Failed to download raw file: $filename"
@@ -114,7 +114,7 @@ downloadRelease() {
 	full_repo_name=$1
 	release_name=$2
 	filename=$3
-	if curl -Ls "https://api.github.com/repos/$full_repo_name/releases/latest" | jq -r '.assets[].browser_download_url' | grep $release_name | wget -O $filename -qi -; then
+	if curl -sL "https://api.github.com/repos/$full_repo_name/releases/latest" | jq -r '.assets[].browser_download_url' | grep $release_name | wget -O $filename -qi -; then
 		success "Downloaded release: $filename"
 	else
 		fail "Failed to download release: $filename"
@@ -130,7 +130,7 @@ _jq() {
 }
 
 _python2-pip() {
-	curl https://bootstrap.pypa.io/get-pip.py | sudo python
+	curl -s https://bootstrap.pypa.io/get-pip.py | sudo python
 	sudo python -m pip install setuptools --upgrade
 }
 
@@ -168,6 +168,10 @@ python2-impacket() {
 	installPipPackage 2 impacket
 }
 
+neo4j() {
+	installDebPackage neo4j
+}
+
 dependencies() {
 	_jq
 	_python2-pip
@@ -179,6 +183,7 @@ dependencies() {
 	_poetry
 	_pipx
 	python2-impacket
+	neo4j
 }
 
 # -----------------------------------------------------------------------------
@@ -206,7 +211,7 @@ CVE-2020-1472-checker() {
 	cloneRepository "https://github.com/SecuraBV/CVE-2020-1472.git"
 	mv CVE-2020-1472 CVE-2020-1472-checker
 	cd CVE-2020-1472-checker
-	# pipenv install -r requirements.txt
+	# pipenv install -r requirements.txt --python /usr/bin/python3
 	pip3 install -r requirements.txt # pipenv fails on this one
 	chmod +x zerologon_tester.py
 	_popd
@@ -243,7 +248,7 @@ LDAPPER() {
 	_pushd tools
 	cloneRepository "https://github.com/shellster/LDAPPER.git"
 	cd LDAPPER
-	pipenv install -r requirements.txt
+	pipenv install -r requirements.txt --python /usr/bin/python3
 	_popd
 }
 
@@ -263,7 +268,7 @@ TrustVisualizer() {
 	_pushd tools
 	cloneRepository "https://github.com/HarmJ0y/TrustVisualizer.git"
 	cd TrustVisualizer
-	pipenv install networkx
+	installPipPackage 2 networkx
 	_popd
 }
 
@@ -331,11 +336,7 @@ dsniff() {
 }
 
 enum4linux-ng() {
-	_pushd tools
-	cloneRepository "https://github.com/cddmp/enum4linux-ng.git"
-	cd enum4linux-ng
-	pipenv install -r requirements.txt
-	_popd
+	pipx install "git+https://github.com/cddmp/enum4linux-ng.git" -f
 }
 
 evil-winrm() {
@@ -346,7 +347,7 @@ gateway-finder-imp() {
 	_pushd tools
 	cloneRepository "https://github.com/whitel1st/gateway-finder-imp.git"
 	cd gateway-finder-imp
-	pipenv install -r requirements.txt
+	pipenv install -r requirements.txt --python /usr/bin/python3
 	_popd
 }
 
@@ -380,6 +381,24 @@ kerbrute() {
 
 mitm6() {
 	pipx install "git+https://github.com/fox-it/mitm6.git" -f
+}
+
+Nim() {
+	installDebPackage mingw-w64
+	curl https://nim-lang.org/choosenim/init.sh -sSf | CHOOSENIM_NO_ANALYTICS=1 sh
+}
+
+Nim-Scripts() {
+	_pushd tools
+	mkdir nim-scripts
+	cd nim-scripts
+	downloadRawFile "https://github.com/S3cur3Th1sSh1t/Creds/raw/master/nim/DLLHijack.nim" DLLHijack.nim
+	downloadRawFile "https://github.com/S3cur3Th1sSh1t/Creds/raw/master/nim/encrypt_assembly.nim" encrypt_assembly.nim
+	downloadRawFile "https://github.com/S3cur3Th1sSh1t/Creds/raw/master/nim/encrypted_assembly_loader.nim" encrypted_assembly_loader.nim
+	downloadRawFile "https://github.com/S3cur3Th1sSh1t/Creds/raw/master/nim/encrypted_assembly_loader_staticpass.nim" encrypted_assembly_loader_staticpass.nim
+	downloadRawFile "https://github.com/S3cur3Th1sSh1t/Creds/raw/master/nim/encrypt_shellcode.nim" encrypt_shellcode.nim
+	downloadRawFile "https://github.com/S3cur3Th1sSh1t/Creds/raw/master/nim/encrypted_shellcode_loader.nim" encrypted_shellcode_loader.nim
+	_popd
 }
 
 nullinux() {
@@ -467,6 +486,8 @@ tools() {
 	impacket
 	kerbrute
 	mitm6
+	Nim
+	Nim-Scripts
 	nullinux
 	pypykatz
 	pywerview
@@ -657,6 +678,7 @@ Rubeus() {
 Seatbelt() {
 	_pushd www
 	downloadRawFile "https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/raw/master/Seatbelt.exe" seatbelt.exe
+	downloadRawFile "https://github.com/S3cur3Th1sSh1t/PowerSharpPack/raw/master/PowerSharpBinaries/Invoke-Seatbelt.ps1" invoke-seatbelt.ps1
 	_popd
 }
 
