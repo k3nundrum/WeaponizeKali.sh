@@ -252,6 +252,24 @@ LDAPPER() {
 	_popd
 }
 
+Nim() {
+	installDebPackage mingw-w64
+	curl https://nim-lang.org/choosenim/init.sh -sSf | CHOOSENIM_NO_ANALYTICS=1 sh
+}
+
+Nim-Scripts() {
+	_pushd tools
+	mkdir nim-scripts
+	cd nim-scripts
+	downloadRawFile "https://github.com/S3cur3Th1sSh1t/Creds/raw/master/nim/DLLHijack.nim" DLLHijack.nim
+	downloadRawFile "https://github.com/S3cur3Th1sSh1t/Creds/raw/master/nim/encrypt_assembly.nim" encrypt_assembly.nim
+	downloadRawFile "https://github.com/S3cur3Th1sSh1t/Creds/raw/master/nim/encrypted_assembly_loader.nim" encrypted_assembly_loader.nim
+	downloadRawFile "https://github.com/S3cur3Th1sSh1t/Creds/raw/master/nim/encrypted_assembly_loader_staticpass.nim" encrypted_assembly_loader_staticpass.nim
+	downloadRawFile "https://github.com/S3cur3Th1sSh1t/Creds/raw/master/nim/encrypt_shellcode.nim" encrypt_shellcode.nim
+	downloadRawFile "https://github.com/S3cur3Th1sSh1t/Creds/raw/master/nim/encrypted_shellcode_loader.nim" encrypted_shellcode_loader.nim
+	_popd
+}
+
 PrivExchange() {
 	_pushd tools
 	cloneRepository "https://github.com/dirkjanm/PrivExchange.git"
@@ -383,21 +401,9 @@ mitm6() {
 	pipx install "git+https://github.com/fox-it/mitm6.git" -f
 }
 
-Nim() {
-	installDebPackage mingw-w64
-	curl https://nim-lang.org/choosenim/init.sh -sSf | CHOOSENIM_NO_ANALYTICS=1 sh
-}
-
-Nim-Scripts() {
+nishang() {
 	_pushd tools
-	mkdir nim-scripts
-	cd nim-scripts
-	downloadRawFile "https://github.com/S3cur3Th1sSh1t/Creds/raw/master/nim/DLLHijack.nim" DLLHijack.nim
-	downloadRawFile "https://github.com/S3cur3Th1sSh1t/Creds/raw/master/nim/encrypt_assembly.nim" encrypt_assembly.nim
-	downloadRawFile "https://github.com/S3cur3Th1sSh1t/Creds/raw/master/nim/encrypted_assembly_loader.nim" encrypted_assembly_loader.nim
-	downloadRawFile "https://github.com/S3cur3Th1sSh1t/Creds/raw/master/nim/encrypted_assembly_loader_staticpass.nim" encrypted_assembly_loader_staticpass.nim
-	downloadRawFile "https://github.com/S3cur3Th1sSh1t/Creds/raw/master/nim/encrypt_shellcode.nim" encrypt_shellcode.nim
-	downloadRawFile "https://github.com/S3cur3Th1sSh1t/Creds/raw/master/nim/encrypted_shellcode_loader.nim" encrypted_shellcode_loader.nim
+	cloneRepository "https://github.com/samratashok/nishang.git"
 	_popd
 }
 
@@ -466,6 +472,8 @@ tools() {
 	Ebowla
 	Empire
 	LDAPPER
+	Nim
+	Nim-Scripts
 	PrivExchange
 	Responder
 	TrustVisualizer
@@ -486,8 +494,7 @@ tools() {
 	impacket
 	kerbrute
 	mitm6
-	Nim
-	Nim-Scripts
+	nishang
 	nullinux
 	pypykatz
 	pywerview
@@ -694,9 +701,17 @@ Set-GpoStatus() {
 	_popd
 }
 
+SharpDPAPI() {
+	_pushd www
+	downloadRawFile "https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/raw/master/SharpDPAPI.exe" sharpdpapi.exe
+	downloadRawFile "https://github.com/S3cur3Th1sSh1t/PowerSharpPack/raw/master/PowerSharpBinaries/Invoke-SharpDPAPI.ps1" invoke-sharpdpapi.ps1
+	_popd
+}
+
 SharpGPOAbuse() {
 	_pushd www
 	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_x64/SharpGPOAbuse.exe" sharpgpoabuse.exe
+	downloadRawFile "https://github.com/S3cur3Th1sSh1t/PowerSharpPack/raw/master/PowerSharpBinaries/Invoke-SharpGPOAbuse.ps1" invoke-sharpgpoabuse.ps1
 	_popd
 }
 
@@ -845,6 +860,7 @@ www() {
 	Seatbelt
 	SessionGopher
 	Set-GpoStatus
+	SharpDPAPI
 	SharpGPOAbuse
 	SharpHound
 	Sherlock

@@ -16,7 +16,7 @@ The script will create two directories within CWD: `tools` and `www`. The [first
 
 WeaponizeKali.sh heavily relies on Python virtual environments and uses [pipx](https://pipxproject.github.io/pipx/), [poetry](https://python-poetry.org/) and [pipenv](https://pipenv.pypa.io/en/latest/) to orchestra venvs.
 
-In order to launch the bleeding-edge version of a tool installed with pipx and not the version that is already shipped with Kali, you should modify the `PATH` variable:
+In order to launch the bleeding-edge version of a tool installed with pipx and not the version that is already shipped with Kali, you should modify the `PATH` variables:
 
 1. Modify `PATH` for a normal user with any method you want (`.bashrc` / `.profile` / `.zshrc` / etc.): `export PATH="$HOME/.local/bin:$PATH"`.
 2. Modify `PATH` for the superuser by modifying `secure_path` within sudoers (`sudo visudo`):
@@ -82,6 +82,8 @@ optional arguments:
 * [x] [Ebowla](https://github.com/Genetic-Malware/Ebowla)
 * [x] [Empire](https://github.com/BC-SECURITY/Empire)
 * [x] [LDAPPER](https://github.com/shellster/LDAPPER)
+* [x] [Nim](https://nim-lang.org/install_unix.html) via [choosenim](https://github.com/dom96/choosenim)
+* [x] [Nim-Scripts](https://github.com/S3cur3Th1sSh1t/Creds/tree/master/nim)
 * [x] [PrivExchange](https://github.com/dirkjanm/PrivExchange)
 * [x] [Responder](https://github.com/lgandx/Responder)
 * [x] [TrustVisualizer](https://github.com/HarmJ0y/TrustVisualizer)
@@ -106,8 +108,7 @@ optional arguments:
 * [ ] [krbrelayx](https://github.com/dirkjanm/krbrelayx)
 * [ ] [ldapdomaindump](https://github.com/dirkjanm/ldapdomaindump)
 * [x] [mitm6](https://github.com/fox-it/mitm6)
-* [x] [Nim](https://nim-lang.org/install_unix.html) via [choosenim](https://github.com/dom96/choosenim)
-* [x] [Nim-Scripts](https://github.com/S3cur3Th1sSh1t/Creds/tree/master/nim)
+* [x] [nishang](https://github.com/samratashok/nishang)
 * [x] [nullinux](https://github.com/m8r0wn/nullinux)
 * [ ] [odat](https://github.com/quentinhardy/odat)
 * [x] [pypykatz](https://github.com/skelsec/pypykatz)
@@ -154,6 +155,7 @@ optional arguments:
 * [x] [Seatbelt](https://github.com/GhostPack/Seatbelt) · [Pre-Compiled](https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/blob/master/Seatbelt.exe) · [Invoke-Seatbelt.ps1 (PowerSharpPack)](https://github.com/S3cur3Th1sSh1t/PowerSharpPack/blob/master/PowerSharpBinaries/Invoke-Seatbelt.ps1)
 * [x] [SessionGopher.ps1](https://github.com/Arvanaghi/SessionGopher/blob/master/SessionGopher.ps1)
 * [x] [Set-GpoStatus.ps1](https://gist.github.com/snovvcrash/ecdc639b061fe787617d8d92d8549801)
+* [x] [SharpDPAPI](https://github.com/GhostPack/SharpDPAPI) · [Pre-Compiled](https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/blob/master/SharpDPAPI.exe)  · [Invoke-SharpDPAPI.ps1 (PowerSharpPack)](https://github.com/S3cur3Th1sSh1t/PowerSharpPack/blob/master/PowerSharpBinaries/Invoke-SharpDPAPI.ps1)
 * [x] [SharpGPOAbuse](https://github.com/FSecureLABS/SharpGPOAbuse) · [Pre-Compiled](https://github.com/Flangvik/SharpCollection/blob/master/NetFramework_4.0_x64/SharpGPOAbuse.exe) · [Invoke-SharpGPOAbuse.ps1 (PowerSharpPack)](https://github.com/S3cur3Th1sSh1t/PowerSharpPack/blob/master/PowerSharpBinaries/Invoke-SharpGPOAbuse.ps1)
 * [x] [SharpHound.exe](https://github.com/BloodHoundAD/BloodHound/blob/master/Collectors/SharpHound.exe)
 * [x] [SharpHound.ps1](https://github.com/BloodHoundAD/BloodHound/blob/master/Collectors/SharpHound.ps1)
@@ -163,7 +165,7 @@ optional arguments:
 * [x] [WinPwn](https://github.com/S3cur3Th1sSh1t/WinPwn)
 * [x] [chisel](https://github.com/jpillora/chisel)
 * [x] [htbenum.sh](https://github.com/SolomonSklash/htbenum/blob/master/htbenum.sh)
-* [x] [linux-exploit-suggester](https://github.com/mzet-/linux-exploit-suggester)
+* [x] [les.sh](https://github.com/mzet-/linux-exploit-suggester/blob/master/linux-exploit-suggester.sh)
 * [x] [mimikatz](https://github.com/gentilkiwi/mimikatz)
 * [x] [netcat for Windows](https://eternallybored.org/misc/netcat/)
 * [x] [plink](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
