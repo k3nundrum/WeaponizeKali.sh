@@ -221,6 +221,13 @@ CrackMapExec() {
 	pipx install "git+https://github.com/byt3bl33d3r/CrackMapExec.git" -f
 }
 
+DefaultCreds-cheat-sheet() {
+	_pushd tools
+	cloneRepository "https://github.com/ihebski/DefaultCreds-cheat-sheet.git"
+	pip3 install tinydb fire
+	_popd
+}
+
 Ebowla() {
 	_pushd tools
 	cloneRepository "https://github.com/Genetic-Malware/Ebowla.git"
@@ -252,6 +259,12 @@ LDAPPER() {
 	_popd
 }
 
+MS17-010() {
+	_pushd tools
+	cloneRepository "https://github.com/helviojunior/MS17-010.git"
+	_popd
+}
+
 Nim() {
 	installDebPackage mingw-w64
 	curl https://nim-lang.org/choosenim/init.sh -sSf | CHOOSENIM_NO_ANALYTICS=1 sh
@@ -279,6 +292,15 @@ PrivExchange() {
 Responder() {
 	_pushd tools
 	cloneRepository "https://github.com/lgandx/Responder.git"
+	_popd
+}
+
+ShellPop() {
+	_pushd tools
+	cloneRepository "https://github.com/0x00-0x00/ShellPop.git"
+	cd ShellPop
+	pip install -r requirements.txt
+	sudo python setup.py install
 	_popd
 }
 
@@ -361,6 +383,17 @@ evil-winrm() {
 	sudo gem install evil-winrm
 }
 
+ffuf() {
+	_pushd tools
+	mkdir ffuf
+	cd ffuf
+	downloadRelease "ffuf/ffuf" ffuf.*linux_amd64 ffuf
+	tar -xvzf ffuf_*
+	chmod +x ffuf
+	rm CHANGELOG.md LICENSE README.md ffuf_*
+	_popd
+}
+
 gateway-finder-imp() {
 	_pushd tools
 	cloneRepository "https://github.com/whitel1st/gateway-finder-imp.git"
@@ -375,6 +408,18 @@ gitjacker() {
 	cd gitjacker
 	downloadRelease "liamg/gitjacker" gitjacker-linux-amd64 gitjacker
 	chmod +x gitjacker
+	_popd
+}
+
+gobuster() {
+	_pushd tools
+	mkdir gobuster
+	cd gobuster
+	downloadRelease "OJ/gobuster" gobuster-linux-amd64 gobuster
+	7z x gobuster-linux-amd64.7z > /dev/null
+	mv gobuster-linux-amd64/gobuster .
+	chmod +x gobuster
+	rm -rf gobuster-*
 	_popd
 }
 
@@ -469,13 +514,16 @@ tools() {
 	BloodHound.py
 	CVE-2020-1472-checker
 	CrackMapExec
+	DefaultCreds-cheat-sheet
 	Ebowla
 	Empire
 	LDAPPER
+	MS17-010
 	Nim
 	Nim-Scripts
 	PrivExchange
 	Responder
+	ShellPop
 	TrustVisualizer
 	Windows-Exploit-Suggester
 	aclpwn.py
@@ -508,6 +556,18 @@ tools() {
 # -----------------------------------------------------------------------------
 # ------------------------------------ www ------------------------------------
 # -----------------------------------------------------------------------------
+
+AccessChk() {
+	_pushd www
+	downloadRawFile "https://xor.cat/assets/other/Accesschk.zip" accesschk-accepteula.zip
+	unzip -q accesschk-accepteula.zip
+	mv accesschk.exe accesschk-accepteula.exe
+	rm Eula.txt accesschk-accepteula.zip
+	downloadRawFile "https://download.sysinternals.com/files/AccessChk.zip" accesschk.zip
+	unzip -q accesschk.zip
+	rm Eula.txt accesschk64a.exe accesschk.zip
+	_popd
+}
 
 Bypass-AMSI() {
 	_pushd www
@@ -670,7 +730,6 @@ ProcDump() {
 	_pushd www
 	downloadRawFile "https://download.sysinternals.com/files/Procdump.zip" procdump.zip
 	unzip -q procdump.zip
-	mv procdump64.exe procdump.exe
 	rm Eula.txt procdump64a.exe procdump.zip
 	_popd
 }
@@ -790,8 +849,7 @@ netcat-win() {
 	_pushd www
 	downloadRawFile "https://eternallybored.org/misc/netcat/netcat-win32-1.12.zip" nc.zip
 	unzip -q nc.zip
-	rm doexec.c generic.h getopt.c getopt.h hobbit.txt license.txt Makefile netcat.c nc.zip readme.txt
-	mv nc64.exe nc.exe
+	rm doexec.c generic.h getopt.c getopt.h hobbit.txt license.txt Makefile netcat.c readme.txt nc.zip
 	_popd
 }
 
@@ -829,6 +887,7 @@ winPEAS() {
 }
 
 www() {
+	AccessChk
 	Bypass-AMSI
 	Bypass-UAC
 	Discover-PSMSExchangeServers
