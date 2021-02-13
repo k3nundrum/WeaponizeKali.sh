@@ -28,7 +28,7 @@ In order to launch the bleeding-edge version of a tool installed with pipx and n
 Now you can download WeaponizeKali.sh and run it from your home directory (pip may prompt for unlocking the keyring during the process). When it's done, you can check the results in `~/tools` and `~/www`:
 
 ```bash
-~$ curl -sL https://github.com/snovvcrash/WeaponizeKali.sh/raw/main/WeaponizeKali.sh | bash -s -- -idtw
+~$ curl -sL https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/WeaponizeKali.sh | bash -s -- -idtw
 ~$ ls -la ~/tools ~/www
 ```
 
@@ -93,7 +93,7 @@ optional arguments:
 * [x] [Windows-Exploit-Suggester](https://github.com/AonCyberLabs/Windows-Exploit-Suggester)
 * [x] [aclpwn.py](https://github.com/fox-it/aclpwn.py)
 * [x] [adidnsdump](https://github.com/dirkjanm/adidnsdump)
-* [ ] [aquatone](https://github.com/michenriksen/aquatone)
+* [x] [aquatone](https://github.com/michenriksen/aquatone)
 * [x] [bettercap](https://github.com/bettercap/bettercap)
 * [x] [chisel](https://github.com/jpillora/chisel)
 * [x] [crowbar](https://github.com/galkan/crowbar)
@@ -145,6 +145,8 @@ optional arguments:
 * [x] [Invoke-WMIExec.ps1](https://github.com/Kevin-Robertson/Invoke-TheHash/blob/master/Invoke-WMIExec.ps1)
 * [ ] [jaws-enum.ps1](https://github.com/411Hall/JAWS/blob/master/jaws-enum.ps1)
 * [x] [Out-EncryptedScript.ps1 (PowerSploit)](https://github.com/PowerShellMafia/PowerSploit/blob/master/ScriptModification/Out-EncryptedScript.ps1)
+* [x] [PEASS (linPEAS)](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/blob/master/linPEAS/linpeas.sh)
+* [x] [PEASS (winPEAS.exe)](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/blob/master/winPEAS/winPEASexe/winPEAS/bin/x64/Release/winPEAS.exe)
 * [x] [PowerUp.ps1 (PowerSploit)](https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1)
 * [x] [PowerUpSQL.ps1](https://github.com/NetSPI/PowerUpSQL/blob/master/PowerUpSQL.ps1)
 * [x] [PowerView2.ps1 (PowerSploit)](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerView/powerview.ps1)
@@ -177,4 +179,3 @@ optional arguments:
 * [x] [powercat.ps1](https://github.com/besimorhino/powercat/blob/master/powercat.ps1)
 * [x] [pspy](https://github.com/DominicBreuker/pspy)
 * [x] [rdp2tcp.exe](https://github.com/NotMedic/rdp-tunnel/blob/master/rdp2tcp.exe)
-* [x] [winPEAS.exe](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/blob/master/winPEAS/winPEASexe/winPEAS/bin/x64/Release/winPEAS.exe)
