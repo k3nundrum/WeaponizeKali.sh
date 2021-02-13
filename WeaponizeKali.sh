@@ -326,6 +326,17 @@ adidnsdump() {
 	pipx install "git+https://github.com/dirkjanm/adidnsdump.git" -f
 }
 
+aquatone() {
+	_pushd tools
+	mkdir aquatone
+	cd aquatone
+	downloadRelease "michenriksen/aquatone" aquatone_linux_amd64.*.zip
+	unzip -q aquatone_*
+	rm LICENSE.txt README.md aquatone_*
+	chmod +x aquatone
+	_popd
+}
+
 bettercap() {
 	_pushd tools
 	mkdir bettercap
@@ -528,6 +539,7 @@ tools() {
 	Windows-Exploit-Suggester
 	aclpwn.py
 	adidnsdump
+	aquatone
 	bettercap
 	chisel-tools
 	crowbar
@@ -675,6 +687,15 @@ Invoke-WMIExec() {
 Out-EncryptedScript() {
 	_pushd www
 	downloadRawFile "https://github.com/PowerShellMafia/PowerSploit/raw/master/ScriptModification/Out-EncryptedScript.ps1" out-encryptedscript.ps1
+	_popd
+}
+
+PEASS() {
+	_pushd www
+	downloadRawFile "https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/winPEAS/winPEASexe/winPEAS/bin/x64/Release/winPEAS.exe" winpeas.exe
+	downloadRawFile "https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/winPEAS/winPEASexe/winPEAS/bin/Obfuscated%20Releases/winPEASx64.exe" winpeas-obf.exe
+	downloadRawFile "https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/winPEAS/winPEASexe/winPEAS/bin/Release/Dotfuscated/winPEAS.exe" winpeas-dotobf.exe
+	downloadRawFile "https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/linPEAS/linpeas.sh" linpeas.sh
 	_popd
 }
 
@@ -877,15 +898,6 @@ rdp-tunnel-www() {
 	_popd
 }
 
-winPEAS() {
-	_pushd www
-	downloadRawFile "https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/winPEAS/winPEASexe/winPEAS/bin/x64/Release/winPEAS.exe" winpeas.exe
-	downloadRawFile "https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/winPEAS/winPEASexe/winPEAS/bin/Obfuscated%20Releases/winPEASx64.exe" winpeas-obf.exe
-	downloadRawFile "https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/winPEAS/winPEASexe/winPEAS/bin/Release/Dotfuscated/winPEAS.exe" winpeas-dotobf.exe
-	downloadRawFile "https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/linPEAS/linpeas.sh" linpeas.sh
-	_popd
-}
-
 www() {
 	AccessChk
 	Bypass-AMSI
@@ -906,6 +918,7 @@ www() {
 	Invoke-SMBExec
 	Invoke-WMIExec
 	Out-EncryptedScript
+	PEASS
 	PowerUp
 	PowerUpSQL
 	PowerView2
@@ -935,7 +948,6 @@ www() {
 	powercat
 	pspy
 	rdp-tunnel-www
-	winPEAS
 }
 
 # -----------------------------------------------------------------------------
