@@ -391,7 +391,7 @@ enum4linux-ng() {
 }
 
 evil-winrm() {
-	sudo gem install evil-winrm
+	gem install evil-winrm --user-install
 }
 
 ffuf() {
@@ -501,6 +501,14 @@ rdp-tunnel-tools() {
 	_popd
 }
 
+spraykatz() {
+	_pushd tools
+	cloneRepository "https://github.com/aas-n/spraykatz.git"
+	cd spraykatz
+	pipenv install -r requirements.txt --python /usr/bin/python3
+	_popd
+}
+
 updog() {
 	pipx install "git+https://github.com/sc0tfree/updog.git" -f
 }
@@ -561,6 +569,7 @@ tools() {
 	rbcd-attack
 	rbcd_permissions
 	rdp-tunnel-tools
+	spraykatz
 	updog
 	xc
 }
