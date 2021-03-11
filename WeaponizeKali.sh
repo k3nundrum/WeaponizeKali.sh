@@ -196,10 +196,10 @@ BloodHound.py() {
 
 BloodHound() {
 	_pushd tools
-	downloadRelease "BloodHoundAD/BloodHound" BloodHound-linux-x64 BloodHound-linux-x64.zip
-	unzip -q BloodHound-linux-x64.zip
+	downloadRelease "BloodHoundAD/BloodHound" BloodHound-linux-x64 BloodHound.zip
+	unzip -q BloodHound.zip
 	mv BloodHound-linux-x64 BloodHound
-	rm BloodHound-linux-x64.zip
+	rm BloodHound.zip
 	cd BloodHound
 	sudo chown root:root chrome-sandbox
 	sudo chmod 4755 chrome-sandbox
@@ -330,9 +330,9 @@ aquatone() {
 	_pushd tools
 	mkdir aquatone
 	cd aquatone
-	downloadRelease "michenriksen/aquatone" aquatone_linux_amd64.*.zip
+	downloadRelease "michenriksen/aquatone" aquatone_linux_amd64.*.zip aquatone.zip
 	unzip -q aquatone_*
-	rm LICENSE.txt README.md aquatone_*
+	rm LICENSE.txt README.md aquatone.zip
 	chmod +x aquatone
 	_popd
 }
@@ -398,10 +398,10 @@ ffuf() {
 	_pushd tools
 	mkdir ffuf
 	cd ffuf
-	downloadRelease "ffuf/ffuf" ffuf.*linux_amd64 ffuf
-	tar -xvzf ffuf_*
+	downloadRelease "ffuf/ffuf" ffuf.*linux_amd64.tar.gz ffuf.tar.gz
+	tar -xvzf ffuf.tar.gz
 	chmod +x ffuf
-	rm CHANGELOG.md LICENSE README.md ffuf_*
+	rm CHANGELOG.md LICENSE README.md ffuf.tar.gz
 	_popd
 }
 
@@ -426,11 +426,11 @@ gobuster() {
 	_pushd tools
 	mkdir gobuster
 	cd gobuster
-	downloadRelease "OJ/gobuster" gobuster-linux-amd64 gobuster
-	7z x gobuster-linux-amd64.7z > /dev/null
+	downloadRelease "OJ/gobuster" gobuster-linux-amd64.7z gobuster.7z
+	7z x gobuster.7z > /dev/null
 	mv gobuster-linux-amd64/gobuster .
 	chmod +x gobuster
-	rm -rf gobuster-*
+	rm -rf gobuster-linux-amd64 gobuster.7z
 	_popd
 }
 
@@ -455,6 +455,17 @@ kerbrute() {
 
 mitm6() {
 	pipx install "git+https://github.com/fox-it/mitm6.git" -f
+}
+
+naabu() {
+	_pushd tools
+	mkdir naabu
+	cd naabu
+	downloadRelease "projectdiscovery/naabu" naabu-linux-amd64.tar.gz naabu.tar.gz
+	tar -xzvf naabu.tar.gz
+	chmod +x naabu
+	rm LICENSE.md README.md naabu.tar.gz
+	_popd
 }
 
 nishang() {
@@ -562,6 +573,7 @@ tools() {
 	impacket
 	kerbrute
 	mitm6
+	naabu
 	nishang
 	nullinux
 	pypykatz
