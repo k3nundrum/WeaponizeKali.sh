@@ -147,7 +147,7 @@ optional arguments:
 * [x] [Invoke-WMIExec.ps1](https://github.com/Kevin-Robertson/Invoke-TheHash/blob/master/Invoke-WMIExec.ps1)
 * [ ] [jaws-enum.ps1](https://github.com/411Hall/JAWS/blob/master/jaws-enum.ps1)
 * [x] [Out-EncryptedScript.ps1 (PowerSploit)](https://github.com/PowerShellMafia/PowerSploit/blob/master/ScriptModification/Out-EncryptedScript.ps1)
-* [x] [PEASS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite) · [inPEAS.sh](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/blob/master/linPEAS/linpeas.sh) · [winPEAS.exe](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/blob/master/winPEAS/winPEASexe/winPEAS/bin/x64/Release/winPEAS.exe)
+* [x] [PEASS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite) · [linPEAS.sh](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/blob/master/linPEAS/linpeas.sh) · [winPEAS.exe](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/blob/master/winPEAS/winPEASexe/winPEAS/bin/x64/Release/winPEAS.exe)
 * [x] [PowerUp.ps1 (PowerSploit)](https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1)
 * [x] [PowerUpSQL.ps1](https://github.com/NetSPI/PowerUpSQL/blob/master/PowerUpSQL.ps1)
 * [x] [PowerView2.ps1 (PowerSploit)](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerView/powerview.ps1)
