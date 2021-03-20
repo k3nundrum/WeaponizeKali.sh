@@ -295,6 +295,15 @@ Responder() {
 	_popd
 }
 
+RustScan() {
+	_pushd tools
+	mkdir RustScan
+	cd RustScan
+	downloadRelease "RustScan/RustScan" rustscan.*amd64.deb rustscan.deb
+	sudo dpkg -i rustscan.deb
+	_popd
+}
+
 ShellPop() {
 	_pushd tools
 	cloneRepository "https://github.com/0x00-0x00/ShellPop.git"
@@ -315,6 +324,18 @@ TrustVisualizer() {
 Windows-Exploit-Suggester() {
 	_pushd tools
 	cloneRepository "https://github.com/AonCyberLabs/Windows-Exploit-Suggester.git"
+	_popd
+}
+
+ack3() {
+	_pushd tools
+	cloneRepository "https://github.com/beyondgrep/ack3.git"
+	cd ack3
+	echo yes | sudo perl -MCPAN -e 'install File::Next'
+	perl Makefile.PL
+	make
+	make test
+	sudo make install
 	_popd
 }
 
@@ -453,6 +474,15 @@ kerbrute() {
 	_popd
 }
 
+masscan() {
+	_pushd tools
+	cloneRepository "https://github.com/robertdavidgraham/masscan.git"
+	cd masscan
+	make
+	sudo make install
+	_popd
+}
+
 mitm6() {
 	pipx install "git+https://github.com/fox-it/mitm6.git" -f
 }
@@ -553,9 +583,11 @@ tools() {
 	Nim-Scripts
 	PrivExchange
 	Responder
+	RustScan
 	ShellPop
 	TrustVisualizer
 	Windows-Exploit-Suggester
+	ack3
 	aclpwn.py
 	adidnsdump
 	aquatone
@@ -572,6 +604,7 @@ tools() {
 	htbenum-tools
 	impacket
 	kerbrute
+	masscan
 	mitm6
 	naabu
 	nishang
