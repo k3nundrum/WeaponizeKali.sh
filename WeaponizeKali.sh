@@ -69,7 +69,7 @@ _popd() {
 
 installDebPackage() {
 	pkg_name=$1
-	if ! /usr/bin/dpkg-query -W -f='${Status}' $pkg_name 2>&1 | /bin/grep "ok installed" > /dev/null; then
+	if ! /usr/bin/dpkg-query -W='${Status}' $pkg_name 2>&1 | /bin/grep "ok installed" > /dev/null; then
 		warning "$pkg_name not found, installing..."
 		sudo apt install $pkg_name -y
 	else
@@ -191,7 +191,7 @@ dependencies() {
 # -----------------------------------------------------------------------------
 
 BloodHound.py() {
-	pipx install "git+https://github.com/fox-it/BloodHound.py.git" -f
+	pipx install -f "git+https://github.com/fox-it/BloodHound.py.git"
 }
 
 BloodHound() {
@@ -218,7 +218,7 @@ CVE-2020-1472-checker() {
 }
 
 CrackMapExec() {
-	pipx install "git+https://github.com/byt3bl33d3r/CrackMapExec.git" -f
+	pipx install -f "git+https://github.com/byt3bl33d3r/CrackMapExec.git"
 }
 
 DefaultCreds-cheat-sheet() {
@@ -244,7 +244,7 @@ Empire() {
 	_pushd tools
 	cloneRepository "https://github.com/BC-SECURITY/Empire.git"
 	cd Empire
-	sudo STAGING_KEY=`echo 'w34p0n1z3k4l1' | md5sum | cut -d' ' -f1` ./setup/install.sh
+	sudo STAGING_KEY=`echo 'w34p0n1z3k4l1' | md5sum | cut -d' '1` ./setup/install.sh
 	sudo poetry install
 	echo $'#!/usr/bin/env bash\n\nsudo poetry run python empire' > run_empire.sh
 	chmod +x run_empire.sh 
@@ -340,11 +340,11 @@ ack3() {
 }
 
 aclpwn.py() {
-	pipx install "git+https://github.com/fox-it/aclpwn.py.git" -f
+	pipx install -f "git+https://github.com/fox-it/aclpwn.py.git"
 }
 
 adidnsdump() {
-	pipx install "git+https://github.com/dirkjanm/adidnsdump.git" -f
+	pipx install -f "git+https://github.com/dirkjanm/adidnsdump.git"
 }
 
 aquatone() {
@@ -382,7 +382,7 @@ chisel-tools() {
 }
 
 crowbar() {
-	pipx install "git+https://github.com/galkan/crowbar.git" -f
+	pipx install -f "git+https://github.com/galkan/crowbar.git"
 }
 
 cve-2019-1040-scanner() {
@@ -408,7 +408,7 @@ dsniff() {
 }
 
 enum4linux-ng() {
-	pipx install "git+https://github.com/cddmp/enum4linux-ng.git" -f
+	pipx install -f "git+https://github.com/cddmp/enum4linux-ng.git"
 }
 
 evil-winrm() {
@@ -462,7 +462,7 @@ htbenum-tools() {
 }
 
 impacket() {
-	pipx install "git+https://github.com/SecureAuthCorp/impacket.git" -f
+	pipx install -f "git+https://github.com/SecureAuthCorp/impacket.git"
 }
 
 kerbrute() {
@@ -484,7 +484,7 @@ masscan() {
 }
 
 mitm6() {
-	pipx install "git+https://github.com/fox-it/mitm6.git" -f
+	pipx install -f "git+https://github.com/fox-it/mitm6.git"
 }
 
 naabu() {
@@ -513,7 +513,7 @@ nullinux() {
 }
 
 pypykatz() {
-	pipx install "git+https://github.com/skelsec/pypykatz.git" -f
+	pipx install -f "git+https://github.com/skelsec/pypykatz.git"
 }
 
 pywerview() {
@@ -551,7 +551,7 @@ spraykatz() {
 }
 
 updog() {
-	pipx install "git+https://github.com/sc0tfree/updog.git" -f
+	pipx install -f "git+https://github.com/sc0tfree/updog.git"
 }
 
 xc() {
