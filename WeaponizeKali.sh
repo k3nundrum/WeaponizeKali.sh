@@ -8,22 +8,22 @@ red_bold="\033[1;31m"
 blue="\033[0;34m"
 light_gray="\033[0;37m"
 dark_gray="\033[1;30m"
-magenta="\033[1;35m"
+magenta_bold="\033[1;35m"
 
-SITE="https://github.com/snovvcrash/WeaponizeKali.sh"
-VERSION="0.2"
+SITE="https://github.com/penetrarnya-tm/WeaponizeKali.sh"
+VERSION="0.1.3"
 
-echo -e $red_bold   "                                                          )                               " $nocolor
-echo -e $red_bold   " (  (                                                  ( /(       (                )      " $nocolor
-echo -e $red_bold   " )\))(   '   (     )                    (         (    )\())   )  )\ (          ( /(      " $nocolor
-echo -e $red_bold   "((_)()\ )   ))\ ( /(  \`  )    (    (    )\  (    ))\  ((_)\ ( /( ((_))\     (   )\())    " $nocolor
-echo -e $red_bold   "_(())\_)() /((_))(_)) /(/(    )\   )\ )((_) )\  /((_) _ ((_))(_)) _ ((_)    )\ ((_)\      " $nocolor
-echo -e $light_gray "\ \((_)/ /(_)) ((_)_ ((_)_\  ((_) _(_/( (_)((_)(_))  | |/ /((_)_ | | (_)   ((_)| |(_)     " $nocolor
-echo -e $light_gray " \ \/\/ / / -_)/ _\` || '_ \)/ _ \| ' \))| ||_ // -_) | ' < / _\` || | | | _ (_-<| ' \    " $nocolor
-echo -e $light_gray "  \_/\_/  \___|\__,_|| .__/ \___/|_||_| |_|/__|\___| |_|\_\\\\\__,_||_| |_|(_)/__/|_||_|  " $nocolor
-echo -e $light_gray "                     |_|                                                                  " $nocolor
-echo                "                            \"the more tools you install, the more you are able to PWN\""
-echo -e "                           ${magenta}{${dark_gray} ${SITE} ${magenta}} ${magenta}{${dark_gray} v${VERSION} ${magenta}}" $nocolor
+echo -e "${red_bold}                                                         )                                ${nocolor}"
+echo -e "${red_bold} (  (                                                  ( /(       (                )      ${nocolor}"
+echo -e "${red_bold} )\))(   '   (     )                    (         (    )\())   )  )\ (          ( /(      ${nocolor}"
+echo -e "${red_bold}((_)()\ )   ))\ ( /(  \`  )    (    (    )\  (    ))\  ((_)\ ( /( ((_))\     (   )\())    ${nocolor}"
+echo -e "${red_bold}_(())\_)() /((_))(_)) /(/(    )\   )\ )((_) )\  /((_) _ ((_))(_)) _ ((_)    )\ ((_)\      ${nocolor}"
+echo -e "${light_gray}\ \((_)/ /(_)) ((_)_ ((_)_\  ((_) _(_/( (_)((_)(_))  | |/ /((_)_ | | (_)   ((_)| |(_)   ${nocolor}"
+echo -e "${light_gray} \ \/\/ / / -_)/ _\` || '_ \)/ _ \| ' \))| ||_ // -_) | ' < / _\` || | | | _ (_-<| ' \  ${nocolor}"
+echo -e "${light_gray}  \_/\_/  \___|\__,_|| .__/ \___/|_||_| |_|/__|\___| |_|\_\\\\\__,_||_| |_|(_)/__/|_||_|${nocolor}"
+echo -e "${light_gray}                     |_|                                                                ${nocolor}"
+echo    "                             \"the more tools you install, the more you are able to PWN\""
+echo -e "                      ${magenta_bold}{${dark_gray} ${SITE} ${magenta_bold}} ${magenta_bold}{${dark_gray} v${VERSION} ${magenta_bold}}${nocolor}"
 echo
 
 # -----------------------------------------------------------------------------
@@ -40,19 +40,23 @@ filesystem() {
 # -----------------------------------------------------------------------------
 
 info() {
-	echo -e "${blue}[*] $1" $nocolor
+	echo -e "${blue}[*] $1${nocolor}"
 }
 
 success() {
-	echo -e "${green}[+] $1" $nocolor
+	echo -e "${green}[+] $1${nocolor}"
 }
 
 warning() {
-	echo -e "${yellow}[!] $1" $nocolor
+	echo -e "${yellow}[!] $1${nocolor}"
 }
 
 fail() {
-	echo -e "${red}[-] $1" $nocolor
+	echo -e "${red}[-] $1${nocolor}"
+}
+
+progress() {
+	echo -e "${magenta_bold}[WPNZKL] Installing $1${nocolor}"
 }
 
 # -----------------------------------------------------------------------------
@@ -70,7 +74,7 @@ _popd() {
 installDebPackage() {
 	pkg_name=$1
 	if ! /usr/bin/dpkg-query -W='${Status}' $pkg_name 2>&1 | /bin/grep "ok installed" > /dev/null; then
-		warning "$pkg_name not found, installing..."
+		warning "$pkg_name not found, installing"
 		sudo apt install $pkg_name -y
 	else
 		success "Installed deb package: $pkg_name"
@@ -81,9 +85,9 @@ installPipPackage() {
 	V=$1
 	pkg_name=$2
 	if ! which $pkg_name > /dev/null 2>&1; then
-		warning "[!] $pkg_name not found, installing..."
+		warning "[!] $pkg_name not found, installing"
 
-		sudo "python${V}" -m pip install $pkg_name --upgrade
+		sudo "python${V}" -m pip install -U $pkg_name
 	else
 		success "Installed pip package: $pkg_name"
 	fi
@@ -130,8 +134,8 @@ _jq() {
 }
 
 _python2-pip() {
-	curl -s https://bootstrap.pypa.io/get-pip.py | sudo python
-	sudo python -m pip install setuptools --upgrade
+	curl -s https://bootstrap.pypa.io/pip/2.7/get-pip.py | sudo python2
+	sudo python2 -m pip install -U setuptools
 }
 
 _python2-dev() {
@@ -151,10 +155,6 @@ _setuptools() {
 	installPipPackage 3 setuptools
 }
 
-_pipenv() {
-	installPipPackage 3 pipenv
-}
-
 _poetry() {
 	installPipPackage 3 poetry
 }
@@ -164,11 +164,11 @@ _pipx() {
 	pipx ensurepath
 }
 
-python2-impacket() {
+_python2-impacket() {
 	installPipPackage 2 impacket
 }
 
-neo4j() {
+_neo4j() {
 	installDebPackage neo4j
 }
 
@@ -179,11 +179,10 @@ dependencies() {
 	_python3-pip
 	_python3-venv
 	_setuptools
-	_pipenv
 	_poetry
 	_pipx
-	python2-impacket
-	neo4j
+	_python2-impacket
+	_neo4j
 }
 
 # -----------------------------------------------------------------------------
@@ -191,11 +190,13 @@ dependencies() {
 # -----------------------------------------------------------------------------
 
 BloodHound.py() {
+	progress "BloodHound.py"
 	pipx install -f "git+https://github.com/fox-it/BloodHound.py.git"
 }
 
 BloodHound() {
 	_pushd tools
+	progress "BloodHound"
 	downloadRelease "BloodHoundAD/BloodHound" BloodHound-linux-x64 BloodHound.zip
 	unzip -q BloodHound.zip
 	mv BloodHound-linux-x64 BloodHound
@@ -206,30 +207,35 @@ BloodHound() {
 	_popd
 }
 
+CVE-2019-1040-scanner() {
+	_pushd tools
+	progress "CVE-2019-1040-scanner"
+	mkdir CVE-2019-1040-scanner
+	cd CVE-2019-1040-scanner
+	downloadRawFile "https://github.com/fox-it/cve-2019-1040-scanner/raw/master/scan.py" CVE-2019-1040-scanner.py
+	chmod +x CVE-2019-1040-scanner.py
+	_popd
+}
+
 CVE-2020-1472-checker() {
 	_pushd tools
+	progress "CVE-2020-1472-checker"
 	cloneRepository "https://github.com/SecuraBV/CVE-2020-1472.git"
 	mv CVE-2020-1472 CVE-2020-1472-checker
 	cd CVE-2020-1472-checker
-	# pipenv install -r requirements.txt --python /usr/bin/python3
-	pip3 install -r requirements.txt # pipenv fails on this one
+	python3 -m pip install -r requirements.txt
 	chmod +x zerologon_tester.py
 	_popd
 }
 
 CrackMapExec() {
+	progress "CrackMapExec"
 	pipx install -f "git+https://github.com/byt3bl33d3r/CrackMapExec.git"
-}
-
-DefaultCreds-cheat-sheet() {
-	_pushd tools
-	cloneRepository "https://github.com/ihebski/DefaultCreds-cheat-sheet.git"
-	pip3 install tinydb fire
-	_popd
 }
 
 Ebowla() {
 	_pushd tools
+	progress "Ebowla"
 	cloneRepository "https://github.com/Genetic-Malware/Ebowla.git"
 	installDebPackage golang
 	installDebPackage mingw-w64
@@ -242,9 +248,10 @@ Ebowla() {
 
 Empire() {
 	_pushd tools
+	progress "Empire"
 	cloneRepository "https://github.com/BC-SECURITY/Empire.git"
 	cd Empire
-	sudo STAGING_KEY=`echo 'w34p0n1z3k4l1' | md5sum | cut -d' '1` ./setup/install.sh
+	sudo STAGING_KEY=`echo 'WPNZKL' | md5sum | cut -d' ' -f1` ./setup/install.sh
 	sudo poetry install
 	echo $'#!/usr/bin/env bash\n\nsudo poetry run python empire' > run_empire.sh
 	chmod +x run_empire.sh 
@@ -253,25 +260,30 @@ Empire() {
 
 LDAPPER() {
 	_pushd tools
+	progress "LDAPPER"
 	cloneRepository "https://github.com/shellster/LDAPPER.git"
 	cd LDAPPER
-	pipenv install -r requirements.txt --python /usr/bin/python3
+	python3 -m pip install -r requirements.txt
 	_popd
 }
 
 MS17-010() {
 	_pushd tools
+	progress "MS17-010"
 	cloneRepository "https://github.com/helviojunior/MS17-010.git"
 	_popd
 }
 
 Nim() {
+	progress "Nim"
 	installDebPackage mingw-w64
-	curl https://nim-lang.org/choosenim/init.sh -sSf | CHOOSENIM_NO_ANALYTICS=1 sh
+	installDebPackage nim
+	#curl https://nim-lang.org/choosenim/init.sh -sSf | CHOOSENIM_NO_ANALYTICS=1 sh
 }
 
 Nim-Scripts() {
 	_pushd tools
+	progress "Nim-Scripts"
 	mkdir nim-scripts
 	cd nim-scripts
 	downloadRawFile "https://github.com/S3cur3Th1sSh1t/Creds/raw/master/nim/DLLHijack.nim" DLLHijack.nim
@@ -283,20 +295,30 @@ Nim-Scripts() {
 	_popd
 }
 
+PCredz() {
+	_pushd tools
+	progress "PCredz"
+	cloneRepository "https://github.com/lgandx/PCredz.git"
+	_popd
+}
+
 PrivExchange() {
 	_pushd tools
+	progress "PrivExchange"
 	cloneRepository "https://github.com/dirkjanm/PrivExchange.git"
 	_popd
 }
 
 Responder() {
 	_pushd tools
+	progress "Responder"
 	cloneRepository "https://github.com/lgandx/Responder.git"
 	_popd
 }
 
 RustScan() {
 	_pushd tools
+	progress "RustScan"
 	mkdir RustScan
 	cd RustScan
 	downloadRelease "RustScan/RustScan" rustscan.*amd64.deb rustscan.deb
@@ -306,29 +328,32 @@ RustScan() {
 
 ShellPop() {
 	_pushd tools
+	progress "ShellPop"
 	cloneRepository "https://github.com/0x00-0x00/ShellPop.git"
 	cd ShellPop
-	pip install -r requirements.txt
-	sudo python setup.py install
+	python2 -m pip install -r requirements.txt
+	sudo python2 setup.py install
 	_popd
 }
 
 TrustVisualizer() {
 	_pushd tools
+	progress "TrustVisualizer"
 	cloneRepository "https://github.com/HarmJ0y/TrustVisualizer.git"
-	cd TrustVisualizer
-	installPipPackage 2 networkx
+	python2 -m pip install networkx
 	_popd
 }
 
 Windows-Exploit-Suggester() {
 	_pushd tools
+	progress "Windows-Exploit-Suggeste"
 	cloneRepository "https://github.com/AonCyberLabs/Windows-Exploit-Suggester.git"
 	_popd
 }
 
 ack3() {
 	_pushd tools
+	progress "ack3"
 	cloneRepository "https://github.com/beyondgrep/ack3.git"
 	cd ack3
 	echo yes | sudo perl -MCPAN -e 'install File::Next'
@@ -340,19 +365,22 @@ ack3() {
 }
 
 aclpwn.py() {
+	progress "aclpwn.py"
 	pipx install -f "git+https://github.com/fox-it/aclpwn.py.git"
 }
 
 adidnsdump() {
+	progress "adidnsdump"
 	pipx install -f "git+https://github.com/dirkjanm/adidnsdump.git"
 }
 
 aquatone() {
 	_pushd tools
+	progress "aquatone"
 	mkdir aquatone
 	cd aquatone
 	downloadRelease "michenriksen/aquatone" aquatone_linux_amd64.*.zip aquatone.zip
-	unzip -q aquatone_*
+	unzip -q aquatone.zip
 	rm LICENSE.txt README.md aquatone.zip
 	chmod +x aquatone
 	_popd
@@ -360,6 +388,7 @@ aquatone() {
 
 bettercap() {
 	_pushd tools
+	progress "bettercap"
 	mkdir bettercap
 	cd bettercap
 	downloadRelease "bettercap/bettercap" bettercap_linux_amd64.*.zip bettercap.zip
@@ -370,8 +399,18 @@ bettercap() {
 	_popd
 }
 
+bloodhound-quickwin() {
+	_pushd tools
+	progress "bloodhound-quickwin"
+	cloneRepository "https://github.com/kaluche/bloodhound-quickwin.git"
+	cd bloodhound-quickwin
+	python3 -m pip install -r requirements.txt
+	_popd
+}
+
 chisel-tools() {
 	_pushd tools
+	progress "chisel-tools"
 	mkdir chisel
 	cd chisel
 	downloadRelease "jpillora/chisel" chisel.*linux_amd64.gz chisel.gz
@@ -382,20 +421,13 @@ chisel-tools() {
 }
 
 crowbar() {
+	progress "crowbar"
 	pipx install -f "git+https://github.com/galkan/crowbar.git"
-}
-
-cve-2019-1040-scanner() {
-	_pushd tools
-	mkdir cve-2019-1040-scanner
-	cd cve-2019-1040-scanner
-	downloadRawFile "https://github.com/fox-it/cve-2019-1040-scanner/raw/master/scan.py" CVE-2019-1040-scanner.py
-	chmod +x CVE-2019-1040-scanner.py
-	_popd
 }
 
 dementor.py() {
 	_pushd tools
+	progress "dementor.py"
 	mkdir dementor
 	cd dementor
 	downloadRawFile "https://gist.github.com/3xocyte/cfaf8a34f76569a8251bde65fe69dccc/raw/7c7f09ea46eff4ede636f69c00c6dfef0541cd14/dementor.py" dementor.py
@@ -403,24 +435,29 @@ dementor.py() {
 }
 
 dsniff() {
+	progress "dsniff"
 	sudo sysctl -w net.ipv4.ip_forward=1
 	installDebPackage dsniff
 }
 
 enum4linux-ng() {
+	progress "enum4linux-ng"
 	pipx install -f "git+https://github.com/cddmp/enum4linux-ng.git"
 }
 
 evil-winrm() {
+	progress "evil-winrm"
 	gem install evil-winrm --user-install
+	sudo ln -sv /home/kali/.local/share/gem/ruby/2.7.0/bin/evil-winrm /usr/local/bin/evil-winrm
 }
 
 ffuf() {
 	_pushd tools
+	progress "ffuf"
 	mkdir ffuf
 	cd ffuf
 	downloadRelease "ffuf/ffuf" ffuf.*linux_amd64.tar.gz ffuf.tar.gz
-	tar -xvzf ffuf.tar.gz
+	tar -xzf ffuf.tar.gz
 	chmod +x ffuf
 	rm CHANGELOG.md LICENSE README.md ffuf.tar.gz
 	_popd
@@ -428,14 +465,16 @@ ffuf() {
 
 gateway-finder-imp() {
 	_pushd tools
+	progress "gateway-finder-imp"
 	cloneRepository "https://github.com/whitel1st/gateway-finder-imp.git"
 	cd gateway-finder-imp
-	pipenv install -r requirements.txt --python /usr/bin/python3
+	python3 -m pip install -r requirements.txt
 	_popd
 }
 
 gitjacker() {
 	_pushd tools
+	progress "gitjacker"
 	mkdir gitjacker
 	cd gitjacker
 	downloadRelease "liamg/gitjacker" gitjacker-linux-amd64 gitjacker
@@ -445,6 +484,7 @@ gitjacker() {
 
 gobuster() {
 	_pushd tools
+	progress "gobuster"
 	mkdir gobuster
 	cd gobuster
 	downloadRelease "OJ/gobuster" gobuster-linux-amd64.7z gobuster.7z
@@ -457,16 +497,19 @@ gobuster() {
 
 htbenum-tools() {
 	_pushd tools
+	progress "htbenum-tools"
 	cloneRepository "https://github.com/SolomonSklash/htbenum.git"
 	_popd
 }
 
 impacket() {
+	progress "impacket"
 	pipx install -f "git+https://github.com/SecureAuthCorp/impacket.git"
 }
 
 kerbrute() {
 	_pushd tools
+	progress "kerbrute"
 	mkdir kerbrute
 	cd kerbrute
 	downloadRelease "ropnop/kerbrute" kerbrute_linux_amd64 kerbrute
@@ -474,8 +517,26 @@ kerbrute() {
 	_popd
 }
 
+krbrelayx() {
+	_pushd tools
+	progress "krbrelayx"
+	cloneRepository "https://github.com/dirkjanm/krbrelayx.git"
+	_popd
+}
+
+ldapdomaindump() {
+	_pushd tools
+	progress "ldapdomaindump"
+	cloneRepository "https://github.com/dirkjanm/ldapdomaindump.git"
+	cd ldapdomaindump
+	python2 -m pip install -r requirements.txt
+	sudo python2 setup.py install
+	_popd
+}
+
 masscan() {
 	_pushd tools
+	progress "masscan"
 	cloneRepository "https://github.com/robertdavidgraham/masscan.git"
 	cd masscan
 	make
@@ -484,15 +545,18 @@ masscan() {
 }
 
 mitm6() {
+	progress "mitm6"
 	pipx install -f "git+https://github.com/fox-it/mitm6.git"
 }
 
 naabu() {
 	_pushd tools
+	progress "naabu"
 	mkdir naabu
 	cd naabu
 	downloadRelease "projectdiscovery/naabu" naabu-linux-amd64.tar.gz naabu.tar.gz
-	tar -xzvf naabu.tar.gz
+	tar -xzf naabu.tar.gz
+	mv naabu-linux-amd64 naabu
 	chmod +x naabu
 	rm LICENSE.md README.md naabu.tar.gz
 	_popd
@@ -500,67 +564,98 @@ naabu() {
 
 nishang() {
 	_pushd tools
+	progress "nishang"
 	cloneRepository "https://github.com/samratashok/nishang.git"
+	_popd
+}
+
+ntlm-scanner() {
+	_pushd tools
+	progress "ntlm-scanner"
+	cloneRepository "https://github.com/preempt/ntlm-scanner.git"
 	_popd
 }
 
 nullinux() {
 	_pushd tools
+	progress "nullinux"
 	cloneRepository "https://github.com/m8r0wn/nullinux.git"
 	cd nullinux
 	sudo bash setup.sh
 	_popd
 }
 
+odat() {
+	_pushd tools
+	progress "odat"
+	mkdir odat
+	cd odat
+	downloadRelease "quentinhardy/odat" odat-linux.*.tar.gz odat.tar.gz
+	tar -xzf odat.tar.gz
+	rm odat.tar.gz
+	mv odat-* odat-dir
+	mv odat-dir/* .
+	rm -rf odat-dir
+	_popd
+}
+
 pypykatz() {
+	progress "pypykatz"
 	pipx install -f "git+https://github.com/skelsec/pypykatz.git"
 }
 
 pywerview() {
 	_pushd tools
+	progress "pywerview"
 	cloneRepository "https://github.com/the-useless-one/pywerview.git"
 	cd pywerview
-	pipenv install -r requirements.txt --python /usr/bin/python
+	python2 -m pip install -r requirements.txt
 	_popd
 }
 
 rbcd-attack() {
 	_pushd tools
+	progress "rbcd-attack"
 	cloneRepository "https://github.com/tothi/rbcd-attack.git"
 	_popd
 }
 
 rbcd_permissions() {
 	_pushd tools
+	progress "rbcd_permissions"
 	cloneRepository "https://github.com/NinjaStyle82/rbcd_permissions.git"
 	_popd
 }
 
 rdp-tunnel-tools() {
 	_pushd tools
+	progress "rdp-tunnel-tools"
 	cloneRepository "https://github.com/NotMedic/rdp-tunnel.git"
 	_popd
 }
 
 spraykatz() {
 	_pushd tools
+	progress "spraykatz"
 	cloneRepository "https://github.com/aas-n/spraykatz.git"
 	cd spraykatz
-	pipenv install -r requirements.txt --python /usr/bin/python3
+	python3 -m pip install -r requirements.txt
 	_popd
 }
 
 updog() {
+	progress "updog"
 	pipx install -f "git+https://github.com/sc0tfree/updog.git"
 }
 
 xc() {
 	_pushd tools
+	progress "xc"
 	go get golang.org/x/sys/windows
 	go get golang.org/x/text/encoding/unicode
 	go get github.com/hashicorp/yamux
 	go get github.com/ropnop/go-clr
-	pip3 install donut-shellcode
+	python3 -m pip install donut-shellcode
 	installDebPackage rlwrap
 	cloneRepository "https://github.com/xct/xc.git"
 	cd xc
@@ -572,15 +667,16 @@ xc() {
 tools() {
 	BloodHound
 	BloodHound.py
+	CVE-2019-1040-scanner
 	CVE-2020-1472-checker
 	CrackMapExec
-	DefaultCreds-cheat-sheet
 	Ebowla
 	Empire
 	LDAPPER
 	MS17-010
 	Nim
 	Nim-Scripts
+	PCredz
 	PrivExchange
 	Responder
 	RustScan
@@ -592,23 +688,29 @@ tools() {
 	adidnsdump
 	aquatone
 	bettercap
+	bloodhound-quickwin
 	chisel-tools
 	crowbar
-	cve-2019-1040-scanner
 	dementor.py
 	dsniff
 	enum4linux-ng
 	evil-winrm
+	ffuf
 	gateway-finder-imp
 	gitjacker
+	gobuster
 	htbenum-tools
 	impacket
 	kerbrute
+	krbrelayx
+	ldapdomaindump
 	masscan
 	mitm6
 	naabu
 	nishang
+	ntlm-scanner
 	nullinux
+	odat
 	pypykatz
 	pywerview
 	rbcd-attack
@@ -622,6 +724,12 @@ tools() {
 # -----------------------------------------------------------------------------
 # ------------------------------------ www ------------------------------------
 # -----------------------------------------------------------------------------
+
+ADRecon() {
+	_pushd www
+	downloadRawFile "https://github.com/adrecon/ADRecon/raw/master/ADRecon.ps1" adrecon.ps1
+	_popd
+}
 
 AccessChk() {
 	_pushd www
@@ -738,6 +846,12 @@ Invoke-WMIExec() {
 	_popd
 }
 
+JAWS() {
+	_pushd www
+	downloadRawFile "https://github.com/411Hall/JAWS/raw/master/jaws-enum.ps1" jaws-enum.ps1
+	_popd
+}
+
 Out-EncryptedScript() {
 	_pushd www
 	downloadRawFile "https://github.com/PowerShellMafia/PowerSploit/raw/master/ScriptModification/Out-EncryptedScript.ps1" out-encryptedscript.ps1
@@ -801,11 +915,25 @@ PrivescCheck() {
 	_popd
 }
 
+PrintSpoofer() {
+	_pushd www
+	downloadRawFile "https://github.com/S3cur3Th1sSh1t/PowerSharpPack/raw/master/PowerSharpBinaries/Invoke-BadPotato.ps1" invoke-badpotato.ps1
+	_popd
+}
+
 ProcDump() {
 	_pushd www
 	downloadRawFile "https://download.sysinternals.com/files/Procdump.zip" procdump.zip
 	unzip -q procdump.zip
 	rm Eula.txt procdump64a.exe procdump.zip
+	_popd
+}
+
+RoguePotato() {
+	_pushd www
+	downloadRelease "antonioCoco/RoguePotato" RoguePotato.zip roguepotato.zip
+	unzip -q roguepotato.zip
+	rm roguepotato.zip
 	_popd
 }
 
@@ -953,6 +1081,7 @@ rdp-tunnel-www() {
 }
 
 www() {
+	ADRecon
 	AccessChk
 	Bypass-AMSI
 	Bypass-UAC
@@ -971,6 +1100,7 @@ www() {
 	Invoke-SMBEnum
 	Invoke-SMBExec
 	Invoke-WMIExec
+	JAWS
 	Out-EncryptedScript
 	PEASS
 	PowerUp
@@ -981,7 +1111,9 @@ www() {
 	PowerView4
 	Powermad
 	PrivescCheck
+	PrintSpoofer
 	ProcDump
+	RoguePotato
 	Rubeus
 	Seatbelt
 	SessionGopher
@@ -1058,6 +1190,7 @@ if [[ "$resolve_dependencies" ]]; then
 fi
 
 if [[ "$call_tools" ]]; then
+	sudo apt update
 	echo -e "${red}################################# tools ##################################"
 	tools
 fi

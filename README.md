@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/23141800/103461895-b2e52f80-4d32-11eb-9e4b-f35304ececfa.png" alt="banner.png" />
+  <img src="https://user-images.githubusercontent.com/23141800/114282441-c0563800-9a4c-11eb-95d2-806d728abf3f.png" alt="banner" />
 </p>
 
 **WeaponizeKali.sh** is a Bash script aimed at automating the process of downloading and installing extra tools for internal penetration tests with Kali Linux.
@@ -12,54 +12,52 @@ Basic principles behind this project are:
 
 The script will create two directories within CWD: `tools` and `www`. The [first](#tools) one contains all the tools that will be installed on Kali. The [second](#www) one contains all the scripts and binaries that will be downloaded and may be transferred onto the victim host later.
 
-# Usage
+## Usage
 
-WeaponizeKali.sh heavily relies on Python virtual environments and uses [pipx](https://pipxproject.github.io/pipx/), [poetry](https://python-poetry.org/) and [pipenv](https://pipenv.pypa.io/en/latest/) to orchestra venvs.
+WeaponizeKali.sh heavily relies on Python virtual environments and uses [pipx](https://pipxproject.github.io/pipx/) and [poetry](https://python-poetry.org/) to orchestra venvs.
 
 In order to launch the bleeding-edge version of a tool installed with pipx and not the version that is already shipped with Kali, you should modify the `PATH` variables:
 
 1. Modify `PATH` for a normal user with any method you want (`.bashrc` / `.profile` / `.zshrc` / etc.): `export PATH="$HOME/.local/bin:$PATH"`.
 2. Modify `PATH` for the superuser by modifying `secure_path` within sudoers (`sudo visudo`):
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/23141800/103461896-b5e02000-4d32-11eb-936e-6764ceae1372.png" alt="sudoers.png" />
-</p>
+![sudoers](https://user-images.githubusercontent.com/23141800/103461896-b5e02000-4d32-11eb-936e-6764ceae1372.png)
 
 Now you can download WeaponizeKali.sh and run it from your home directory (pip may prompt for unlocking the keyring during the process). When it's done, you can check the results in `~/tools` and `~/www`:
 
-```bash
+```console
 ~$ curl -sL https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/WeaponizeKali.sh | bash -s -- -idtw
 ~$ ls -la ~/tools ~/www
 ```
 
 :warning: **Warning:** the 1st command above will delete existing `~/tools` and `~/www` directories. 
 
-It's recommended to run WeaponizeKali.sh on a clean installation of Kali Linux.
+It's recommended to run WeaponizeKali.sh once on a clean installation of Kali Linux.
 
-## Rerun the Installations
+### Rerun the Installations
 
 To execute WeaponizeKali.sh with full set of arguments again after it has already been ran once, remove the existent virtual environments first and then run the script:
 
-```bash
-~$ rm -rf ~/.local/pipx/ ~/.virtualenvs/
+```console
+~$ rm -rf ~/.local/pipx
 ~$ ./WeaponizeKali.sh -idtw
 ```
 
-## Help
+### Help
 
 ```
 ~$ ./WeaponizeKali.sh -h
-                                                           )
-  (  (                                                  ( /(       (                )
-  )\))(   '   (     )                    (         (    )\())   )  )\ (          ( /(
- ((_)()\ )   ))\ ( /(  `  )    (    (    )\  (    ))\  ((_)\ ( /( ((_))\     (   )\())
- _(())\_)() /((_))(_)) /(/(    )\   )\ )((_) )\  /((_) _ ((_))(_)) _ ((_)    )\ ((_)\
- \ \((_)/ /(_)) ((_)_ ((_)_\  ((_) _(_/( (_)((_)(_))  | |/ /((_)_ | | (_)   ((_)| |(_)
-  \ \/\/ / / -_)/ _` || '_ \)/ _ \| ' \))| ||_ // -_) | ' < / _` || | | | _ (_-<| ' \
-   \_/\_/  \___|\__,_|| .__/ \___/|_||_| |_|/__|\___| |_|\_\\__,_||_| |_|(_)/__/|_||_|
-                      |_|
-                            "the more tools you install, the more you are able to PWN"
-                           { https://github.com/snovvcrash/WeaponizeKali.sh } { v0.2 }
+                                                         )                                
+ (  (                                                  ( /(       (                )      
+ )\))(   '   (     )                    (         (    )\())   )  )\ (          ( /(      
+((_)()\ )   ))\ ( /(  `  )    (    (    )\  (    ))\  ((_)\ ( /( ((_))\     (   )\())    
+_(())\_)() /((_))(_)) /(/(    )\   )\ )((_) )\  /((_) _ ((_))(_)) _ ((_)    )\ ((_)\      
+\ \((_)/ /(_)) ((_)_ ((_)_\  ((_) _(_/( (_)((_)(_))  | |/ /((_)_ | | (_)   ((_)| |(_)   
+ \ \/\/ / / -_)/ _` || '_ \)/ _ \| ' \))| ||_ // -_) | ' < / _` || | | | _ (_-<| ' \  
+  \_/\_/  \___|\__,_|| .__/ \___/|_||_| |_|/__|\___| |_|\_\\__,_||_| |_|(_)/__/|_||_|
+                     |_|                                                                
+                             "the more tools you install, the more you are able to PWN"
+                      { https://github.com/penetrarnya-tm/WeaponizeKali.sh } { vX.Y.Z }
 
 usage: WeaponizeKali.sh [-h] [-i] [-d] [-t] [w]
 
@@ -71,21 +69,22 @@ optional arguments:
   -w                    download scripts and binaries for transferring onto the victim host
 ```
 
-# Available Tools
+## Available Tools
 
-## `tools`
+### `tools`
 
 * [x] [BloodHound.py](https://github.com/fox-it/BloodHound.py)
 * [x] [BloodHound](https://github.com/BloodHoundAD/BloodHound/releases)
-* [x] [CVE-2020-1472 (checker)](https://github.com/SecuraBV/CVE-2020-1472)
+* [x] [CVE-2019-1040-scanner](https://github.com/fox-it/cve-2019-1040-scanner)
+* [x] [CVE-2020-1472-checker](https://github.com/SecuraBV/CVE-2020-1472)
 * [x] [CrackMapExec](https://github.com/byt3bl33d3r/CrackMapExec)
-* [x] [DefaultCreds-cheat-sheet](https://github.com/ihebski/DefaultCreds-cheat-sheet)
 * [x] [Ebowla](https://github.com/Genetic-Malware/Ebowla)
 * [x] [Empire](https://github.com/BC-SECURITY/Empire)
 * [x] [LDAPPER](https://github.com/shellster/LDAPPER)
 * [x] [MS17-010](https://github.com/helviojunior/MS17-010)
 * [x] [Nim](https://nim-lang.org/install_unix.html) · [choosenim](https://github.com/dom96/choosenim)
 * [x] [Nim-Scripts](https://github.com/S3cur3Th1sSh1t/Creds/tree/master/nim)
+* [x] [PCredz](https://github.com/lgandx/PCredz)
 * [x] [PrivExchange](https://github.com/dirkjanm/PrivExchange)
 * [x] [Responder](https://github.com/lgandx/Responder)
 * [x] [RustScan](https://github.com/RustScan/RustScan/releases)
@@ -97,9 +96,9 @@ optional arguments:
 * [x] [adidnsdump](https://github.com/dirkjanm/adidnsdump)
 * [x] [aquatone](https://github.com/michenriksen/aquatone/releases)
 * [x] [bettercap](https://github.com/bettercap/bettercap/releases)
+* [x] [bloodhound-quickwin](https://github.com/kaluche/bloodhound-quickwin)
 * [x] [chisel](https://github.com/jpillora/chisel/releases)
 * [x] [crowbar](https://github.com/galkan/crowbar)
-* [x] [cve-2019-1040-scanner](https://github.com/fox-it/cve-2019-1040-scanner)
 * [x] [dementor.py](https://gist.github.com/3xocyte/cfaf8a34f76569a8251bde65fe69dccc)
 * [x] [dsniff](https://github.com/tecknicaltom/dsniff)
 * [x] [enum4linux-ng](https://github.com/cddmp/enum4linux-ng)
@@ -111,14 +110,15 @@ optional arguments:
 * [x] [htbenum](https://github.com/SolomonSklash/htbenum)
 * [x] [impacket](https://github.com/SecureAuthCorp/impacket)
 * [x] [kerbrute](https://github.com/ropnop/kerbrute/releases)
-* [ ] [krbrelayx](https://github.com/dirkjanm/krbrelayx)
-* [ ] [ldapdomaindump](https://github.com/dirkjanm/ldapdomaindump)
+* [x] [krbrelayx](https://github.com/dirkjanm/krbrelayx)
+* [x] [ldapdomaindump](https://github.com/dirkjanm/ldapdomaindump)
 * [x] [masscan](https://github.com/robertdavidgraham/masscan)
 * [x] [mitm6](https://github.com/fox-it/mitm6)
 * [x] [naabu](https://github.com/projectdiscovery/naabu/releases)
 * [x] [nishang](https://github.com/samratashok/nishang)
+* [x] [ntlm-scanner](https://github.com/preempt/ntlm-scanner)
 * [x] [nullinux](https://github.com/m8r0wn/nullinux)
-* [ ] [odat](https://github.com/quentinhardy/odat)
+* [x] [odat](https://github.com/quentinhardy/odat)
 * [x] [pypykatz](https://github.com/skelsec/pypykatz)
 * [x] [pywerview](https://github.com/the-useless-one/pywerview)
 * [x] [rbcd-attack](https://github.com/tothi/rbcd-attack)
@@ -128,8 +128,9 @@ optional arguments:
 * [x] [updog](https://github.com/sc0tfree/updog)
 * [x] [xc](https://github.com/xct/xc)
 
-## `www`
+### `www`
 
+* [x] [](https://github.com/adrecon/ADRecon/raw/master/ADRecon.ps1)
 * [x] [AccessChk (Sysinternals)](https://docs.microsoft.com/en-us/sysinternals/downloads/accesschk) · [AccessChk (accepteula)](https://xor.cat/2017/09/05/sysinternals-accesschk-accepteula/)
 * [x] [Bypass-AMSI.ps1](https://gist.github.com/snovvcrash/5c9ee38bb9a8802a674ec3d3d33b4717)
 * [x] [Bypass-UAC.ps1](https://gist.github.com/snovvcrash/362be57caaa167e7f5667156ac80f445)
@@ -148,7 +149,7 @@ optional arguments:
 * [x] [Invoke-SMBEnum.ps1](https://github.com/Kevin-Robertson/Invoke-TheHash/blob/master/Invoke-SMBEnum.ps1)
 * [x] [Invoke-SMBExec.ps1](https://github.com/Kevin-Robertson/Invoke-TheHash/blob/master/Invoke-SMBExec.ps1)
 * [x] [Invoke-WMIExec.ps1](https://github.com/Kevin-Robertson/Invoke-TheHash/blob/master/Invoke-WMIExec.ps1)
-* [ ] [jaws-enum.ps1](https://github.com/411Hall/JAWS/blob/master/jaws-enum.ps1)
+* [x] [JAWS](https://github.com/411Hall/JAWS/blob/master/jaws-enum.ps1)
 * [x] [Out-EncryptedScript.ps1 (PowerSploit)](https://github.com/PowerShellMafia/PowerSploit/blob/master/ScriptModification/Out-EncryptedScript.ps1)
 * [x] [PEASS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite) · [linPEAS.sh](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/blob/master/linPEAS/linpeas.sh) · [winPEAS.exe](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/blob/master/winPEAS/winPEASexe/winPEAS/bin/x64/Release/winPEAS.exe)
 * [x] [PowerUp.ps1 (PowerSploit)](https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1)
@@ -159,9 +160,9 @@ optional arguments:
 * [x] [PowerView4.ps1](https://github.com/ZeroDayLab/PowerSploit/blob/master/Recon/PowerView.ps1) [(ZeroDayLab)](https://exploit.ph/powerview.html)
 * [x] [Powermad.ps1](https://github.com/Kevin-Robertson/Powermad/blob/master/Powermad.ps1)
 * [x] [PrivescCheck.ps1](https://github.com/itm4n/PrivescCheck/blob/master/PrivescCheck.ps1)
-* [ ] [PrintSpoofer](https://github.com/itm4n/PrintSpoofer) · [Invoke-BadPotato.ps1 (PowerSharpPack)](https://github.com/S3cur3Th1sSh1t/PowerSharpPack/blob/master/PowerSharpBinaries/Invoke-BadPotato.ps1)
+* [x] [PrintSpoofer](https://github.com/itm4n/PrintSpoofer) · [Invoke-BadPotato.ps1 (PowerSharpPack)](https://github.com/S3cur3Th1sSh1t/PowerSharpPack/blob/master/PowerSharpBinaries/Invoke-BadPotato.ps1)
 * [x] [ProcDump (Sysinternals)](https://docs.microsoft.com/en-us/sysinternals/downloads/procdump)
-* [ ] [RoguePotato](https://github.com/antonioCoco/RoguePotato/)
+* [x] [RoguePotato](https://github.com/antonioCoco/RoguePotato)
 * [x] [Rubeus](https://github.com/GhostPack/Rubeus) · [Pre-Compiled](https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/blob/master/Rubeus.exe) · [Invoke-Rubeus.ps1 (Empire)](https://github.com/BC-SECURITY/Empire/blob/master/data/module_source/credentials/Invoke-Rubeus.ps1) · [Invoke-Rubeus.ps1 (PowerSharpPack)](https://github.com/S3cur3Th1sSh1t/PowerSharpPack/blob/master/PowerSharpBinaries/Invoke-Rubeus.ps1)
 * [x] [Seatbelt](https://github.com/GhostPack/Seatbelt) · [Pre-Compiled](https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/blob/master/Seatbelt.exe) · [Invoke-Seatbelt.ps1 (PowerSharpPack)](https://github.com/S3cur3Th1sSh1t/PowerSharpPack/blob/master/PowerSharpBinaries/Invoke-Seatbelt.ps1)
 * [x] [SessionGopher.ps1](https://github.com/Arvanaghi/SessionGopher/blob/master/SessionGopher.ps1)
