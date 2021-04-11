@@ -13,17 +13,17 @@ magenta_bold="\033[1;35m"
 SITE="https://github.com/penetrarnya-tm/WeaponizeKali.sh"
 VERSION="0.1.3"
 
-echo -e "${red_bold}                                                         )                                ${nocolor}"
-echo -e "${red_bold} (  (                                                  ( /(       (                )      ${nocolor}"
-echo -e "${red_bold} )\))(   '   (     )                    (         (    )\())   )  )\ (          ( /(      ${nocolor}"
-echo -e "${red_bold}((_)()\ )   ))\ ( /(  \`  )    (    (    )\  (    ))\  ((_)\ ( /( ((_))\     (   )\())    ${nocolor}"
-echo -e "${red_bold}_(())\_)() /((_))(_)) /(/(    )\   )\ )((_) )\  /((_) _ ((_))(_)) _ ((_)    )\ ((_)\      ${nocolor}"
-echo -e "${light_gray}\ \((_)/ /(_)) ((_)_ ((_)_\  ((_) _(_/( (_)((_)(_))  | |/ /((_)_ | | (_)   ((_)| |(_)   ${nocolor}"
-echo -e "${light_gray} \ \/\/ / / -_)/ _\` || '_ \)/ _ \| ' \))| ||_ // -_) | ' < / _\` || | | | _ (_-<| ' \  ${nocolor}"
+echo -e "${red_bold}                                                         )${nocolor}"
+echo -e "${red_bold} (  (                                                  ( /(       (                )${nocolor}"
+echo -e "${red_bold} )\))(   '   (     )                    (         (    )\())   )  )\ (          ( /(${nocolor}"
+echo -e "${red_bold}((_)()\ )   ))\ ( /(  \`  )    (    (    )\  (    ))\  ((_)\ ( /( ((_))\     (   )\())${nocolor}"
+echo -e "${red_bold}_(())\_)() /((_))(_)) /(/(    )\   )\ )((_) )\  /((_) _ ((_))(_)) _ ((_)    )\ ((_)\\${nocolor}"
+echo -e "${light_gray}\ \((_)/ /(_)) ((_)_ ((_)_\  ((_) _(_/( (_)((_)(_))  | |/ /((_)_ | | (_)   ((_)| |(_)${nocolor}"
+echo -e "${light_gray} \ \/\/ / / -_)/ _\` || '_ \)/ _ \| ' \))| ||_ // -_) | ' < / _\` || | | | _ (_-<| ' \${nocolor}"
 echo -e "${light_gray}  \_/\_/  \___|\__,_|| .__/ \___/|_||_| |_|/__|\___| |_|\_\\\\\__,_||_| |_|(_)/__/|_||_|${nocolor}"
-echo -e "${light_gray}                     |_|                                                                ${nocolor}"
-echo    "                             \"the more tools you install, the more you are able to PWN\""
-echo -e "                      ${magenta_bold}{${dark_gray} ${SITE} ${magenta_bold}} ${magenta_bold}{${dark_gray} v${VERSION} ${magenta_bold}}${nocolor}"
+echo -e "${light_gray}                     |_|${nocolor}"
+echo    "                           \"the more tools you install, the more you are able to PWN\""
+echo -e "                    ${magenta_bold}{${dark_gray} ${SITE} ${magenta_bold}} ${magenta_bold}{${dark_gray} v${VERSION} ${magenta_bold}}${nocolor}"
 echo
 
 # -----------------------------------------------------------------------------
@@ -240,9 +240,7 @@ Ebowla() {
 	installDebPackage golang
 	installDebPackage mingw-w64
 	installDebPackage wine
-	installPipPackage 2 configobj
-	installPipPackage 2 pyparsing
-	installPipPackage 2 pycrypto
+	python2 -m pip install configobj pyparsing pycrypto
 	_popd
 }
 

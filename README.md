@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/23141800/114282441-c0563800-9a4c-11eb-95d2-806d728abf3f.png" alt="banner" />
+  <img src="https://user-images.githubusercontent.com/23141800/114285194-f223ca80-9a5d-11eb-889b-235597e312b8.png" alt="banner" />
 </p>
 
 **WeaponizeKali.sh** is a Bash script aimed at automating the process of downloading and installing extra tools for internal penetration tests with Kali Linux.
@@ -26,6 +26,7 @@ In order to launch the bleeding-edge version of a tool installed with pipx and n
 Now you can download WeaponizeKali.sh and run it from your home directory (pip may prompt for unlocking the keyring during the process). When it's done, you can check the results in `~/tools` and `~/www`:
 
 ```console
+~$ cd
 ~$ curl -sL https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/WeaponizeKali.sh | bash -s -- -idtw
 ~$ ls -la ~/tools ~/www
 ```
@@ -39,6 +40,7 @@ It's recommended to run WeaponizeKali.sh once on a clean installation of Kali Li
 To execute WeaponizeKali.sh with full set of arguments again after it has already been ran once, remove the existent virtual environments first and then run the script:
 
 ```console
+~$ cd
 ~$ rm -rf ~/.local/pipx
 ~$ ./WeaponizeKali.sh -idtw
 ```
@@ -47,17 +49,17 @@ To execute WeaponizeKali.sh with full set of arguments again after it has alread
 
 ```
 ~$ ./WeaponizeKali.sh -h
-                                                         )                                
- (  (                                                  ( /(       (                )      
- )\))(   '   (     )                    (         (    )\())   )  )\ (          ( /(      
-((_)()\ )   ))\ ( /(  `  )    (    (    )\  (    ))\  ((_)\ ( /( ((_))\     (   )\())    
-_(())\_)() /((_))(_)) /(/(    )\   )\ )((_) )\  /((_) _ ((_))(_)) _ ((_)    )\ ((_)\      
-\ \((_)/ /(_)) ((_)_ ((_)_\  ((_) _(_/( (_)((_)(_))  | |/ /((_)_ | | (_)   ((_)| |(_)   
- \ \/\/ / / -_)/ _` || '_ \)/ _ \| ' \))| ||_ // -_) | ' < / _` || | | | _ (_-<| ' \  
+                                                         )
+ (  (                                                  ( /(       (                )
+ )\))(   '   (     )                    (         (    )\())   )  )\ (          ( /(
+((_)()\ )   ))\ ( /(  `  )    (    (    )\  (    ))\  ((_)\ ( /( ((_))\     (   )\())
+_(())\_)() /((_))(_)) /(/(    )\   )\ )((_) )\  /((_) _ ((_))(_)) _ ((_)    )\ ((_)\
+\ \((_)/ /(_)) ((_)_ ((_)_\  ((_) _(_/( (_)((_)(_))  | |/ /((_)_ | | (_)   ((_)| |(_
+ \ \/\/ / / -_)/ _` || '_ \)/ _ \| ' \))| ||_ // -_) | ' < / _` || | | | _ (_-<| ' \
   \_/\_/  \___|\__,_|| .__/ \___/|_||_| |_|/__|\___| |_|\_\\__,_||_| |_|(_)/__/|_||_|
-                     |_|                                                                
-                             "the more tools you install, the more you are able to PWN"
-                      { https://github.com/penetrarnya-tm/WeaponizeKali.sh } { vX.Y.Z }
+                     |_|
+                           "the more tools you install, the more you are able to PWN"
+                    { https://github.com/penetrarnya-tm/WeaponizeKali.sh } { vX.Y.Z }
 
 usage: WeaponizeKali.sh [-h] [-i] [-d] [-t] [w]
 
