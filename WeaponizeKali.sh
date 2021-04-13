@@ -17,9 +17,9 @@ echo -e "${red_bold}                                                         )${
 echo -e "${red_bold} (  (                                                  ( /(       (                )${nocolor}"
 echo -e "${red_bold} )\))(   '   (     )                    (         (    )\())   )  )\ (          ( /(${nocolor}"
 echo -e "${red_bold}((_)()\ )   ))\ ( /(  \`  )    (    (    )\  (    ))\  ((_)\ ( /( ((_))\     (   )\())${nocolor}"
-echo -e "${red_bold}_(())\_)() /((_))(_)) /(/(    )\   )\ )((_) )\  /((_) _ ((_))(_)) _ ((_)    )\ ((_)\\ ${nocolor}"
+echo -e "${red_bold}_(())\_)() /((_))(_)) /(/(    )\   )\ )((_) )\  /((_) _ ((_))(_)) _ ((_)    )\ ((_)\ ${nocolor}"
 echo -e "${light_gray}\ \((_)/ /(_)) ((_)_ ((_)_\  ((_) _(_/( (_)((_)(_))  | |/ /((_)_ | | (_)   ((_)| |(_)${nocolor}"
-echo -e "${light_gray} \ \/\/ / / -_)/ _\` || '_ \)/ _ \| ' \))| ||_ // -_) | ' < / _\` || | | | _ (_-<| ' \\ ${nocolor}"
+echo -e "${light_gray} \ \/\/ / / -_)/ _\` || '_ \)/ _ \| ' \))| ||_ // -_) | ' < / _\` || | | | _ (_-<| ' \ ${nocolor}"
 echo -e "${light_gray}  \_/\_/  \___|\__,_|| .__/ \___/|_||_| |_|/__|\___| |_|\_\\\\\__,_||_| |_|(_)/__/|_||_|${nocolor}"
 echo -e "${light_gray}                     |_|${nocolor}"
 echo    "                           \"the more tools you install, the more you are able to PWN\""
@@ -527,7 +527,7 @@ ldapdomaindump() {
 	progress "ldapdomaindump"
 	cloneRepository "https://github.com/dirkjanm/ldapdomaindump.git"
 	cd ldapdomaindump
-	python2 -m pip install -r requirements.txt
+	python2 -m pip install ldap3 dnspython
 	sudo python2 setup.py install
 	_popd
 }
