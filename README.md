@@ -31,7 +31,7 @@ Now you can download WeaponizeKali.sh and run it from your home directory (pip m
 ~$ ls -la ~/tools ~/www
 ```
 
-:warning: **Warning:** the 1st command above will delete existing `~/tools` and `~/www` directories. 
+:warning: **Warning:** when using the `-i` switch, existing `./tools` and `./www` directories will be deleted.
 
 It's recommended to run WeaponizeKali.sh once on a clean installation of Kali Linux.
 
