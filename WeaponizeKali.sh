@@ -272,6 +272,14 @@ MS17-010() {
 	_popd
 }
 
+Neo-reGeorg() {
+	_pushd tools
+	progress Neo-reGeorg
+	cloneRepository "https://github.com/L-codes/Neo-reGeorg.git"
+	python2 -m pip install requests
+	_popd
+}
+
 Nim() {
 	progress "Nim"
 	installDebPackage mingw-w64
@@ -315,13 +323,8 @@ Responder() {
 }
 
 RustScan() {
-	_pushd tools
 	progress "RustScan"
-	mkdir RustScan
-	cd RustScan
-	downloadRelease "RustScan/RustScan" rustscan.*amd64.deb rustscan.deb
-	sudo dpkg -i rustscan.deb
-	_popd
+	installDebPackage rustscan
 }
 
 ShellPop() {
@@ -450,15 +453,8 @@ evil-winrm() {
 }
 
 ffuf() {
-	_pushd tools
 	progress "ffuf"
-	mkdir ffuf
-	cd ffuf
-	downloadRelease "ffuf/ffuf" ffuf.*linux_amd64.tar.gz ffuf.tar.gz
-	tar -xzf ffuf.tar.gz
-	chmod +x ffuf
-	rm CHANGELOG.md LICENSE README.md ffuf.tar.gz
-	_popd
+	installDebPackage ffuf
 }
 
 gateway-finder-imp() {
@@ -481,16 +477,8 @@ gitjacker() {
 }
 
 gobuster() {
-	_pushd tools
 	progress "gobuster"
-	mkdir gobuster
-	cd gobuster
-	downloadRelease "OJ/gobuster" gobuster-linux-amd64.7z gobuster.7z
-	7z x gobuster.7z > /dev/null
-	mv gobuster-linux-amd64/gobuster .
-	chmod +x gobuster
-	rm -rf gobuster-linux-amd64 gobuster.7z
-	_popd
+	installDebPackage gobuster
 }
 
 htbenum-tools() {
@@ -652,7 +640,7 @@ xc() {
 	go get golang.org/x/sys/windows
 	go get golang.org/x/text/encoding/unicode
 	go get github.com/hashicorp/yamux
-	go get github.com/ropnop/go-clr
+	go get github.com/xct/go-clr
 	python3 -m pip install donut-shellcode
 	installDebPackage rlwrap
 	cloneRepository "https://github.com/xct/xc.git"
@@ -729,6 +717,12 @@ ADRecon() {
 	_popd
 }
 
+ASREPRoast() {
+	_pushd www
+	downloadRawFile "https://github.com/HarmJ0y/ASREPRoast/raw/master/ASREPRoast.ps1" asreproast.ps1
+	_popd
+}
+
 AccessChk() {
 	_pushd www
 	downloadRawFile "https://xor.cat/assets/other/Accesschk.zip" accesschk-accepteula.zip
@@ -796,6 +790,12 @@ Invoke-ACLPwn() {
 	_popd
 }
 
+Invoke-ImpersonateUser-PTH() {
+	_pushd www
+	downloadRawFile "https://github.com/S3cur3Th1sSh1t/NamedPipePTH/raw/main/Invoke-ImpersonateUser-PTH.ps1" invoke-impersonateuser-pth.ps1
+	_popd
+}
+
 Invoke-Kerberoast() {
 	_pushd www
 	downloadRawFile "https://github.com/BC-SECURITY/Empire/raw/master/data/module_source/credentials/Invoke-Kerberoast.ps1" invoke-kerberoast.ps1
@@ -858,10 +858,9 @@ Out-EncryptedScript() {
 
 PEASS() {
 	_pushd www
-	downloadRawFile "https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/winPEAS/winPEASexe/winPEAS/bin/x64/Release/winPEAS.exe" winpeas.exe
-	downloadRawFile "https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/winPEAS/winPEASexe/winPEAS/bin/Obfuscated%20Releases/winPEASx64.exe" winpeas-obf.exe
-	downloadRawFile "https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/winPEAS/winPEASexe/winPEAS/bin/Release/Dotfuscated/winPEAS.exe" winpeas-dotobf.exe
 	downloadRawFile "https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/linPEAS/linpeas.sh" linpeas.sh
+	downloadRawFile "https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/winPEAS/winPEASexe/binaries/Release/winPEASany.exe" winpeas.exe
+	downloadRawFile "https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/winPEAS/winPEASbat/winPEAS.bat" winpeas.bat
 	_popd
 }
 
@@ -1080,6 +1079,7 @@ rdp-tunnel-www() {
 
 www() {
 	ADRecon
+	ASREPRoast
 	AccessChk
 	Bypass-AMSI
 	Bypass-UAC
@@ -1183,17 +1183,17 @@ if [[ "$init_filesystem" ]]; then
 fi
 
 if [[ "$resolve_dependencies" ]]; then
-	echo -e "${red}############################## dependencies ##############################"
+	echo -e "${red}################################### dependencies ####################################"
 	dependencies
 fi
 
 if [[ "$call_tools" ]]; then
 	sudo apt update
-	echo -e "${red}################################# tools ##################################"
+	echo -e "${red}####################################### tools #######################################"
 	tools
 fi
 
 if [[ "$call_www" ]]; then
-	echo -e "${red}################################## www ###################################"
+	echo -e "${red}######################################## www ########################################"
 	www
 fi

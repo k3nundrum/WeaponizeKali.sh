@@ -84,6 +84,7 @@ optional arguments:
 * [x] [Empire](https://github.com/BC-SECURITY/Empire)
 * [x] [LDAPPER](https://github.com/shellster/LDAPPER)
 * [x] [MS17-010](https://github.com/helviojunior/MS17-010)
+* [x] [Neo-reGeorg](https://github.com/L-codes/Neo-reGeorg)
 * [x] [Nim](https://nim-lang.org/install_unix.html) · [choosenim](https://github.com/dom96/choosenim)
 * [x] [Nim-Scripts](https://github.com/S3cur3Th1sSh1t/Creds/tree/master/nim)
 * [x] [PCredz](https://github.com/lgandx/PCredz)
@@ -133,6 +134,7 @@ optional arguments:
 ### `www`
 
 * [x] [ADRecon.ps1](https://github.com/adrecon/ADRecon/raw/master/ADRecon.ps1)
+* [x] [ASREPRoast.ps1](https://github.com/HarmJ0y/ASREPRoast/blob/master/ASREPRoast.ps1)
 * [x] [AccessChk (Sysinternals)](https://docs.microsoft.com/en-us/sysinternals/downloads/accesschk) · [AccessChk (accepteula)](https://xor.cat/2017/09/05/sysinternals-accesschk-accepteula/)
 * [x] [Bypass-AMSI.ps1](https://gist.github.com/snovvcrash/5c9ee38bb9a8802a674ec3d3d33b4717)
 * [x] [Bypass-UAC.ps1](https://gist.github.com/snovvcrash/362be57caaa167e7f5667156ac80f445)
@@ -143,6 +145,7 @@ optional arguments:
 * [x] [Inveigh.ps1](https://github.com/Kevin-Robertson/Inveigh/blob/master/Inveigh.ps1)
 * [x] [InveighZero](https://github.com/Kevin-Robertson/InveighZero) · [Pre-Compiled](https://github.com/Flangvik/SharpCollection/blob/master/NetFramework_4.0_x64/Inveigh.exe) · [PowerSharpPack.ps1](https://github.com/S3cur3Th1sSh1t/PowerSharpPack/blob/master/PowerSharpPack.ps1)
 * [x] [Invoke-ACLPwn.ps1](https://github.com/fox-it/Invoke-ACLPwn/blob/master/Invoke-ACLPwn.ps1)
+* [x] [Invoke-ImpersonateUser-PTH.ps1](https://github.com/S3cur3Th1sSh1t/NamedPipePTH/blob/main/Invoke-ImpersonateUser-PTH.ps1)
 * [x] [Invoke-Kerberoast.ps1 (Empire)](https://github.com/BC-SECURITY/Empire/blob/master/data/module_source/credentials/Invoke-Kerberoast.ps1)
 * [x] [Invoke-Mimikatz.ps1 (Empire)](https://github.com/BC-SECURITY/Empire/blob/master/data/module_source/credentials/Invoke-Mimikatz.ps1)
 * [x] [Invoke-Portscan.ps1 (PowerSploit)](https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/Invoke-Portscan.ps1)
@@ -153,7 +156,7 @@ optional arguments:
 * [x] [Invoke-WMIExec.ps1](https://github.com/Kevin-Robertson/Invoke-TheHash/blob/master/Invoke-WMIExec.ps1)
 * [x] [JAWS](https://github.com/411Hall/JAWS/blob/master/jaws-enum.ps1)
 * [x] [Out-EncryptedScript.ps1 (PowerSploit)](https://github.com/PowerShellMafia/PowerSploit/blob/master/ScriptModification/Out-EncryptedScript.ps1)
-* [x] [PEASS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite) · [linPEAS.sh](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/blob/master/linPEAS/linpeas.sh) · [winPEAS.exe](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/blob/master/winPEAS/winPEASexe/winPEAS/bin/x64/Release/winPEAS.exe)
+* [x] [PEASS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite) · [linPEAS.sh](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/blob/master/linPEAS/linpeas.sh) · [winPEAS.exe](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/blob/master/winPEAS/winPEASexe/binaries/Release/winPEASany.exe)
 * [x] [PowerUp.ps1 (PowerSploit)](https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1)
 * [x] [PowerUpSQL.ps1](https://github.com/NetSPI/PowerUpSQL/blob/master/PowerUpSQL.ps1)
 * [x] [PowerView2.ps1 (PowerSploit)](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerView/powerview.ps1)
