@@ -112,6 +112,7 @@ optional arguments:
 * [x] [gobuster](https://github.com/OJ/gobuster/releases)
 * [x] [htbenum](https://github.com/SolomonSklash/htbenum)
 * [x] [impacket](https://github.com/SecureAuthCorp/impacket)
+* [x] [ipmitool](https://github.com/ipmitool/ipmitool)
 * [x] [kerbrute](https://github.com/ropnop/kerbrute/releases)
 * [x] [krbrelayx](https://github.com/dirkjanm/krbrelayx)
 * [x] [ldapdomaindump](https://github.com/dirkjanm/ldapdomaindump)
@@ -188,4 +189,5 @@ optional arguments:
 * [x] [plink](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
 * [x] [powercat.ps1](https://github.com/besimorhino/powercat/blob/master/powercat.ps1)
 * [x] [pspy](https://github.com/DominicBreuker/pspy/releases)
+* [x] [pypykatz.exe](https://github.com/skelsec/pypykatz/releases)
 * [x] [rdp2tcp.exe](https://github.com/NotMedic/rdp-tunnel/blob/master/rdp2tcp.exe)

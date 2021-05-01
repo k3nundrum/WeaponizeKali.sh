@@ -172,6 +172,10 @@ _neo4j() {
 	installDebPackage neo4j
 }
 
+_ntpdate() {
+	installDebPackage ntpdate
+}
+
 dependencies() {
 	_jq
 	_python2-pip
@@ -183,6 +187,7 @@ dependencies() {
 	_pipx
 	_python2-impacket
 	_neo4j
+	_ntpdate
 }
 
 # -----------------------------------------------------------------------------
@@ -432,6 +437,7 @@ dementor.py() {
 	mkdir dementor
 	cd dementor
 	downloadRawFile "https://gist.github.com/3xocyte/cfaf8a34f76569a8251bde65fe69dccc/raw/7c7f09ea46eff4ede636f69c00c6dfef0541cd14/dementor.py" dementor.py
+	chmod +x dementor.py
 	_popd
 }
 
@@ -491,6 +497,11 @@ htbenum-tools() {
 impacket() {
 	progress "impacket"
 	pipx install -f "git+https://github.com/SecureAuthCorp/impacket.git"
+}
+
+ipmitool() {
+	progress "ipmitool"
+	installDebPackage ipmitool
 }
 
 kerbrute() {
@@ -687,6 +698,7 @@ tools() {
 	gobuster
 	htbenum-tools
 	impacket
+	ipmitool
 	kerbrute
 	krbrelayx
 	ldapdomaindump
@@ -1071,6 +1083,12 @@ pspy() {
 	_popd
 }
 
+pypykatz-exe() {
+	_pushd www
+	downloadRelease "skelsec/pypykatz" pypykatz.exe pypykatz.exe
+	_popd
+}
+
 rdp-tunnel-www() {
 	_pushd www
 	downloadRawFile "https://github.com/NotMedic/rdp-tunnel/raw/master/rdp2tcp.exe" rdp2tcp.exe
@@ -1131,6 +1149,7 @@ www() {
 	plink
 	powercat
 	pspy
+	pypykatz-exe
 	rdp-tunnel-www
 }
 
