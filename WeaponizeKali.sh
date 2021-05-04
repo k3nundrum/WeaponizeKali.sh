@@ -238,6 +238,11 @@ CrackMapExec() {
 	pipx install -f "git+https://github.com/byt3bl33d3r/CrackMapExec.git"
 }
 
+DivideAndScan() {
+	progress "DivideAndScan"
+	pipx install -f "git+https://github.com/snovvcrash/DivideAndScan.git"
+}
+
 Ebowla() {
 	_pushd tools
 	progress "Ebowla"
@@ -324,6 +329,8 @@ Responder() {
 	_pushd tools
 	progress "Responder"
 	cloneRepository "https://github.com/lgandx/Responder.git"
+	cd Responder
+	sed -i 's/Challenge = Random/Challenge = 1122334455667788/g' Responder.conf
 	_popd
 }
 
@@ -395,6 +402,9 @@ aquatone() {
 bettercap() {
 	_pushd tools
 	progress "bettercap"
+	installDebPackage libpcap-dev
+	installDebPackage libusb-1.0-0-dev
+	installDebPackage libnetfilter-queue-dev
 	mkdir bettercap
 	cd bettercap
 	downloadRelease "bettercap/bettercap" bettercap_linux_amd64.*.zip bettercap.zip
@@ -402,6 +412,7 @@ bettercap() {
 	rm bettercap*.sha256 bettercap.zip
 	mv bettercap* bettercap
 	chmod +x bettercap
+	bettercap -eval "caplets.update; ui.update; q"
 	_popd
 }
 
@@ -531,6 +542,11 @@ ldapdomaindump() {
 	_popd
 }
 
+lsassy() {
+	progress "lsassy"
+	pipx install -f "git+https://github.com/Hackndo/lsassy.git"
+}
+
 masscan() {
 	_pushd tools
 	progress "masscan"
@@ -573,6 +589,13 @@ ntlm-scanner() {
 	_popd
 }
 
+ntlmv1-multi() {
+	_pushd tools
+	progress "ntlmv1-multi"
+	cloneRepository "https://github.com/evilmog/ntlmv1-multi.git"
+	_popd
+}
+
 nullinux() {
 	_pushd tools
 	progress "nullinux"
@@ -594,6 +617,11 @@ odat() {
 	mv odat-dir/* .
 	rm -rf odat-dir
 	_popd
+}
+
+pyGPOAbuse() {
+	progress "pyGPOAbuse"
+	pipx install -f "git+https://github.com/Hackndo/pyGPOAbuse.git"
 }
 
 pypykatz() {
@@ -667,6 +695,7 @@ tools() {
 	CVE-2019-1040-scanner
 	CVE-2020-1472-checker
 	CrackMapExec
+	DivideAndScan
 	Ebowla
 	Empire
 	LDAPPER
@@ -702,13 +731,16 @@ tools() {
 	kerbrute
 	krbrelayx
 	ldapdomaindump
+	lsassy
 	masscan
 	mitm6
 	naabu
 	nishang
 	ntlm-scanner
+	ntlmv1-multi
 	nullinux
 	odat
+	pyGPOAbuse
 	pypykatz
 	pywerview
 	rbcd-attack
@@ -859,6 +891,13 @@ Invoke-WMIExec() {
 JAWS() {
 	_pushd www
 	downloadRawFile "https://github.com/411Hall/JAWS/raw/master/jaws-enum.ps1" jaws-enum.ps1
+	_popd
+}
+
+JuicyPotato() {
+	_pushd www
+	downloadRelease "ohpe/juicy-potato" JuicyPotato.exe juicypotato64.exe
+	downloadRelease "ivanitlearning/Juicy-Potato-x86" Juicy.Potato.x86.exe juicypotato32.exe
 	_popd
 }
 
@@ -1045,6 +1084,12 @@ htbenum-www() {
 	_popd
 }
 
+impacket-examples-windows() {
+	_pushd www
+	cloneRepository "https://github.com/maaaaz/impacket-examples-windows.git"
+	_popd
+}
+
 linux-exploit-suggester() {
 	_pushd www
 	downloadRawFile "https://github.com/mzet-/linux-exploit-suggester/raw/master/linux-exploit-suggester.sh" les.sh
@@ -1108,6 +1153,7 @@ www() {
 	Inveigh
 	InveighZero
 	Invoke-ACLPwn
+	Invoke-ImpersonateUser-PTH
 	Invoke-Kerberoast
 	Invoke-Mimikatz
 	Invoke-Portscan
@@ -1117,6 +1163,7 @@ www() {
 	Invoke-SMBExec
 	Invoke-WMIExec
 	JAWS
+	JuicyPotato
 	Out-EncryptedScript
 	PEASS
 	PowerUp
@@ -1143,6 +1190,7 @@ www() {
 	WinPwn
 	chisel-www
 	htbenum-www
+	impacket-examples-windows
 	linux-exploit-suggester
 	mimikatz
 	netcat-win
