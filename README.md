@@ -138,7 +138,7 @@ optional arguments:
 
 ### `www`
 
-* [x] [ADRecon.ps1](https://github.com/adrecon/ADRecon/raw/master/ADRecon.ps1)
+* [x] [ADRecon.ps1](https://github.com/adrecon/ADRecon/blob/master/ADRecon.ps1)
 * [x] [ASREPRoast.ps1](https://github.com/HarmJ0y/ASREPRoast/blob/master/ASREPRoast.ps1)
 * [x] [AccessChk (Sysinternals)](https://docs.microsoft.com/en-us/sysinternals/downloads/accesschk) · [AccessChk (accepteula)](https://xor.cat/2017/09/05/sysinternals-accesschk-accepteula/)
 * [x] [Bypass-AMSI.ps1](https://gist.github.com/snovvcrash/5c9ee38bb9a8802a674ec3d3d33b4717)
@@ -190,6 +190,7 @@ optional arguments:
 * [x] [htbenum.sh](https://github.com/SolomonSklash/htbenum/blob/master/htbenum.sh)
 * [x] [impacket-examples-windows](https://github.com/maaaaz/impacket-examples-windows)
 * [x] [les.sh](https://github.com/mzet-/linux-exploit-suggester/blob/master/linux-exploit-suggester.sh)
+* [x] [lse.sh](https://github.com/diego-treitos/linux-smart-enumeration/blob/master/lse.sh)
 * [x] [mimikatz](https://github.com/gentilkiwi/mimikatz/releases)
 * [x] [netcat for Windows](https://eternallybored.org/misc/netcat/)
 * [x] [plink](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)

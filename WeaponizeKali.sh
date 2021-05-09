@@ -1096,6 +1096,12 @@ linux-exploit-suggester() {
 	_popd
 }
 
+linux-smart-enumeration() {
+	_pushd www
+	downloadRawFile "https://github.com/diego-treitos/linux-smart-enumeration/raw/master/lse.sh" lse.sh
+	_popd
+}
+
 mimikatz() {
 	_pushd www
 	downloadRelease "gentilkiwi/mimikatz" mimikatz_trunk.zip mimikatz.zip
