@@ -209,6 +209,9 @@ BloodHound() {
 	cd BloodHound
 	sudo chown root:root chrome-sandbox
 	sudo chmod 4755 chrome-sandbox
+	downloadRawFile "https://github.com/ShutdownRepo/Exegol/raw/master/sources/bloodhound/config.json" > ~/.config/bloodhound/config.json
+	downloadRawFile "https://github.com/ShutdownRepo/Exegol/raw/master/sources/bloodhound/customqueries.json" > ~/.config/bloodhound/customqueries.json
+	sed -i 's/"password": "exegol4thewin"/"password": "WeaponizeK4li!"/g' config.json
 	_popd
 }
 
@@ -259,7 +262,7 @@ Empire() {
 	progress "Empire"
 	cloneRepository "https://github.com/BC-SECURITY/Empire.git"
 	cd Empire
-	sudo STAGING_KEY=`echo 'WPNZKL' | md5sum | cut -d' ' -f1` ./setup/install.sh
+	sudo STAGING_KEY=`echo 'WeaponizeK4li!' | md5sum | cut -d' ' -f1` ./setup/install.sh
 	sudo poetry install
 	echo $'#!/usr/bin/env bash\n\nsudo poetry run python empire' > run_empire.sh
 	chmod +x run_empire.sh 
@@ -337,6 +340,7 @@ Responder() {
 RustScan() {
 	progress "RustScan"
 	installDebPackage rustscan
+	sudo wget https://gist.github.com/snovvcrash/c7f8223cc27154555496a9cbb4650681/raw/a76a2c658370d8b823a8a38a860e4d88051b417e/rustscan-ports-top1000.toml -O /root/.rustscan.toml
 }
 
 ShellPop() {
@@ -352,8 +356,9 @@ ShellPop() {
 TrustVisualizer() {
 	_pushd tools
 	progress "TrustVisualizer"
-	cloneRepository "https://github.com/HarmJ0y/TrustVisualizer.git"
-	python2 -m pip install networkx
+	cloneRepository "https://github.com/snovvcrash/TrustVisualizer.git"
+	cd TrustVisualizer
+	python2 -m pip install -r requirements.txt
 	_popd
 }
 
@@ -901,6 +906,12 @@ JuicyPotato() {
 	_popd
 }
 
+LaZagne() {
+	_pushd www
+	downloadRelease "AlessandroZ/LaZagne" lazagne.exe lazagne.exe
+	_popd
+}
+
 Out-EncryptedScript() {
 	_pushd www
 	downloadRawFile "https://github.com/PowerShellMafia/PowerSploit/raw/master/ScriptModification/Out-EncryptedScript.ps1" out-encryptedscript.ps1
@@ -1170,6 +1181,7 @@ www() {
 	Invoke-WMIExec
 	JAWS
 	JuicyPotato
+	LaZagne
 	Out-EncryptedScript
 	PEASS
 	PowerUp
