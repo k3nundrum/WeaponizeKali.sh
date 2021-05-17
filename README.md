@@ -10,7 +10,7 @@ Basic principles behind this project are:
 2. When installing 3rd party software, use isolated environments to minimize potential dependency hell.
 3. Keep Windows exploitation scripts and binaries on hand in case you find yourself in an "offline situation".
 
-The script will create two directories within CWD: `tools` and `www`. The [first](#tools) one contains all the tools that will be installed on Kali. The [second](#www) one contains all the scripts and binaries that will be downloaded and may be transferred onto the victim host later.
+The script will create two directories within CWD: `tools` and `www`. The [first](#tools) one contains all the tools that will be installed on Kali. The [second](#www) one contains all the scripts and binaries that will be downloaded and may be delivered onto the victim host later.
 
 ## Usage
 
@@ -28,10 +28,18 @@ Now you can download WeaponizeKali.sh and run it from your home directory (pip m
 ```console
 ~$ cd
 ~$ curl -sL https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/WeaponizeKali.sh | bash -s -- -idtw
-~$ ls -la ~/tools ~/www
+~$ ls -la tools www
 ```
 
 :warning: **Warning:** when using the `-i` switch, existing `./tools` and `./www` directories will be deleted.
+
+If you only want to get the deliverable scripts and binaries (i.e., `www` directory), you can do it like this:
+
+```console
+~$ mkdir www
+~$ curl -sL https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/WeaponizeKali.sh | bash -s -- -w
+~$ ls -la www
+```
 
 It's recommended to run WeaponizeKali.sh once on a clean installation of Kali Linux.
 
@@ -41,7 +49,7 @@ To execute WeaponizeKali.sh with full set of arguments again after it has alread
 
 ```console
 ~$ cd
-~$ rm -rf ~/.local/pipx
+~$ rm -rf .local/pipx tools www
 ~$ ./WeaponizeKali.sh -idtw
 ```
 
@@ -68,7 +76,7 @@ optional arguments:
   -i                    initialize filesystem (re-create ./tools and ./www directories)
   -d                    resolve dependencies
   -t                    download and install tools on Kali Linux
-  -w                    download scripts and binaries for transferring onto the victim host
+  -w                    download scripts and binaries for delivering onto the victim host
 ```
 
 ## Available Tools
