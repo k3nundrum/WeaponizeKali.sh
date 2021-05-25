@@ -49,7 +49,7 @@ To execute WeaponizeKali.sh with full set of arguments again after it has alread
 
 ```console
 ~$ cd
-~$ rm -rf .local/pipx tools www
+~$ rm -rf ~/.local/pipx
 ~$ ./WeaponizeKali.sh -idtw
 ```
 
@@ -128,6 +128,7 @@ optional arguments:
 * [x] [lsassy](https://github.com/Hackndo/lsassy)
 * [x] [masscan](https://github.com/robertdavidgraham/masscan)
 * [x] [mitm6](https://github.com/fox-it/mitm6)
+* [x] [mscache](https://github.com/QAX-A-Team/mscache)
 * [x] [naabu](https://github.com/projectdiscovery/naabu/releases)
 * [x] [nishang](https://github.com/samratashok/nishang)
 * [x] [ntlm-scanner](https://github.com/preempt/ntlm-scanner)
@@ -142,6 +143,7 @@ optional arguments:
 * [x] [rdp-tunnel](https://github.com/NotMedic/rdp-tunnel)
 * [x] [spraykatz](https://github.com/aas-n/spraykatz)
 * [x] [updog](https://github.com/sc0tfree/updog)
+* [x] [windapsearch](https://github.com/ropnop/windapsearch)
 * [x] [xc](https://github.com/xct/xc)
 
 ### `www`

@@ -31,8 +31,8 @@ echo
 # -----------------------------------------------------------------------------
 
 filesystem() {
-	sudo rm -rf {tools,www}
-	mkdir {tools,www}
+	rm -rf tools www
+	mkdir tools www
 }
 
 # -----------------------------------------------------------------------------
@@ -415,9 +415,7 @@ bettercap() {
 	downloadRelease "bettercap/bettercap" bettercap_linux_amd64.*.zip bettercap.zip
 	unzip -q bettercap.zip
 	rm bettercap*.sha256 bettercap.zip
-	mv bettercap* bettercap
-	chmod +x bettercap
-	bettercap -eval "caplets.update; ui.update; q"
+	sudo ./bettercap -eval "caplets.update; ui.update; q"
 	_popd
 }
 
@@ -567,6 +565,14 @@ mitm6() {
 	pipx install -f "git+https://github.com/fox-it/mitm6.git"
 }
 
+mscache() {
+	_pushd tools
+	progress "mscache"
+	cloneRepository "https://github.com/QAX-A-Team/mscache.git"
+	python2 -m pip install passlib
+	_popd
+}
+
 naabu() {
 	_pushd tools
 	progress "naabu"
@@ -678,6 +684,18 @@ updog() {
 	pipx install -f "git+https://github.com/sc0tfree/updog.git"
 }
 
+windapsearch() {
+	_pushd tools
+	progress "windapsearch"
+	installDebPackage libsasl2-dev
+	installDebPackage libldap2-dev
+	installDebPackage libssl-dev
+	cloneRepository "https://github.com/ropnop/windapsearch.git"
+	cd windapsearch
+	python3 -m pip install -r requirements.txt
+	_popd
+}
+
 xc() {
 	_pushd tools
 	progress "xc"
@@ -739,6 +757,7 @@ tools() {
 	lsassy
 	masscan
 	mitm6
+	mscache
 	naabu
 	nishang
 	ntlm-scanner
@@ -753,6 +772,7 @@ tools() {
 	rdp-tunnel-tools
 	spraykatz
 	updog
+	windapsearch
 	xc
 }
 
