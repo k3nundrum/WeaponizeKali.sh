@@ -496,6 +496,15 @@ gitjacker() {
 	_popd
 }
 
+go-windapsearch() {
+	_pushd tools
+	mkdir go-windapsearch
+	cd go-windapsearch
+	downloadRelease "ropnop/go-windapsearch" windapsearch-linux-amd64 go-windapsearch
+	chmod +x go-windapsearch
+	_popd
+}
+
 gobuster() {
 	progress "gobuster"
 	installDebPackage gobuster
@@ -542,6 +551,15 @@ ldapdomaindump() {
 	cd ldapdomaindump
 	python2 -m pip install ldap3 dnspython
 	sudo python2 setup.py install
+	_popd
+}
+
+ldapsearch-ad() {
+	_pushd tools
+	progress "ldapsearch-ad"
+	cloneRepository "https://github.com/yaap7/ldapsearch-ad.git"
+	cd ldapsearch-ad
+	python3 -m pip install -r requirements.txt
 	_popd
 }
 
@@ -747,6 +765,7 @@ tools() {
 	ffuf
 	gateway-finder-imp
 	gitjacker
+	go-windapsearch
 	gobuster
 	htbenum-tools
 	impacket
@@ -754,6 +773,7 @@ tools() {
 	kerbrute
 	krbrelayx
 	ldapdomaindump
+	ldapsearch-ad
 	lsassy
 	masscan
 	mitm6

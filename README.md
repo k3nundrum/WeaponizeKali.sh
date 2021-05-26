@@ -41,7 +41,7 @@ If you only want to get the deliverable scripts and binaries (i.e., `www` direct
 ~$ ls -la www
 ```
 
-It's recommended to run WeaponizeKali.sh once on a clean installation of Kali Linux.
+It's recommended to run WeaponizeKali.sh **once** on a clean installation of Kali Linux.
 
 ### Rerun the Installations
 
@@ -118,6 +118,7 @@ optional arguments:
 * [x] [ffuf](https://github.com/ffuf/ffuf/releases)
 * [x] [gateway-finder-imp](https://github.com/whitel1st/gateway-finder-imp)
 * [x] [gitjacker](https://github.com/liamg/gitjacker/releases)
+* [x] [go-windapsearch](https://github.com/ropnop/go-windapsearch)
 * [x] [gobuster](https://github.com/OJ/gobuster/releases)
 * [x] [htbenum](https://github.com/SolomonSklash/htbenum)
 * [x] [impacket](https://github.com/SecureAuthCorp/impacket)
@@ -125,6 +126,7 @@ optional arguments:
 * [x] [kerbrute](https://github.com/ropnop/kerbrute/releases)
 * [x] [krbrelayx](https://github.com/dirkjanm/krbrelayx)
 * [x] [ldapdomaindump](https://github.com/dirkjanm/ldapdomaindump)
+* [x] [ldapsearch-ad](https://github.com/yaap7/ldapsearch-ad)
 * [x] [lsassy](https://github.com/Hackndo/lsassy)
 * [x] [masscan](https://github.com/robertdavidgraham/masscan)
 * [x] [mitm6](https://github.com/fox-it/mitm6)
