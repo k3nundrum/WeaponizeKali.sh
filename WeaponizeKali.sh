@@ -11,7 +11,7 @@ dark_gray="\033[1;30m"
 magenta_bold="\033[1;35m"
 
 SITE="https://github.com/penetrarnya-tm/WeaponizeKali.sh"
-VERSION="0.1.3"
+VERSION="0.1.4"
 
 echo -e "${red_bold}                                                         )${nocolor}"
 echo -e "${red_bold} (  (                                                  ( /(       (                )${nocolor}"
@@ -74,7 +74,7 @@ _popd() {
 installDebPackage() {
 	pkg_name=$1
 	if ! /usr/bin/dpkg-query -f '${Status}' -W $pkg_name 2>&1 | /bin/grep "ok installed" > /dev/null; then
-		warning "$pkg_name not found, installing"
+		warning "$pkg_name not found, installing with apt"
 		sudo apt install $pkg_name -y
 	fi
 	success "Installed deb package: $pkg_name"
@@ -84,10 +84,10 @@ installPipPackage() {
 	V=$1
 	pkg_name=$2
 	if ! which $pkg_name > /dev/null 2>&1; then
-		warning "$pkg_name not found, installing"
+		warning "$pkg_name not found, installing with pip$V"
 		sudo "python${V}" -m pip install -U $pkg_name
 	fi
-	success "Installed pip package: $pkg_name"
+	success "Installed pip$V package: $pkg_name"
 }
 
 cloneRepository() {
@@ -336,9 +336,14 @@ Responder() {
 }
 
 RustScan() {
+	_pushd tools
 	progress "RustScan"
-	installDebPackage rustscan
+	mkdir RustScan
+	cd RustScan
+	downloadRelease "RustScan/RustScan" rustscan.*amd64.deb rustscan.deb
+	sudo dpkg -i rustscan.deb
 	sudo wget https://gist.github.com/snovvcrash/c7f8223cc27154555496a9cbb4650681/raw/a76a2c658370d8b823a8a38a860e4d88051b417e/rustscan-ports-top1000.toml -O /root/.rustscan.toml
+	_popd
 }
 
 ShellPop() {
@@ -433,7 +438,6 @@ chisel-tools() {
 	cd chisel
 	downloadRelease "jpillora/chisel" chisel.*linux_amd64.gz chisel.gz
 	gunzip chisel.gz
-	mv chisel* chisel
 	chmod +x chisel
 	_popd
 }
@@ -647,8 +651,13 @@ odat() {
 }
 
 pyGPOAbuse() {
+	_pushd tools
 	progress "pyGPOAbuse"
-	pipx install -f "git+https://github.com/Hackndo/pyGPOAbuse.git"
+	cloneRepository "https://github.com/Hackndo/pyGPOAbuse.git"
+	cd pyGPOAbuse
+	python3 -m pip install -r requirements.txt
+	python3 -m pip install aiosmb
+	_popd
 }
 
 pypykatz() {
@@ -1116,13 +1125,13 @@ chisel-www() {
 	cd tmp1
 	downloadRelease "jpillora/chisel" chisel.*linux_amd64.gz chisel.gz
 	gunzip chisel.gz
-	mv chisel* ../chisel
+	mv chisel ../chisel
 	cd ..
 	mkdir tmp2
 	cd tmp2
 	downloadRelease "jpillora/chisel" chisel.*windows_amd64.gz chisel.exe.gz
 	gunzip chisel.exe.gz
-	mv chisel*.exe ../chisel.exe
+	mv chisel.exe ../chisel.exe
 	cd ..
 	rm -rf tmp1 tmp2
 	_popd

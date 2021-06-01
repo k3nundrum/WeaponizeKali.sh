@@ -101,7 +101,7 @@ optional arguments:
 * [x] [Responder](https://github.com/lgandx/Responder)
 * [x] [RustScan](https://github.com/RustScan/RustScan/releases)
 * [x] [ShellPop](https://github.com/0x00-0x00/ShellPop)
-* [x] [TrustVisualizer](https://github.com/HarmJ0y/TrustVisualizer)
+* [x] [TrustVisualizer](https://github.com/snovvcrash/TrustVisualizer)
 * [x] [Windows-Exploit-Suggester](https://github.com/AonCyberLabs/Windows-Exploit-Suggester)
 * [x] [ack3](https://github.com/beyondgrep/ack3)
 * [x] [aclpwn.py](https://github.com/fox-it/aclpwn.py)
