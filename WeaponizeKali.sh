@@ -73,24 +73,21 @@ _popd() {
 
 installDebPackage() {
 	pkg_name=$1
-	if ! /usr/bin/dpkg-query -W='${Status}' $pkg_name 2>&1 | /bin/grep "ok installed" > /dev/null; then
+	if ! /usr/bin/dpkg-query -f '${Status}' -W $pkg_name 2>&1 | /bin/grep "ok installed" > /dev/null; then
 		warning "$pkg_name not found, installing"
 		sudo apt install $pkg_name -y
-	else
-		success "Installed deb package: $pkg_name"
 	fi
+	success "Installed deb package: $pkg_name"
 }
 
 installPipPackage() {
 	V=$1
 	pkg_name=$2
 	if ! which $pkg_name > /dev/null 2>&1; then
-		warning "[!] $pkg_name not found, installing"
-
+		warning "$pkg_name not found, installing"
 		sudo "python${V}" -m pip install -U $pkg_name
-	else
-		success "Installed pip package: $pkg_name"
 	fi
+	success "Installed pip package: $pkg_name"
 }
 
 cloneRepository() {
@@ -209,9 +206,10 @@ BloodHound() {
 	cd BloodHound
 	sudo chown root:root chrome-sandbox
 	sudo chmod 4755 chrome-sandbox
+	mkdir ~/.config/bloodhound
 	downloadRawFile "https://github.com/ShutdownRepo/Exegol/raw/master/sources/bloodhound/config.json" > ~/.config/bloodhound/config.json
 	downloadRawFile "https://github.com/ShutdownRepo/Exegol/raw/master/sources/bloodhound/customqueries.json" > ~/.config/bloodhound/customqueries.json
-	sed -i 's/"password": "exegol4thewin"/"password": "WeaponizeK4li!"/g' config.json
+	sed -i 's/"password": "exegol4thewin"/"password": "WeaponizeK4li!"/g' ~/.config/bloodhound/config.json
 	_popd
 }
 
@@ -717,12 +715,13 @@ windapsearch() {
 xc() {
 	_pushd tools
 	progress "xc"
-	go get golang.org/x/sys/windows
+	go get golang.org/x/sys/...
 	go get golang.org/x/text/encoding/unicode
 	go get github.com/hashicorp/yamux
-	go get github.com/xct/go-clr
+	go get github.com/ropnop/go-clr
 	python3 -m pip install donut-shellcode
 	installDebPackage rlwrap
+	installDebPackage upx
 	cloneRepository "https://github.com/xct/xc.git"
 	cd xc
 	make
