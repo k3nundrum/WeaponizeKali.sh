@@ -469,7 +469,8 @@ enum4linux-ng() {
 evil-winrm() {
 	progress "evil-winrm"
 	gem install evil-winrm --user-install
-	sudo ln -sv /home/kali/.local/share/gem/ruby/2.7.0/bin/evil-winrm /usr/local/bin/evil-winrm
+	WHOAMI=`whoami`
+	sudo ln -sv /home/$WHOAMI/.local/share/gem/ruby/2.7.0/bin/evil-winrm /usr/local/bin/evil-winrm
 }
 
 ffuf() {
