@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/23141800/114306819-c1877380-9ae5-11eb-967c-d7d71935cca6.png" alt="banner" />
+  <img src="https://user-images.githubusercontent.com/23141800/121086278-a1291c00-c7eb-11eb-92dd-b2a0d75d97b5.png" alt="banner" />
 </p>
 
 **WeaponizeKali.sh** is a Bash script aimed at automating the process of downloading and installing extra tools for internal penetration tests with Kali Linux.
