@@ -606,6 +606,17 @@ naabu() {
 	_popd
 }
 
+nextnet() {
+	_pushd tools
+	progress "nextnet"
+	mkdir nextnet
+	cd nextnet
+	downloadRelease "hdm/nextnet" nextnet.*linux_amd64.tar.gz nextnet.tar.gz
+	tar -xvzf nextnet.tar.gz
+	rm LICENSE README.md nextnet.tar.gz
+	_popd
+}
+
 nishang() {
 	_pushd tools
 	progress "nishang"
@@ -692,6 +703,15 @@ rdp-tunnel-tools() {
 	_pushd tools
 	progress "rdp-tunnel-tools"
 	cloneRepository "https://github.com/NotMedic/rdp-tunnel.git"
+	_popd
+}
+
+snmpwn() {
+	_pushd tools
+	progress "snmpwn"
+	cloneRepository "https://github.com/hatlord/snmpwn.git"
+	cd snmpwn
+	bundle install
 	_popd
 }
 
@@ -787,6 +807,7 @@ tools() {
 	mitm6
 	mscache
 	naabu
+	nextnet
 	nishang
 	ntlm-scanner
 	ntlmv1-multi
@@ -798,6 +819,7 @@ tools() {
 	rbcd-attack
 	rbcd_permissions
 	rdp-tunnel-tools
+	snmpwn
 	spraykatz
 	updog
 	windapsearch
@@ -859,6 +881,12 @@ Discover-PSMSSQLServers() {
 DomainPasswordSpray() {
 	_pushd www
 	downloadRawFile "https://github.com/dafthack/DomainPasswordSpray/raw/master/DomainPasswordSpray.ps1" domainpasswordspray.ps1
+	_popd
+}
+
+Grouper2() {
+	_pushd www
+	downloadRelease "l0ss/Grouper2" Grouper2.exe grouper2.exe
 	_popd
 }
 
@@ -974,6 +1002,12 @@ PEASS() {
 	_popd
 }
 
+PingCastle() {
+	_pushd www
+	downloadRelease "vletoux/pingcastle" PingCastle.*.zip pingcastle.zip
+	_popd
+}
+
 PowerUp() {
 	_pushd www
 	downloadRawFile "https://github.com/PowerShellMafia/PowerSploit/raw/master/Privesc/PowerUp.ps1" powerup.ps1
@@ -1070,6 +1104,12 @@ Set-GpoStatus() {
 	_popd
 }
 
+SharpChrome() {
+	_pushd www
+	downloadRawFile "https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/raw/master/SharpChrome.exe" sharpchrome.exe
+	_popd
+}
+
 SharpDPAPI() {
 	_pushd www
 	downloadRawFile "https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/raw/master/SharpDPAPI.exe" sharpdpapi.exe
@@ -1091,9 +1131,21 @@ SharpHound() {
 	_popd
 }
 
+SharpView() {
+	_pushd www
+	downloadRawFile "https://github.com/tevora-threat/SharpView/raw/master/Compiled/SharpView.exe" sharpview.exe
+	_popd
+}
+
 Sherlock() {
 	_pushd www
 	downloadRawFile "https://github.com/rasta-mouse/Sherlock/raw/master/Sherlock.ps1" sherlock.ps1
+	_popd
+}
+
+Snaffler() {
+	_pushd www
+	downloadRelease "SnaffCon/Snaffler" Snaffler.exe snaffler.exe
 	_popd
 }
 
@@ -1107,6 +1159,12 @@ SpoolSample() {
 Watson() {
 	_pushd www
 	downloadRawFile "https://github.com/S3cur3Th1sSh1t/PowerSharpPack/raw/master/PowerSharpBinaries/Invoke-SharpWatson.ps1" invoke-sharpwatson.ps1
+	_popd
+}
+
+WerTrigger() {
+	_pushd www
+	downloadRawFile "https://github.com/sailay1996/WerTrigger/archive/refs/heads/master.zip" wertrigger.zip
 	_popd
 }
 
@@ -1214,6 +1272,7 @@ www() {
 	Discover-PSMSExchangeServers
 	Discover-PSMSSQLServers
 	DomainPasswordSpray
+	Grouper2
 	Intercepter-NG
 	Inveigh
 	InveighZero
@@ -1232,6 +1291,7 @@ www() {
 	LaZagne
 	Out-EncryptedScript
 	PEASS
+	PingCastle
 	PowerUp
 	PowerUpSQL
 	PowerView2
@@ -1247,12 +1307,16 @@ www() {
 	Seatbelt
 	SessionGopher
 	Set-GpoStatus
+	SharpChrome
 	SharpDPAPI
 	SharpGPOAbuse
 	SharpHound
+	SharpView
 	Sherlock
+	Snaffler
 	SpoolSample
 	Watson
+	WerTrigger
 	WinPwn
 	chisel-www
 	htbenum-www
