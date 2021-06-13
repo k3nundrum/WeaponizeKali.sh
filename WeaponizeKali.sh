@@ -90,6 +90,15 @@ installPipPackage() {
 	success "Installed pip$V package: $pkg_name"
 }
 
+installSnapPackage() {
+	pkg_name=$1
+	if ! /usr/bin/snap info $pkg_name 2>&1 | /bin/grep "installed" > /dev/null; then
+		warning "$pkg_name not found, installing with snap"
+		sudo snap install $pkg_name --dangerous
+	fi
+	success "Installed snap package: $pkg_name"
+}
+
 cloneRepository() {
 	url=$1
 	repo_name=${url##*/}
@@ -173,6 +182,12 @@ _ntpdate() {
 	installDebPackage ntpdate
 }
 
+_snap() {
+	installDebPackage snapd
+	sudo service snapd start
+	export PATH="$PATH:/snap/bin"
+}
+
 dependencies() {
 	_jq
 	_python2-pip
@@ -185,6 +200,7 @@ dependencies() {
 	_python2-impacket
 	_neo4j
 	_ntpdate
+	_snap
 }
 
 # -----------------------------------------------------------------------------
@@ -310,6 +326,14 @@ Nim-Scripts() {
 	downloadRawFile "https://github.com/S3cur3Th1sSh1t/Creds/raw/master/nim/encrypt_shellcode.nim" encrypt_shellcode.nim
 	downloadRawFile "https://github.com/S3cur3Th1sSh1t/Creds/raw/master/nim/encrypted_shellcode_loader.nim" encrypted_shellcode_loader.nim
 	_popd
+}
+
+Obsidian() {
+	progress "Obsidian"
+	downloadRelease "obsidianmd/obsidian-releases" obsidian.*amd64.snap /tmp/obsidian.snap
+	installSnapPackage /tmp/obsidian.snap
+	rm /tmp/obsidian.snap
+	cp /var/lib/snapd/desktop/applications/obsidian_obsidian.desktop ~/Desktop
 }
 
 PCredz() {
@@ -612,7 +636,7 @@ nextnet() {
 	mkdir nextnet
 	cd nextnet
 	downloadRelease "hdm/nextnet" nextnet.*linux_amd64.tar.gz nextnet.tar.gz
-	tar -xvzf nextnet.tar.gz
+	tar -xzf nextnet.tar.gz
 	rm LICENSE README.md nextnet.tar.gz
 	_popd
 }
@@ -778,7 +802,7 @@ tools() {
 	ShellPop
 	TrustVisualizer
 	Windows-Exploit-Suggester
-	ack3
+	#ack3
 	aclpwn.py
 	adidnsdump
 	aquatone
@@ -1272,7 +1296,7 @@ www() {
 	Discover-PSMSExchangeServers
 	Discover-PSMSSQLServers
 	DomainPasswordSpray
-	Grouper2
+	#Grouper2
 	Intercepter-NG
 	Inveigh
 	InveighZero
