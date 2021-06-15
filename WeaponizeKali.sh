@@ -795,6 +795,7 @@ tools() {
 	MS17-010
 	Nim
 	Nim-Scripts
+	Obsidian
 	PCredz
 	PrivExchange
 	Responder
