@@ -299,6 +299,16 @@ MS17-010() {
 	_popd
 }
 
+MeterPwrShell() {
+	_pushd tools
+	progress "MeterPwrShell"
+	mkdir MeterPwrShell
+	cd MeterPwrShell
+	downloadRawFile "https://github.com/GetRektBoy724/MeterPwrShell/releases/download/v2.0.0/MeterPwrShell2Kalix64" MeterPwrShell2Kalix64
+	chmod +x MeterPwrShell2Kalix64
+	_popd
+}
+
 Neo-reGeorg() {
 	_pushd tools
 	progress Neo-reGeorg
@@ -333,6 +343,7 @@ Obsidian() {
 	downloadRelease "obsidianmd/obsidian-releases" obsidian.*amd64.snap /tmp/obsidian.snap
 	installSnapPackage /tmp/obsidian.snap
 	rm /tmp/obsidian.snap
+	# Will fail if the user is just created and have never signed in before, because ~/Desktop doesn't exist yet
 	cp /var/lib/snapd/desktop/applications/obsidian_obsidian.desktop ~/Desktop
 }
 
@@ -748,6 +759,22 @@ spraykatz() {
 	_popd
 }
 
+ssb() {
+	_pushd tools
+	mkdir ssb
+	cd ssb
+	downloadRelease "kitabisa/ssb" ssb.*amd64.tar.gz ssb.tar.gz
+	tar -xzf ssb.tar.gz
+	rm LICENSE.md README.md ssb.tar.gz
+	_popd
+}
+
+sshuttle() {
+	progress "sshuttle"
+	installDebPackage "sshpass"
+	installDebPackage "sshuttle"
+}
+
 updog() {
 	progress "updog"
 	pipx install -f "git+https://github.com/sc0tfree/updog.git"
@@ -793,6 +820,7 @@ tools() {
 	Empire
 	LDAPPER
 	MS17-010
+	MeterPwrShell
 	Nim
 	Nim-Scripts
 	Obsidian
@@ -846,6 +874,8 @@ tools() {
 	rdp-tunnel-tools
 	snmpwn
 	spraykatz
+	ssb
+	sshuttle
 	updog
 	windapsearch
 	xc
@@ -1156,6 +1186,12 @@ SharpHound() {
 	_popd
 }
 
+SharpSecDump() {
+	_pushd www
+	downloadRawFile "https://github.com/S3cur3Th1sSh1t/PowerSharpPack/raw/master/PowerSharpBinaries/Invoke-SharpSecDump.ps1" invoke-sharpsecdump.ps1
+	_popd
+}
+
 SharpView() {
 	_pushd www
 	downloadRawFile "https://github.com/tevora-threat/SharpView/raw/master/Compiled/SharpView.exe" sharpview.exe
@@ -1288,6 +1324,12 @@ rdp-tunnel-www() {
 	_popd
 }
 
+static-binaries() {
+	_pushd www
+	cloneRepository "https://github.com/andrew-d/static-binaries.git"
+	_popd
+}
+
 www() {
 	ADRecon
 	ASREPRoast
@@ -1336,6 +1378,7 @@ www() {
 	SharpDPAPI
 	SharpGPOAbuse
 	SharpHound
+	SharpSecDump
 	SharpView
 	Sherlock
 	Snaffler
@@ -1354,6 +1397,7 @@ www() {
 	pspy
 	pypykatz-exe
 	rdp-tunnel-www
+	static-binaries
 }
 
 # -----------------------------------------------------------------------------
