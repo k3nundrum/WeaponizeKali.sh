@@ -547,13 +547,6 @@ gobuster() {
 	installDebPackage gobuster
 }
 
-htbenum-tools() {
-	_pushd tools
-	progress "htbenum-tools"
-	cloneRepository "https://github.com/SolomonSklash/htbenum.git"
-	_popd
-}
-
 impacket() {
 	progress "impacket"
 	pipx install -f "git+https://github.com/SecureAuthCorp/impacket.git"
@@ -848,7 +841,6 @@ tools() {
 	gitjacker
 	go-windapsearch
 	gobuster
-	htbenum-tools
 	impacket
 	ipmitool
 	kerbrute
@@ -960,7 +952,7 @@ Inveigh() {
 
 InveighZero() {
 	_pushd www
-	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_x64/Inveigh.exe" inveighzero.exe
+	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_Any/Inveigh.exe" inveighzero.exe
 	_popd
 }
 
@@ -1174,7 +1166,7 @@ SharpDPAPI() {
 
 SharpGPOAbuse() {
 	_pushd www
-	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_x64/SharpGPOAbuse.exe" sharpgpoabuse.exe
+	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_Any/SharpGPOAbuse.exe" sharpgpoabuse.exe
 	downloadRawFile "https://github.com/S3cur3Th1sSh1t/PowerSharpPack/raw/master/PowerSharpBinaries/Invoke-SharpGPOAbuse.ps1" invoke-sharpgpoabuse.ps1
 	_popd
 }
@@ -1183,6 +1175,13 @@ SharpHound() {
 	_pushd www
 	downloadRawFile "https://github.com/BloodHoundAD/BloodHound/raw/master/Collectors/SharpHound.exe" sharphound.exe
 	downloadRawFile "https://github.com/BloodHoundAD/BloodHound/raw/master/Collectors/SharpHound.ps1" sharphound.ps1
+	_popd
+}
+
+SharpNamedPipePTH() {
+	_pushd www
+	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_Any/SharpNamedPipePTH.exe" sharpnamedpipepth.exe
+	downloadRawFile "https://github.com/snovvcrash/PowerSharpPack/raw/master/PowerSharpBinaries/Invoke-SharpNamedPipePTH.ps1" invoke-sharpnamedpipepth.ps1
 	_popd
 }
 
@@ -1256,12 +1255,6 @@ chisel-www() {
 	_popd
 }
 
-htbenum-www() {
-	_pushd www
-	downloadRawFile "https://github.com/SolomonSklash/htbenum/raw/master/htbenum.sh" htbenum.sh
-	_popd
-}
-
 impacket-examples-windows() {
 	_pushd www
 	cloneRepository "https://github.com/maaaaz/impacket-examples-windows.git"
@@ -1330,6 +1323,12 @@ static-binaries() {
 	_popd
 }
 
+suid3num.py() {
+	_pushd www
+	downloadRawFile "https://github.com/Anon-Exploiter/SUID3NUM/raw/master/suid3num.py" suid3num.py
+	_popd
+}
+
 www() {
 	ADRecon
 	ASREPRoast
@@ -1378,6 +1377,7 @@ www() {
 	SharpDPAPI
 	SharpGPOAbuse
 	SharpHound
+	SharpNamedPipePTH
 	SharpSecDump
 	SharpView
 	Sherlock
@@ -1387,7 +1387,6 @@ www() {
 	WerTrigger
 	WinPwn
 	chisel-www
-	htbenum-www
 	impacket-examples-windows
 	linux-exploit-suggester
 	mimikatz
@@ -1398,6 +1397,7 @@ www() {
 	pypykatz-exe
 	rdp-tunnel-www
 	static-binaries
+	suid3num.py
 }
 
 # -----------------------------------------------------------------------------
