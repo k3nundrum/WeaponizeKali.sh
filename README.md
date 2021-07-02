@@ -148,6 +148,7 @@ optional arguments:
 * [x] [spraykatz](https://github.com/aas-n/spraykatz)
 * [x] [ssb](https://github.com/kitabisa/ssb/releases)
 * [x] [sshuttle](https://github.com/sshuttle/sshuttle)
+* [x] [traitor](https://github.com/liamg/traitor/releases)
 * [x] [updog](https://github.com/sc0tfree/updog)
 * [x] [windapsearch](https://github.com/ropnop/windapsearch)
 * [x] [xc](https://github.com/xct/xc)

@@ -278,8 +278,8 @@ Empire() {
 	cd Empire
 	sudo STAGING_KEY=`echo 'WeaponizeK4li!' | md5sum | cut -d' ' -f1` ./setup/install.sh
 	sudo poetry install
-	echo $'#!/usr/bin/env bash\n\nsudo poetry run python empire' > run_empire.sh
-	chmod +x run_empire.sh 
+	echo $'#!/usr/bin/env bash\nsudo poetry run python empire ${@}' > ps-empire.sh
+	chmod +x ps-empire.sh
 	_popd
 }
 
@@ -311,7 +311,7 @@ MeterPwrShell() {
 
 Neo-reGeorg() {
 	_pushd tools
-	progress Neo-reGeorg
+	progress "Neo-reGeorg"
 	cloneRepository "https://github.com/L-codes/Neo-reGeorg.git"
 	python2 -m pip install requests
 	_popd
@@ -402,7 +402,7 @@ TrustVisualizer() {
 
 Windows-Exploit-Suggester() {
 	_pushd tools
-	progress "Windows-Exploit-Suggeste"
+	progress "Windows-Exploit-Suggester"
 	cloneRepository "https://github.com/AonCyberLabs/Windows-Exploit-Suggester.git"
 	_popd
 }
@@ -754,6 +754,7 @@ spraykatz() {
 
 ssb() {
 	_pushd tools
+	progress "ssb"
 	mkdir ssb
 	cd ssb
 	downloadRelease "kitabisa/ssb" ssb.*amd64.tar.gz ssb.tar.gz
@@ -766,6 +767,16 @@ sshuttle() {
 	progress "sshuttle"
 	installDebPackage "sshpass"
 	installDebPackage "sshuttle"
+}
+
+traitor() {
+	_pushd tools
+	progress "traitor"
+	mkdir traitor
+	cd traitor
+	downloadRelease "liamg/traitor" traitor.*amd64 traitor
+	chmod +x traitor
+	_popd
 }
 
 updog() {
@@ -868,6 +879,7 @@ tools() {
 	spraykatz
 	ssb
 	sshuttle
+	traitor
 	updog
 	windapsearch
 	xc
