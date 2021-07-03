@@ -98,6 +98,7 @@ optional arguments:
 * [x] [Nim](https://nim-lang.org/install_unix.html) · [choosenim](https://github.com/dom96/choosenim)
 * [x] [Nim-Scripts](https://github.com/S3cur3Th1sSh1t/Creds/tree/master/nim)
 * [x] [PCredz](https://github.com/lgandx/PCredz)
+* [x] [PrintNightmare (Python)](https://github.com/cube0x0/CVE-2021-1675/blob/main/CVE-2021-1675.py)
 * [x] [PrivExchange](https://github.com/dirkjanm/PrivExchange)
 * [x] [Responder](https://github.com/lgandx/Responder)
 * [x] [RustScan](https://github.com/RustScan/RustScan/releases)

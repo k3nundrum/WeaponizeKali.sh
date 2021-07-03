@@ -354,6 +354,15 @@ PCredz() {
 	_popd
 }
 
+PrintNightmare() {
+	_pushd tools
+	progress "PrintNightmare"
+	mkdir PrintNightmare
+	cd PrintNightmare
+	downloadRawFile "https://github.com/cube0x0/CVE-2021-1675/raw/main/CVE-2021-1675.py"
+	_popd
+}
+
 PrivExchange() {
 	_pushd tools
 	progress "PrivExchange"
@@ -829,6 +838,7 @@ tools() {
 	Nim-Scripts
 	Obsidian
 	PCredz
+	PrintNightmare
 	PrivExchange
 	Responder
 	RustScan
