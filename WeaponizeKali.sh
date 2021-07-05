@@ -359,7 +359,8 @@ PrintNightmare() {
 	progress "PrintNightmare"
 	mkdir PrintNightmare
 	cd PrintNightmare
-	downloadRawFile "https://github.com/cube0x0/CVE-2021-1675/raw/main/CVE-2021-1675.py"
+	downloadRawFile "https://github.com/cube0x0/CVE-2021-1675/raw/main/CVE-2021-1675.py" CVE-2021-1675-MS-RPRN.py
+	downloadRawFile "https://github.com/cube0x0/CVE-2021-1675/raw/main/SharpPrintNightmare/CVE-2021-1675.py" CVE-2021-1675-MS-PAR.py
 	_popd
 }
 
