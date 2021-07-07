@@ -178,10 +178,6 @@ _neo4j() {
 	installDebPackage neo4j
 }
 
-_ntpdate() {
-	installDebPackage ntpdate
-}
-
 _snap() {
 	installDebPackage snapd
 	sudo service snapd start
@@ -199,7 +195,6 @@ dependencies() {
 	_pipx
 	_python2-impacket
 	_neo4j
-	_ntpdate
 	_snap
 }
 
@@ -413,7 +408,9 @@ TrustVisualizer() {
 Windows-Exploit-Suggester() {
 	_pushd tools
 	progress "Windows-Exploit-Suggester"
-	cloneRepository "https://github.com/AonCyberLabs/Windows-Exploit-Suggester.git"
+	cloneRepository "https://github.com/a1ext/Windows-Exploit-Suggester.git"
+	cd Windows-Exploit-Suggester
+	python3 -m pip install -r requirements.txt
 	_popd
 }
 
@@ -506,6 +503,15 @@ dsniff() {
 	progress "dsniff"
 	sudo sysctl -w net.ipv4.ip_forward=1
 	installDebPackage dsniff
+}
+
+eavesarp() {
+	_pushd tools
+	progress "eavesarp"
+	cloneRepository "https://github.com/arch4ngel/eavesarp.git"
+	cd eavesarp
+	python3 -m pip install -r requirements.txt
+	_popd
 }
 
 enum4linux-ng() {
@@ -856,6 +862,7 @@ tools() {
 	crowbar
 	dementor.py
 	dsniff
+	eavesarp
 	enum4linux-ng
 	evil-winrm
 	ffuf
@@ -1075,6 +1082,13 @@ PEASS() {
 PingCastle() {
 	_pushd www
 	downloadRelease "vletoux/pingcastle" PingCastle.*.zip pingcastle.zip
+	_popd
+}
+
+PowerShellArmoury() {
+	_pushd www
+	downloadRawFile "https://github.com/cfalta/PowerShellArmoury/raw/master/New-PSArmoury.ps1" new-psarmoury.ps1
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/PSArmoury.json" psarmoury.json
 	_popd
 }
 
@@ -1381,6 +1395,7 @@ www() {
 	Out-EncryptedScript
 	PEASS
 	PingCastle
+	PowerShellArmoury
 	PowerUp
 	PowerUpSQL
 	PowerView2
