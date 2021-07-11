@@ -73,5 +73,10 @@
 		"Name": "PrivescCheck.ps1",
 		"Type": "WebDownloadSimple",
 		"URL":  "https://github.com/itm4n/PrivescCheck/raw/master/PrivescCheck.ps1"
+	},
+	{
+		"Name": "SharpHound.ps1",
+		"Type": "WebDownloadSimple",
+		"URL":  "https://github.com/BloodHoundAD/BloodHound/raw/master/Collectors/SharpHound.ps1"
 	}
 ]

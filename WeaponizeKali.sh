@@ -202,6 +202,15 @@ dependencies() {
 # ----------------------------------- tools -----------------------------------
 # -----------------------------------------------------------------------------
 
+Amsi-Bypass-Powershell() {
+	_pushd tools
+	progress "Amsi-Bypass-Powershell"
+	mkdir "Amsi-Bypass-Powershell"
+	cd "Amsi-Bypass-Powershell"
+	downloadRawFile "https://github.com/S3cur3Th1sSh1t/Amsi-Bypass-Powershell/raw/master/README.md" README.md
+	_popd
+}
+
 BloodHound.py() {
 	progress "BloodHound.py"
 	pipx install -f "git+https://github.com/fox-it/BloodHound.py.git"
@@ -248,6 +257,13 @@ CVE-2020-1472-checker() {
 CrackMapExec() {
 	progress "CrackMapExec"
 	pipx install -f "git+https://github.com/byt3bl33d3r/CrackMapExec.git"
+}
+
+Creds() {
+	_pushd tools
+	progress "Creds"
+	cloneRepository "https://github.com/S3cur3Th1sSh1t/Creds.git"
+	_popd
 }
 
 DivideAndScan() {
@@ -319,17 +335,10 @@ Nim() {
 	#curl https://nim-lang.org/choosenim/init.sh -sSf | CHOOSENIM_NO_ANALYTICS=1 sh
 }
 
-Nim-Scripts() {
+NimlineWhispers() {
 	_pushd tools
-	progress "Nim-Scripts"
-	mkdir nim-scripts
-	cd nim-scripts
-	downloadRawFile "https://github.com/S3cur3Th1sSh1t/Creds/raw/master/nim/DLLHijack.nim" DLLHijack.nim
-	downloadRawFile "https://github.com/S3cur3Th1sSh1t/Creds/raw/master/nim/encrypt_assembly.nim" encrypt_assembly.nim
-	downloadRawFile "https://github.com/S3cur3Th1sSh1t/Creds/raw/master/nim/encrypted_assembly_loader.nim" encrypted_assembly_loader.nim
-	downloadRawFile "https://github.com/S3cur3Th1sSh1t/Creds/raw/master/nim/encrypted_assembly_loader_staticpass.nim" encrypted_assembly_loader_staticpass.nim
-	downloadRawFile "https://github.com/S3cur3Th1sSh1t/Creds/raw/master/nim/encrypt_shellcode.nim" encrypt_shellcode.nim
-	downloadRawFile "https://github.com/S3cur3Th1sSh1t/Creds/raw/master/nim/encrypted_shellcode_loader.nim" encrypted_shellcode_loader.nim
+	progress "NimlineWhispers"
+	cloneRepository "https://github.com/snovvcrash/NimlineWhispers.git"
 	_popd
 }
 
@@ -342,10 +351,27 @@ Obsidian() {
 	cp /var/lib/snapd/desktop/applications/obsidian_obsidian.desktop ~/Desktop
 }
 
+OffensiveNim() {
+	_pushd tools
+	progress "OffensiveNim"
+	cloneRepository "https://github.com/byt3bl33d3r/OffensiveNim.git"
+	_popd
+}
+
 PCredz() {
 	_pushd tools
 	progress "PCredz"
 	cloneRepository "https://github.com/lgandx/PCredz.git"
+	_popd
+}
+
+PEzor() {
+	_pushd tools
+	progress "PEzor"
+	cloneRepository "https://github.com/phra/PEzor.git"
+	cd PEzor
+	sudo bash install.sh
+	# sudo cat /root/.bashrc | grep PEzor
 	_popd
 }
 
@@ -382,7 +408,7 @@ RustScan() {
 	cd RustScan
 	downloadRelease "RustScan/RustScan" rustscan.*amd64.deb rustscan.deb
 	sudo dpkg -i rustscan.deb
-	sudo wget https://gist.github.com/snovvcrash/c7f8223cc27154555496a9cbb4650681/raw/a76a2c658370d8b823a8a38a860e4d88051b417e/rustscan-ports-top1000.toml -O /root/.rustscan.toml
+	sudo wget https://gist.github.com/snovvcrash/8b85b900bd928493cd1ae33b2df318d8/raw/fe8628396616c4bf7a3e25f2c9d1acc2f36af0c0/rustscan-ports-top1000.toml -O /root/.rustscan.toml
 	_popd
 }
 
@@ -750,6 +776,13 @@ rdp-tunnel-tools() {
 	_popd
 }
 
+sRDI() {
+	_pushd tools
+	progress "sRDI"
+	cloneRepository "https://github.com/monoxgas/sRDI.git"
+	_popd
+}
+
 snmpwn() {
 	_pushd tools
 	progress "snmpwn"
@@ -830,11 +863,13 @@ xc() {
 }
 
 tools() {
+	Amsi-Bypass-Powershell
 	BloodHound
 	BloodHound.py
 	CVE-2019-1040-scanner
 	CVE-2020-1472-checker
 	CrackMapExec
+	Creds
 	DivideAndScan
 	Ebowla
 	Empire
@@ -842,9 +877,11 @@ tools() {
 	MS17-010
 	MeterPwrShell
 	Nim
-	Nim-Scripts
+	NimlineWhispers
 	Obsidian
+	OffensiveNim
 	PCredz
+	PEzor
 	PrintNightmare
 	PrivExchange
 	Responder
@@ -893,6 +930,7 @@ tools() {
 	rbcd-attack
 	rbcd_permissions
 	rdp-tunnel-tools
+	sRDI
 	snmpwn
 	spraykatz
 	ssb
@@ -928,18 +966,6 @@ AccessChk() {
 	downloadRawFile "https://download.sysinternals.com/files/AccessChk.zip" accesschk.zip
 	unzip -q accesschk.zip
 	rm Eula.txt accesschk64a.exe accesschk.zip
-	_popd
-}
-
-Bypass-AMSI() {
-	_pushd www
-	downloadRawFile "https://gist.github.com/snovvcrash/5c9ee38bb9a8802a674ec3d3d33b4717/raw/5c77510505f505db8ac1453c60ee6fc34a8e6d59/Bypass-AMSI.ps1" bypass-amsi.ps1
-	_popd
-}
-
-Bypass-UAC() {
-	_pushd www
-	downloadRawFile "https://gist.github.com/snovvcrash/362be57caaa167e7f5667156ac80f445/raw/1990959bc80b56179863aede06695bc499249744/Bypass-UAC.ps1" bypass-uac.ps1
 	_popd
 }
 
@@ -1182,12 +1208,6 @@ SessionGopher() {
 	_popd
 }
 
-Set-GpoStatus() {
-	_pushd www
-	downloadRawFile "https://gist.github.com/snovvcrash/ecdc639b061fe787617d8d92d8549801/raw/047115ad321f3a7f918e31cffb005d276dd1e8df/Set-GpoStatus.ps1" set-gpostatus.ps1
-	_popd
-}
-
 SharpChrome() {
 	_pushd www
 	downloadRawFile "https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/raw/master/SharpChrome.exe" sharpchrome.exe
@@ -1205,6 +1225,13 @@ SharpGPOAbuse() {
 	_pushd www
 	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_Any/SharpGPOAbuse.exe" sharpgpoabuse.exe
 	downloadRawFile "https://github.com/S3cur3Th1sSh1t/PowerSharpPack/raw/master/PowerSharpBinaries/Invoke-SharpGPOAbuse.ps1" invoke-sharpgpoabuse.ps1
+	_popd
+}
+
+SharpHandler() {
+	_pushd www
+	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_Any/SharpHandler.exe" sharphandler.exe
+	downloadRawFile "https://github.com/S3cur3Th1sSh1t/PowerSharpPack/raw/master/PowerSharpBinaries/Invoke-SharpHandler.ps1" invoke-sharphandler.ps1
 	_popd
 }
 
@@ -1370,8 +1397,6 @@ www() {
 	ADRecon
 	ASREPRoast
 	AccessChk
-	Bypass-AMSI
-	Bypass-UAC
 	Discover-PSMSExchangeServers
 	Discover-PSMSSQLServers
 	DomainPasswordSpray
@@ -1410,10 +1435,10 @@ www() {
 	Rubeus
 	Seatbelt
 	SessionGopher
-	Set-GpoStatus
 	SharpChrome
 	SharpDPAPI
 	SharpGPOAbuse
+	SharpHandler
 	SharpHound
 	SharpNamedPipePTH
 	SharpSecDump
