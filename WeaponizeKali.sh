@@ -266,6 +266,13 @@ Creds() {
 	_popd
 }
 
+DLLsForHackers() {
+	_pushd tools
+	progress "DLLsForHackers"
+	cloneRepository "https://github.com/Mr-Un1k0d3r/DLLsForHackers.git"
+	_popd
+}
+
 DivideAndScan() {
 	progress "DivideAndScan"
 	pipx install -f "git+https://github.com/snovvcrash/DivideAndScan.git"
@@ -291,6 +298,15 @@ Empire() {
 	sudo poetry install
 	echo $'#!/usr/bin/env bash\nsudo poetry run python empire ${@}' > ps-empire.sh
 	chmod +x ps-empire.sh
+	_popd
+}
+
+ItWasAllADream() {
+	_pushd tools
+	progress "ItWasAllADream"
+	cloneRepository "https://github.com/byt3bl33d3r/ItWasAllADream.git"
+	cd ItWasAllADream
+	poetry install
 	_popd
 }
 
@@ -412,6 +428,15 @@ RustScan() {
 	_popd
 }
 
+SharpShooter() {
+	_pushd tools
+	progress "SharpShooter"
+	cloneRepository "https://github.com/mdsecactivebreach/SharpShooter.git"
+	cd SharpShooter
+	python -m pip install -r requirements.txt
+	_popd
+}
+
 ShellPop() {
 	_pushd tools
 	progress "ShellPop"
@@ -470,7 +495,7 @@ aquatone() {
 	cd aquatone
 	downloadRelease "michenriksen/aquatone" aquatone_linux_amd64.*.zip aquatone.zip
 	unzip -q aquatone.zip
-	rm LICENSE.txt README.md aquatone.zip
+	rm LICENSE.txt aquatone.zip
 	chmod +x aquatone
 	_popd
 }
@@ -663,19 +688,6 @@ mscache() {
 	_popd
 }
 
-naabu() {
-	_pushd tools
-	progress "naabu"
-	mkdir naabu
-	cd naabu
-	downloadRelease "projectdiscovery/naabu" naabu-linux-amd64.tar.gz naabu.tar.gz
-	tar -xzf naabu.tar.gz
-	mv naabu-linux-amd64 naabu
-	chmod +x naabu
-	rm LICENSE.md README.md naabu.tar.gz
-	_popd
-}
-
 nextnet() {
 	_pushd tools
 	progress "nextnet"
@@ -683,7 +695,7 @@ nextnet() {
 	cd nextnet
 	downloadRelease "hdm/nextnet" nextnet.*linux_amd64.tar.gz nextnet.tar.gz
 	tar -xzf nextnet.tar.gz
-	rm LICENSE README.md nextnet.tar.gz
+	rm LICENSE nextnet.tar.gz
 	_popd
 }
 
@@ -808,7 +820,7 @@ ssb() {
 	cd ssb
 	downloadRelease "kitabisa/ssb" ssb.*amd64.tar.gz ssb.tar.gz
 	tar -xzf ssb.tar.gz
-	rm LICENSE.md README.md ssb.tar.gz
+	rm LICENSE.md ssb.tar.gz
 	_popd
 }
 
@@ -870,9 +882,11 @@ tools() {
 	CVE-2020-1472-checker
 	CrackMapExec
 	Creds
+	DLLsForHackers
 	DivideAndScan
 	Ebowla
 	Empire
+	ItWasAllADream
 	LDAPPER
 	MS17-010
 	MeterPwrShell
@@ -886,6 +900,7 @@ tools() {
 	PrivExchange
 	Responder
 	RustScan
+	SharpShooter
 	ShellPop
 	TrustVisualizer
 	Windows-Exploit-Suggester
@@ -917,7 +932,6 @@ tools() {
 	masscan
 	mitm6
 	mscache
-	naabu
 	nextnet
 	nishang
 	ntlm-scanner
