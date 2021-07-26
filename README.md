@@ -201,6 +201,7 @@ optional arguments:
 * [x] [PrivescCheck.ps1](https://github.com/itm4n/PrivescCheck/blob/master/PrivescCheck.ps1)
 * [x] [PrintSpoofer](https://github.com/itm4n/PrintSpoofer) · [Invoke-BadPotato.ps1 (PowerSharpPack)](https://github.com/S3cur3Th1sSh1t/PowerSharpPack/blob/master/PowerSharpBinaries/Invoke-BadPotato.ps1)
 * [x] [ProcDump (Sysinternals)](https://docs.microsoft.com/en-us/sysinternals/downloads/procdump)
+* [x] [RemotePotato0](https://github.com/antonioCoco/RemotePotato0/releases)
 * [x] [RoguePotato](https://github.com/antonioCoco/RoguePotato)
 * [x] [Rubeus](https://github.com/GhostPack/Rubeus) · [Pre-Compiled](https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/blob/master/Rubeus.exe) · [Invoke-Rubeus.ps1 (Empire)](https://github.com/BC-SECURITY/Empire/blob/master/data/module_source/credentials/Invoke-Rubeus.ps1) · [Invoke-Rubeus.ps1 (PowerSharpPack)](https://github.com/S3cur3Th1sSh1t/PowerSharpPack/blob/master/PowerSharpBinaries/Invoke-Rubeus.ps1)
 * [x] [Seatbelt](https://github.com/GhostPack/Seatbelt) · [Pre-Compiled](https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/blob/master/Seatbelt.exe) · [Invoke-Seatbelt.ps1 (PowerSharpPack)](https://github.com/S3cur3Th1sSh1t/PowerSharpPack/blob/master/PowerSharpBinaries/Invoke-Seatbelt.ps1)

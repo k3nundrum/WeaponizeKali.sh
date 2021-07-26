@@ -1194,6 +1194,14 @@ ProcDump() {
 	_popd
 }
 
+RemotePotato0() {
+	_pushd www
+	downloadRelease "antonioCoco/RemotePotato0" RemotePotato0.zip remotepotato0.zip
+	unzip -q remotepotato0.zip
+	rm remotepotato0.zip
+	_popd
+}
+
 RoguePotato() {
 	_pushd www
 	downloadRelease "antonioCoco/RoguePotato" RoguePotato.zip roguepotato.zip
@@ -1445,6 +1453,7 @@ www() {
 	PrivescCheck
 	PrintSpoofer
 	ProcDump
+	RemotePotato0
 	RoguePotato
 	Rubeus
 	Seatbelt
