@@ -391,6 +391,13 @@ PEzor() {
 	_popd
 }
 
+PetitPotam() {
+	_pushd tools
+	progress "PetitPotam"
+	cloneRepository "https://github.com/topotam/PetitPotam.git"
+	_popd
+}
+
 PrintNightmare() {
 	_pushd tools
 	progress "PrintNightmare"
@@ -896,6 +903,7 @@ tools() {
 	OffensiveNim
 	PCredz
 	PEzor
+	PetitPotam
 	PrintNightmare
 	PrivExchange
 	Responder
@@ -1038,18 +1046,6 @@ Invoke-ImpersonateUser-PTH() {
 	_popd
 }
 
-Invoke-Kerberoast() {
-	_pushd www
-	downloadRawFile "https://github.com/BC-SECURITY/Empire/raw/master/data/module_source/credentials/Invoke-Kerberoast.ps1" invoke-kerberoast.ps1
-	_popd
-}
-
-Invoke-Mimikatz() {
-	_pushd www
-	downloadRawFile "https://github.com/BC-SECURITY/Empire/raw/master/data/module_source/credentials/Invoke-Mimikatz.ps1" invoke-mimikatz.ps1
-	_popd
-}
-
 Invoke-Portscan() {
 	_pushd www
 	downloadRawFile "https://github.com/PowerShellMafia/PowerSploit/raw/master/Recon/Invoke-Portscan.ps1" invoke-portscan.ps1
@@ -1119,6 +1115,12 @@ PEASS() {
 	_popd
 }
 
+PSPKIAudit() {
+	_pushd www
+	downloadRawFile "https://github.com/GhostPack/PSPKIAudit/archive/refs/heads/main.zip" PSPKIAudit.zip
+	_popd
+}
+
 PingCastle() {
 	_pushd www
 	downloadRelease "vletoux/pingcastle" PingCastle.*.zip pingcastle.zip
@@ -1168,21 +1170,27 @@ PowerView4() {
 	_popd
 }
 
+PowerSharpPack() {
+	_pushd www
+	cloneRepository "https://github.com/S3cur3Th1sSh1t/PowerSharpPack.git"
+	_popd
+}
+
 Powermad() {
 	_pushd www
 	downloadRawFile "https://github.com/Kevin-Robertson/Powermad/raw/master/Powermad.ps1" powermad.ps1
 	_popd
 }
 
-PrivescCheck() {
+PrintSpoofer() {
 	_pushd www
-	downloadRawFile "https://github.com/itm4n/PrivescCheck/raw/master/PrivescCheck.ps1" privesccheck.ps1
+	downloadRelease "itm4n/PrintSpoofer" PrintSpoofer64.exe printspoofer64.exe
 	_popd
 }
 
-PrintSpoofer() {
+PrivescCheck() {
 	_pushd www
-	downloadRawFile "https://github.com/S3cur3Th1sSh1t/PowerSharpPack/raw/master/PowerSharpBinaries/Invoke-BadPotato.ps1" invoke-badpotato.ps1
+	downloadRawFile "https://github.com/itm4n/PrivescCheck/raw/master/PrivescCheck.ps1" privesccheck.ps1
 	_popd
 }
 
@@ -1213,14 +1221,12 @@ RoguePotato() {
 Rubeus() {
 	_pushd www
 	downloadRawFile "https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/raw/master/Rubeus.exe" rubeus.exe
-	downloadRawFile "https://github.com/BC-SECURITY/Empire/raw/master/data/module_source/credentials/Invoke-Rubeus.ps1" invoke-rubeus.ps1
 	_popd
 }
 
 Seatbelt() {
 	_pushd www
 	downloadRawFile "https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/raw/master/Seatbelt.exe" seatbelt.exe
-	downloadRawFile "https://github.com/S3cur3Th1sSh1t/PowerSharpPack/raw/master/PowerSharpBinaries/Invoke-Seatbelt.ps1" invoke-seatbelt.ps1
 	_popd
 }
 
@@ -1239,21 +1245,18 @@ SharpChrome() {
 SharpDPAPI() {
 	_pushd www
 	downloadRawFile "https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/raw/master/SharpDPAPI.exe" sharpdpapi.exe
-	downloadRawFile "https://github.com/S3cur3Th1sSh1t/PowerSharpPack/raw/master/PowerSharpBinaries/Invoke-SharpDPAPI.ps1" invoke-sharpdpapi.ps1
 	_popd
 }
 
 SharpGPOAbuse() {
 	_pushd www
 	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_Any/SharpGPOAbuse.exe" sharpgpoabuse.exe
-	downloadRawFile "https://github.com/S3cur3Th1sSh1t/PowerSharpPack/raw/master/PowerSharpBinaries/Invoke-SharpGPOAbuse.ps1" invoke-sharpgpoabuse.ps1
 	_popd
 }
 
 SharpHandler() {
 	_pushd www
 	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_Any/SharpHandler.exe" sharphandler.exe
-	downloadRawFile "https://github.com/S3cur3Th1sSh1t/PowerSharpPack/raw/master/PowerSharpBinaries/Invoke-SharpHandler.ps1" invoke-sharphandler.ps1
 	_popd
 }
 
@@ -1273,7 +1276,7 @@ SharpNamedPipePTH() {
 
 SharpSecDump() {
 	_pushd www
-	downloadRawFile "https://github.com/S3cur3Th1sSh1t/PowerSharpPack/raw/master/PowerSharpBinaries/Invoke-SharpSecDump.ps1" invoke-sharpsecdump.ps1
+	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_Any/SharpSecDump.exe" sharpsecdump.exe
 	_popd
 }
 
@@ -1298,13 +1301,6 @@ Snaffler() {
 SpoolSample() {
 	_pushd www
 	downloadRawFile "https://github.com/BlackDiverX/WinTools/raw/master/SpoolSample-Printerbug/SpoolSample.exe" spoolsample.exe
-	downloadRawFile "https://github.com/S3cur3Th1sSh1t/PowerSharpPack/raw/master/PowerSharpBinaries/Invoke-Spoolsample.ps1" invoke-spoolsample.ps1
-	_popd
-}
-
-Watson() {
-	_pushd www
-	downloadRawFile "https://github.com/S3cur3Th1sSh1t/PowerSharpPack/raw/master/PowerSharpBinaries/Invoke-SharpWatson.ps1" invoke-sharpwatson.ps1
 	_popd
 }
 
@@ -1428,8 +1424,6 @@ www() {
 	InveighZero
 	Invoke-ACLPwn
 	Invoke-ImpersonateUser-PTH
-	Invoke-Kerberoast
-	Invoke-Mimikatz
 	Invoke-Portscan
 	Invoke-RunasCs
 	Invoke-SMBClient
@@ -1441,6 +1435,7 @@ www() {
 	LaZagne
 	Out-EncryptedScript
 	PEASS
+	PSPKIAudit
 	PingCastle
 	PowerShellArmoury
 	PowerUp
@@ -1449,9 +1444,10 @@ www() {
 	PowerView3
 	PowerView3-GPO
 	PowerView4
+	PowerSharpPack
 	Powermad
-	PrivescCheck
 	PrintSpoofer
+	PrivescCheck
 	ProcDump
 	RemotePotato0
 	RoguePotato
@@ -1469,7 +1465,6 @@ www() {
 	Sherlock
 	Snaffler
 	SpoolSample
-	Watson
 	WerTrigger
 	WinPwn
 	chisel-www
