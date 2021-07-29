@@ -103,7 +103,14 @@ cloneRepository() {
 	url=$1
 	repo_name=${url##*/}
 	repo_name=${repo_name%.*}
-	if git clone -q $url $repo_name; then
+
+	if [ -z "$2" ]; then
+		dname=$repo_name
+	else
+		dname=$2
+	fi
+
+	if git clone -q $url $dname; then
 		success "Cloned repository: $repo_name"
 	else
 		fail "Failed to clone repository: $repo_name"
@@ -161,6 +168,11 @@ _setuptools() {
 	installPipPackage 3 setuptools
 }
 
+_impacket() {
+	installPipPackage 2 impacket
+	installPipPackage 3 impacket
+}
+
 _poetry() {
 	installPipPackage 3 poetry
 }
@@ -170,10 +182,6 @@ _pipx() {
 	pipx ensurepath
 }
 
-_python2-impacket() {
-	installPipPackage 2 impacket
-}
-
 _neo4j() {
 	installDebPackage neo4j
 }
@@ -181,6 +189,8 @@ _neo4j() {
 _snap() {
 	installDebPackage snapd
 	sudo service snapd start
+	sudo apparmor_parser -r /etc/apparmor.d/*snap-confine*
+	sudo apparmor_parser -r /var/lib/snapd/apparmor/profiles/snap*
 	export PATH="$PATH:/snap/bin"
 }
 
@@ -191,9 +201,9 @@ dependencies() {
 	_python3-pip
 	_python3-venv
 	_setuptools
+	_impacket
 	_poetry
 	_pipx
-	_python2-impacket
 	_neo4j
 	_snap
 }
@@ -205,9 +215,7 @@ dependencies() {
 Amsi-Bypass-Powershell() {
 	_pushd tools
 	progress "Amsi-Bypass-Powershell"
-	mkdir "Amsi-Bypass-Powershell"
-	cd "Amsi-Bypass-Powershell"
-	downloadRawFile "https://github.com/S3cur3Th1sSh1t/Amsi-Bypass-Powershell/raw/master/README.md" README.md
+	cloneRepository "https://github.com/S3cur3Th1sSh1t/Amsi-Bypass-Powershell.git"
 	_popd
 }
 
@@ -226,7 +234,8 @@ BloodHound() {
 	cd BloodHound
 	sudo chown root:root chrome-sandbox
 	sudo chmod 4755 chrome-sandbox
-	mkdir ~/.config/bloodhound
+	sudo mkdir /usr/share/neo4j/logs/
+	mkdir -p ~/.config/bloodhound
 	downloadRawFile "https://github.com/ShutdownRepo/Exegol/raw/master/sources/bloodhound/config.json" > ~/.config/bloodhound/config.json
 	downloadRawFile "https://github.com/ShutdownRepo/Exegol/raw/master/sources/bloodhound/customqueries.json" > ~/.config/bloodhound/customqueries.json
 	sed -i 's/"password": "exegol4thewin"/"password": "WeaponizeK4li!"/g' ~/.config/bloodhound/config.json
@@ -249,7 +258,7 @@ CVE-2020-1472-checker() {
 	cloneRepository "https://github.com/SecuraBV/CVE-2020-1472.git"
 	mv CVE-2020-1472 CVE-2020-1472-checker
 	cd CVE-2020-1472-checker
-	python3 -m pip install -r requirements.txt
+	python3 -m pip install -U -r requirements.txt
 	chmod +x zerologon_tester.py
 	_popd
 }
@@ -282,10 +291,12 @@ Ebowla() {
 	_pushd tools
 	progress "Ebowla"
 	cloneRepository "https://github.com/Genetic-Malware/Ebowla.git"
+	cd Ebowla
+	rm -rf .git
 	installDebPackage golang
 	installDebPackage mingw-w64
 	installDebPackage wine
-	python2 -m pip install configobj pyparsing pycrypto
+	python2 -m pip install -U configobj pyparsing pycrypto
 	_popd
 }
 
@@ -296,7 +307,7 @@ Empire() {
 	cd Empire
 	sudo STAGING_KEY=`echo 'WeaponizeK4li!' | md5sum | cut -d' ' -f1` ./setup/install.sh
 	sudo poetry install
-	echo $'#!/usr/bin/env bash\nsudo poetry run python empire ${@}' > ps-empire.sh
+	echo $'#!/usr/bin/env bash\nsudo poetry run python empire.py ${@}' > ps-empire.sh
 	chmod +x ps-empire.sh
 	_popd
 }
@@ -315,7 +326,7 @@ LDAPPER() {
 	progress "LDAPPER"
 	cloneRepository "https://github.com/shellster/LDAPPER.git"
 	cd LDAPPER
-	python3 -m pip install -r requirements.txt
+	python3 -m pip install -U -r requirements.txt
 	_popd
 }
 
@@ -340,7 +351,7 @@ Neo-reGeorg() {
 	_pushd tools
 	progress "Neo-reGeorg"
 	cloneRepository "https://github.com/L-codes/Neo-reGeorg.git"
-	python2 -m pip install requests
+	python2 -m pip install -U requests
 	_popd
 }
 
@@ -348,6 +359,7 @@ Nim() {
 	progress "Nim"
 	installDebPackage mingw-w64
 	installDebPackage nim
+	nimble install winim nimcrypto zippy -y
 	#curl https://nim-lang.org/choosenim/init.sh -sSf | CHOOSENIM_NO_ANALYTICS=1 sh
 }
 
@@ -363,8 +375,7 @@ Obsidian() {
 	downloadRelease "obsidianmd/obsidian-releases" obsidian.*amd64.snap /tmp/obsidian.snap
 	installSnapPackage /tmp/obsidian.snap
 	rm /tmp/obsidian.snap
-	# Will fail if the user is just created and have never signed in before, because ~/Desktop doesn't exist yet
-	cp /var/lib/snapd/desktop/applications/obsidian_obsidian.desktop ~/Desktop
+	cp /var/lib/snapd/desktop/applications/obsidian_obsidian.desktop ~/Desktop/obsidian_obsidian.desktop
 }
 
 OffensiveNim() {
@@ -388,6 +399,14 @@ PEzor() {
 	cd PEzor
 	sudo bash install.sh
 	# sudo cat /root/.bashrc | grep PEzor
+	_popd
+}
+
+PKINITtools() {
+	_pushd tools
+	progress "PKINITtools"
+	cloneRepository "https://github.com/dirkjanm/PKINITtools.git"
+	python3 -m pip install -U minikerberos
 	_popd
 }
 
@@ -440,7 +459,7 @@ SharpShooter() {
 	progress "SharpShooter"
 	cloneRepository "https://github.com/mdsecactivebreach/SharpShooter.git"
 	cd SharpShooter
-	python -m pip install -r requirements.txt
+	python2 -m pip install -U -r requirements.txt
 	_popd
 }
 
@@ -449,7 +468,7 @@ ShellPop() {
 	progress "ShellPop"
 	cloneRepository "https://github.com/0x00-0x00/ShellPop.git"
 	cd ShellPop
-	python2 -m pip install -r requirements.txt
+	python2 -m pip install -U -r requirements.txt
 	sudo python2 setup.py install
 	_popd
 }
@@ -459,7 +478,7 @@ TrustVisualizer() {
 	progress "TrustVisualizer"
 	cloneRepository "https://github.com/snovvcrash/TrustVisualizer.git"
 	cd TrustVisualizer
-	python2 -m pip install -r requirements.txt
+	python2 -m pip install -U -r requirements.txt
 	_popd
 }
 
@@ -468,7 +487,7 @@ Windows-Exploit-Suggester() {
 	progress "Windows-Exploit-Suggester"
 	cloneRepository "https://github.com/a1ext/Windows-Exploit-Suggester.git"
 	cd Windows-Exploit-Suggester
-	python3 -m pip install -r requirements.txt
+	python3 -m pip install -U -r requirements.txt
 	_popd
 }
 
@@ -527,7 +546,7 @@ bloodhound-quickwin() {
 	progress "bloodhound-quickwin"
 	cloneRepository "https://github.com/kaluche/bloodhound-quickwin.git"
 	cd bloodhound-quickwin
-	python3 -m pip install -r requirements.txt
+	python3 -m pip install -U -r requirements.txt
 	_popd
 }
 
@@ -568,7 +587,7 @@ eavesarp() {
 	progress "eavesarp"
 	cloneRepository "https://github.com/arch4ngel/eavesarp.git"
 	cd eavesarp
-	python3 -m pip install -r requirements.txt
+	python3 -m pip install -U -r requirements.txt
 	_popd
 }
 
@@ -593,7 +612,7 @@ gateway-finder-imp() {
 	progress "gateway-finder-imp"
 	cloneRepository "https://github.com/whitel1st/gateway-finder-imp.git"
 	cd gateway-finder-imp
-	python3 -m pip install -r requirements.txt
+	python3 -m pip install -U -r requirements.txt
 	_popd
 }
 
@@ -609,6 +628,7 @@ gitjacker() {
 
 go-windapsearch() {
 	_pushd tools
+	progress "go-windapsearch"
 	mkdir go-windapsearch
 	cd go-windapsearch
 	downloadRelease "ropnop/go-windapsearch" windapsearch-linux-amd64 go-windapsearch
@@ -624,6 +644,15 @@ gobuster() {
 impacket() {
 	progress "impacket"
 	pipx install -f "git+https://github.com/SecureAuthCorp/impacket.git"
+}
+
+impacket-adcs() {
+	_pushd tools
+	progress "impacket-adcs"
+	cloneRepository "https://github.com/ExAndroidDev/impacket.git" impacket-adcs
+	cd impacket-adcs
+	git checkout ntlmrelayx-adcs-attack
+	_popd
 }
 
 ipmitool() {
@@ -653,7 +682,7 @@ ldapdomaindump() {
 	progress "ldapdomaindump"
 	cloneRepository "https://github.com/dirkjanm/ldapdomaindump.git"
 	cd ldapdomaindump
-	python2 -m pip install ldap3 dnspython
+	python2 -m pip install -U ldap3 dnspython
 	sudo python2 setup.py install
 	_popd
 }
@@ -663,7 +692,7 @@ ldapsearch-ad() {
 	progress "ldapsearch-ad"
 	cloneRepository "https://github.com/yaap7/ldapsearch-ad.git"
 	cd ldapsearch-ad
-	python3 -m pip install -r requirements.txt
+	python3 -m pip install -U -r requirements.txt
 	_popd
 }
 
@@ -691,7 +720,7 @@ mscache() {
 	_pushd tools
 	progress "mscache"
 	cloneRepository "https://github.com/QAX-A-Team/mscache.git"
-	python2 -m pip install passlib
+	python2 -m pip install -U passlib
 	_popd
 }
 
@@ -750,13 +779,22 @@ odat() {
 	_popd
 }
 
+paperify() {
+	_pushd tools
+	progress "paperify"
+	cloneRepository "https://github.com/alisinabh/paperify.git"
+	installDebPackage "qrencode"
+	sudo ln -sv ~/tools/paperify/paperify.sh /usr/local/bin/paperify
+	_popd
+}
+
 pyGPOAbuse() {
 	_pushd tools
 	progress "pyGPOAbuse"
 	cloneRepository "https://github.com/Hackndo/pyGPOAbuse.git"
 	cd pyGPOAbuse
-	python3 -m pip install -r requirements.txt
-	python3 -m pip install aiosmb
+	python3 -m pip install -U -r requirements.txt
+	python3 -m pip install -U aiosmb
 	_popd
 }
 
@@ -770,7 +808,7 @@ pywerview() {
 	progress "pywerview"
 	cloneRepository "https://github.com/the-useless-one/pywerview.git"
 	cd pywerview
-	python2 -m pip install -r requirements.txt
+	python2 -m pip install -U -r requirements.txt
 	_popd
 }
 
@@ -802,6 +840,11 @@ sRDI() {
 	_popd
 }
 
+smartbrute() {
+	progress "smartbrute"
+	pipx install -f "git+https://github.com/ShutdownRepo/smartbrute.git"
+}
+
 snmpwn() {
 	_pushd tools
 	progress "snmpwn"
@@ -816,7 +859,7 @@ spraykatz() {
 	progress "spraykatz"
 	cloneRepository "https://github.com/aas-n/spraykatz.git"
 	cd spraykatz
-	python3 -m pip install -r requirements.txt
+	python3 -m pip install -U -r requirements.txt
 	_popd
 }
 
@@ -852,6 +895,15 @@ updog() {
 	pipx install -f "git+https://github.com/sc0tfree/updog.git"
 }
 
+webpage2html() {
+	_pushd tools
+	progress "webpage2html"
+	cloneRepository "https://github.com/snovvcrash/webpage2html.git"
+	cd webpage2html
+	python2 -m pip install -U -r requirements.txt
+	_popd
+}
+
 windapsearch() {
 	_pushd tools
 	progress "windapsearch"
@@ -860,7 +912,7 @@ windapsearch() {
 	installDebPackage libssl-dev
 	cloneRepository "https://github.com/ropnop/windapsearch.git"
 	cd windapsearch
-	python3 -m pip install -r requirements.txt
+	python3 -m pip install -U -r requirements.txt
 	_popd
 }
 
@@ -871,7 +923,7 @@ xc() {
 	go get golang.org/x/text/encoding/unicode
 	go get github.com/hashicorp/yamux
 	go get github.com/ropnop/go-clr
-	python3 -m pip install donut-shellcode
+	python3 -m pip install -U donut-shellcode
 	installDebPackage rlwrap
 	installDebPackage upx
 	cloneRepository "https://github.com/xct/xc.git"
@@ -903,6 +955,7 @@ tools() {
 	OffensiveNim
 	PCredz
 	PEzor
+	PKINITtools
 	PetitPotam
 	PrintNightmare
 	PrivExchange
@@ -931,6 +984,7 @@ tools() {
 	go-windapsearch
 	gobuster
 	impacket
+	impacket-adcs
 	ipmitool
 	kerbrute
 	krbrelayx
@@ -953,12 +1007,14 @@ tools() {
 	rbcd_permissions
 	rdp-tunnel-tools
 	sRDI
+	smartbrute
 	snmpwn
 	spraykatz
 	ssb
 	sshuttle
 	traitor
 	updog
+	webpage2html
 	windapsearch
 	xc
 }
@@ -1012,6 +1068,20 @@ DomainPasswordSpray() {
 Grouper2() {
 	_pushd www
 	downloadRelease "l0ss/Grouper2" Grouper2.exe grouper2.exe
+	_popd
+}
+
+HiveNightmare() {
+	_pushd www
+	downloadRelease "GossiTheDog/HiveNightmare" HiveNightmare.exe HiveNightmare.exe
+	downloadRawFile "https://github.com/FireFart/hivenightmare/raw/main/release/hive.exe" hive.exe
+	cloneRepository "https://github.com/HuskyHacks/ShadowSteal.git"
+	cd ShadowSteal
+	nimble install zippy argparse winim -y
+	make
+	mv bin/ShadowSteal.exe ~/www
+	cd ..
+	rm -rf ShadowSteal
 	_popd
 }
 
@@ -1419,6 +1489,7 @@ www() {
 	Discover-PSMSSQLServers
 	DomainPasswordSpray
 	#Grouper2
+	HiveNightmare
 	Intercepter-NG
 	Inveigh
 	InveighZero
