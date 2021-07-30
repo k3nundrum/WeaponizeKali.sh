@@ -633,6 +633,7 @@ go-windapsearch() {
 	cd go-windapsearch
 	downloadRelease "ropnop/go-windapsearch" windapsearch-linux-amd64 go-windapsearch
 	chmod +x go-windapsearch
+	sudo ln -sv `readlink -f go-windapsearch` /usr/local/bin/go-windapsearch
 	_popd
 }
 
@@ -784,7 +785,9 @@ paperify() {
 	progress "paperify"
 	cloneRepository "https://github.com/alisinabh/paperify.git"
 	installDebPackage "qrencode"
-	sudo ln -sv ~/tools/paperify/paperify.sh /usr/local/bin/paperify
+	installDebPackage "imagemagick"
+	cd paperify
+	sudo ln -sv `readlink -f paperify.sh` /usr/local/bin/paperify
 	_popd
 }
 
@@ -809,6 +812,15 @@ pywerview() {
 	cloneRepository "https://github.com/the-useless-one/pywerview.git"
 	cd pywerview
 	python2 -m pip install -U -r requirements.txt
+	_popd
+}
+
+pywhisker() {
+	_pushd tools
+	progress "pywhisker"
+	cloneRepository "https://github.com/ShutdownRepo/pywhisker.git"
+	cd pywhisker
+	python3 -m pip install -U -r requirements.txt
 	_popd
 }
 
@@ -850,7 +862,7 @@ snmpwn() {
 	progress "snmpwn"
 	cloneRepository "https://github.com/hatlord/snmpwn.git"
 	cd snmpwn
-	bundle install
+	bundle install --path ~/.gem
 	_popd
 }
 
@@ -1003,6 +1015,7 @@ tools() {
 	pyGPOAbuse
 	pypykatz
 	pywerview
+	pywhisker
 	rbcd-attack
 	rbcd_permissions
 	rdp-tunnel-tools
@@ -1022,6 +1035,12 @@ tools() {
 # -----------------------------------------------------------------------------
 # ------------------------------------ www ------------------------------------
 # -----------------------------------------------------------------------------
+
+ADCSPwn() {
+	_pushd www
+	downloadRelease "bats3c/ADCSPwn" ADCSPwn.exe adcspwn.exe
+	_popd
+}
 
 ADRecon() {
 	_pushd www
@@ -1073,13 +1092,14 @@ Grouper2() {
 
 HiveNightmare() {
 	_pushd www
-	downloadRelease "GossiTheDog/HiveNightmare" HiveNightmare.exe HiveNightmare.exe
+	downloadRelease "GossiTheDog/HiveNightmare" HiveNightmare.exe hivenightmare.exe
 	downloadRawFile "https://github.com/FireFart/hivenightmare/raw/main/release/hive.exe" hive.exe
 	cloneRepository "https://github.com/HuskyHacks/ShadowSteal.git"
 	cd ShadowSteal
 	nimble install zippy argparse winim -y
 	make
-	mv bin/ShadowSteal.exe ~/www
+	mv bin/ShadowSteal.exe ../shadowsteal.exe
+	chmod -x ../shadowsteal.exe
 	cd ..
 	rm -rf ShadowSteal
 	_popd
@@ -1482,6 +1502,7 @@ suid3num.py() {
 }
 
 www() {
+	ADCSPwn
 	ADRecon
 	ASREPRoast
 	AccessChk
