@@ -131,7 +131,7 @@ optional arguments:
 * [x] [ffuf](https://github.com/ffuf/ffuf/releases)
 * [x] [gateway-finder-imp](https://github.com/whitel1st/gateway-finder-imp)
 * [x] [gitjacker](https://github.com/liamg/gitjacker/releases)
-* [x] [go-windapsearch](https://github.com/ropnop/go-windapsearch)
+* [x] [go-windapsearch](https://github.com/ropnop/go-windapsearch) · [Pre-Compiled](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/bin/windapsearch)
 * [x] [gobuster](https://github.com/OJ/gobuster/releases)
 * [x] [impacket](https://github.com/SecureAuthCorp/impacket)
 * [x] [impacket-adcs](https://github.com/ExAndroidDev/impacket/tree/ntlmrelayx-adcs-attack)

@@ -236,8 +236,8 @@ BloodHound() {
 	sudo chmod 4755 chrome-sandbox
 	sudo mkdir /usr/share/neo4j/logs/
 	mkdir -p ~/.config/bloodhound
-	downloadRawFile "https://github.com/ShutdownRepo/Exegol/raw/master/sources/bloodhound/config.json" > ~/.config/bloodhound/config.json
-	downloadRawFile "https://github.com/ShutdownRepo/Exegol/raw/master/sources/bloodhound/customqueries.json" > ~/.config/bloodhound/customqueries.json
+	downloadRawFile "https://github.com/ShutdownRepo/Exegol/raw/master/sources/bloodhound/config.json" ~/.config/bloodhound/config.json
+	downloadRawFile "https://github.com/ShutdownRepo/Exegol/raw/master/sources/bloodhound/customqueries.json" ~/.config/bloodhound/customqueries.json
 	sed -i 's/"password": "exegol4thewin"/"password": "WeaponizeK4li!"/g' ~/.config/bloodhound/config.json
 	_popd
 }
@@ -631,9 +631,9 @@ go-windapsearch() {
 	progress "go-windapsearch"
 	mkdir go-windapsearch
 	cd go-windapsearch
-	downloadRelease "ropnop/go-windapsearch" windapsearch-linux-amd64 go-windapsearch
-	chmod +x go-windapsearch
-	sudo ln -sv `readlink -f go-windapsearch` /usr/local/bin/go-windapsearch
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/windapsearch" windapsearch
+	chmod +x windapsearch
+	sudo ln -sv `readlink -f windapsearch` /usr/local/bin/windapsearch
 	_popd
 }
 
@@ -989,7 +989,6 @@ tools() {
 	dsniff
 	eavesarp
 	enum4linux-ng
-	evil-winrm
 	ffuf
 	gateway-finder-imp
 	gitjacker
@@ -1030,6 +1029,7 @@ tools() {
 	webpage2html
 	windapsearch
 	xc
+	evil-winrm
 }
 
 # -----------------------------------------------------------------------------
