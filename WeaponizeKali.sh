@@ -330,6 +330,13 @@ LDAPPER() {
 	_popd
 }
 
+LightMe() {
+	_pushd tools
+	progress "LightMe"
+	git clone --recurse-submodules "https://github.com/WazeHell/LightMe.git"
+	_popd
+}
+
 MS17-010() {
 	_pushd tools
 	progress "MS17-010"
@@ -417,11 +424,12 @@ PetitPotam() {
 	_popd
 }
 
-PrintNightmare() {
+CVE-2021-1675-tools() {
 	_pushd tools
-	progress "PrintNightmare"
-	mkdir PrintNightmare
-	cd PrintNightmare
+	progress "CVE-2021-1675"
+	mkdir CVE-2021-1675
+	cd CVE-2021-1675
+	cloneRepository "https://github.com/cube0x0/impacket.git"
 	downloadRawFile "https://github.com/cube0x0/CVE-2021-1675/raw/main/CVE-2021-1675.py" CVE-2021-1675-MS-RPRN.py
 	downloadRawFile "https://github.com/cube0x0/CVE-2021-1675/raw/main/SharpPrintNightmare/CVE-2021-1675.py" CVE-2021-1675-MS-PAR.py
 	_popd
@@ -480,6 +488,11 @@ TrustVisualizer() {
 	cd TrustVisualizer
 	python2 -m pip install -U -r requirements.txt
 	_popd
+}
+
+WebclientServiceScanner() {
+	progress "WebclientServiceScanner"
+	pipx install -f "git+https://github.com/Hackndo/WebclientServiceScanner.git"
 }
 
 Windows-Exploit-Suggester() {
@@ -647,12 +660,17 @@ impacket() {
 	pipx install -f "git+https://github.com/SecureAuthCorp/impacket.git"
 }
 
-impacket-adcs() {
+impacket-snovvcrash() {
 	_pushd tools
-	progress "impacket-adcs"
-	cloneRepository "https://github.com/ExAndroidDev/impacket.git" impacket-adcs
-	cd impacket-adcs
-	git checkout ntlmrelayx-adcs-attack
+	progress "impacket-snovvcrash"
+	cloneRepository "https://github.com/snovvcrash/impacket.git" impacket-snovvcrash
+	_popd
+}
+
+impacket-src() {
+	_pushd tools
+	progress "impacket-src"
+	cloneRepository "https://github.com/SecureAuthCorp/impacket.git"
 	_popd
 }
 
@@ -668,6 +686,7 @@ kerbrute() {
 	cd kerbrute
 	downloadRelease "ropnop/kerbrute" kerbrute_linux_amd64 kerbrute
 	chmod +x kerbrute
+	sudo ln -sv `readlink -f kerbrute` /usr/local/bin/kerbrute
 	_popd
 }
 
@@ -951,6 +970,7 @@ tools() {
 	BloodHound.py
 	CVE-2019-1040-scanner
 	CVE-2020-1472-checker
+	CVE-2021-1675-tools
 	CrackMapExec
 	Creds
 	DLLsForHackers
@@ -959,6 +979,7 @@ tools() {
 	Empire
 	ItWasAllADream
 	LDAPPER
+	LightMe
 	MS17-010
 	MeterPwrShell
 	Nim
@@ -969,12 +990,12 @@ tools() {
 	PEzor
 	PKINITtools
 	PetitPotam
-	PrintNightmare
 	PrivExchange
 	Responder
 	RustScan
 	SharpShooter
 	ShellPop
+	WebclientServiceScanner
 	TrustVisualizer
 	Windows-Exploit-Suggester
 	#ack3
@@ -995,7 +1016,8 @@ tools() {
 	go-windapsearch
 	gobuster
 	impacket
-	impacket-adcs
+	impacket-snovvcrash
+	impacket-src
 	ipmitool
 	kerbrute
 	krbrelayx
@@ -1066,6 +1088,19 @@ AccessChk() {
 	_popd
 }
 
+CVE-2021-1675-www() {
+	_pushd www
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/SharpPrintNightmare.exe" sharpprintnightmare.exe
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-SharpPrintNightmare.ps1" invoke-sharpprintnightmare.ps1
+	_popd
+}
+
+Certify() {
+	_pushd www
+	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_Any/Certify.exe" certify.exe
+	_popd
+}
+
 Discover-PSMSExchangeServers() {
 	_pushd www
 	downloadRawFile "https://github.com/PyroTek3/PowerShell-AD-Recon/raw/master/Discover-PSMSExchangeServers" discover-psmsexchangeservers.ps1
@@ -1102,6 +1137,12 @@ HiveNightmare() {
 	chmod -x ../shadowsteal.exe
 	cd ..
 	rm -rf ShadowSteal
+	_popd
+}
+
+Huan() {
+	_pushd www
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Huan.exe" huan.exe
 	_popd
 }
 
@@ -1202,12 +1243,6 @@ PEASS() {
 	downloadRawFile "https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/linPEAS/linpeas.sh" linpeas.sh
 	downloadRawFile "https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/winPEAS/winPEASexe/binaries/Release/winPEASany.exe" winpeas.exe
 	downloadRawFile "https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/winPEAS/winPEASbat/winPEAS.bat" winpeas.bat
-	_popd
-}
-
-PSPKIAudit() {
-	_pushd www
-	downloadRawFile "https://github.com/GhostPack/PSPKIAudit/archive/refs/heads/main.zip" PSPKIAudit.zip
 	_popd
 }
 
@@ -1357,10 +1392,17 @@ SharpHound() {
 	_popd
 }
 
+SharpImpersonation() {
+	_pushd www
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/SharpImpersonation.exe" sharpimpersonation.exe
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-SharpImpersonation.ps1" invoke-sharpimpersonation.ps1
+	_popd
+}
+
 SharpNamedPipePTH() {
 	_pushd www
 	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_Any/SharpNamedPipePTH.exe" sharpnamedpipepth.exe
-	downloadRawFile "https://github.com/snovvcrash/PowerSharpPack/raw/master/PowerSharpBinaries/Invoke-SharpNamedPipePTH.ps1" invoke-sharpnamedpipepth.ps1
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-SharpNamedPipePTH.ps1" invoke-sharpnamedpipepth.ps1
 	_popd
 }
 
@@ -1424,6 +1466,7 @@ chisel-www() {
 	mv chisel.exe ../chisel.exe
 	cd ..
 	rm -rf tmp1 tmp2
+	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_Any/SharpChisel.exe" sharpchisel.exe
 	_popd
 }
 
@@ -1506,11 +1549,14 @@ www() {
 	ADRecon
 	ASREPRoast
 	AccessChk
+	CVE-2021-1675-www
+	Certify
 	Discover-PSMSExchangeServers
 	Discover-PSMSSQLServers
 	DomainPasswordSpray
 	#Grouper2
 	HiveNightmare
+	Huan
 	Intercepter-NG
 	Inveigh
 	InveighZero
@@ -1527,7 +1573,6 @@ www() {
 	LaZagne
 	Out-EncryptedScript
 	PEASS
-	PSPKIAudit
 	PingCastle
 	PowerShellArmoury
 	PowerUp
@@ -1551,6 +1596,7 @@ www() {
 	SharpGPOAbuse
 	SharpHandler
 	SharpHound
+	SharpImpersonation
 	SharpNamedPipePTH
 	SharpSecDump
 	SharpView
