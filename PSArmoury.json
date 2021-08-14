@@ -22,12 +22,12 @@
 	{
 		"Name": "Invoke-Kerberoast.ps1",
 		"Type": "WebDownloadSimple",
-		"URL":  "https://github.com/BC-SECURITY/Empire/raw/master/data/module_source/credentials/Invoke-Kerberoast.ps1"
+		"URL":  "https://github.com/BC-SECURITY/Empire/raw/master/empire/server/data/module_source/credentials/Invoke-Kerberoast.ps1"
 	},
 	{
 		"Name": "Invoke-Mimikatz.ps1",
 		"Type": "WebDownloadSimple",
-		"URL":  "https://github.com/BC-SECURITY/Empire/raw/master/data/module_source/credentials/Invoke-Mimikatz.ps1"
+		"URL":  "https://github.com/BC-SECURITY/Empire/raw/master/empire/server/data/module_source/credentials/Invoke-Mimikatz.ps1"
 	},
 	{
 		"Name": "Invoke-Portscan.ps1",
@@ -55,9 +55,14 @@
 		"URL":  "https://github.com/S3cur3Th1sSh1t/PowerSharpPack/raw/master/PowerSharpBinaries/Invoke-SharpDPAPI.ps1"
 	},
 	{
+		"Name": "Invoke-SharpImpersonation.ps1",
+		"Type": "WebDownloadSimple",
+		"URL":  "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-SharpImpersonation.ps1"
+	},
+	{
 		"Name": "Invoke-SharpNamedPipePTH.ps1",
 		"Type": "WebDownloadSimple",
-		"URL":  "https://github.com/snovvcrash/PowerSharpPack/raw/master/PowerSharpBinaries/Invoke-SharpNamedPipePTH.ps1"
+		"URL":  "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-SharpNamedPipePTH.ps1"
 	},
 	{
 		"Name": "Powermad.ps1",
