@@ -233,7 +233,6 @@ optional arguments:
 * [x] [WinPwn](https://github.com/S3cur3Th1sSh1t/WinPwn)
 * [x] [WerTrigger](https://github.com/sailay1996/WerTrigger)
 * [x] [chisel](https://github.com/jpillora/chisel/releases)
-* [x] [impacket-examples-windows](https://github.com/maaaaz/impacket-examples-windows)
 * [x] [les.sh](https://github.com/mzet-/linux-exploit-suggester/blob/master/linux-exploit-suggester.sh)
 * [x] [lse.sh](https://github.com/diego-treitos/linux-smart-enumeration/blob/master/lse.sh)
 * [x] [mimikatz](https://github.com/gentilkiwi/mimikatz/releases)

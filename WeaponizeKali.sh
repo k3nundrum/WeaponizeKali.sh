@@ -1470,12 +1470,6 @@ chisel-www() {
 	_popd
 }
 
-impacket-examples-windows() {
-	_pushd www
-	cloneRepository "https://github.com/maaaaz/impacket-examples-windows.git"
-	_popd
-}
-
 linux-exploit-suggester() {
 	_pushd www
 	downloadRawFile "https://github.com/mzet-/linux-exploit-suggester/raw/master/linux-exploit-suggester.sh" les.sh
@@ -1606,7 +1600,6 @@ www() {
 	WerTrigger
 	WinPwn
 	chisel-www
-	impacket-examples-windows
 	linux-exploit-suggester
 	mimikatz
 	netcat-win
