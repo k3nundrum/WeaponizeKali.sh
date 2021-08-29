@@ -600,7 +600,7 @@ eavesarp() {
 	progress "eavesarp"
 	cloneRepository "https://github.com/arch4ngel/eavesarp.git"
 	cd eavesarp
-	python3 -m pip install -U -r requirements.txt
+	sudo python3 -m pip install -U -r requirements.txt
 	_popd
 }
 
@@ -1051,7 +1051,7 @@ tools() {
 	webpage2html
 	windapsearch
 	xc
-	evil-winrm
+	evil-winrm # should stay in the end of the installation list in order not to break its dependencies
 }
 
 # -----------------------------------------------------------------------------
