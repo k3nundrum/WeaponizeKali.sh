@@ -462,6 +462,13 @@ RustScan() {
 	_popd
 }
 
+SCShell() {
+	_pushd tools
+	progress "SCShell"
+	cloneRepository "https://github.com/Mr-Un1k0d3r/SCShell.git"
+	_popd
+}
+
 SharpShooter() {
 	_pushd tools
 	progress "SharpShooter"
@@ -563,14 +570,15 @@ bloodhound-quickwin() {
 	_popd
 }
 
-chisel-tools() {
+chisel-server() {
 	_pushd tools
-	progress "chisel-tools"
+	progress "chisel"
 	mkdir chisel
 	cd chisel
 	downloadRelease "jpillora/chisel" chisel.*linux_amd64.gz chisel.gz
 	gunzip chisel.gz
 	chmod +x chisel
+	sudo ln -sv `readlink -f chisel` /usr/local/bin/chisel
 	_popd
 }
 
@@ -618,6 +626,13 @@ evil-winrm() {
 ffuf() {
 	progress "ffuf"
 	installDebPackage ffuf
+}
+
+gMSADumper() {
+	_pushd tools
+	progress "gMSADumper"
+	cloneRepository "https://github.com/micahvandeusen/gMSADumper.git"
+	_popd
 }
 
 gateway-finder-imp() {
@@ -713,6 +728,17 @@ ldapsearch-ad() {
 	cloneRepository "https://github.com/yaap7/ldapsearch-ad.git"
 	cd ldapsearch-ad
 	python3 -m pip install -U -r requirements.txt
+	_popd
+}
+
+ligolo-ng-proxy() {
+	_pushd tools
+	progress "ligolo-ng"
+	mkdir ligolo-ng
+	cd ligolo-ng
+	downloadRelease "tnpitsecurity/ligolo-ng" ligolo-ng_proxy.*Linux_64bit.tar.gz ligolo-proxy.tar.gz
+	tar -xzf ligolo-proxy.tar.gz
+	rm LICENSE ligolo-proxy.tar.gz
 	_popd
 }
 
@@ -911,6 +937,24 @@ sshuttle() {
 	installDebPackage "sshuttle"
 }
 
+targetedKerberoast() {
+	_pushd tools
+	progress "targetedKerberoast"
+	cloneRepository "https://github.com/ShutdownRepo/targetedKerberoast.git"
+	cd targetedKerberoast
+	python3 -m pip install -U -r requirements.txt
+	_popd
+}
+
+ticket_converter() {
+	_pushd tools
+	progress "ticket_converter"
+	cloneRepository "https://github.com/eloypgz/ticket_converter.git"
+	cd ticket_converter
+	python2 -m pip install -U -r requirements.txt
+	_popd
+}
+
 traitor() {
 	_pushd tools
 	progress "traitor"
@@ -993,6 +1037,7 @@ tools() {
 	PrivExchange
 	Responder
 	RustScan
+	SCShell
 	SharpShooter
 	ShellPop
 	WebclientServiceScanner
@@ -1004,13 +1049,14 @@ tools() {
 	aquatone
 	bettercap
 	bloodhound-quickwin
-	chisel-tools
+	chisel-server
 	crowbar
 	dementor.py
 	dsniff
 	eavesarp
 	enum4linux-ng
 	ffuf
+	gMSADumper
 	gateway-finder-imp
 	gitjacker
 	go-windapsearch
@@ -1023,6 +1069,7 @@ tools() {
 	krbrelayx
 	ldapdomaindump
 	ldapsearch-ad
+	ligolo-ng-proxy
 	lsassy
 	masscan
 	mitm6
@@ -1046,6 +1093,8 @@ tools() {
 	spraykatz
 	ssb
 	sshuttle
+	targetedKerberoast
+	ticket_converter
 	traitor
 	updog
 	webpage2html
@@ -1137,12 +1186,6 @@ HiveNightmare() {
 	chmod -x ../shadowsteal.exe
 	cd ..
 	rm -rf ShadowSteal
-	_popd
-}
-
-Huan() {
-	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Huan.exe" huan.exe
 	_popd
 }
 
@@ -1327,6 +1370,12 @@ ProcDump() {
 	_popd
 }
 
+RdpThief() {
+	_pushd www
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/RdpThiefInjectorSC.exe" rdpthiefinjectorsc.exe
+	_popd
+}
+
 RemotePotato0() {
 	_pushd www
 	downloadRelease "antonioCoco/RemotePotato0" RemotePotato0.zip remotepotato0.zip
@@ -1399,10 +1448,29 @@ SharpImpersonation() {
 	_popd
 }
 
+SharpLAPS() {
+	_pushd www
+	downloadRelease "swisskyrepo/SharpLAPS" SharpLAPS.exe sharplaps.exe
+	_popd
+}
+
 SharpNamedPipePTH() {
 	_pushd www
 	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_Any/SharpNamedPipePTH.exe" sharpnamedpipepth.exe
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-SharpNamedPipePTH.ps1" invoke-sharpnamedpipepth.ps1
+	_popd
+}
+
+SharpRDP() {
+	_pushd www
+	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.5_Any/SharpRDP.exe" sharprdp.exe
+	_popd
+}
+
+SharpRelay() {
+	_pushd www
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/SharpRelay.exe" sharprelay.exe
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/WinDivert64.sys" windivert64.sys
 	_popd
 }
 
@@ -1451,7 +1519,15 @@ WinPwn() {
 	_popd
 }
 
-chisel-www() {
+arpfox() {
+	_pushd www
+	downloadRelease "malfunkt/arpfox" arpfox_linux_amd64.gz arpfox.gz
+	gunzip arpfox.gz
+	mv arpfox_linux_amd64 arpfox
+	_popd
+}
+
+chisel-clients() {
 	_pushd www
 	mkdir tmp1
 	cd tmp1
@@ -1467,6 +1543,24 @@ chisel-www() {
 	cd ..
 	rm -rf tmp1 tmp2
 	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_Any/SharpChisel.exe" sharpchisel.exe
+	_popd
+}
+
+ligolo-ng-agents() {
+	_pushd www
+	mkdir tmp1
+	cd tmp1
+	downloadRelease "tnpitsecurity/ligolo-ng" ligolo-ng_agent.*Linux_64bit.tar.gz ligolo-agent.tar.gz
+	tar -xzf ligolo-agent.tar.gz
+	mv agent ../ligolo-agent
+	cd ..
+	mkdir tmp2
+	cd tmp2
+	downloadRelease "tnpitsecurity/ligolo-ng" ligolo-ng_agent.*Windows_64bit.zip ligolo-agent.exe.zip
+	unzip -q ligolo-agent.exe.zip
+	mv agent.exe ../ligolo-agent.exe
+	cd ..
+	rm -rf tmp1 tmp2
 	_popd
 }
 
@@ -1550,7 +1644,6 @@ www() {
 	DomainPasswordSpray
 	#Grouper2
 	HiveNightmare
-	Huan
 	Intercepter-NG
 	Inveigh
 	InveighZero
@@ -1580,6 +1673,7 @@ www() {
 	PrintSpoofer
 	PrivescCheck
 	ProcDump
+	RdpThief
 	RemotePotato0
 	RoguePotato
 	Rubeus
@@ -1591,7 +1685,10 @@ www() {
 	SharpHandler
 	SharpHound
 	SharpImpersonation
+	SharpLAPS
 	SharpNamedPipePTH
+	SharpRDP
+	SharpRelay
 	SharpSecDump
 	SharpView
 	Sherlock
@@ -1599,7 +1696,9 @@ www() {
 	SpoolSample
 	WerTrigger
 	WinPwn
-	chisel-www
+	arpfox
+	chisel-clients
+	ligolo-ng-agents
 	linux-exploit-suggester
 	mimikatz
 	netcat-win

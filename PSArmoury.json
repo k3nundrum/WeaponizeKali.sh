@@ -10,11 +10,6 @@
 		"URL":  "https://github.com/PyroTek3/PowerShell-AD-Recon/raw/master/Discover-PSMSSQLServers"
 	},
 	{
-		"Name": "Inveigh.ps1",
-		"Type": "WebDownloadSimple",
-		"URL":  "https://github.com/Kevin-Robertson/Inveigh/raw/master/Inveigh.ps1"
-	},
-	{
 		"Name": "Invoke-BadPotato.ps1",
 		"Type": "WebDownloadSimple",
 		"URL":  "https://github.com/S3cur3Th1sSh1t/PowerSharpPack/raw/master/PowerSharpBinaries/Invoke-BadPotato.ps1"
