@@ -617,12 +617,6 @@ enum4linux-ng() {
 	pipx install -f "git+https://github.com/cddmp/enum4linux-ng.git"
 }
 
-evil-winrm() {
-	progress "evil-winrm"
-	gem install evil-winrm --user-install
-	sudo ln -sv ~/.local/share/gem/ruby/2.7.0/bin/evil-winrm /usr/local/bin/evil-winrm
-}
-
 ffuf() {
 	progress "ffuf"
 	installDebPackage ffuf
@@ -994,16 +988,14 @@ windapsearch() {
 xc() {
 	_pushd tools
 	progress "xc"
-	go get golang.org/x/sys/...
-	go get golang.org/x/text/encoding/unicode
-	go get github.com/hashicorp/yamux
-	go get github.com/ropnop/go-clr
-	python3 -m pip install -U donut-shellcode
-	installDebPackage rlwrap
-	installDebPackage upx
 	cloneRepository "https://github.com/xct/xc.git"
 	cd xc
-	make
+	GO111MODULE=off go get golang.org/x/sys/...
+	GO111MODULE=off go get golang.org/x/text/encoding/unicode
+	GO111MODULE=off go get github.com/hashicorp/yamux
+	installDebPackage rlwrap
+	installDebPackage upx
+	python3 build.py
 	cp xc xc.exe ../../www
 	_popd
 }
@@ -1100,7 +1092,6 @@ tools() {
 	webpage2html
 	windapsearch
 	xc
-	evil-winrm # should stay in the end of the installation list in order not to break its dependencies
 }
 
 # -----------------------------------------------------------------------------
