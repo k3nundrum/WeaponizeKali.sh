@@ -110,7 +110,7 @@ cloneRepository() {
 		dname=$2
 	fi
 
-	if git clone -q $url $dname; then
+	if git clone --recurse-submodules -q $url $dname; then
 		success "Cloned repository: $repo_name"
 	else
 		fail "Failed to clone repository: $repo_name"
@@ -194,6 +194,13 @@ _snap() {
 	export PATH="$PATH:/snap/bin"
 }
 
+_dotnet() {
+	# For Covenant
+	curl -sSL https://dot.net/v1/dotnet-install.sh | sudo bash /dev/stdin -Channel 3.1
+	# For SharpGen
+	curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin -Channel 2.1
+}
+
 dependencies() {
 	_jq
 	_python2-pip
@@ -206,6 +213,7 @@ dependencies() {
 	_pipx
 	_neo4j
 	_snap
+	_dotnet
 }
 
 # -----------------------------------------------------------------------------
@@ -260,6 +268,14 @@ CVE-2020-1472-checker() {
 	cd CVE-2020-1472-checker
 	python3 -m pip install -U -r requirements.txt
 	chmod +x zerologon_tester.py
+	_popd
+}
+
+Covenant() {
+	_pushd tools
+	cloneRepository "https://github.com/cobbr/Covenant.git"
+	#cd Covenant/Covenant
+	#sudo /root/.dotnet/dotnet run
 	_popd
 }
 
@@ -333,7 +349,7 @@ LDAPPER() {
 LightMe() {
 	_pushd tools
 	progress "LightMe"
-	git clone --recurse-submodules "https://github.com/WazeHell/LightMe.git"
+	cloneRepository "https://github.com/WazeHell/LightMe.git"
 	_popd
 }
 
@@ -405,7 +421,7 @@ PEzor() {
 	cloneRepository "https://github.com/phra/PEzor.git"
 	cd PEzor
 	sudo bash install.sh
-	# sudo cat /root/.bashrc | grep PEzor
+	#sudo cat /root/.bashrc | grep PEzor
 	_popd
 }
 
@@ -466,6 +482,12 @@ SCShell() {
 	_pushd tools
 	progress "SCShell"
 	cloneRepository "https://github.com/Mr-Un1k0d3r/SCShell.git"
+	_popd
+}
+
+SharpGen() {
+	_pushd tools
+	cloneRepository "https://github.com/cobbr/SharpGen.git"
 	_popd
 }
 
@@ -1277,6 +1299,12 @@ PEASS() {
 	downloadRawFile "https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/linPEAS/linpeas.sh" linpeas.sh
 	downloadRawFile "https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/winPEAS/winPEASexe/binaries/Release/winPEASany.exe" winpeas.exe
 	downloadRawFile "https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/winPEAS/winPEASbat/winPEAS.bat" winpeas.bat
+	_popd
+}
+
+PSInject() {
+	_pushd www
+	downloadRawFile "https://github.com/EmpireProject/PSInject/raw/master/Invoke-PSInject.ps1" invoke-psinject.ps1
 	_popd
 }
 
