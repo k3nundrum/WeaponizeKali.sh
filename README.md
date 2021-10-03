@@ -79,9 +79,30 @@ optional arguments:
   -w                    download scripts and binaries for delivering onto the victim host
 ```
 
+## Extra
+
+### PowerShellArmoury
+
+Create armored `.ps1` scripts containing all the PowerShell tools you want with [PowerShellArmoury](https://github.com/cfalta/PowerShellArmoury):
+
+```powershell
+PS > . .\New-PSArmoury.ps1
+PS > New-PSArmoury -ValidateOnly -Config PSArmoury.json
+PS > New-PSArmoury -Path armored.ps1 -Config PSArmoury.json -EnhancedArmour
+```
+
+### `misc/`
+
+Get a random name of a `.exe` or `.dll` binary:
+
+```console
+~$ EXE="`curl -sL https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/binaries.txt | shuf -n1`.exe"
+~$ DLL="`curl -sL https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/system32-dlls.txt | shuf -n1`.dll"
+```
+
 ## Available Tools
 
-### `tools`
+### `tools/`
 
 * [x] [Amsi-Bypass-Powershell](https://github.com/S3cur3Th1sSh1t/Amsi-Bypass-Powershell/blob/master/README.md)
 * [x] [BloodHound.py](https://github.com/fox-it/BloodHound.py)
@@ -179,7 +200,7 @@ optional arguments:
 * [x] [windapsearch](https://github.com/ropnop/windapsearch)
 * [x] [xc](https://github.com/xct/xc)
 
-### `www`
+### `www/`
 
 * [x] [ADCSPwn](https://github.com/bats3c/ADCSPwn/releases)
 * [x] [ADRecon.ps1](https://github.com/adrecon/ADRecon/blob/master/ADRecon.ps1)

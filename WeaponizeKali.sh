@@ -1391,7 +1391,7 @@ ProcDump() {
 
 RdpThief() {
 	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/RdpThiefInjectorSC.exe" rdpthiefinjectorsc.exe
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/RdpThiefInjectorSCDI.exe" rdpthiefinjectorscdi.exe
 	_popd
 }
 

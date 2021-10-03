@@ -23,7 +23,7 @@ rbenv local 2.7.1
 gem install bundler
 bundle install
 
-current_evwr="$HOME/tools/evil-winrm.rb"
+current_evwr="$HOME/tools/evil-winrm/evil-winrm.rb"
 
 sudo bash -c "cat << 'EOF' > /usr/bin/evil-winrm
     #!/usr/bin/env sh
