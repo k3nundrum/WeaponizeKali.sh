@@ -604,6 +604,8 @@ bettercap() {
 	unzip -q bettercap.zip
 	rm bettercap*.sha256 bettercap.zip
 	sudo ./bettercap -eval "caplets.update; ui.update; q"
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bettercap/arpspoof.cap"
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bettercap/wsus.cap"
 	_popd
 }
 
