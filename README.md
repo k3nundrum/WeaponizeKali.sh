@@ -81,7 +81,7 @@ optional arguments:
 
 ## `extra/`
 
-## Evil-WinRM
+### Evil-WinRM
 
 Install the laster version of [Evil-WinRM](https://github.com/Hackplayers/evil-winrm) using `rbenv`:
 

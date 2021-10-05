@@ -427,6 +427,8 @@ PCredz() {
 	_pushd tools
 	progress "PCredz"
 	cloneRepository "https://github.com/lgandx/PCredz.git"
+	python3 -m pip install -U Cython
+	python3 -m pip install -U python-libpcap
 	_popd
 }
 
