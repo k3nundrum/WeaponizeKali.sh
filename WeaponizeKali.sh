@@ -298,6 +298,15 @@ DLLsForHackers() {
 	_popd
 }
 
+DonPAPI() {
+	_pushd tools
+	progress "DonPAPI"
+	cloneRepository "https://github.com/login-securite/DonPAPI.git"
+	cd DonPAPI
+	python3 -m pip install -U -r requirements.txt
+	_popd
+}
+
 DivideAndScan() {
 	progress "DivideAndScan"
 	pipx install -f "git+https://github.com/snovvcrash/DivideAndScan.git"
@@ -351,6 +360,12 @@ LightMe() {
 	progress "LightMe"
 	cloneRepository "https://github.com/WazeHell/LightMe.git"
 	_popd
+}
+
+MANSPIDER() {
+	progress "MANSPIDER"
+	installDebPackage antiword
+	pipx install man-spider
 }
 
 MS17-010() {
@@ -437,6 +452,13 @@ PetitPotam() {
 	_pushd tools
 	progress "PetitPotam"
 	cloneRepository "https://github.com/topotam/PetitPotam.git"
+	_popd
+}
+
+PetitPotam-Ext() {
+	_pushd tools
+	progress "PetitPotam-Ext"
+	cloneRepository "https://github.com/ollypwn/PetitPotam.git" PetitPotam-Ext
 	_popd
 }
 
@@ -590,6 +612,11 @@ bloodhound-quickwin() {
 	cd bloodhound-quickwin
 	python3 -m pip install -U -r requirements.txt
 	_popd
+}
+
+certi() {
+	progress "certi"
+	pipx install -f "git+https://github.com/zer1t0/certi.git"
 }
 
 chisel-server() {
@@ -1018,6 +1045,7 @@ xc() {
 	installDebPackage rlwrap
 	installDebPackage upx
 	python3 build.py
+	chmod -x xc xc.exe
 	cp xc xc.exe ../../www
 	_popd
 }
@@ -1029,9 +1057,11 @@ tools() {
 	CVE-2019-1040-scanner
 	CVE-2020-1472-checker
 	CVE-2021-1675-tools
+	Covenant
 	CrackMapExec
 	Creds
 	DLLsForHackers
+	DonPAPI
 	DivideAndScan
 	Ebowla
 	Empire
@@ -1039,6 +1069,7 @@ tools() {
 	LDAPPER
 	LightMe
 	MS17-010
+	MANSPIDER
 	MeterPwrShell
 	Nim
 	NimlineWhispers
@@ -1048,10 +1079,12 @@ tools() {
 	PEzor
 	PKINITtools
 	PetitPotam
+	PetitPotam-Ext
 	PrivExchange
 	Responder
 	RustScan
 	SCShell
+	SharpGen
 	SharpShooter
 	ShellPop
 	WebclientServiceScanner
@@ -1063,6 +1096,7 @@ tools() {
 	aquatone
 	bettercap
 	bloodhound-quickwin
+	certi
 	chisel-server
 	crowbar
 	dementor.py
@@ -1542,7 +1576,6 @@ arpfox() {
 	_pushd www
 	downloadRelease "malfunkt/arpfox" arpfox_linux_amd64.gz arpfox.gz
 	gunzip arpfox.gz
-	mv arpfox_linux_amd64 arpfox
 	_popd
 }
 
@@ -1579,6 +1612,7 @@ ligolo-ng-agents() {
 	unzip -q ligolo-agent.exe.zip
 	mv agent.exe ../ligolo-agent.exe
 	cd ..
+	chmod -x ligolo-agent ligolo-agent.exe
 	rm -rf tmp1 tmp2
 	_popd
 }
@@ -1679,6 +1713,7 @@ www() {
 	LaZagne
 	Out-EncryptedScript
 	PEASS
+	PSInject
 	PingCastle
 	PowerShellArmoury
 	PowerUp

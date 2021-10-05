@@ -79,7 +79,15 @@ optional arguments:
   -w                    download scripts and binaries for delivering onto the victim host
 ```
 
-## Extra
+## `extra/`
+
+## Evil-WinRM
+
+Install the laster version of [Evil-WinRM](https://github.com/Hackplayers/evil-winrm) using `rbenv`:
+
+```console
+~$ ./evil-winrm.sh
+```
 
 ### PowerShellArmoury
 
@@ -113,6 +121,7 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [Covenant](https://github.com/cobbr/Covenant)
 * [x] [CrackMapExec](https://github.com/byt3bl33d3r/CrackMapExec)
 * [x] [Creds](https://github.com/S3cur3Th1sSh1t/Creds)
+* [x] [DonPAPI](https://github.com/login-securite/DonPAPI)
 * [x] [DivideAndScan](https://github.com/snovvcrash/DivideAndScan)
 * [x] [DLLsForHackers](https://github.com/Mr-Un1k0d3r/DLLsForHackers)
 * [x] [Ebowla](https://github.com/Genetic-Malware/Ebowla)
@@ -121,6 +130,7 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [LDAPPER](https://github.com/shellster/LDAPPER)
 * [x] [LightMe](https://github.com/WazeHell/LightMe)
 * [x] [MS17-010](https://github.com/helviojunior/MS17-010)
+* [x] [MANSPIDER](https://github.com/blacklanternsecurity/MANSPIDER)
 * [x] [MeterPwrShell](https://github.com/GetRektBoy724/MeterPwrShell/releases)
 * [x] [Neo-reGeorg](https://github.com/L-codes/Neo-reGeorg)
 * [x] [Nim](https://nim-lang.org/install_unix.html) · [choosenim](https://github.com/dom96/choosenim)
@@ -131,12 +141,12 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [PEzor](https://github.com/phra/PEzor)
 * [x] [PKINITtools](https://github.com/dirkjanm/PKINITtools)
 * [x] [PetitPotam](https://github.com/topotam/PetitPotam)
+* [x] [PetitPotam-Ext](https://github.com/ollypwn/PetitPotam)
 * [x] [PrivExchange](https://github.com/dirkjanm/PrivExchange)
 * [x] [Responder](https://github.com/lgandx/Responder)
 * [x] [RustScan](https://github.com/RustScan/RustScan/releases)
 * [x] [SCShell](https://github.com/Mr-Un1k0d3r/SCShell)
 * [x] [SharpGen](https://github.com/cobbr/SharpGen)
-* [x] [SharpSploit](https://github.com/cobbr/SharpSploit)
 * [x] [SharpShooter](https://github.com/mdsecactivebreach/SharpShooter)
 * [x] [ShellPop](https://github.com/0x00-0x00/ShellPop)
 * [x] [TrustVisualizer](https://github.com/snovvcrash/TrustVisualizer)
@@ -148,6 +158,7 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [aquatone](https://github.com/michenriksen/aquatone/releases)
 * [x] [bettercap](https://github.com/bettercap/bettercap/releases)
 * [x] [bloodhound-quickwin](https://github.com/kaluche/bloodhound-quickwin)
+* [x] [certi](https://github.com/zer1t0/certi)
 * [x] [chisel](https://github.com/jpillora/chisel/releases) · [SharpChisel](https://github.com/shantanu561993/SharpChisel) · [Pre-Compiled](https://github.com/Flangvik/SharpCollection/blob/master/NetFramework_4.0_Any/SharpChisel.exe)
 * [x] [crowbar](https://github.com/galkan/crowbar)
 * [x] [dementor.py](https://gist.github.com/3xocyte/cfaf8a34f76569a8251bde65fe69dccc)
@@ -217,6 +228,7 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [InveighZero](https://github.com/Kevin-Robertson/InveighZero) · [Pre-Compiled](https://github.com/Flangvik/SharpCollection/blob/master/NetFramework_4.0_Any/Inveigh.exe)
 * [x] [Invoke-ACLPwn.ps1](https://github.com/fox-it/Invoke-ACLPwn/blob/master/Invoke-ACLPwn.ps1)
 * [x] [Invoke-ImpersonateUser-PTH.ps1](https://github.com/S3cur3Th1sSh1t/NamedPipePTH/blob/main/Invoke-ImpersonateUser-PTH.ps1)
+* [x] [Invoke-PSInject.ps1](https://github.com/EmpireProject/PSInject/blob/master/Invoke-PSInject.ps1)
 * [x] [Invoke-Portscan.ps1](https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/Invoke-Portscan.ps1)
 * [x] [Invoke-RunasCs.ps1](https://github.com/antonioCoco/RunasCs/blob/master/Invoke-RunasCs.ps1)
 * [x] [Invoke-SMBClient.ps1](https://github.com/Kevin-Robertson/Invoke-TheHash/blob/master/Invoke-SMBClient.ps1)
@@ -227,7 +239,6 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [JuicyPotato64](https://github.com/ohpe/juicy-potato/releases) · [JuicyPotato32](https://github.com/ivanitlearning/Juicy-Potato-x86/releases)
 * [x] [Out-EncryptedScript.ps1](https://github.com/PowerShellMafia/PowerSploit/blob/master/ScriptModification/Out-EncryptedScript.ps1)
 * [x] [PEASS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite) · [linPEAS.sh](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/blob/master/linPEAS/linpeas.sh) · [winPEAS.exe](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/blob/master/winPEAS/winPEASexe/binaries/Release/winPEASany.exe)
-* [x] [Invoke-PSInject.ps1](https://github.com/EmpireProject/PSInject/blob/master/Invoke-PSInject.ps1)
 * [x] [PingCastle](https://github.com/vletoux/pingcastle/releases)
 * [x] [PowerShellArmoury](https://github.com/cfalta/PowerShellArmoury) · [PSArmoury.json](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/PSArmoury.json)
 * [x] [PowerUp.ps1](https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1)
