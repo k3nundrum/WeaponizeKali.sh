@@ -592,6 +592,16 @@ aquatone() {
 	_popd
 }
 
+arsenal() {
+	_pushd tools
+	progress "arsenal"
+	cloneRepository "https://github.com/Orange-Cyberdefense/arsenal.git"
+	cd arsenal
+	python3 -m pip install -U -r requirements.txt
+	sudo ln -sn `readlink -f run` /usr/bin/a
+	_popd
+}
+
 bettercap() {
 	_pushd tools
 	progress "bettercap"
@@ -883,6 +893,13 @@ paperify() {
 	_popd
 }
 
+payloadGenerator() {
+	_pushd tools
+	progress "payloadGenerator"
+	cloneRepository "https://github.com/smokeme/payloadGenerator.git"
+	_popd
+}
+
 pyGPOAbuse() {
 	_pushd tools
 	progress "pyGPOAbuse"
@@ -934,6 +951,16 @@ rdp-tunnel-tools() {
 	_pushd tools
 	progress "rdp-tunnel-tools"
 	cloneRepository "https://github.com/NotMedic/rdp-tunnel.git"
+	_popd
+}
+
+rtfm() {
+	_pushd tools
+	progress "rtfm"
+	cloneRepository "https://github.com/leostat/rtfm.git"
+	cd rtfm
+	./rtfm -u 2>/dev/null
+	echo 'function rtfm() { ~/tools/rtfm/rtfm.py "$@" 2>/dev/null }' >> ~/.zshrc
 	_popd
 }
 
@@ -1098,6 +1125,7 @@ tools() {
 	aclpwn.py
 	adidnsdump
 	aquatone
+	arsenal
 	bettercap
 	bloodhound-quickwin
 	certi
@@ -1132,6 +1160,8 @@ tools() {
 	ntlmv1-multi
 	nullinux
 	odat
+	paperify
+	payloadGenerator
 	pyGPOAbuse
 	pypykatz
 	pywerview
@@ -1139,6 +1169,7 @@ tools() {
 	rbcd-attack
 	rbcd_permissions
 	rdp-tunnel-tools
+	rtfm
 	sRDI
 	smartbrute
 	snmpwn
