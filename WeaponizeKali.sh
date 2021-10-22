@@ -227,11 +227,6 @@ Amsi-Bypass-Powershell() {
 	_popd
 }
 
-BloodHound.py() {
-	progress "BloodHound.py"
-	pipx install -f "git+https://github.com/fox-it/BloodHound.py.git"
-}
-
 BloodHound() {
 	_pushd tools
 	progress "BloodHound"
@@ -248,6 +243,16 @@ BloodHound() {
 	downloadRawFile "https://github.com/ShutdownRepo/Exegol/raw/master/sources/bloodhound/customqueries.json" ~/.config/bloodhound/customqueries.json
 	sed -i 's/"password": "exegol4thewin"/"password": "WeaponizeK4li!"/g' ~/.config/bloodhound/config.json
 	_popd
+}
+
+BloodHound.py() {
+	progress "BloodHound.py"
+	pipx install -f "git+https://github.com/fox-it/BloodHound.py.git"
+}
+
+Certipy() {
+	progress "Certipy"
+	pipx install -f "git+https://github.com/ly4k/Certipy.git"
 }
 
 CVE-2019-1040-scanner() {
@@ -460,7 +465,7 @@ PetitPotam() {
 PetitPotam-Ext() {
 	_pushd tools
 	progress "PetitPotam-Ext"
-	cloneRepository "https://github.com/ollypwn/PetitPotam.git" PetitPotam-Ext
+	cloneRepository "https://github.com/ly4k/PetitPotam.git" PetitPotam-Ext
 	_popd
 }
 
@@ -506,6 +511,16 @@ SCShell() {
 	_pushd tools
 	progress "SCShell"
 	cloneRepository "https://github.com/Mr-Un1k0d3r/SCShell.git"
+	_popd
+}
+
+ScareCrow() {
+	_pushd tools
+	progress "ScareCrow"
+	mkdir ScareCrow
+	cd ScareCrow
+	downloadRelease "optiv/ScareCrow" ScareCrow.*linux_amd64 ScareCrow
+	chmod +x ScareCrow
 	_popd
 }
 
@@ -678,6 +693,19 @@ eavesarp() {
 enum4linux-ng() {
 	progress "enum4linux-ng"
 	pipx install -f "git+https://github.com/cddmp/enum4linux-ng.git"
+}
+
+feroxbuster() {
+	_pushd tools
+	progress "feroxbuster"
+	mkdir feroxbuster
+	cd feroxbuster
+	downloadRelease "epi052/feroxbuster" x86_64-linux-feroxbuster.zip feroxbuster.zip
+	unzip -q feroxbuster.zip
+	rm feroxbuster.zip
+	chmod +x feroxbuster
+	sudo ln -sv `readlink -f feroxbuster` /usr/local/bin/feroxbuster
+	_popd
 }
 
 ffuf() {
@@ -1085,6 +1113,7 @@ tools() {
 	Amsi-Bypass-Powershell
 	BloodHound
 	BloodHound.py
+	Certipy
 	CVE-2019-1040-scanner
 	CVE-2020-1472-checker
 	CVE-2021-1675-tools
@@ -1115,6 +1144,7 @@ tools() {
 	Responder
 	RustScan
 	SCShell
+	ScareCrow
 	SharpGen
 	SharpShooter
 	ShellPop
@@ -1135,6 +1165,7 @@ tools() {
 	dsniff
 	eavesarp
 	enum4linux-ng
+	feroxbuster
 	ffuf
 	gMSADumper
 	gateway-finder-imp
@@ -1198,6 +1229,12 @@ ADCSPwn() {
 ADRecon() {
 	_pushd www
 	downloadRawFile "https://github.com/adrecon/ADRecon/raw/master/ADRecon.ps1" adrecon.ps1
+	_popd
+}
+
+ADSearch() {
+	_pushd www
+	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.7_Any/ADSearch.exe" adsearch.exe
 	_popd
 }
 
@@ -1386,7 +1423,7 @@ PingCastle() {
 PowerShellArmoury() {
 	_pushd www
 	downloadRawFile "https://github.com/cfalta/PowerShellArmoury/raw/master/New-PSArmoury.ps1" new-psarmoury.ps1
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/PSArmoury.json" psarmoury.json
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/extra/PSArmoury.json" psarmoury.json
 	_popd
 }
 
@@ -1447,6 +1484,14 @@ PrintSpoofer() {
 PrivescCheck() {
 	_pushd www
 	downloadRawFile "https://github.com/itm4n/PrivescCheck/raw/master/PrivescCheck.ps1" privesccheck.ps1
+	_popd
+}
+
+PSTools() {
+	_pushd www
+	downloadRawFile "https://download.sysinternals.com/files/PSTools.zip" pstools.zip
+	unzip -q pstools.zip
+	rm Eula.txt Pstools.chm psversion.txt pstools.zip
 	_popd
 }
 
@@ -1723,6 +1768,7 @@ suid3num.py() {
 www() {
 	ADCSPwn
 	ADRecon
+	ADSearch
 	ASREPRoast
 	AccessChk
 	CVE-2021-1675-www
@@ -1761,6 +1807,7 @@ www() {
 	Powermad
 	PrintSpoofer
 	PrivescCheck
+	PSTools
 	ProcDump
 	RdpThief
 	RemotePotato0
