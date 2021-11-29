@@ -360,6 +360,15 @@ LDAPPER() {
 	_popd
 }
 
+LDAPmonitor() {
+	_pushd tools
+	progress "LDAPmonitor"
+	cloneRepository "https://github.com/p0dalirius/LDAPmonitor.git"
+	cd LDAPmonitor/python
+	python3 -m pip install -U -r requirements.txt
+	_popd
+}
+
 LightMe() {
 	_pushd tools
 	progress "LightMe"
@@ -755,6 +764,15 @@ gobuster() {
 	installDebPackage gobuster
 }
 
+hashcat-utils() {
+	_pushd tools
+	progress "hashcat-utils"
+	cloneRepository "https://github.com/hashcat/hashcat-utils.git"
+	cd hashcat-utils/src
+	make
+	_popd
+}
+
 impacket() {
 	progress "impacket"
 	pipx install -f "git+https://github.com/SecureAuthCorp/impacket.git"
@@ -938,6 +956,13 @@ pyGPOAbuse() {
 	_popd
 }
 
+pyKerbrute() {
+	_pushd tools
+	progress "pyKerbrute"
+	cloneRepository "https://github.com/3gstudent/pyKerbrute.git"
+	_popd
+}
+
 pypykatz() {
 	progress "pypykatz"
 	pipx install -f "git+https://github.com/skelsec/pypykatz.git"
@@ -1081,6 +1106,15 @@ webpage2html() {
 	_popd
 }
 
+wesng() {
+	_pushd tools
+	progress "wesng"
+	cloneRepository "https://github.com/bitsadmin/wesng.git"
+	cd wesng
+	python3 wes.py --update
+	_popd
+}
+
 windapsearch() {
 	_pushd tools
 	progress "windapsearch"
@@ -1127,6 +1161,7 @@ tools() {
 	Empire
 	ItWasAllADream
 	LDAPPER
+	LDAPmonitor
 	LightMe
 	MS17-010
 	MANSPIDER
@@ -1172,6 +1207,7 @@ tools() {
 	gitjacker
 	go-windapsearch
 	gobuster
+	hashcat-utils
 	impacket
 	impacket-snovvcrash
 	impacket-src
@@ -1194,6 +1230,7 @@ tools() {
 	paperify
 	payloadGenerator
 	pyGPOAbuse
+	pyKerbrute
 	pypykatz
 	pywerview
 	pywhisker
@@ -1212,6 +1249,7 @@ tools() {
 	traitor
 	updog
 	webpage2html
+	wesng
 	windapsearch
 	xc
 }
