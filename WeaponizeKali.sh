@@ -891,6 +891,13 @@ nishang() {
 	_popd
 }
 
+noPac() {
+	_pushd tools
+	progress "noPac"
+	cloneRepository "https://github.com/Ridter/noPac.git"
+	_popd
+}
+
 ntlm-scanner() {
 	_pushd tools
 	progress "ntlm-scanner"
@@ -1024,6 +1031,19 @@ sRDI() {
 	_popd
 }
 
+sgn() {
+	_pushd tools
+	progress "sgn"
+	mkdir sgn
+	cd sgn
+	downloadRelease "EgeBalci/sgn" sgn_linux_amd64.*.zip sgn.zip
+	unzip -q sgn.zip
+	mv sgn_*/sgn .
+	rm -rf sgn.zip sgn_*
+	sudo ln -sn `readlink -f sgn` /usr/bin/sgn
+	_popd
+}
+
 smartbrute() {
 	progress "smartbrute"
 	pipx install -f "git+https://github.com/ShutdownRepo/smartbrute.git"
@@ -1127,6 +1147,13 @@ windapsearch() {
 	_popd
 }
 
+wmiexec-RegOut() {
+	_pushd tools
+	progress "wmiexec-RegOut"
+	cloneRepository "https://github.com/XiaoliChan/wmiexec-RegOut.git"
+	_popd
+}
+
 xc() {
 	_pushd tools
 	progress "xc"
@@ -1223,6 +1250,7 @@ tools() {
 	mscache
 	nextnet
 	nishang
+	noPac
 	ntlm-scanner
 	ntlmv1-multi
 	nullinux
@@ -1239,6 +1267,7 @@ tools() {
 	rdp-tunnel-tools
 	rtfm
 	sRDI
+	sgn
 	smartbrute
 	snmpwn
 	spraykatz
@@ -1251,6 +1280,7 @@ tools() {
 	webpage2html
 	wesng
 	windapsearch
+	wmiexec-RegOut
 	xc
 }
 
@@ -1410,6 +1440,12 @@ Invoke-SMBExec() {
 Invoke-WMIExec() {
 	_pushd www
 	downloadRawFile "https://github.com/Kevin-Robertson/Invoke-TheHash/raw/master/Invoke-WMIExec.ps1" invoke-wmiexec.ps1
+	_popd
+}
+
+Invoke-noPac() {
+	_pushd www
+	downloadRawFile "https://gist.github.com/S3cur3Th1sSh1t/0ed2fb0b5ae485b68cbc50e89581baa6/raw/4f0ab724a11c8984c29097250b1a8263e013d183/Invoke-noPac.ps1" invoke-nopac.ps1
 	_popd
 }
 
@@ -1675,6 +1711,12 @@ SpoolSample() {
 	_popd
 }
 
+StandIn() {
+	_pushd www
+	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_Any/StandIn.exe" standin.exe
+	_popd
+}
+
 WerTrigger() {
 	_pushd www
 	downloadRawFile "https://github.com/sailay1996/WerTrigger/archive/refs/heads/master.zip" wertrigger.zip
@@ -1827,6 +1869,7 @@ www() {
 	Invoke-SMBEnum
 	Invoke-SMBExec
 	Invoke-WMIExec
+	Invoke-noPac
 	JAWS
 	JuicyPotato
 	LaZagne
@@ -1868,6 +1911,7 @@ www() {
 	Sherlock
 	Snaffler
 	SpoolSample
+	StandIn
 	WerTrigger
 	WinPwn
 	arpfox
