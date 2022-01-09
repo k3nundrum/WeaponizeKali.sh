@@ -276,6 +276,17 @@ CVE-2020-1472-checker() {
 	_popd
 }
 
+CVE-2021-1675-tools() {
+	_pushd tools
+	progress "CVE-2021-1675"
+	mkdir CVE-2021-1675
+	cd CVE-2021-1675
+	cloneRepository "https://github.com/cube0x0/impacket.git"
+	downloadRawFile "https://github.com/cube0x0/CVE-2021-1675/raw/main/CVE-2021-1675.py" CVE-2021-1675-MS-RPRN.py
+	downloadRawFile "https://github.com/cube0x0/CVE-2021-1675/raw/main/SharpPrintNightmare/CVE-2021-1675.py" CVE-2021-1675-MS-PAR.py
+	_popd
+}
+
 Covenant() {
 	_pushd tools
 	cloneRepository "https://github.com/cobbr/Covenant.git"
@@ -366,6 +377,7 @@ LDAPmonitor() {
 	cloneRepository "https://github.com/p0dalirius/LDAPmonitor.git"
 	cd LDAPmonitor/python
 	python3 -m pip install -U -r requirements.txt
+	sudo ln -sn `readlink -f pyLDAPmonitor.py` /usr/bin/LDAPmonitor.py
 	_popd
 }
 
@@ -478,14 +490,11 @@ PetitPotam-Ext() {
 	_popd
 }
 
-CVE-2021-1675-tools() {
+PoshC2() {
 	_pushd tools
-	progress "CVE-2021-1675"
-	mkdir CVE-2021-1675
-	cd CVE-2021-1675
-	cloneRepository "https://github.com/cube0x0/impacket.git"
-	downloadRawFile "https://github.com/cube0x0/CVE-2021-1675/raw/main/CVE-2021-1675.py" CVE-2021-1675-MS-RPRN.py
-	downloadRawFile "https://github.com/cube0x0/CVE-2021-1675/raw/main/SharpPrintNightmare/CVE-2021-1675.py" CVE-2021-1675-MS-PAR.py
+	progress "PoshC2"
+	mkdir PoshC2
+	curl -sSL https://raw.githubusercontent.com/nettitude/PoshC2/dev/Install.sh | sudo bash -s -- -p /opt/PoshC2 -b dev
 	_popd
 }
 
@@ -1202,6 +1211,7 @@ tools() {
 	PKINITtools
 	PetitPotam
 	PetitPotam-Ext
+	PoshC2
 	PrivExchange
 	Responder
 	RustScan

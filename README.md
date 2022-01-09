@@ -144,6 +144,7 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [PKINITtools](https://github.com/dirkjanm/PKINITtools)
 * [x] [PetitPotam](https://github.com/topotam/PetitPotam)
 * [x] [PetitPotam-Ext](https://github.com/ly4k/PetitPotam)
+* [x] [PoshC2](https://github.com/nettitude/PoshC2)
 * [x] [PrivExchange](https://github.com/dirkjanm/PrivExchange)
 * [x] [Responder](https://github.com/lgandx/Responder)
 * [x] [RustScan](https://github.com/RustScan/RustScan/releases)
