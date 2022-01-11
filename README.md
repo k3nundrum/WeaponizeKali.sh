@@ -152,6 +152,7 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [RustScan](https://github.com/RustScan/RustScan/releases)
 * [x] [SCShell](https://github.com/Mr-Un1k0d3r/SCShell)
 * [x] [ScareCrow](https://github.com/optiv/ScareCrow)
+* [x] [ShadowCoerce](https://github.com/ShutdownRepo/ShadowCoerce)
 * [x] [SharpGen](https://github.com/cobbr/SharpGen)
 * [x] [SharpShooter](https://github.com/mdsecactivebreach/SharpShooter)
 * [x] [ShellPop](https://github.com/0x00-0x00/ShellPop)

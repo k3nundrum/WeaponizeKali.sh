@@ -542,8 +542,16 @@ ScareCrow() {
 	_popd
 }
 
+ShadowCoerce() {
+	_pushd tools
+	progress "ShadowCoerce"
+	cloneRepository "https://github.com/ShutdownRepo/ShadowCoerce.git"
+	_popd
+}
+
 SharpGen() {
 	_pushd tools
+	progress "SharpGen"
 	cloneRepository "https://github.com/cobbr/SharpGen.git"
 	_popd
 }
@@ -1217,6 +1225,7 @@ tools() {
 	RustScan
 	SCShell
 	ScareCrow
+	ShadowCoerce
 	SharpGen
 	SharpShooter
 	ShellPop
