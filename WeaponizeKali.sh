@@ -298,6 +298,7 @@ Covenant() {
 CrackMapExec() {
 	progress "CrackMapExec"
 	pipx install -f "git+https://github.com/byt3bl33d3r/CrackMapExec.git"
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/conf/cme.conf" ~/.cme/cme.conf
 }
 
 Creds() {
