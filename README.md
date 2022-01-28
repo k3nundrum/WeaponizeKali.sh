@@ -12,7 +12,7 @@ Basic principles behind this project are:
 
 The script will create two directories within CWD: `tools` and `www`. The [first](#tools) one contains all the tools that will be installed on Kali. The [second](#www) one contains all the scripts and binaries that will be downloaded and may be delivered onto the victim host later.
 
-> **DISCLAIMER.** All information contained in this repository is provided for educational and research purposes only. The author is not responsible for any illegal use of this tool.
+> **DISCLAIMER.** All information contained in this repository is provided for educational and research purposes only. The author is not responsible for any illegal misuse of this tool.
 
 ## Usage
 
@@ -165,6 +165,7 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [aquatone](https://github.com/michenriksen/aquatone/releases)
 * [x] [arsenal](https://github.com/Orange-Cyberdefense/arsenal)
 * [x] [bettercap](https://github.com/bettercap/bettercap/releases)
+* [x] [bloodhound-import](https://github.com/fox-it/bloodhound-import)
 * [x] [bloodhound-quickwin](https://github.com/kaluche/bloodhound-quickwin)
 * [x] [certi](https://github.com/zer1t0/certi)
 * [x] [chisel](https://github.com/jpillora/chisel/releases) · [SharpChisel](https://github.com/shantanu561993/SharpChisel) · [Pre-Compiled](https://github.com/Flangvik/SharpCollection/blob/master/NetFramework_4.0_Any/SharpChisel.exe)

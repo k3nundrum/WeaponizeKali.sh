@@ -660,6 +660,11 @@ bettercap() {
 	_popd
 }
 
+bloodhound-import() {
+	progress "bloodhound-import"
+	pipx install -f 'git+https://github.com/fox-it/bloodhound-import.git'
+}
+
 bloodhound-quickwin() {
 	_pushd tools
 	progress "bloodhound-quickwin"
@@ -1238,6 +1243,7 @@ tools() {
 	aquatone
 	arsenal
 	bettercap
+	bloodhound-import
 	bloodhound-quickwin
 	certi
 	chisel-server
