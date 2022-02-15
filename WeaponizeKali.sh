@@ -32,7 +32,7 @@ echo
 
 filesystem() {
 	rm -rf tools www
-	mkdir tools www
+	mkdir -p tools/CobaltStrike/{Scripts,Profiles} www
 }
 
 # -----------------------------------------------------------------------------
@@ -250,9 +250,62 @@ BloodHound.py() {
 	pipx install -f "git+https://github.com/fox-it/BloodHound.py.git"
 }
 
-Certipy() {
-	progress "Certipy"
-	pipx install -f "git+https://github.com/ly4k/Certipy.git"
+CS-BC-SECURITY-Malleable-C2-Profiles() {
+	_pushd tools
+	progress "CS-BC-SECURITY-Malleable-C2-Profiles"
+	cd CobaltStrike/Profiles
+	cloneRepository "https://github.com/BC-SECURITY/Malleable-C2-Profiles.git"
+	_popd
+}
+
+CS-Invoke-CredentialPhisher() {
+	_pushd tools
+	progress "CS-Invoke-CredentialPhisher"
+	cd CobaltStrike/Scripts
+	cloneRepository "https://github.com/fox-it/Invoke-CredentialPhisher.git"
+	_popd
+}
+
+CS-RdpThief() {
+	_pushd tools
+	progress "CS-RdpThief"
+	cd CobaltStrike/Scripts
+	cloneRepository "https://github.com/0x09AL/RdpThief.git"
+	_popd
+}
+
+CS-Situational-Awareness-BOF() {
+	_pushd tools
+	progress "CS-Situational-Awareness-BOF"
+	cd CobaltStrike/Scripts
+	cloneRepository "https://github.com/trustedsec/CS-Situational-Awareness-BOF.git"
+	cd CS-Situational-Awareness-BOF
+	./make_all.sh
+	_popd
+}
+
+CS-minimal-defender-bypass() {
+	_pushd tools
+	progress "CS-Minimal-Cobalt-Strike-Profile"
+	cd CobaltStrike/Profiles
+	downloadRawFile "https://gist.github.com/tothi/8abd2de8f4948af57aa2d027f9e59efe/raw/c5bce7ff65feacbf48741c39bb694a54575efa19/minimal-defender-bypass.profile" minimal-defender-bypass.profile
+	_popd
+}
+
+CS-nanodump() {
+	_pushd tools
+	progress "CS-nanodump"
+	cd CobaltStrike/Scripts
+	cloneRepository "https://github.com/helpsystems/nanodump.git"
+	_popd
+}
+
+CS-threatexpress-malleable-c2() {
+	_pushd tools
+	progress "CS-threatexpress-malleable-c2"
+	cd CobaltStrike/Profiles
+	cloneRepository "https://github.com/threatexpress/malleable-c2.git"
+	_popd
 }
 
 CVE-2019-1040-scanner() {
@@ -285,6 +338,11 @@ CVE-2021-1675-tools() {
 	downloadRawFile "https://github.com/cube0x0/CVE-2021-1675/raw/main/CVE-2021-1675.py" CVE-2021-1675-MS-RPRN.py
 	downloadRawFile "https://github.com/cube0x0/CVE-2021-1675/raw/main/SharpPrintNightmare/CVE-2021-1675.py" CVE-2021-1675-MS-PAR.py
 	_popd
+}
+
+Certipy() {
+	progress "Certipy"
+	pipx install -f "git+https://github.com/ly4k/Certipy.git"
 }
 
 Covenant() {
@@ -474,6 +532,11 @@ PKINITtools() {
 	progress "PKINITtools"
 	cloneRepository "https://github.com/dirkjanm/PKINITtools.git"
 	python3 -m pip install -U minikerberos
+	cd PKINITtools
+	chmod +x getnthash.py gets4uticket.py gettgtpkinit.py
+	sudo ln -sv `readlink -f getnthash.py` /usr/local/bin/getnthash.py
+	sudo ln -sv `readlink -f gets4uticket.py` /usr/local/bin/gets4uticket.py
+	sudo ln -sv `readlink -f gettgtpkinit.py` /usr/local/bin/gettgtpkinit.py
 	_popd
 }
 
@@ -492,11 +555,8 @@ PetitPotam-Ext() {
 }
 
 PoshC2() {
-	_pushd tools
 	progress "PoshC2"
-	mkdir PoshC2
 	curl -sSL https://raw.githubusercontent.com/nettitude/PoshC2/dev/Install.sh | sudo bash -s -- -p /opt/PoshC2 -b dev
-	_popd
 }
 
 PrivExchange() {
@@ -835,6 +895,11 @@ krbrelayx() {
 	_pushd tools
 	progress "krbrelayx"
 	cloneRepository "https://github.com/dirkjanm/krbrelayx.git"
+	cd krbrelayx
+	chmod +x addspn.py dnstool.py printerbug.py
+	sudo ln -sv `readlink -f addspn.py` /usr/local/bin/addspn.py
+	sudo ln -sv `readlink -f dnstool.py` /usr/local/bin/dnstool.py
+	sudo ln -sv `readlink -f printerbug.py` /usr/local/bin/printerbug.py
 	_popd
 }
 
@@ -1198,6 +1263,13 @@ tools() {
 	BloodHound
 	BloodHound.py
 	Certipy
+	CS-BC-SECURITY-Malleable-C2-Profiles
+	CS-Invoke-CredentialPhisher
+	CS-RdpThief
+	CS-Situational-Awareness-BOF
+	CS-minimal-defender-bypass
+	CS-nanodump
+	CS-threatexpress-malleable-c2
 	CVE-2019-1040-scanner
 	CVE-2020-1472-checker
 	CVE-2021-1675-tools
@@ -1883,7 +1955,7 @@ www() {
 	Discover-PSMSSQLServers
 	DomainPasswordSpray
 	#Grouper2
-	HiveNightmare
+	#HiveNightmare
 	Intercepter-NG
 	Inveigh
 	InveighZero

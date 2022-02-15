@@ -117,10 +117,10 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [Amsi-Bypass-Powershell](https://github.com/S3cur3Th1sSh1t/Amsi-Bypass-Powershell/blob/master/README.md)
 * [x] [BloodHound](https://github.com/BloodHoundAD/BloodHound/releases)
 * [x] [BloodHound.py](https://github.com/fox-it/BloodHound.py)
-* [x] [Certipy](https://github.com/ly4k/Certipy)
 * [x] [CVE-2019-1040-scanner](https://github.com/fox-it/cve-2019-1040-scanner)
 * [x] [CVE-2020-1472-checker](https://github.com/SecuraBV/CVE-2020-1472)
 * [x] [CVE-2021-1675 (MS-RPRN)](https://github.com/cube0x0/CVE-2021-1675/blob/main/CVE-2021-1675.py) · [CVE-2021-1675 (MS-PAR)](https://github.com/cube0x0/CVE-2021-1675/blob/main/SharpPrintNightmare/CVE-2021-1675.py) · [impacket-cube0x0](https://github.com/cube0x0/impacket) · [SharpPrintNightmare](https://github.com/cube0x0/CVE-2021-1675/tree/main/SharpPrintNightmare) · [Pre-Compiled](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/bin/SharpPrintNightmare.exe) · [Invoke-SharpPrintNightmare](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/bin/Invoke-SharpPrintNightmare.ps1)
+* [x] [Certipy](https://github.com/ly4k/Certipy)
 * [x] [Covenant](https://github.com/cobbr/Covenant)
 * [x] [CrackMapExec](https://github.com/byt3bl33d3r/CrackMapExec)
 * [x] [Creds](https://github.com/S3cur3Th1sSh1t/Creds)
@@ -230,6 +230,21 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [wmiexec-RegOut](https://github.com/XiaoliChan/wmiexec-RegOut)
 * [x] [xc](https://github.com/xct/xc)
 
+#### `CobaltStrike/`
+
+##### `Scripts/`
+
+* [x] [CS-Situational-Awareness-BOF](https://github.com/trustedsec/CS-Situational-Awareness-BOF)
+* [x] [Invoke-CredentialPhisher](https://github.com/fox-it/Invoke-CredentialPhisher)
+* [x] [RdpThief](https://github.com/0x09AL/RdpThief)
+* [x] [nanodump](https://github.com/helpsystems/nanodump)
+
+##### `Profiles/`
+
+* [X] [Malleable-C2-Profiles](https://github.com/BC-SECURITY/Malleable-C2-Profiles)
+* [X] [malleable-c2](https://github.com/threatexpress/malleable-c2)
+* [X] [minimal-defender-bypass.profile](https://gist.github.com/tothi/8abd2de8f4948af57aa2d027f9e59efe)
+
 ### `www/`
 
 * [x] [ADCSPwn](https://github.com/bats3c/ADCSPwn/releases)
@@ -242,7 +257,7 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [Discover-PSMSSQLServers](https://github.com/PyroTek3/PowerShell-AD-Recon/blob/master/Discover-PSMSSQLServers)
 * [x] [DomainPasswordSpray.ps1](https://github.com/dafthack/DomainPasswordSpray/blob/master/DomainPasswordSpray.ps1)
 * [ ] [Grouper2](https://github.com/l0ss/Grouper2/releases)
-* [x] [HiveNightmare](https://github.com/GossiTheDog/HiveNightmare/releases) · [ShadowSteal](https://github.com/HuskyHacks/ShadowSteal) · [hive.exe](https://github.com/FireFart/hivenightmare/blob/main/release/hive.exe)
+* [ ] [HiveNightmare](https://github.com/GossiTheDog/HiveNightmare/releases) · [ShadowSteal](https://github.com/HuskyHacks/ShadowSteal) · [hive.exe](https://github.com/FireFart/hivenightmare/blob/main/release/hive.exe)
 * [x] [Intercept-NG](http://sniff.su/)
 * [x] [Inveigh.ps1](https://github.com/Kevin-Robertson/Inveigh/blob/master/Inveigh.ps1)
 * [x] [InveighZero](https://github.com/Kevin-Robertson/InveighZero) · [Pre-Compiled](https://github.com/Flangvik/SharpCollection/blob/master/NetFramework_4.0_Any/Inveigh.exe)
