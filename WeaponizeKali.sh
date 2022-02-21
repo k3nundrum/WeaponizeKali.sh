@@ -240,7 +240,11 @@ BloodHound() {
 	sudo mkdir /usr/share/neo4j/logs/
 	mkdir -p ~/.config/bloodhound
 	downloadRawFile "https://github.com/ShutdownRepo/Exegol/raw/master/sources/bloodhound/config.json" ~/.config/bloodhound/config.json
-	downloadRawFile "https://github.com/ShutdownRepo/Exegol/raw/master/sources/bloodhound/customqueries.json" ~/.config/bloodhound/customqueries.json
+	downloadRawFile "https://github.com/ShutdownRepo/Exegol/raw/master/sources/bloodhound/customqueries.json" ~/.config/bloodhound/customqueries1.json
+	downloadRawFile "https://github.com/CompassSecurity/BloodHoundQueries/raw/master/customqueries.json" ~/.config/bloodhound/customqueries2.json
+	downloadRawFile "https://github.com/ZephrFish/Bloodhound-CustomQueries/raw/main/customqueries.json" ~/.config/bloodhound/customqueries3.json
+	downloadRawFile "https://github.com/ly4k/Certipy/raw/main/customqueries.json" ~/.config/bloodhound/customqueries4.json
+	jq -s '.[0] * .[1]' ~/.config/bloodhound/customqueries*.json > ~/.config/bloodhound/customqueries.json
 	sed -i 's/"password": "exegol4thewin"/"password": "WeaponizeK4li!"/g' ~/.config/bloodhound/config.json
 	_popd
 }
@@ -437,6 +441,13 @@ LDAPmonitor() {
 	cd LDAPmonitor/python
 	python3 -m pip install -U -r requirements.txt
 	sudo ln -sn `readlink -f pyLDAPmonitor.py` /usr/bin/LDAPmonitor.py
+	_popd
+}
+
+LdapRelayScan() {
+	_pushd tools
+	progress "LdapRelayScan"
+	cloneRepository "https://github.com/zyn3rgy/LdapRelayScan.git"
 	_popd
 }
 
@@ -769,7 +780,8 @@ dementor.py() {
 
 dsniff() {
 	progress "dsniff"
-	sudo sysctl -w net.ipv4.ip_forward=1
+	#sudo sysctl -w net.ipv4.ip_forward=1
+	sudo sh -c 'echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf'
 	installDebPackage dsniff
 }
 
@@ -859,19 +871,11 @@ hashcat-utils() {
 impacket() {
 	progress "impacket"
 	pipx install -f "git+https://github.com/SecureAuthCorp/impacket.git"
-}
-
-impacket-snovvcrash() {
-	_pushd tools
-	progress "impacket-snovvcrash"
-	cloneRepository "https://github.com/snovvcrash/impacket.git" impacket-snovvcrash
-	_popd
-}
-
-impacket-src() {
 	_pushd tools
 	progress "impacket-src"
 	cloneRepository "https://github.com/SecureAuthCorp/impacket.git"
+	progress "impacket-snovvcrash"
+	cloneRepository "https://github.com/snovvcrash/impacket.git" impacket-snovvcrash
 	_popd
 }
 
@@ -961,6 +965,17 @@ mscache() {
 	_popd
 }
 
+nac_bypass() {
+	_pushd tools
+	progress "nac_bypass"
+	cloneRepository "https://github.com/snovvcrash/nac_bypass.git"
+	installDebPackage bridge-utils
+	installDebPackage arptables
+	installDebPackage ebtables
+	sudo sh -c 'echo "br_netfilter" >> /etc/modules'
+	_popd
+}
+
 nextnet() {
 	_pushd tools
 	progress "nextnet"
@@ -1027,8 +1042,8 @@ paperify() {
 	_pushd tools
 	progress "paperify"
 	cloneRepository "https://github.com/alisinabh/paperify.git"
-	installDebPackage "qrencode"
-	installDebPackage "imagemagick"
+	installDebPackage qrencode
+	installDebPackage imagemagick
 	cd paperify
 	sudo ln -sv `readlink -f paperify.sh` /usr/local/bin/paperify
 	_popd
@@ -1168,8 +1183,8 @@ ssb() {
 
 sshuttle() {
 	progress "sshuttle"
-	installDebPackage "sshpass"
-	installDebPackage "sshuttle"
+	installDebPackage sshpass
+	installDebPackage sshuttle
 }
 
 targetedKerberoast() {
@@ -1284,6 +1299,7 @@ tools() {
 	ItWasAllADream
 	LDAPPER
 	LDAPmonitor
+	LdapRelayScan
 	LightMe
 	MS17-010
 	MANSPIDER
@@ -1297,7 +1313,7 @@ tools() {
 	PKINITtools
 	PetitPotam
 	PetitPotam-Ext
-	PoshC2
+	#PoshC2
 	PrivExchange
 	Responder
 	RustScan
@@ -1334,8 +1350,6 @@ tools() {
 	gobuster
 	hashcat-utils
 	impacket
-	impacket-snovvcrash
-	impacket-src
 	ipmitool
 	kerbrute
 	krbrelayx
@@ -1346,6 +1360,7 @@ tools() {
 	masscan
 	mitm6
 	mscache
+	nac_bypass
 	nextnet
 	nishang
 	noPac
@@ -1435,6 +1450,12 @@ Certify() {
 	_popd
 }
 
+DefenderStop() {
+	_pushd www
+	downloadRelease "dosxuz/DefenderStop" DefenderStop_x64.exe defenderstop.exe
+	_popd
+}
+
 Discover-PSMSExchangeServers() {
 	_pushd www
 	downloadRawFile "https://github.com/PyroTek3/PowerShell-AD-Recon/raw/master/Discover-PSMSExchangeServers" discover-psmsexchangeservers.ps1
@@ -1456,6 +1477,12 @@ DomainPasswordSpray() {
 Grouper2() {
 	_pushd www
 	downloadRelease "l0ss/Grouper2" Grouper2.exe grouper2.exe
+	_popd
+}
+
+HandleKatz() {
+	_pushd www
+	downloadRawFile "https://gist.github.com/S3cur3Th1sSh1t/9f328fc411ff103c0800294c523503e2/raw/fbebe3fa2e6ba7d617e450c7368e3ef8bf7b0e9a/Invoke-HandleKatzInject.ps1" invoke-handlekatzinject.ps1
 	_popd
 }
 
@@ -1574,9 +1601,9 @@ Out-EncryptedScript() {
 
 PEASS() {
 	_pushd www
-	downloadRawFile "https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/linPEAS/linpeas.sh" linpeas.sh
-	downloadRawFile "https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/winPEAS/winPEASexe/binaries/Release/winPEASany.exe" winpeas.exe
-	downloadRawFile "https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/winPEAS/winPEASbat/winPEAS.bat" winpeas.bat
+	downloadRelease " carlospolop/PEASS-ng" linpeas.sh linpeas.sh
+	downloadRelease " carlospolop/PEASS-ng" winPEASany.exe winpeas.exe
+	downloadRelease " carlospolop/PEASS-ng" winPEAS.bat winpeas.bat
 	_popd
 }
 
@@ -1675,12 +1702,6 @@ ProcDump() {
 	_popd
 }
 
-RdpThief() {
-	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/RdpThiefInjectorSCDI.exe" rdpthiefinjectorscdi.exe
-	_popd
-}
-
 RemotePotato0() {
 	_pushd www
 	downloadRelease "antonioCoco/RemotePotato0" RemotePotato0.zip remotepotato0.zip
@@ -1700,6 +1721,12 @@ RoguePotato() {
 Rubeus() {
 	_pushd www
 	downloadRawFile "https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/raw/master/Rubeus.exe" rubeus.exe
+	_popd
+}
+
+SandboxDefender() {
+	_pushd www
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/SandboxDefender.exe" sandboxdefender.exe
 	_popd
 }
 
@@ -1769,6 +1796,12 @@ SharpNamedPipePTH() {
 SharpRDP() {
 	_pushd www
 	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.5_Any/SharpRDP.exe" sharprdp.exe
+	_popd
+}
+
+SharpRdpThief() {
+	_pushd www
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/SharpRdpThief.exe" sharprdpthief.exe
 	_popd
 }
 
@@ -1951,10 +1984,12 @@ www() {
 	AccessChk
 	CVE-2021-1675-www
 	Certify
+	DefenderStop
 	Discover-PSMSExchangeServers
 	Discover-PSMSSQLServers
 	DomainPasswordSpray
 	#Grouper2
+	HandleKatz
 	#HiveNightmare
 	Intercepter-NG
 	Inveigh
@@ -1988,10 +2023,10 @@ www() {
 	PrivescCheck
 	PSTools
 	ProcDump
-	RdpThief
 	RemotePotato0
 	RoguePotato
 	Rubeus
+	SandboxDefender
 	Seatbelt
 	SessionGopher
 	SharpChrome
@@ -2003,6 +2038,7 @@ www() {
 	SharpLAPS
 	SharpNamedPipePTH
 	SharpRDP
+	SharpRdpThief
 	SharpRelay
 	SharpSecDump
 	SharpView
