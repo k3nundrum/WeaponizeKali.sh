@@ -1818,6 +1818,14 @@ SharpSecDump() {
 	_popd
 }
 
+SharpSystemTriggers() {
+	_pushd www
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/SharpDcomTrigger.exe" sharpdcomtrigger.exe
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/SharpEfsTrigger.exe" sharpefstrigger.exe
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/SharpSpoolTrigger.exe" sharpspooltrigger.exe
+	_popd
+}
+
 SharpView() {
 	_pushd www
 	downloadRawFile "https://github.com/tevora-threat/SharpView/raw/master/Compiled/SharpView.exe" sharpview.exe

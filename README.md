@@ -311,6 +311,7 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [SharpRdpThief](https://github.com/snovvcrash/SharpRdpThief) · [Pre-Compiled](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/bin/SharpRdpThief.exe)
 * [x] [SharpRelay](https://github.com/pkb1s/SharpRelay) · [Pre-Compiled](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/bin/SharpRelay.exe) · [Divert](https://github.com/basil00/Divert)
 * [x] [SharpSecDump](https://github.com/G0ldenGunSec/SharpSecDump) · [Pre-Compiled](https://github.com/Flangvik/SharpCollection/blob/master/NetFramework_4.0_Any/SharpSecDump.exe)
+* [x] [SharpSystemTriggers](https://github.com/cube0x0/SharpSystemTriggers) · [Pre-Compiled (SharpDcomTrigger)](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/bin/SharpDcomTrigger.exe) · [Pre-Compiled (SharpEfsTrigger)](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/bin/SharpEfsTrigger.exe) · [Pre-Compiled (SharpSpoolTrigger)](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/bin/SharpSpoolTrigger.exe)
 * [x] [SharpView](https://github.com/tevora-threat/SharpView) · [Pre-Compiled](https://github.com/tevora-threat/SharpView/blob/master/Compiled/SharpView.exe)
 * [x] [Sherlock.ps1](https://github.com/rasta-mouse/Sherlock/blob/master/Sherlock.ps1)
 * [x] [Snaffler](https://github.com/SnaffCon/Snaffler/releases)
