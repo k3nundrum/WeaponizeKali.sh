@@ -250,10 +250,15 @@ BloodHound() {
 import json
 from pathlib import Path
 
-merged = {'queries': []}
+merged, dups = {'queries': []}, set()
 for jf in sorted((Path('/tmp')).glob('customqueries*.json')):
 	with open(jf, 'r') as f:
-		merged['queries'] += json.load(f)['queries']
+		for query in json.load(f)['queries']:
+			if 'queryList' in query.keys():
+				qt = tuple(q['query'] for q in query['queryList'])
+				if qt not in dups:
+					merged['queries'].append(query)
+					dups.add(qt)
 
 with open(Path.home() / '.config' / 'bloodhound' / 'customqueries.json', 'w') as f:
 	json.dump(merged, f, indent=4)
