@@ -237,15 +237,32 @@ BloodHound() {
 	cd BloodHound
 	sudo chown root:root chrome-sandbox
 	sudo chmod 4755 chrome-sandbox
+	chmod +x BloodHound
 	sudo mkdir /usr/share/neo4j/logs/
 	mkdir -p ~/.config/bloodhound
+
+	downloadRawFile "https://github.com/ShutdownRepo/Exegol/raw/master/sources/bloodhound/customqueries.json" /tmp/customqueries1.json
+	downloadRawFile "https://github.com/CompassSecurity/BloodHoundQueries/raw/master/customqueries.json" /tmp/customqueries2.json
+	downloadRawFile "https://github.com/ZephrFish/Bloodhound-CustomQueries/raw/main/customqueries.json" /tmp/customqueries3.json
+	downloadRawFile "https://github.com/ly4k/Certipy/raw/main/customqueries.json" /tmp/customqueries4.json
+
+	python3 - << 'EOT'
+import json
+from pathlib import Path
+
+merged = {'queries': []}
+for jf in sorted((Path('/tmp')).glob('customqueries*.json')):
+	with open(jf, 'r') as f:
+		merged['queries'] += json.load(f)['queries']
+
+with open(Path.home() / '.config' / 'bloodhound' / 'customqueries.json', 'w') as f:
+	json.dump(merged, f, indent=4)
+EOT
+	rm /tmp/customqueries*.json
+
 	downloadRawFile "https://github.com/ShutdownRepo/Exegol/raw/master/sources/bloodhound/config.json" ~/.config/bloodhound/config.json
-	downloadRawFile "https://github.com/ShutdownRepo/Exegol/raw/master/sources/bloodhound/customqueries.json" ~/.config/bloodhound/customqueries1.json
-	downloadRawFile "https://github.com/CompassSecurity/BloodHoundQueries/raw/master/customqueries.json" ~/.config/bloodhound/customqueries2.json
-	downloadRawFile "https://github.com/ZephrFish/Bloodhound-CustomQueries/raw/main/customqueries.json" ~/.config/bloodhound/customqueries3.json
-	downloadRawFile "https://github.com/ly4k/Certipy/raw/main/customqueries.json" ~/.config/bloodhound/customqueries4.json
-	jq -s '.[0] * .[1]' ~/.config/bloodhound/customqueries*.json > ~/.config/bloodhound/customqueries.json
 	sed -i 's/"password": "exegol4thewin"/"password": "WeaponizeK4li!"/g' ~/.config/bloodhound/config.json
+
 	_popd
 }
 
