@@ -800,6 +800,16 @@ dementor.py() {
 	_popd
 }
 
+donut() {
+	_pushd tools
+	progress "donut"
+	cloneRepository "https://github.com/S4ntiagoP/donut.git"
+	cd donut
+	git checkout syscalls
+	make
+	_popd
+}
+
 dsniff() {
 	progress "dsniff"
 	#sudo sysctl -w net.ipv4.ip_forward=1
@@ -887,6 +897,17 @@ hashcat-utils() {
 	cloneRepository "https://github.com/hashcat/hashcat-utils.git"
 	cd hashcat-utils/src
 	make
+	_popd
+}
+
+http-server-plus() {
+	_pushd tools
+	progress "http-server-plus"
+	mkdir http-server-plus
+	cd http-server-plus
+	downloadRawFile "https://gist.github.com/snovvcrash/059fa2b24dab79009a3769329517408d/raw/f962f5bba6122dfebc870860aac043c976ffddc5/http-server-plus.py" http-server-plus.py
+	chmod +x http-server-plus.py
+	sudo ln -sv `readlink -f http-server-plus.py` /usr/local/bin/http-server-plus.py
 	_popd
 }
 
@@ -1360,6 +1381,7 @@ tools() {
 	chisel-server
 	crowbar
 	dementor.py
+	donut
 	dsniff
 	eavesarp
 	enum4linux-ng
@@ -1371,6 +1393,7 @@ tools() {
 	go-windapsearch
 	gobuster
 	hashcat-utils
+	http-server-plus
 	impacket
 	ipmitool
 	kerbrute
@@ -1533,12 +1556,7 @@ Inveigh() {
 	_pushd www
 	downloadRawFile "https://github.com/Kevin-Robertson/Inveigh/raw/master/Inveigh-Relay.ps1" inveigh-relay.ps1
 	downloadRawFile "https://github.com/Kevin-Robertson/Inveigh/raw/master/Inveigh.ps1" inveigh.ps1
-	_popd
-}
-
-InveighZero() {
-	_pushd www
-	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_Any/Inveigh.exe" inveighzero.exe
+	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_Any/Inveigh.exe" inveigh.exe
 	_popd
 }
 
@@ -1791,7 +1809,7 @@ SharpHandler() {
 SharpHound() {
 	_pushd www
 	downloadRawFile "https://github.com/BloodHoundAD/BloodHound/raw/master/Collectors/SharpHound.exe" sharphound.exe
-	downloadRawFile "https://github.com/BloodHoundAD/BloodHound/raw/master/Collectors/SharpHound.ps1" sharphound.ps1
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/SharpHound.ps1" sharphound.ps1
 	_popd
 }
 
@@ -1851,6 +1869,12 @@ SharpSystemTriggers() {
 SharpView() {
 	_pushd www
 	downloadRawFile "https://github.com/tevora-threat/SharpView/raw/master/Compiled/SharpView.exe" sharpview.exe
+	_popd
+}
+
+SharpWMI() {
+	_pushd www
+	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_Any/SharpWMI.exe" sharpwmi.exe
 	_popd
 }
 
@@ -2023,7 +2047,6 @@ www() {
 	#HiveNightmare
 	Intercepter-NG
 	Inveigh
-	InveighZero
 	Invoke-ACLPwn
 	Invoke-ImpersonateUser-PTH
 	Invoke-Portscan
@@ -2072,6 +2095,7 @@ www() {
 	SharpRelay
 	SharpSecDump
 	SharpView
+	SharpWMI
 	Sherlock
 	Snaffler
 	SpoolSample
