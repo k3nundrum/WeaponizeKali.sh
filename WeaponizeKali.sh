@@ -462,7 +462,7 @@ LDAPmonitor() {
 	cloneRepository "https://github.com/p0dalirius/LDAPmonitor.git"
 	cd LDAPmonitor/python
 	python3 -m pip install -U -r requirements.txt
-	sudo ln -sn `readlink -f pyLDAPmonitor.py` /usr/bin/LDAPmonitor.py
+	sudo ln -sn `readlink -f pyLDAPmonitor.py` /usr/local/bin/LDAPmonitor.py
 	_popd
 }
 
@@ -733,7 +733,7 @@ arsenal() {
 	cloneRepository "https://github.com/Orange-Cyberdefense/arsenal.git"
 	cd arsenal
 	python3 -m pip install -U -r requirements.txt
-	sudo ln -sn `readlink -f run` /usr/bin/a
+	sudo ln -sn `readlink -f run` /usr/local/bin/a
 	_popd
 }
 
@@ -900,15 +900,9 @@ hashcat-utils() {
 	_popd
 }
 
-http-server-plus() {
-	_pushd tools
-	progress "http-server-plus"
-	mkdir http-server-plus
-	cd http-server-plus
-	downloadRawFile "https://gist.github.com/snovvcrash/059fa2b24dab79009a3769329517408d/raw/f962f5bba6122dfebc870860aac043c976ffddc5/http-server-plus.py" http-server-plus.py
-	chmod +x http-server-plus.py
-	sudo ln -sv `readlink -f http-server-plus.py` /usr/local/bin/http-server-plus.py
-	_popd
+http-server() {
+	progress "http-server"
+	sudo npm install http-server -g
 }
 
 impacket() {
@@ -1186,7 +1180,7 @@ sgn() {
 	unzip -q sgn.zip
 	mv sgn_*/sgn .
 	rm -rf sgn.zip sgn_*
-	sudo ln -sn `readlink -f sgn` /usr/bin/sgn
+	sudo ln -sn `readlink -f sgn` /usr/local/bin/sgn
 	_popd
 }
 
@@ -1255,6 +1249,17 @@ traitor() {
 	cd traitor
 	downloadRelease "liamg/traitor" traitor.*amd64 traitor
 	chmod +x traitor
+	_popd
+}
+
+transfer.sh() {
+	_pushd tools
+	progress "transfer.sh"
+	mkdir transfersh
+	cd transfersh
+	downloadRelease "dutchcoders/transfer.sh" transfersh.*-linux-amd64 transfer.sh
+	chmod +x transfer.sh
+	sudo ln -sn `readlink -f transfer.sh` /usr/local/bin/transfer.sh
 	_popd
 }
 
@@ -1393,7 +1398,7 @@ tools() {
 	go-windapsearch
 	gobuster
 	hashcat-utils
-	http-server-plus
+	http-server
 	impacket
 	ipmitool
 	kerbrute
@@ -1434,6 +1439,7 @@ tools() {
 	targetedKerberoast
 	ticket_converter
 	traitor
+	transfer.sh
 	updog
 	webpage2html
 	wesng
