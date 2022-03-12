@@ -51,7 +51,7 @@ To execute WeaponizeKali.sh with full set of arguments again after it has alread
 
 ```console
 ~$ cd
-~$ pipx uninstall-all
+~$ rm -rf ~/.local/pipx
 ~$ ./WeaponizeKali.sh -idtw
 ```
 
@@ -279,6 +279,8 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [Invoke-noPac.ps1](https://gist.github.com/S3cur3Th1sSh1t/0ed2fb0b5ae485b68cbc50e89581baa6)
 * [x] [JAWS](https://github.com/411Hall/JAWS/blob/master/jaws-enum.ps1)
 * [x] [JuicyPotato64](https://github.com/ohpe/juicy-potato/releases) · [JuicyPotato32](https://github.com/ivanitlearning/Juicy-Potato-x86/releases)
+* [x] [KeeThief](https://github.com/GhostPack/KeeThief) · [EXE](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/bin/KeeTheft.exe) · [PS1](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/bin/KeeThief.ps1)
+* [x] [LaZagne](https://github.com/AlessandroZ/LaZagne/releases)
 * [x] [Out-EncryptedScript.ps1](https://github.com/PowerShellMafia/PowerSploit/blob/master/ScriptModification/Out-EncryptedScript.ps1)
 * [x] [PEASS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite) · [linPEAS.sh](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/blob/master/linPEAS/linpeas.sh) · [winPEAS.exe](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/blob/master/winPEAS/winPEASexe/binaries/Release/winPEASany.exe)
 * [x] [PingCastle](https://github.com/vletoux/pingcastle/releases)

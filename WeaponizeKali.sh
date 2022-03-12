@@ -168,11 +168,6 @@ _setuptools() {
 	installPipPackage 3 setuptools
 }
 
-_impacket() {
-	installPipPackage 2 impacket
-	installPipPackage 3 impacket
-}
-
 _poetry() {
 	installPipPackage 3 poetry
 }
@@ -180,6 +175,15 @@ _poetry() {
 _pipx() {
 	installPipPackage 3 pipx
 	pipx ensurepath
+}
+
+_impacket() {
+	installPipPackage 2 impacket
+	installPipPackage 3 impacket
+}
+
+_npm() {
+	installDebPackage npm
 }
 
 _neo4j() {
@@ -208,9 +212,10 @@ dependencies() {
 	_python3-pip
 	_python3-venv
 	_setuptools
-	_impacket
 	_poetry
 	_pipx
+	_impacket
+	_npm
 	_neo4j
 	_snap
 	_dotnet
@@ -1633,6 +1638,13 @@ JuicyPotato() {
 	_popd
 }
 
+KeeThief() {
+	_pushd www
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/KeeTheft.exe" keetheft.exe
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/KeeThief.ps1" keethief.ps1
+	_popd
+}
+
 LaZagne() {
 	_pushd www
 	downloadRelease "AlessandroZ/LaZagne" lazagne.exe lazagne.exe
@@ -2064,6 +2076,7 @@ www() {
 	Invoke-noPac
 	JAWS
 	JuicyPotato
+	KeeThief
 	LaZagne
 	Out-EncryptedScript
 	PEASS
