@@ -32,7 +32,7 @@ echo
 
 filesystem() {
 	rm -rf tools www
-	mkdir -p tools/CobaltStrike/{Scripts,Profiles} www
+	mkdir -p tools/CobaltStrike/{Profiles,Arsenal,Scripts} www
 }
 
 # -----------------------------------------------------------------------------
@@ -286,6 +286,14 @@ CS-BC-SECURITY-Malleable-C2-Profiles() {
 	progress "CS-BC-SECURITY-Malleable-C2-Profiles"
 	cd CobaltStrike/Profiles
 	cloneRepository "https://github.com/BC-SECURITY/Malleable-C2-Profiles.git"
+	_popd
+}
+
+CS-HelpColor() {
+	_pushd tools
+	progress "CS-HelpColor"
+	cd CobaltStrike/Scripts
+	cloneRepository "https://github.com/outflanknl/HelpColor.git"
 	_popd
 }
 
@@ -1332,6 +1340,7 @@ tools() {
 	BloodHound.py
 	Certipy
 	CS-BC-SECURITY-Malleable-C2-Profiles
+	CS-HelpColor
 	CS-Invoke-CredentialPhisher
 	CS-RdpThief
 	CS-Situational-Awareness-BOF
@@ -1641,7 +1650,7 @@ JuicyPotato() {
 KeeThief() {
 	_pushd www
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/KeeTheft.exe" keetheft.exe
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/KeeThief.ps1" keethief.ps1
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/KeeTheft.ps1" keetheft.ps1
 	_popd
 }
 
