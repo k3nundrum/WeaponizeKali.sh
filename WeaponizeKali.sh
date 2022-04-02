@@ -762,8 +762,8 @@ bettercap() {
 	unzip -q bettercap.zip
 	rm bettercap*.sha256 bettercap.zip
 	sudo ./bettercap -eval "caplets.update; ui.update; q"
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bettercap/arpspoof.cap"
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bettercap/wsus.cap"
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bettercap/arpspoof.cap" arpspoof.cap
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bettercap/wsus.cap" wsus.cap
 	_popd
 }
 
@@ -2007,6 +2007,14 @@ mimikatz() {
 	_popd
 }
 
+nanodump() {
+	_pushd www
+	downloadRawFile "https://github.com/helpsystems/nanodump/raw/main/dist/nanodump_ssp.x64.dll" nanodump_ssp.x64.dll
+	downloadRawFile "https://github.com/helpsystems/nanodump/raw/main/dist/load_ssp.x64.exe" load_ssp.x64.exe
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-NanoDumpInject.ps1" invoke-nanodumpinject.ps1
+	_popd
+}
+
 netcat-win() {
 	_pushd www
 	downloadRawFile "https://eternallybored.org/misc/netcat/netcat-win32-1.12.zip" nc.zip
@@ -2135,6 +2143,7 @@ www() {
 	ligolo-ng-agents
 	linux-exploit-suggester
 	mimikatz
+	nanodump
 	netcat-win
 	plink
 	powercat

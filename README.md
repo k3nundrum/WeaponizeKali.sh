@@ -330,6 +330,7 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [les.sh](https://github.com/mzet-/linux-exploit-suggester/blob/master/linux-exploit-suggester.sh)
 * [x] [lse.sh](https://github.com/diego-treitos/linux-smart-enumeration/blob/master/lse.sh)
 * [x] [mimikatz](https://github.com/gentilkiwi/mimikatz/releases)
+* [x] [nanodump](https://github.com/helpsystems/nanodump/tree/main/dist) · [PS1 (Shellcode)](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/bin/Invoke-NanoDumpInject.ps1)
 * [x] [netcat for Windows](https://eternallybored.org/misc/netcat/)
 * [x] [plink](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
 * [x] [powercat.ps1](https://github.com/besimorhino/powercat/blob/master/powercat.ps1)
