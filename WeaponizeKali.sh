@@ -120,7 +120,7 @@ cloneRepository() {
 downloadRawFile() {
 	url=$1
 	filename=$2
-	if curl -sL $url > $filename; then
+	if curl -sSL $url -o $filename; then
 		success "Downloaded raw file: $filename"
 	else
 		fail "Failed to download raw file: $filename"
@@ -131,7 +131,7 @@ downloadRelease() {
 	full_repo_name=$1
 	release_name=$2
 	filename=$3
-	if curl -sL "https://api.github.com/repos/$full_repo_name/releases/latest" | jq -r '.assets[].browser_download_url' | grep $release_name | wget -O $filename -qi -; then
+	if curl -sSL "https://api.github.com/repos/$full_repo_name/releases/latest" | jq -r '.assets[].browser_download_url' | grep $release_name | wget -O $filename -qi -; then
 		success "Downloaded release: $filename"
 	else
 		fail "Failed to download release: $filename"
@@ -147,7 +147,7 @@ _jq() {
 }
 
 _python2-pip() {
-	curl -s https://bootstrap.pypa.io/pip/2.7/get-pip.py | sudo python2
+	curl -sS https://bootstrap.pypa.io/pip/2.7/get-pip.py | sudo python2
 	sudo python2 -m pip install -U setuptools
 }
 
@@ -267,6 +267,7 @@ for jf in sorted((Path('/tmp')).glob('customqueries*.json')):
 
 with open(Path.home() / '.config' / 'bloodhound' / 'customqueries.json', 'w') as f:
 	json.dump(merged, f, indent=4)
+
 EOT
 	rm /tmp/customqueries*.json
 
@@ -395,7 +396,7 @@ Covenant() {
 CrackMapExec() {
 	progress "CrackMapExec"
 	pipx install -f "git+https://github.com/byt3bl33d3r/CrackMapExec.git"
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/conf/cme.conf" ~/.cme/cme.conf
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/cme.conf" ~/.cme/cme.conf
 }
 
 Creds() {
@@ -436,6 +437,7 @@ Ebowla() {
 	installDebPackage mingw-w64
 	installDebPackage wine
 	python2 -m pip install -U configobj pyparsing pycrypto
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/genetic.config" genetic.config
 	_popd
 }
 
@@ -602,7 +604,7 @@ PetitPotam-Ext() {
 
 PoshC2() {
 	progress "PoshC2"
-	curl -sSL https://raw.githubusercontent.com/nettitude/PoshC2/dev/Install.sh | sudo bash -s -- -p /opt/PoshC2 -b dev
+	curl -sSL https://github.com/nettitude/PoshC2/raw/dev/Install.sh | sudo bash -s -- -p /opt/PoshC2 -b dev
 }
 
 PrivExchange() {
@@ -762,8 +764,8 @@ bettercap() {
 	unzip -q bettercap.zip
 	rm bettercap*.sha256 bettercap.zip
 	sudo ./bettercap -eval "caplets.update; ui.update; q"
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bettercap/arpspoof.cap" arpspoof.cap
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bettercap/wsus.cap" wsus.cap
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/arpspoof.cap" arpspoof.cap
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/wsus.cap" wsus.cap
 	_popd
 }
 
@@ -1000,6 +1002,13 @@ masscan() {
 	make
 	sudo make install
 	_popd
+}
+
+misc() {
+	sudo downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/cidr_merge.py" /usr/local/bin/cidr_merge.py
+	sudo chmod +x /usr/local/bin/cidr_merge.py
+	sudo downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/bloodhound-print.py" /usr/local/bin/bloodhound-print.py
+	sudo chmod +x /usr/local/bin/bloodhound-print.py
 }
 
 mitm6() {
@@ -1422,6 +1431,7 @@ tools() {
 	ligolo-ng-proxy
 	lsassy
 	masscan
+	misc
 	mitm6
 	mscache
 	nac_bypass
@@ -1689,7 +1699,7 @@ PingCastle() {
 PowerShellArmoury() {
 	_pushd www
 	downloadRawFile "https://github.com/cfalta/PowerShellArmoury/raw/master/New-PSArmoury.ps1" new-psarmoury.ps1
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/extra/PSArmoury.json" psarmoury.json
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/PSArmoury.json" psarmoury.json
 	_popd
 }
 
