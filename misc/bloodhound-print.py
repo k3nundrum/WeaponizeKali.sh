@@ -4,7 +4,7 @@
 Print all node names to console (useful when developing the report).
 
 Example:
-$ bloodhound-print.py <QUERY>
+$ bloodhound-print.py "<QUERY>"
 """
 
 import sys, json
