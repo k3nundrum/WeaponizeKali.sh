@@ -146,48 +146,30 @@ _jq() {
 	installDebPackage jq
 }
 
-_python2-pip() {
+_python2() {
 	curl -sS https://bootstrap.pypa.io/pip/2.7/get-pip.py | sudo python2
-	sudo python2 -m pip install -U setuptools
-}
-
-_python2-dev() {
 	installDebPackage python-dev
-}
-
-_python3-pip() {
-	installDebPackage python3-pip
-}
-
-_python3-venv() {
-	installDebPackage python3-venv
-}
-
-_setuptools() {
 	installPipPackage 2 setuptools
+}
+
+_python3() {
+	installDebPackage python3-pip
+	installDebPackage python3-venv
+	installDebPackage python3-dev
 	installPipPackage 3 setuptools
-}
-
-_poetry() {
 	installPipPackage 3 poetry
-}
-
-_pipx() {
 	installPipPackage 3 pipx
 	pipx ensurepath
 }
 
 _impacket() {
+	installDebPackage ntpsec-ntpdate
 	installPipPackage 2 impacket
 	installPipPackage 3 impacket
 }
 
 _npm() {
 	installDebPackage npm
-}
-
-_neo4j() {
-	installDebPackage neo4j
 }
 
 _snap() {
@@ -205,20 +187,20 @@ _dotnet() {
 	curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin -Channel 2.1
 }
 
+_stuff() {
+	installDebPackage resolvconf
+	installDebPackage flameshot
+}
+
 dependencies() {
 	_jq
-	_python2-pip
-	_python2-dev
-	_python3-pip
-	_python3-venv
-	_setuptools
-	_poetry
-	_pipx
+	_python2
+	_python3
 	_impacket
 	_npm
-	_neo4j
 	_snap
 	_dotnet
+	_stuff
 }
 
 # -----------------------------------------------------------------------------
@@ -235,6 +217,7 @@ Amsi-Bypass-Powershell() {
 BloodHound() {
 	_pushd tools
 	progress "BloodHound"
+	installDebPackage neo4j
 	downloadRelease "BloodHoundAD/BloodHound" BloodHound-linux-x64 BloodHound.zip
 	unzip -q BloodHound.zip
 	mv BloodHound-linux-x64 BloodHound
@@ -319,8 +302,8 @@ CS-Situational-Awareness-BOF() {
 	progress "CS-Situational-Awareness-BOF"
 	cd CobaltStrike/Scripts
 	cloneRepository "https://github.com/trustedsec/CS-Situational-Awareness-BOF.git"
-	cd CS-Situational-Awareness-BOF
-	./make_all.sh
+	#cd CS-Situational-Awareness-BOF
+	#./make_all.sh
 	_popd
 }
 
@@ -369,7 +352,7 @@ CVE-2020-1472-checker() {
 	_popd
 }
 
-CVE-2021-1675-tools() {
+CVE-2021-1675() {
 	_pushd tools
 	progress "CVE-2021-1675"
 	mkdir CVE-2021-1675
@@ -396,7 +379,7 @@ Covenant() {
 CrackMapExec() {
 	progress "CrackMapExec"
 	pipx install -f "git+https://github.com/byt3bl33d3r/CrackMapExec.git"
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/cme.conf" ~/.cme/cme.conf
+	#downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/cme.conf" ~/.cme/cme.conf
 }
 
 Creds() {
@@ -559,6 +542,7 @@ OffensiveNim() {
 PCredz() {
 	_pushd tools
 	progress "PCredz"
+	installDebPackage libpcap-dev
 	cloneRepository "https://github.com/lgandx/PCredz.git"
 	python3 -m pip install -U Cython
 	python3 -m pip install -U python-libpcap
@@ -604,7 +588,8 @@ PetitPotam-Ext() {
 
 PoshC2() {
 	progress "PoshC2"
-	curl -sSL https://github.com/nettitude/PoshC2/raw/dev/Install.sh | sudo bash -s -- -p /opt/PoshC2 -b dev
+	#curl -sSL https://github.com/nettitude/PoshC2/raw/dev/Install.sh | sudo bash -s -- -p /opt/PoshC2 -b dev
+	installDebPackage poshc2
 }
 
 PrivExchange() {
@@ -1005,9 +990,12 @@ masscan() {
 }
 
 misc() {
-	sudo downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/cidr_merge.py" /usr/local/bin/cidr_merge.py
+	FUNC=$(declare -f downloadRawFile)
+
+	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/cidr_merge.py' /usr/local/bin/cidr_merge.py"
 	sudo chmod +x /usr/local/bin/cidr_merge.py
-	sudo downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/bloodhound-print.py" /usr/local/bin/bloodhound-print.py
+
+	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/bloodhound-print.py' /usr/local/bin/bloodhound-print.py"
 	sudo chmod +x /usr/local/bin/bloodhound-print.py
 }
 
@@ -1358,7 +1346,7 @@ tools() {
 	CS-threatexpress-malleable-c2
 	CVE-2019-1040-scanner
 	CVE-2020-1472-checker
-	CVE-2021-1675-tools
+	CVE-2021-1675
 	Covenant
 	CrackMapExec
 	Creds
@@ -1384,7 +1372,7 @@ tools() {
 	PKINITtools
 	PetitPotam
 	PetitPotam-Ext
-	#PoshC2
+	PoshC2
 	PrivExchange
 	Responder
 	RustScan
@@ -1512,13 +1500,6 @@ AccessChk() {
 	_popd
 }
 
-CVE-2021-1675-www() {
-	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/SharpPrintNightmare.exe" sharpprintnightmare.exe
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-SharpPrintNightmare.ps1" invoke-sharpprintnightmare.ps1
-	_popd
-}
-
 Certify() {
 	_pushd www
 	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_Any/Certify.exe" certify.exe
@@ -1632,6 +1613,30 @@ Invoke-SMBExec() {
 	_popd
 }
 
+Invoke-KeeTheftSyscalls() {
+	_pushd www
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-KeeTheftSyscalls.ps1" invoke-keetheftsyscalls.ps1
+	_popd
+}
+
+Invoke-SharpImpersonation() {
+	_pushd www
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-SharpImpersonation.ps1" invoke-sharpimpersonation.ps1
+	_popd
+}
+
+Invoke-SharpRdpThiefInjector() {
+	_pushd www
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-SharpRdpThiefInjector.ps1" invoke-sharprdpthiefinjector.ps1
+	_popd
+}
+
+Invoke-VeraCryptThiefInjector() {
+	_pushd www
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-VeraCryptThiefInjector.ps1" invoke-veracryptthiefinjector.ps1
+	_popd
+}
+
 Invoke-WMIExec() {
 	_pushd www
 	downloadRawFile "https://github.com/Kevin-Robertson/Invoke-TheHash/raw/master/Invoke-WMIExec.ps1" invoke-wmiexec.ps1
@@ -1657,13 +1662,6 @@ JuicyPotato() {
 	_popd
 }
 
-KeeThief() {
-	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/KeeTheft.exe" keetheft.exe
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/KeeTheft.ps1" keetheft.ps1
-	_popd
-}
-
 LaZagne() {
 	_pushd www
 	downloadRelease "AlessandroZ/LaZagne" lazagne.exe lazagne.exe
@@ -1678,9 +1676,9 @@ Out-EncryptedScript() {
 
 PEASS() {
 	_pushd www
-	downloadRelease " carlospolop/PEASS-ng" linpeas.sh linpeas.sh
-	downloadRelease " carlospolop/PEASS-ng" winPEASany.exe winpeas.exe
-	downloadRelease " carlospolop/PEASS-ng" winPEAS.bat winpeas.bat
+	downloadRelease "carlospolop/PEASS-ng" linpeas.sh linpeas.sh
+	downloadRelease "carlospolop/PEASS-ng" winPEASany.exe winpeas.exe
+	downloadRelease "carlospolop/PEASS-ng" winPEAS.bat winpeas.bat
 	_popd
 }
 
@@ -1850,13 +1848,6 @@ SharpHound() {
 	_popd
 }
 
-SharpImpersonation() {
-	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/SharpImpersonation.exe" sharpimpersonation.exe
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-SharpImpersonation.ps1" invoke-sharpimpersonation.ps1
-	_popd
-}
-
 SharpLAPS() {
 	_pushd www
 	downloadRelease "swisskyrepo/SharpLAPS" SharpLAPS.exe sharplaps.exe
@@ -1873,12 +1864,6 @@ SharpNamedPipePTH() {
 SharpRDP() {
 	_pushd www
 	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.5_Any/SharpRDP.exe" sharprdp.exe
-	_popd
-}
-
-SharpRdpThief() {
-	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/SharpRdpThief.exe" sharprdpthief.exe
 	_popd
 }
 
@@ -1948,7 +1933,6 @@ WerTrigger() {
 WinPwn() {
 	_pushd www
 	downloadRawFile "https://github.com/S3cur3Th1sSh1t/WinPwn/raw/master/WinPwn.ps1" winpwn.ps1
-	downloadRawFile "https://github.com/S3cur3Th1sSh1t/WinPwn/raw/master/ObfusWinPwn.ps1" obfuswinpwn.ps1
 	downloadRawFile "https://github.com/S3cur3Th1sSh1t/WinPwn/raw/master/Obfus_SecurePS_WinPwn.ps1" obfus-secureps-winpwn.ps1
 	downloadRawFile "https://github.com/S3cur3Th1sSh1t/WinPwn/raw/master/Offline_WinPwn.ps1" offline-winpwn.ps1
 	_popd
@@ -2021,7 +2005,7 @@ nanodump() {
 	_pushd www
 	downloadRawFile "https://github.com/helpsystems/nanodump/raw/main/dist/nanodump_ssp.x64.dll" nanodump_ssp.x64.dll
 	downloadRawFile "https://github.com/helpsystems/nanodump/raw/main/dist/load_ssp.x64.exe" load_ssp.x64.exe
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-NanoDumpInject.ps1" invoke-nanodumpinject.ps1
+	downloadRawFile "https://gist.github.com/snovvcrash/5487fc83a3c878eaa07c0ca30b709c30/raw/7a06f1f0bb4f5dc5a6f64fe4b7da9365419bbdf3/Invoke-NanoDumpPPLInject.ps1" invoke-nanodumppplinject.ps1
 	_popd
 }
 
@@ -2081,7 +2065,6 @@ www() {
 	ADSearch
 	ASREPRoast
 	AccessChk
-	CVE-2021-1675-www
 	Certify
 	DefenderStop
 	Discover-PSMSExchangeServers
@@ -2099,6 +2082,10 @@ www() {
 	Invoke-SMBClient
 	Invoke-SMBEnum
 	Invoke-SMBExec
+	Invoke-KeeTheftSyscalls
+	Invoke-SharpImpersonation
+	Invoke-SharpRdpThiefInjector
+	Invoke-VeraCryptThiefInjector
 	Invoke-WMIExec
 	Invoke-noPac
 	JAWS
@@ -2133,11 +2120,9 @@ www() {
 	SharpGPOAbuse
 	SharpHandler
 	SharpHound
-	SharpImpersonation
 	SharpLAPS
 	SharpNamedPipePTH
 	SharpRDP
-	SharpRdpThief
 	SharpRelay
 	SharpSecDump
 	SharpView
