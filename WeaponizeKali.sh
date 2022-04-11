@@ -148,7 +148,7 @@ _jq() {
 
 _python2() {
 	curl -sS https://bootstrap.pypa.io/pip/2.7/get-pip.py | sudo python2
-	installDebPackage python-dev
+	installDebPackage python2-dev
 	installPipPackage 2 setuptools
 }
 
@@ -797,6 +797,7 @@ dementor.py() {
 	cd dementor
 	downloadRawFile "https://gist.github.com/3xocyte/cfaf8a34f76569a8251bde65fe69dccc/raw/7c7f09ea46eff4ede636f69c00c6dfef0541cd14/dementor.py" dementor.py
 	chmod +x dementor.py
+	sudo ln -sv `readlink -f dementor.py` /usr/local/bin/dementor.py
 	_popd
 }
 
@@ -1023,6 +1024,13 @@ nac_bypass() {
 	_popd
 }
 
+nanodump-tools() {
+	_pushd tools
+	progress "nanodump-tools"
+	cloneRepository "https://github.com/helpsystems/nanodump.git"
+	_popd
+}
+
 nextnet() {
 	_pushd tools
 	progress "nextnet"
@@ -1195,8 +1203,12 @@ sgn() {
 }
 
 smartbrute() {
+	_pushd tools
 	progress "smartbrute"
-	pipx install -f "git+https://github.com/ShutdownRepo/smartbrute.git"
+	cloneRepository "https://github.com/ShutdownRepo/smartbrute.git"
+	cd smartbrute
+	python3 -m pip install .
+	_popd
 }
 
 snmpwn() {
@@ -1423,6 +1435,7 @@ tools() {
 	mitm6
 	mscache
 	nac_bypass
+	nanodump-tools
 	nextnet
 	nishang
 	noPac
@@ -1622,18 +1635,6 @@ Invoke-KeeTheftSyscalls() {
 Invoke-SharpImpersonation() {
 	_pushd www
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-SharpImpersonation.ps1" invoke-sharpimpersonation.ps1
-	_popd
-}
-
-Invoke-SharpRdpThiefInjector() {
-	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-SharpRdpThiefInjector.ps1" invoke-sharprdpthiefinjector.ps1
-	_popd
-}
-
-Invoke-VeraCryptThiefInjector() {
-	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-VeraCryptThiefInjector.ps1" invoke-veracryptthiefinjector.ps1
 	_popd
 }
 
@@ -1867,6 +1868,12 @@ SharpRDP() {
 	_popd
 }
 
+SharpRdpThief() {
+	_pushd www
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/SharpRdpThief.exe" sharprdpthief.exe
+	_popd
+}
+
 SharpRelay() {
 	_pushd www
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/SharpRelay.exe" sharprelay.exe
@@ -1921,6 +1928,12 @@ SpoolSample() {
 StandIn() {
 	_pushd www
 	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_Any/StandIn.exe" standin.exe
+	_popd
+}
+
+VeraCryptThief() {
+	_pushd www
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/VeraCryptThief.exe" veracryptthief.exe
 	_popd
 }
 
@@ -2001,7 +2014,7 @@ mimikatz() {
 	_popd
 }
 
-nanodump() {
+nanodump-www() {
 	_pushd www
 	downloadRawFile "https://github.com/helpsystems/nanodump/raw/main/dist/nanodump_ssp.x64.dll" nanodump_ssp.x64.dll
 	downloadRawFile "https://github.com/helpsystems/nanodump/raw/main/dist/load_ssp.x64.exe" load_ssp.x64.exe
@@ -2084,8 +2097,6 @@ www() {
 	Invoke-SMBExec
 	Invoke-KeeTheftSyscalls
 	Invoke-SharpImpersonation
-	Invoke-SharpRdpThiefInjector
-	Invoke-VeraCryptThiefInjector
 	Invoke-WMIExec
 	Invoke-noPac
 	JAWS
@@ -2123,6 +2134,7 @@ www() {
 	SharpLAPS
 	SharpNamedPipePTH
 	SharpRDP
+	SharpRdpThief
 	SharpRelay
 	SharpSecDump
 	SharpView
@@ -2131,6 +2143,7 @@ www() {
 	Snaffler
 	SpoolSample
 	StandIn
+	VeraCryptThief
 	WerTrigger
 	WinPwn
 	arpfox
@@ -2138,7 +2151,7 @@ www() {
 	ligolo-ng-agents
 	linux-exploit-suggester
 	mimikatz
-	nanodump
+	nanodump-www
 	netcat-win
 	plink
 	powercat

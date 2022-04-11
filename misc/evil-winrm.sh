@@ -32,9 +32,9 @@ cd -
 
 current_evwr="$HOME/tools/evil-winrm/evil-winrm.rb"
 
-sudo bash -c "cat << 'EOF' > /usr/bin/evil-winrm
+sudo bash -c "cat << 'EOF' > /usr/local/bin/evil-winrm.rb
     #!/usr/bin/env sh
     "${current_evwr}" "\$@"
 EOF"
 
-sudo chmod +x /usr/bin/evil-winrm
+sudo chmod +x /usr/local/bin/evil-winrm.rb
