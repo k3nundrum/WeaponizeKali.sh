@@ -402,6 +402,8 @@ DonPAPI() {
 	cloneRepository "https://github.com/login-securite/DonPAPI.git"
 	cd DonPAPI
 	python3 -m pip install -U -r requirements.txt
+	chmod +x DonPAPI.py
+	sudo ln -sv `readlink -f DonPAPI.py` /usr/local/bin/DonPAPI.py
 	_popd
 }
 
@@ -460,7 +462,8 @@ LDAPmonitor() {
 	cloneRepository "https://github.com/p0dalirius/LDAPmonitor.git"
 	cd LDAPmonitor/python
 	python3 -m pip install -U -r requirements.txt
-	sudo ln -sn `readlink -f pyLDAPmonitor.py` /usr/local/bin/LDAPmonitor.py
+	chmod +x pyLDAPmonitor.py
+	sudo ln -sv `readlink -f pyLDAPmonitor.py` /usr/local/bin/LDAPmonitor.py
 	_popd
 }
 
@@ -583,6 +586,17 @@ PetitPotam-Ext() {
 	_pushd tools
 	progress "PetitPotam-Ext"
 	cloneRepository "https://github.com/ly4k/PetitPotam.git" PetitPotam-Ext
+	_popd
+}
+
+Physmem2profit-tools() {
+	_pushd tools
+	progress "Physmem2profit"
+	cloneRepository "https://github.com/snovvcrash/Physmem2profit.git"
+	cd physmem2profit/client
+	sed -i 's/acora==2.1/acora/g' rekall/rekall-core/setup.py
+	sed -i 's/pycryptodome==3.4.7/pycryptodome/g' rekall/rekall-core/setup.py
+	bash install.sh
 	_popd
 }
 
@@ -733,7 +747,8 @@ arsenal() {
 	cloneRepository "https://github.com/Orange-Cyberdefense/arsenal.git"
 	cd arsenal
 	python3 -m pip install -U -r requirements.txt
-	sudo ln -sn `readlink -f run` /usr/local/bin/a
+	chmod +x run
+	sudo ln -sv `readlink -f run` /usr/local/bin/a
 	_popd
 }
 
@@ -1100,7 +1115,8 @@ paperify() {
 	installDebPackage qrencode
 	installDebPackage imagemagick
 	cd paperify
-	sudo ln -sv `readlink -f paperify.sh` /usr/local/bin/paperify
+	chmod +x paperify.sh
+	sudo ln -sv `readlink -f paperify.sh` /usr/local/bin/paperify.sh
 	_popd
 }
 
@@ -1125,6 +1141,8 @@ pyKerbrute() {
 	_pushd tools
 	progress "pyKerbrute"
 	cloneRepository "https://github.com/3gstudent/pyKerbrute.git"
+	cd pyKerbrute
+	git checkout 1908a02
 	_popd
 }
 
@@ -1189,6 +1207,11 @@ sRDI() {
 	_popd
 }
 
+seclists() {
+	progress "seclists"
+	installDebPackage seclists
+}
+
 sgn() {
 	_pushd tools
 	progress "sgn"
@@ -1198,7 +1221,8 @@ sgn() {
 	unzip -q sgn.zip
 	mv sgn_*/sgn .
 	rm -rf sgn.zip sgn_*
-	sudo ln -sn `readlink -f sgn` /usr/local/bin/sgn
+	chmod +x sgn
+	sudo ln -sv `readlink -f sgn` /usr/local/bin/sgn
 	_popd
 }
 
@@ -1281,7 +1305,7 @@ transfer.sh() {
 	cd transfersh
 	downloadRelease "dutchcoders/transfer.sh" transfersh.*-linux-amd64 transfer.sh
 	chmod +x transfer.sh
-	sudo ln -sn `readlink -f transfer.sh` /usr/local/bin/transfer.sh
+	sudo ln -sv `readlink -f transfer.sh` /usr/local/bin/transfer.sh
 	_popd
 }
 
@@ -1384,6 +1408,7 @@ tools() {
 	PKINITtools
 	PetitPotam
 	PetitPotam-Ext
+	Physmem2profit-tools
 	PoshC2
 	PrivExchange
 	Responder
@@ -1455,6 +1480,7 @@ tools() {
 	rdp-tunnel-tools
 	rtfm
 	sRDI
+	seclists
 	sgn
 	smartbrute
 	snmpwn
@@ -1689,6 +1715,12 @@ PSInject() {
 	_popd
 }
 
+Physmem2profit-www() {
+	_pushd www
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-Physmem2profit.ps1" invoke-physmem2profit.ps1
+	_popd
+}
+
 PingCastle() {
 	_pushd www
 	downloadRelease "vletoux/pingcastle" PingCastle.*.zip pingcastle.zip
@@ -1871,6 +1903,7 @@ SharpRDP() {
 SharpRdpThief() {
 	_pushd www
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/SharpRdpThief.exe" sharprdpthief.exe
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-SharpRdpThief.ps1" invoke-sharprdpthief.ps1
 	_popd
 }
 
@@ -1934,6 +1967,7 @@ StandIn() {
 VeraCryptThief() {
 	_pushd www
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/VeraCryptThief.exe" veracryptthief.exe
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-VeraCrypt.ps1" invoke-veracrypt.ps1
 	_popd
 }
 
@@ -2018,7 +2052,7 @@ nanodump-www() {
 	_pushd www
 	downloadRawFile "https://github.com/helpsystems/nanodump/raw/main/dist/nanodump_ssp.x64.dll" nanodump_ssp.x64.dll
 	downloadRawFile "https://github.com/helpsystems/nanodump/raw/main/dist/load_ssp.x64.exe" load_ssp.x64.exe
-	downloadRawFile "https://gist.github.com/snovvcrash/5487fc83a3c878eaa07c0ca30b709c30/raw/7a06f1f0bb4f5dc5a6f64fe4b7da9365419bbdf3/Invoke-NanoDumpPPLInject.ps1" invoke-nanodumppplinject.ps1
+	downloadRawFile "https://gist.github.com/snovvcrash/5487fc83a3c878eaa07c0ca30b709c30/raw/c57bc5cf852db6b4fccc547a1cfe958b482efb1f/Invoke-NanoDumpSSPInject.ps1" invoke-nanodumpsspinject.ps1
 	_popd
 }
 
@@ -2106,6 +2140,7 @@ www() {
 	Out-EncryptedScript
 	PEASS
 	PSInject
+	Physmem2profit-www
 	PingCastle
 	PowerShellArmoury
 	PowerUp
