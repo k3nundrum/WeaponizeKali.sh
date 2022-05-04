@@ -162,6 +162,7 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [SharpGen](https://github.com/cobbr/SharpGen)
 * [x] [SharpShooter](https://github.com/mdsecactivebreach/SharpShooter)
 * [x] [ShellPop](https://github.com/0x00-0x00/ShellPop)
+* [x] [Sliver](https://github.com/BishopFox/sliver)
 * [x] [TrustVisualizer](https://github.com/snovvcrash/TrustVisualizer)
 * [x] [WebclientServiceScanner](https://github.com/Hackndo/WebclientServiceScanner)
 * [x] [Windows-Exploit-Suggester](https://github.com/a1ext/Windows-Exploit-Suggester)
@@ -239,22 +240,6 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [windapsearch](https://github.com/ropnop/windapsearch)
 * [x] [wmiexec-RegOut](https://github.com/XiaoliChan/wmiexec-RegOut)
 * [x] [xc](https://github.com/xct/xc)
-
-#### `CobaltStrike/`
-
-##### `Scripts/`
-
-* [x] [CS-Situational-Awareness-BOF](https://github.com/trustedsec/CS-Situational-Awareness-BOF)
-* [x] [HelpColor](https://github.com/outflanknl/HelpColor)
-* [x] [Invoke-CredentialPhisher](https://github.com/fox-it/Invoke-CredentialPhisher)
-* [x] [RdpThief](https://github.com/0x09AL/RdpThief)
-* [x] [nanodump](https://github.com/helpsystems/nanodump)
-
-##### `Profiles/`
-
-* [X] [Malleable-C2-Profiles](https://github.com/BC-SECURITY/Malleable-C2-Profiles)
-* [X] [malleable-c2](https://github.com/threatexpress/malleable-c2)
-* [X] [minimal-defender-bypass.profile](https://gist.github.com/tothi/8abd2de8f4948af57aa2d027f9e59efe)
 
 ### `www/`
 

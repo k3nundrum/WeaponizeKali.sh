@@ -32,7 +32,7 @@ echo
 
 filesystem() {
 	rm -rf tools www
-	mkdir -p tools/CobaltStrike/{Profiles,Arsenal,Scripts} www
+	mkdir tools www
 }
 
 # -----------------------------------------------------------------------------
@@ -263,72 +263,6 @@ EOT
 BloodHound.py() {
 	progress "BloodHound.py"
 	pipx install -f "git+https://github.com/fox-it/BloodHound.py.git"
-}
-
-CS-BC-SECURITY-Malleable-C2-Profiles() {
-	_pushd tools
-	progress "CS-BC-SECURITY-Malleable-C2-Profiles"
-	cd CobaltStrike/Profiles
-	cloneRepository "https://github.com/BC-SECURITY/Malleable-C2-Profiles.git"
-	_popd
-}
-
-CS-HelpColor() {
-	_pushd tools
-	progress "CS-HelpColor"
-	cd CobaltStrike/Scripts
-	cloneRepository "https://github.com/outflanknl/HelpColor.git"
-	_popd
-}
-
-CS-Invoke-CredentialPhisher() {
-	_pushd tools
-	progress "CS-Invoke-CredentialPhisher"
-	cd CobaltStrike/Scripts
-	cloneRepository "https://github.com/fox-it/Invoke-CredentialPhisher.git"
-	_popd
-}
-
-CS-RdpThief() {
-	_pushd tools
-	progress "CS-RdpThief"
-	cd CobaltStrike/Scripts
-	cloneRepository "https://github.com/0x09AL/RdpThief.git"
-	_popd
-}
-
-CS-Situational-Awareness-BOF() {
-	_pushd tools
-	progress "CS-Situational-Awareness-BOF"
-	cd CobaltStrike/Scripts
-	cloneRepository "https://github.com/trustedsec/CS-Situational-Awareness-BOF.git"
-	#cd CS-Situational-Awareness-BOF
-	#./make_all.sh
-	_popd
-}
-
-CS-minimal-defender-bypass() {
-	_pushd tools
-	progress "CS-Minimal-Cobalt-Strike-Profile"
-	cd CobaltStrike/Profiles
-	downloadRawFile "https://gist.github.com/tothi/8abd2de8f4948af57aa2d027f9e59efe/raw/c5bce7ff65feacbf48741c39bb694a54575efa19/minimal-defender-bypass.profile" minimal-defender-bypass.profile
-	_popd
-}
-
-CS-nanodump() {
-	_pushd tools
-	progress "CS-nanodump"
-	cd CobaltStrike/Scripts
-	cloneRepository "https://github.com/helpsystems/nanodump.git"
-	_popd
-}
-
-CS-threatexpress-malleable-c2() {
-	_pushd tools
-	progress "CS-threatexpress-malleable-c2"
-	cd CobaltStrike/Profiles
-	cloneRepository "https://github.com/threatexpress/malleable-c2.git"
-	_popd
 }
 
 CVE-2019-1040-scanner() {
@@ -681,6 +615,11 @@ ShellPop() {
 	python2 -m pip install -U -r requirements.txt
 	sudo python2 setup.py install
 	_popd
+}
+
+Sliver() {
+	progress "Sliver"
+	curl https://sliver.sh/install | sudo bash
 }
 
 TrustVisualizer() {
@@ -1372,14 +1311,6 @@ tools() {
 	BloodHound
 	BloodHound.py
 	Certipy
-	CS-BC-SECURITY-Malleable-C2-Profiles
-	CS-HelpColor
-	CS-Invoke-CredentialPhisher
-	CS-RdpThief
-	CS-Situational-Awareness-BOF
-	CS-minimal-defender-bypass
-	CS-nanodump
-	CS-threatexpress-malleable-c2
 	CVE-2019-1040-scanner
 	CVE-2020-1472-checker
 	CVE-2021-1675
@@ -1420,6 +1351,7 @@ tools() {
 	SharpShooter
 	ShellPop
 	WebclientServiceScanner
+	Sliver
 	TrustVisualizer
 	Windows-Exploit-Suggester
 	#ack3
