@@ -233,7 +233,7 @@ CobaltNotion() {
 minimal-defender-bypass() {
 	_pushd CobaltStrike/Profiles
 	progress "minimal-defender-bypass"
-	cloneRepository "https://gist.github.com/tothi/8abd2de8f4948af57aa2d027f9e59efe" minimal-defender-bypass
+	cloneRepository "https://gist.github.com/tothi/8abd2de8f4948af57aa2d027f9e59efe.git" minimal-defender-bypass
 	_popd
 }
 

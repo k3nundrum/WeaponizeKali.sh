@@ -747,9 +747,8 @@ crowbar() {
 dementor.py() {
 	_pushd tools
 	progress "dementor.py"
-	mkdir dementor
+	cloneRepository "https://gist.github.com/3xocyte/cfaf8a34f76569a8251bde65fe69dccc.git" dementor
 	cd dementor
-	downloadRawFile "https://gist.github.com/3xocyte/cfaf8a34f76569a8251bde65fe69dccc/raw/7c7f09ea46eff4ede636f69c00c6dfef0541cd14/dementor.py" dementor.py
 	chmod +x dementor.py
 	sudo ln -sv `readlink -f dementor.py` /usr/local/bin/dementor.py
 	_popd
@@ -1509,7 +1508,9 @@ Grouper2() {
 
 HandleKatz() {
 	_pushd www
-	downloadRawFile "https://gist.github.com/S3cur3Th1sSh1t/9f328fc411ff103c0800294c523503e2/raw/fbebe3fa2e6ba7d617e450c7368e3ef8bf7b0e9a/Invoke-HandleKatzInject.ps1" invoke-handlekatzinject.ps1
+	cloneRepository "https://gist.github.com/S3cur3Th1sSh1t/9f328fc411ff103c0800294c523503e2.git" /tmp/Invoke-HandleKatzInject
+	mv /tmp/Invoke-HandleKatzInject/Invoke-HandleKatzInject.ps1 invoke-handlekatzinject.ps1
+	rm -rf /tmp/Invoke-HandleKatzInject
 	_popd
 }
 
@@ -1604,7 +1605,9 @@ Invoke-WMIExec() {
 
 Invoke-noPac() {
 	_pushd www
-	downloadRawFile "https://gist.github.com/S3cur3Th1sSh1t/0ed2fb0b5ae485b68cbc50e89581baa6/raw/4f0ab724a11c8984c29097250b1a8263e013d183/Invoke-noPac.ps1" invoke-nopac.ps1
+	cloneRepository "https://gist.github.com/S3cur3Th1sSh1t/0ed2fb0b5ae485b68cbc50e89581baa6.git" /tmp/Invoke-noPac
+	mv /tmp/Invoke-noPac/Invoke-noPac.ps1 invoke-nopac.ps1
+	rm -rf /tmp/Invoke-noPac
 	_popd
 }
 
@@ -1984,7 +1987,9 @@ nanodump-www() {
 	_pushd www
 	downloadRawFile "https://github.com/helpsystems/nanodump/raw/main/dist/nanodump_ssp.x64.dll" nanodump_ssp.x64.dll
 	downloadRawFile "https://github.com/helpsystems/nanodump/raw/main/dist/load_ssp.x64.exe" load_ssp.x64.exe
-	downloadRawFile "https://gist.github.com/snovvcrash/5487fc83a3c878eaa07c0ca30b709c30/raw/c57bc5cf852db6b4fccc547a1cfe958b482efb1f/Invoke-NanoDumpSSPInject.ps1" invoke-nanodumpsspinject.ps1
+	cloneRepository "https://gist.github.com/snovvcrash/5487fc83a3c878eaa07c0ca30b709c30.git" /tmp/Invoke-NanoDumpSSPInject
+	mv /tmp/Invoke-NanoDumpSSPInject/Invoke-NanoDumpSSPInject.ps1 invoke-nanodumpsspinject.ps1
+	rm -rf /tmp/Invoke-NanoDumpSSPInject
 	_popd
 }
 
