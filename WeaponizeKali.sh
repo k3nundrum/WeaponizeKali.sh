@@ -146,6 +146,15 @@ _jq() {
 	installDebPackage jq
 }
 
+_eget() {
+	_pushd /tmp
+	curl https://zyedidia.github.io/eget.sh | sh
+	sudo mkdir /opt/eget
+	sudo mv eget /opt/eget
+	sudo ln -sv /opt/eget/eget /usr/local/bin/eget
+	_popd
+}
+
 _python2() {
 	curl -sS https://bootstrap.pypa.io/pip/2.7/get-pip.py | sudo python2
 	installDebPackage python2-dev
@@ -194,6 +203,7 @@ _stuff() {
 
 dependencies() {
 	_jq
+	_eget
 	_python2
 	_python3
 	_impacket
@@ -645,6 +655,11 @@ Windows-Exploit-Suggester() {
 	_popd
 }
 
+ZeroTier() {
+	progress "ZeroTier"
+	curl -s https://install.zerotier.com | sudo bash
+}
+
 ack3() {
 	_pushd tools
 	progress "ack3"
@@ -857,6 +872,15 @@ hashcat-utils() {
 http-server() {
 	progress "http-server"
 	sudo npm install http-server -g
+}
+
+httpx() {
+	_pushd tools
+	progress "httpx"
+	mkdir httpx
+	eget -qs linux/amd64 projectdiscovery/httpx --to httpx
+	sudo ln -sv `readlink -f httpx/httpx` /usr/local/bin/httpx
+	_popd
 }
 
 impacket() {
@@ -1202,6 +1226,17 @@ ssb() {
 	_popd
 }
 
+sshspray() {
+	_pushd tools
+	cloneRepository "https://github.com/mcorybillington/sshspray.git"
+	cd sshspray
+	echo '#!/usr/bin/env python3\n' | cat - sshspray.py > t
+	mv t sshspray.py
+	chmod +x sshspray.py
+	sudo ln -sv `readlink -f sshspray.py` /usr/local/bin/sshspray.py
+	_popd
+}
+
 sshuttle() {
 	progress "sshuttle"
 	installDebPackage sshpass
@@ -1353,6 +1388,7 @@ tools() {
 	Sliver
 	TrustVisualizer
 	Windows-Exploit-Suggester
+	ZeroTier
 	#ack3
 	aclpwn.py
 	adidnsdump
@@ -1378,6 +1414,7 @@ tools() {
 	gobuster
 	hashcat-utils
 	http-server
+	httpx
 	impacket
 	ipmitool
 	kerbrute
@@ -1417,6 +1454,7 @@ tools() {
 	snmpwn
 	spraykatz
 	ssb
+	sshspray
 	sshuttle
 	targetedKerberoast
 	ticket_converter
@@ -1630,6 +1668,12 @@ LaZagne() {
 	_popd
 }
 
+OffensivePythonPipeline() {
+	_pushd www
+	cloneRepository "https://github.com/Qazeer/OffensivePythonPipeline.git"
+	_popd
+}
+
 Out-EncryptedScript() {
 	_pushd www
 	downloadRawFile "https://github.com/PowerShellMafia/PowerSploit/raw/master/ScriptModification/Out-EncryptedScript.ps1" out-encryptedscript.ps1
@@ -1835,10 +1879,10 @@ SharpRDP() {
 	_popd
 }
 
-SharpRdpThief() {
+SharpRdpThiefInjector() {
 	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/SharpRdpThief.exe" sharprdpthief.exe
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-SharpRdpThief.ps1" invoke-sharprdpthief.ps1
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/SharpRdpThiefInjector.exe" sharprdpthiefinjector.exe
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-SharpRdpThiefInjector.ps1" invoke-sharprdpthiefinjector.ps1
 	_popd
 }
 
@@ -1899,10 +1943,10 @@ StandIn() {
 	_popd
 }
 
-VeraCryptThief() {
+VeraCryptThiefInjector() {
 	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/VeraCryptThief.exe" veracryptthief.exe
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-VeraCrypt.ps1" invoke-veracrypt.ps1
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/VeraCryptThiefInjector.exe" veracryptthiefinjector.exe
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-VeraCryptInjector.ps1" invoke-veracryptinjector.ps1
 	_popd
 }
 
@@ -2074,6 +2118,7 @@ www() {
 	JuicyPotato
 	KeeThief
 	LaZagne
+	OffensivePythonPipeline
 	Out-EncryptedScript
 	PEASS
 	PSInject
@@ -2106,7 +2151,7 @@ www() {
 	SharpLAPS
 	SharpNamedPipePTH
 	SharpRDP
-	SharpRdpThief
+	SharpRdpThiefInjector
 	SharpRelay
 	SharpSecDump
 	SharpView
@@ -2115,7 +2160,7 @@ www() {
 	Snaffler
 	SpoolSample
 	StandIn
-	VeraCryptThief
+	VeraCryptThiefInjector
 	WerTrigger
 	WinPwn
 	arpfox
