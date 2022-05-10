@@ -15,7 +15,7 @@ WeaponizeCS.sh
 * [x] [Invoke-CredentialPhisher](https://github.com/fox-it/Invoke-CredentialPhisher)
 * [x] [LdapSignCheck](https://github.com/cube0x0/LdapSignCheck/tree/main/BofLdapSignCheck)
 * [x] [PersistBOF](https://github.com/IcebreakerSecurity/PersistBOF)
-* [ ] [PortBender](https://github.com/praetorian-inc/PortBender)
+* [x] [PortBender](https://github.com/praetorian-inc/PortBender)
 * [x] [RdpThief](https://github.com/0x09AL/RdpThief)
 * [x] [SyscallPack](https://github.com/cube0x0/SyscallPack)
 * [x] [inject-assembly](https://github.com/kyleavery/inject-assembly)

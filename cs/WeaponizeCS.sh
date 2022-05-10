@@ -167,6 +167,14 @@ PersistBOF() {
 	_popd
 }
 
+PortBender() {
+	_pushd CobaltStrike/Scripts
+	progress "PortBender"
+	cloneRepository "https://github.com/praetorian-inc/PortBender.git"
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/PortBender64.dll" PortBender/static/PortBender.dll
+	_popd
+}
+
 RdpThief() {
 	_pushd CobaltStrike/Scripts
 	progress "RdpThief"
