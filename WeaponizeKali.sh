@@ -151,7 +151,6 @@ _eget() {
 	curl https://zyedidia.github.io/eget.sh | sh
 	sudo mkdir /opt/eget
 	sudo mv eget /opt/eget
-	sudo ln -sv /opt/eget/eget /usr/local/bin/eget
 	_popd
 }
 
@@ -239,7 +238,7 @@ BloodHound() {
 	sudo mkdir /usr/share/neo4j/logs/
 	mkdir -p ~/.config/bloodhound
 
-	downloadRawFile "https://github.com/ShutdownRepo/Exegol/raw/master/sources/bloodhound/customqueries.json" /tmp/customqueries1.json
+	downloadRawFile "https://github.com/ShutdownRepo/Exegol-images/raw/main/sources/bloodhound/customqueries.json" /tmp/customqueries1.json
 	downloadRawFile "https://github.com/CompassSecurity/BloodHoundQueries/raw/master/customqueries.json" /tmp/customqueries2.json
 	downloadRawFile "https://github.com/ZephrFish/Bloodhound-CustomQueries/raw/main/customqueries.json" /tmp/customqueries3.json
 	downloadRawFile "https://github.com/ly4k/Certipy/raw/main/customqueries.json" /tmp/customqueries4.json
@@ -264,7 +263,7 @@ with open(Path.home() / '.config' / 'bloodhound' / 'customqueries.json', 'w') as
 EOT
 	rm /tmp/customqueries*.json
 
-	downloadRawFile "https://github.com/ShutdownRepo/Exegol/raw/master/sources/bloodhound/config.json" ~/.config/bloodhound/config.json
+	downloadRawFile "https://github.com/ShutdownRepo/Exegol-images/raw/main/sources/bloodhound/config.json" ~/.config/bloodhound/config.json
 	sed -i 's/"password": "exegol4thewin"/"password": "WeaponizeK4li!"/g' ~/.config/bloodhound/config.json
 
 	_popd
@@ -347,7 +346,6 @@ DonPAPI() {
 	cd DonPAPI
 	python3 -m pip install -U -r requirements.txt
 	chmod +x DonPAPI.py
-	sudo ln -sv `readlink -f DonPAPI.py` /usr/local/bin/DonPAPI.py
 	_popd
 }
 
@@ -407,7 +405,6 @@ LDAPmonitor() {
 	cd LDAPmonitor/python
 	python3 -m pip install -U -r requirements.txt
 	chmod +x pyLDAPmonitor.py
-	sudo ln -sv `readlink -f pyLDAPmonitor.py` /usr/local/bin/LDAPmonitor.py
 	_popd
 }
 
@@ -513,9 +510,6 @@ PKINITtools() {
 	python3 -m pip install -U minikerberos
 	cd PKINITtools
 	chmod +x getnthash.py gets4uticket.py gettgtpkinit.py
-	sudo ln -sv `readlink -f getnthash.py` /usr/local/bin/getnthash.py
-	sudo ln -sv `readlink -f gets4uticket.py` /usr/local/bin/gets4uticket.py
-	sudo ln -sv `readlink -f gettgtpkinit.py` /usr/local/bin/gettgtpkinit.py
 	_popd
 }
 
@@ -567,14 +561,11 @@ Responder() {
 }
 
 RustScan() {
-	_pushd tools
 	progress "RustScan"
-	mkdir RustScan
-	cd RustScan
-	downloadRelease "RustScan/RustScan" rustscan.*amd64.deb rustscan.deb
-	sudo dpkg -i rustscan.deb
+	eget -t 2.0.1 -a amd64 RustScan/RustScan --to /tmp/rustscan.deb
+	sudo dpkg -i /tmp/rustscan.deb
+	rm /tmp/rustscan.deb
 	sudo wget https://gist.github.com/snovvcrash/8b85b900bd928493cd1ae33b2df318d8/raw/fe8628396616c4bf7a3e25f2c9d1acc2f36af0c0/rustscan-ports-top1000.toml -O /root/.rustscan.toml
-	_popd
 }
 
 SCShell() {
@@ -702,7 +693,6 @@ arsenal() {
 	cd arsenal
 	python3 -m pip install -U -r requirements.txt
 	chmod +x run
-	sudo ln -sv `readlink -f run` /usr/local/bin/a
 	_popd
 }
 
@@ -750,7 +740,6 @@ chisel-server() {
 	downloadRelease "jpillora/chisel" chisel.*linux_amd64.gz chisel.gz
 	gunzip chisel.gz
 	chmod +x chisel
-	sudo ln -sv `readlink -f chisel` /usr/local/bin/chisel
 	_popd
 }
 
@@ -765,7 +754,6 @@ dementor.py() {
 	cloneRepository "https://gist.github.com/3xocyte/cfaf8a34f76569a8251bde65fe69dccc.git" dementor
 	cd dementor
 	chmod +x dementor.py
-	sudo ln -sv `readlink -f dementor.py` /usr/local/bin/dementor.py
 	_popd
 }
 
@@ -809,7 +797,6 @@ feroxbuster() {
 	unzip -q feroxbuster.zip
 	rm feroxbuster.zip
 	chmod +x feroxbuster
-	sudo ln -sv `readlink -f feroxbuster` /usr/local/bin/feroxbuster
 	_popd
 }
 
@@ -851,7 +838,6 @@ go-windapsearch() {
 	cd go-windapsearch
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/windapsearch" windapsearch
 	chmod +x windapsearch
-	sudo ln -sv `readlink -f windapsearch` /usr/local/bin/windapsearch
 	_popd
 }
 
@@ -879,7 +865,6 @@ httpx() {
 	progress "httpx"
 	mkdir httpx
 	eget -qs linux/amd64 projectdiscovery/httpx --to httpx
-	sudo ln -sv `readlink -f httpx/httpx` /usr/local/bin/httpx
 	_popd
 }
 
@@ -906,7 +891,6 @@ kerbrute() {
 	cd kerbrute
 	downloadRelease "ropnop/kerbrute" kerbrute_linux_amd64 kerbrute
 	chmod +x kerbrute
-	sudo ln -sv `readlink -f kerbrute` /usr/local/bin/kerbrute
 	_popd
 }
 
@@ -916,9 +900,6 @@ krbrelayx() {
 	cloneRepository "https://github.com/dirkjanm/krbrelayx.git"
 	cd krbrelayx
 	chmod +x addspn.py dnstool.py printerbug.py
-	sudo ln -sv `readlink -f addspn.py` /usr/local/bin/addspn.py
-	sudo ln -sv `readlink -f dnstool.py` /usr/local/bin/dnstool.py
-	sudo ln -sv `readlink -f printerbug.py` /usr/local/bin/printerbug.py
 	_popd
 }
 
@@ -1078,7 +1059,6 @@ paperify() {
 	installDebPackage imagemagick
 	cd paperify
 	chmod +x paperify.sh
-	sudo ln -sv `readlink -f paperify.sh` /usr/local/bin/paperify.sh
 	_popd
 }
 
@@ -1184,7 +1164,6 @@ sgn() {
 	mv sgn_*/sgn .
 	rm -rf sgn.zip sgn_*
 	chmod +x sgn
-	sudo ln -sv `readlink -f sgn` /usr/local/bin/sgn
 	_popd
 }
 
@@ -1233,7 +1212,6 @@ sshspray() {
 	echo '#!/usr/bin/env python3\n' | cat - sshspray.py > t
 	mv t sshspray.py
 	chmod +x sshspray.py
-	sudo ln -sv `readlink -f sshspray.py` /usr/local/bin/sshspray.py
 	_popd
 }
 
@@ -1278,7 +1256,6 @@ transfer.sh() {
 	cd transfersh
 	downloadRelease "dutchcoders/transfer.sh" transfersh.*-linux-amd64 transfer.sh
 	chmod +x transfer.sh
-	sudo ln -sv `readlink -f transfer.sh` /usr/local/bin/transfer.sh
 	_popd
 }
 
@@ -2116,7 +2093,6 @@ www() {
 	Invoke-noPac
 	JAWS
 	JuicyPotato
-	KeeThief
 	LaZagne
 	OffensivePythonPipeline
 	Out-EncryptedScript
