@@ -29,7 +29,7 @@ Now you can download WeaponizeKali.sh and run it from your home directory (pip m
 
 ```console
 ~$ cd
-~$ curl -sL https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/WeaponizeKali.sh | bash -s -- -idtw
+~$ bash <(curl -sL https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/WeaponizeKali.sh) -idtw
 ~$ ls -la tools www
 ```
 
@@ -39,7 +39,7 @@ If you only want to get the deliverable scripts and binaries (i.e., `www` direct
 
 ```console
 ~$ mkdir www
-~$ curl -sL https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/WeaponizeKali.sh | bash -s -- -w
+~$ bash <(curl -sL https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/WeaponizeKali.sh) -w
 ~$ ls -la www
 ```
 
@@ -127,7 +127,6 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [Certipy](https://github.com/ly4k/Certipy)
 * [x] [Covenant](https://github.com/cobbr/Covenant)
 * [x] [CrackMapExec](https://github.com/byt3bl33d3r/CrackMapExec)
-* [x] [Creds](https://github.com/S3cur3Th1sSh1t/Creds)
 * [x] [DonPAPI](https://github.com/login-securite/DonPAPI)
 * [x] [DivideAndScan](https://github.com/snovvcrash/DivideAndScan)
 * [x] [DLLsForHackers](https://github.com/Mr-Un1k0d3r/DLLsForHackers)
@@ -139,7 +138,7 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [LdapRelayScan](https://github.com/zyn3rgy/LdapRelayScan)
 * [x] [LightMe](https://github.com/WazeHell/LightMe)
 * [x] [MS17-010](https://github.com/helviojunior/MS17-010)
-* [x] [MANSPIDER](https://github.com/blacklanternsecurity/MANSPIDER)
+* [ ] [MANSPIDER](https://github.com/blacklanternsecurity/MANSPIDER)
 * [x] [MeterPwrShell](https://github.com/GetRektBoy724/MeterPwrShell/releases)
 * [x] [Neo-reGeorg](https://github.com/L-codes/Neo-reGeorg)
 * [x] [Nim](https://nim-lang.org/install_unix.html) · [choosenim](https://github.com/dom96/choosenim)
@@ -287,7 +286,6 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [PowerView3.ps1](https://github.com/PowerShellMafia/PowerSploit/blob/26a0757612e5654b4f792b012ab8f10f95d391c9/Recon/PowerView.ps1) ([New-GPOImmediateTask](https://www.harmj0y.net/blog/redteaming/abusing-gpo-permissions/))
 * [x] [PowerView3.ps1](https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/PowerView.ps1)
 * [x] [PowerView4.ps1](https://github.com/ZeroDayLab/PowerSploit/blob/master/Recon/PowerView.ps1) (by [@exploitph](https://exploit.ph/powerview.html))
-* [x] [PowerSharpPack](https://github.com/S3cur3Th1sSh1t/PowerSharpPack)
 * [x] [Powermad.ps1](https://github.com/Kevin-Robertson/Powermad/blob/master/Powermad.ps1)
 * [x] [PrivescCheck.ps1](https://github.com/itm4n/PrivescCheck/blob/master/PrivescCheck.ps1)
 * [x] [PrintSpoofer](https://github.com/itm4n/PrintSpoofer)

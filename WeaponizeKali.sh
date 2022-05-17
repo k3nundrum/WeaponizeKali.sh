@@ -143,7 +143,7 @@ downloadRelease() {
 # -----------------------------------------------------------------------------
 
 _jq() {
-	installDebPackage jq
+	installDebPackage "jq"
 }
 
 _eget() {
@@ -151,37 +151,38 @@ _eget() {
 	curl https://zyedidia.github.io/eget.sh | sh
 	sudo mkdir /opt/eget
 	sudo mv eget /opt/eget
+	sudo ln -sv /opt/eget/eget /usr/local/bin/eget
 	_popd
 }
 
 _python2() {
 	curl -sS https://bootstrap.pypa.io/pip/2.7/get-pip.py | sudo python2
-	installDebPackage python2-dev
-	installPipPackage 2 setuptools
+	installDebPackage "python2-dev"
+	installPipPackage 2 "setuptools"
 }
 
 _python3() {
-	installDebPackage python3-pip
-	installDebPackage python3-venv
-	installDebPackage python3-dev
-	installPipPackage 3 setuptools
-	installPipPackage 3 poetry
-	installPipPackage 3 pipx
+	installDebPackage "python3-pip python3-venv python3-dev"
+	installPipPackage 3 "setuptools poetry pipx"
 	pipx ensurepath
 }
 
+_krb5() {
+	installDebPackage "libkrb5-dev krb5-user krb5-config"
+}
+
 _impacket() {
-	installDebPackage ntpsec-ntpdate
-	installPipPackage 2 impacket
-	installPipPackage 3 impacket
+	installDebPackage "ntpsec-ntpdate"
+	installPipPackage 2 "impacket"
+	installPipPackage 3 "impacket"
 }
 
 _npm() {
-	installDebPackage npm
+	installDebPackage "npm"
 }
 
 _snap() {
-	installDebPackage snapd
+	installDebPackage "snapd"
 	sudo service snapd start
 	sudo apparmor_parser -r /etc/apparmor.d/*snap-confine*
 	sudo apparmor_parser -r /var/lib/snapd/apparmor/profiles/snap*
@@ -195,38 +196,26 @@ _dotnet() {
 	curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin -Channel 2.1
 }
 
-_stuff() {
-	installDebPackage resolvconf
-	installDebPackage flameshot
-}
-
 dependencies() {
 	_jq
 	_eget
 	_python2
 	_python3
+	_krb5
 	_impacket
 	_npm
 	_snap
 	_dotnet
-	_stuff
 }
 
 # -----------------------------------------------------------------------------
 # ----------------------------------- tools -----------------------------------
 # -----------------------------------------------------------------------------
 
-Amsi-Bypass-Powershell() {
-	_pushd tools
-	progress "Amsi-Bypass-Powershell"
-	cloneRepository "https://github.com/S3cur3Th1sSh1t/Amsi-Bypass-Powershell.git"
-	_popd
-}
-
 BloodHound() {
 	_pushd tools
 	progress "BloodHound"
-	installDebPackage neo4j
+	installDebPackage "neo4j"
 	downloadRelease "BloodHoundAD/BloodHound" BloodHound-linux-x64 BloodHound.zip
 	unzip -q BloodHound.zip
 	mv BloodHound-linux-x64 BloodHound
@@ -322,14 +311,7 @@ Covenant() {
 CrackMapExec() {
 	progress "CrackMapExec"
 	pipx install -f "git+https://github.com/byt3bl33d3r/CrackMapExec.git"
-	#downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/cme.conf" ~/.cme/cme.conf
-}
-
-Creds() {
-	_pushd tools
-	progress "Creds"
-	cloneRepository "https://github.com/S3cur3Th1sSh1t/Creds.git"
-	_popd
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/cme.conf" ~/.cme/cme.conf
 }
 
 DLLsForHackers() {
@@ -360,9 +342,7 @@ Ebowla() {
 	cloneRepository "https://github.com/Genetic-Malware/Ebowla.git"
 	cd Ebowla
 	rm -rf .git
-	installDebPackage golang
-	installDebPackage mingw-w64
-	installDebPackage wine
+	installDebPackage "golang mingw-w64 wine"
 	python2 -m pip install -U configobj pyparsing pycrypto
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/genetic.config" genetic.config
 	_popd
@@ -424,7 +404,7 @@ LightMe() {
 
 MANSPIDER() {
 	progress "MANSPIDER"
-	installDebPackage antiword
+	installDebPackage "antiword"
 	pipx install man-spider
 }
 
@@ -455,8 +435,7 @@ Neo-reGeorg() {
 
 Nim() {
 	progress "Nim"
-	installDebPackage mingw-w64
-	installDebPackage nim
+	installDebPackage "mingw-w64 nim"
 	nimble install winim nimcrypto zippy -y
 	#curl https://nim-lang.org/choosenim/init.sh -sSf | CHOOSENIM_NO_ANALYTICS=1 sh
 }
@@ -486,7 +465,7 @@ OffensiveNim() {
 PCredz() {
 	_pushd tools
 	progress "PCredz"
-	installDebPackage libpcap-dev
+	installDebPackage "libpcap-dev"
 	cloneRepository "https://github.com/lgandx/PCredz.git"
 	python3 -m pip install -U Cython
 	python3 -m pip install -U python-libpcap
@@ -531,7 +510,7 @@ Physmem2profit-tools() {
 	_pushd tools
 	progress "Physmem2profit"
 	cloneRepository "https://github.com/snovvcrash/Physmem2profit.git"
-	cd physmem2profit/client
+	cd Physmem2profit/client
 	sed -i 's/acora==2.1/acora/g' rekall/rekall-core/setup.py
 	sed -i 's/pycryptodome==3.4.7/pycryptodome/g' rekall/rekall-core/setup.py
 	bash install.sh
@@ -541,7 +520,7 @@ Physmem2profit-tools() {
 PoshC2() {
 	progress "PoshC2"
 	#curl -sSL https://github.com/nettitude/PoshC2/raw/dev/Install.sh | sudo bash -s -- -p /opt/PoshC2 -b dev
-	installDebPackage poshc2
+	installDebPackage "poshc2"
 }
 
 PrivExchange() {
@@ -699,14 +678,10 @@ arsenal() {
 bettercap() {
 	_pushd tools
 	progress "bettercap"
-	installDebPackage libpcap-dev
-	installDebPackage libusb-1.0-0-dev
-	installDebPackage libnetfilter-queue-dev
+	installDebPackage "libpcap-dev libusb-1.0-0-dev libnetfilter-queue-dev"
 	mkdir bettercap
 	cd bettercap
-	downloadRelease "bettercap/bettercap" bettercap_linux_amd64.*.zip bettercap.zip
-	unzip -q bettercap.zip
-	rm bettercap*.sha256 bettercap.zip
+	eget -t v2.31.1 -qs linux/amd64 bettercap/bettercap
 	sudo ./bettercap -eval "caplets.update; ui.update; q"
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/arpspoof.cap" arpspoof.cap
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/wsus.cap" wsus.cap
@@ -771,7 +746,7 @@ dsniff() {
 	progress "dsniff"
 	#sudo sysctl -w net.ipv4.ip_forward=1
 	sudo sh -c 'echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf'
-	installDebPackage dsniff
+	installDebPackage "dsniff"
 }
 
 eavesarp() {
@@ -802,7 +777,7 @@ feroxbuster() {
 
 ffuf() {
 	progress "ffuf"
-	installDebPackage ffuf
+	installDebPackage "ffuf"
 }
 
 gMSADumper() {
@@ -843,7 +818,7 @@ go-windapsearch() {
 
 gobuster() {
 	progress "gobuster"
-	installDebPackage gobuster
+	installDebPackage "gobuster"
 }
 
 hashcat-utils() {
@@ -881,7 +856,7 @@ impacket() {
 
 ipmitool() {
 	progress "ipmitool"
-	installDebPackage ipmitool
+	installDebPackage "ipmitool"
 }
 
 kerbrute() {
@@ -975,9 +950,7 @@ nac_bypass() {
 	_pushd tools
 	progress "nac_bypass"
 	cloneRepository "https://github.com/snovvcrash/nac_bypass.git"
-	installDebPackage bridge-utils
-	installDebPackage arptables
-	installDebPackage ebtables
+	installDebPackage "bridge-utils arptables ebtables"
 	sudo sh -c 'echo "br_netfilter" >> /etc/modules'
 	_popd
 }
@@ -1055,8 +1028,7 @@ paperify() {
 	_pushd tools
 	progress "paperify"
 	cloneRepository "https://github.com/alisinabh/paperify.git"
-	installDebPackage qrencode
-	installDebPackage imagemagick
+	installDebPackage "qrencode imagemagick"
 	cd paperify
 	chmod +x paperify.sh
 	_popd
@@ -1098,7 +1070,8 @@ pywerview() {
 	progress "pywerview"
 	cloneRepository "https://github.com/the-useless-one/pywerview.git"
 	cd pywerview
-	python2 -m pip install -U -r requirements.txt
+	installDebPackage "libkrb5-dev"
+	python3 -m pip install -U -r requirements.txt
 	_popd
 }
 
@@ -1151,7 +1124,7 @@ sRDI() {
 
 seclists() {
 	progress "seclists"
-	installDebPackage seclists
+	installDebPackage "seclists"
 }
 
 sgn() {
@@ -1172,6 +1145,7 @@ smartbrute() {
 	progress "smartbrute"
 	cloneRepository "https://github.com/ShutdownRepo/smartbrute.git"
 	cd smartbrute
+	rm -rf assets memes
 	python3 -m pip install .
 	_popd
 }
@@ -1217,8 +1191,7 @@ sshspray() {
 
 sshuttle() {
 	progress "sshuttle"
-	installDebPackage sshpass
-	installDebPackage sshuttle
+	installDebPackage "sshpass sshuttle"
 }
 
 targetedKerberoast() {
@@ -1285,9 +1258,7 @@ wesng() {
 windapsearch() {
 	_pushd tools
 	progress "windapsearch"
-	installDebPackage libsasl2-dev
-	installDebPackage libldap2-dev
-	installDebPackage libssl-dev
+	installDebPackage "libsasl2-dev libldap2-dev libssl-dev"
 	cloneRepository "https://github.com/ropnop/windapsearch.git"
 	cd windapsearch
 	python3 -m pip install -U -r requirements.txt
@@ -1309,8 +1280,7 @@ xc() {
 	GO111MODULE=off go get golang.org/x/sys/...
 	GO111MODULE=off go get golang.org/x/text/encoding/unicode
 	GO111MODULE=off go get github.com/hashicorp/yamux
-	installDebPackage rlwrap
-	installDebPackage upx
+	installDebPackage "rlwrap upx"
 	python3 build.py
 	chmod -x xc xc.exe
 	cp xc xc.exe ../../www
@@ -1318,7 +1288,6 @@ xc() {
 }
 
 tools() {
-	Amsi-Bypass-Powershell
 	BloodHound
 	BloodHound.py
 	Certipy
@@ -1327,7 +1296,6 @@ tools() {
 	CVE-2021-1675
 	Covenant
 	CrackMapExec
-	Creds
 	DLLsForHackers
 	DonPAPI
 	DivideAndScan
@@ -1339,7 +1307,7 @@ tools() {
 	LdapRelayScan
 	LightMe
 	MS17-010
-	MANSPIDER
+	#MANSPIDER
 	MeterPwrShell
 	Nim
 	NimlineWhispers
@@ -1482,6 +1450,12 @@ AccessChk() {
 	downloadRawFile "https://download.sysinternals.com/files/AccessChk.zip" accesschk.zip
 	unzip -q accesschk.zip
 	rm Eula.txt accesschk64a.exe accesschk.zip
+	_popd
+}
+
+Amsi-Bypass-Powershell() {
+	_pushd www
+	cloneRepository "https://github.com/S3cur3Th1sSh1t/Amsi-Bypass-Powershell.git"
 	_popd
 }
 
@@ -1726,12 +1700,6 @@ PowerView4() {
 	_popd
 }
 
-PowerSharpPack() {
-	_pushd www
-	cloneRepository "https://github.com/S3cur3Th1sSh1t/PowerSharpPack.git"
-	_popd
-}
-
 Powermad() {
 	_pushd www
 	downloadRawFile "https://github.com/Kevin-Robertson/Powermad/raw/master/Powermad.ps1" powermad.ps1
@@ -1923,7 +1891,7 @@ StandIn() {
 VeraCryptThiefInjector() {
 	_pushd www
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/VeraCryptThiefInjector.exe" veracryptthiefinjector.exe
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-VeraCryptInjector.ps1" invoke-veracryptinjector.ps1
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-VeraCryptThiefInjector.ps1" invoke-veracryptthiefinjector.ps1
 	_popd
 }
 
@@ -1935,9 +1903,9 @@ WerTrigger() {
 
 WinPwn() {
 	_pushd www
-	downloadRawFile "https://github.com/S3cur3Th1sSh1t/WinPwn/raw/master/WinPwn.ps1" winpwn.ps1
-	downloadRawFile "https://github.com/S3cur3Th1sSh1t/WinPwn/raw/master/Obfus_SecurePS_WinPwn.ps1" obfus-secureps-winpwn.ps1
-	downloadRawFile "https://github.com/S3cur3Th1sSh1t/WinPwn/raw/master/Offline_WinPwn.ps1" offline-winpwn.ps1
+	cloneRepository "https://github.com/S3cur3Th1sSh1t/WinPwn.git"
+	cd WinPwn
+	bash Get_WinPwn_Repo.sh --install
 	_popd
 }
 
@@ -2070,6 +2038,7 @@ www() {
 	ADSearch
 	ASREPRoast
 	AccessChk
+	Amsi-Bypass-Powershell
 	Certify
 	DefenderStop
 	Discover-PSMSExchangeServers
@@ -2107,7 +2076,6 @@ www() {
 	PowerView3
 	PowerView3-GPO
 	PowerView4
-	PowerSharpPack
 	Powermad
 	PrintSpoofer
 	PrivescCheck

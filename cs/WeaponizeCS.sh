@@ -214,6 +214,7 @@ Scripts() {
 	Invoke-CredentialPhisher
 	LdapSignCheck
 	PersistBOF
+	PortBender
 	RdpThief
 	SyscallPack
 	inject-assembly
