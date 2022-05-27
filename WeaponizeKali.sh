@@ -878,6 +878,15 @@ krbrelayx() {
 	_popd
 }
 
+ldap_shell() {
+	_pushd tools
+	progress "ldap_shell"
+	cloneRepository "https://github.com/PShlyundin/ldap_shell.git"
+	cd ldap_shell
+	python3 -m pip install .
+	_popd
+}
+
 ldapdomaindump() {
 	_pushd tools
 	progress "ldapdomaindump"
@@ -1102,6 +1111,14 @@ rdp-tunnel-tools() {
 	_pushd tools
 	progress "rdp-tunnel-tools"
 	cloneRepository "https://github.com/NotMedic/rdp-tunnel.git"
+	_popd
+}
+
+revsocks-server() {
+	_pushd tools
+	progress "revsocks"
+	mkdir revsocks
+	eget -qs linux/amd64 kost/revsocks --to revsocks
 	_popd
 }
 
@@ -1364,6 +1381,7 @@ tools() {
 	ipmitool
 	kerbrute
 	krbrelayx
+	ldap_shell
 	ldapdomaindump
 	ldapsearch-ad
 	ligolo-ng-proxy
@@ -1391,6 +1409,7 @@ tools() {
 	rbcd-attack
 	rbcd_permissions
 	rdp-tunnel-tools
+	revsocks-server
 	rtfm
 	sRDI
 	seclists
@@ -1544,6 +1563,20 @@ Invoke-ImpersonateUser-PTH() {
 	_popd
 }
 
+Invoke-PSInject() {
+	_pushd www
+	downloadRawFile "https://github.com/EmpireProject/PSInject/raw/master/Invoke-PSInject.ps1" invoke-psinject.ps1
+	_popd
+}
+
+Invoke-PatchWdigest() {
+	_pushd www
+	cloneRepository "https://gist.github.com/snovvcrash/43e976779efdd20df1596c6492198c99.git" /tmp/Invoke-PatchWdigestInject
+	mv /tmp/Invoke-PatchWdigestInject/Invoke-PatchWdigestInject.ps1 invoke-patchwdigestinject.ps1
+	rm -rf /tmp/Invoke-PatchWdigestInject
+	_popd
+}
+
 Invoke-Portscan() {
 	_pushd www
 	downloadRawFile "https://github.com/PowerShellMafia/PowerSploit/raw/master/Recon/Invoke-Portscan.ps1" invoke-portscan.ps1
@@ -1613,6 +1646,18 @@ JuicyPotato() {
 	_popd
 }
 
+KrbRelay() {
+	_pushd www
+	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.7_Any/KrbRelay.exe" krbrelay.exe
+	_popd
+}
+
+KrbRelayUp() {
+	_pushd www
+	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.7_Any/KrbRelayUp.exe" krbrelayup.exe
+	_popd
+}
+
 LaZagne() {
 	_pushd www
 	downloadRelease "AlessandroZ/LaZagne" lazagne.exe lazagne.exe
@@ -1636,12 +1681,6 @@ PEASS() {
 	downloadRelease "carlospolop/PEASS-ng" linpeas.sh linpeas.sh
 	downloadRelease "carlospolop/PEASS-ng" winPEASany.exe winpeas.exe
 	downloadRelease "carlospolop/PEASS-ng" winPEAS.bat winpeas.bat
-	_popd
-}
-
-PSInject() {
-	_pushd www
-	downloadRawFile "https://github.com/EmpireProject/PSInject/raw/master/Invoke-PSInject.ps1" invoke-psinject.ps1
 	_popd
 }
 
@@ -2020,6 +2059,13 @@ rdp-tunnel-www() {
 	_popd
 }
 
+revsocks-clients() {
+	_pushd www
+	eget -qs linux/amd64 kost/revsocks --to revsocks
+	eget -qs windows/amd64 kost/revsocks --to revsocks.exe
+	_popd
+}
+
 static-binaries() {
 	_pushd www
 	cloneRepository "https://github.com/andrew-d/static-binaries.git"
@@ -2051,6 +2097,8 @@ www() {
 	Inveigh
 	Invoke-ACLPwn
 	Invoke-ImpersonateUser-PTH
+	Invoke-PSInject
+	Invoke-PatchWdigest
 	Invoke-Portscan
 	Invoke-RunasCs
 	Invoke-SMBClient
@@ -2062,11 +2110,12 @@ www() {
 	Invoke-noPac
 	JAWS
 	JuicyPotato
+	KrbRelay
+	KrbRelayUp
 	LaZagne
 	OffensivePythonPipeline
 	Out-EncryptedScript
 	PEASS
-	PSInject
 	Physmem2profit-www
 	PingCastle
 	PowerShellArmoury
@@ -2119,6 +2168,7 @@ www() {
 	pspy
 	pypykatz-exe
 	rdp-tunnel-www
+	revsocks-clients
 	static-binaries
 	suid3num.py
 }

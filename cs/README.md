@@ -10,6 +10,7 @@ WeaponizeCS.sh
 * [x] [CS-Situational-Awareness-BOF](https://github.com/trustedsec/CS-Situational-Awareness-BOF)
 * [x] [DelegationBOF](https://github.com/IcebreakerSecurity/DelegationBOF)
 * [ ] [ExecuteAssembly](https://github.com/med0x2e/ExecuteAssembly)
+* [x] [FindObjects-BOF](https://github.com/outflanknl/FindObjects-BOF)
 * [x] [HelpColor](https://github.com/outflanknl/HelpColor)
 * [ ] [InlineExecute-Assembly](https://github.com/anthemtotheego/InlineExecute-Assembly)
 * [x] [Invoke-CredentialPhisher](https://github.com/fox-it/Invoke-CredentialPhisher)
@@ -19,6 +20,7 @@ WeaponizeCS.sh
 * [x] [RdpThief](https://github.com/0x09AL/RdpThief)
 * [x] [SyscallPack](https://github.com/cube0x0/SyscallPack)
 * [x] [inject-assembly](https://github.com/kyleavery/inject-assembly)
+* [x] [injectAmsiBypass](https://github.com/boku7/injectAmsiBypass)
 * [x] [nanodump](https://github.com/helpsystems/nanodump)
 
 ## `Profiles/`

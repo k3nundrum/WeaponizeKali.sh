@@ -139,6 +139,13 @@ DelegationBOF() {
 	_popd
 }
 
+FindObjects-BOF() {
+	_pushd CobaltStrike/Scripts
+	progress "FindObjects-BOF"
+	cloneRepository "https://github.com/outflanknl/FindObjects-BOF.git"
+	_popd
+}
+
 HelpColor() {
 	_pushd CobaltStrike/Scripts
 	progress "HelpColor"
@@ -196,6 +203,13 @@ inject-assembly() {
 	_popd
 }
 
+injectAmsiBypass() {
+	_pushd CobaltStrike/Scripts
+	progress "injectAmsiBypass"
+	cloneRepository "https://github.com/boku7/injectAmsiBypass.git"
+	_popd
+}
+
 nanodump() {
 	_pushd CobaltStrike/Scripts
 	progress "nanodump"
@@ -210,6 +224,7 @@ Scripts() {
 	CS-Remote-OPs-BOF
 	CS-Situational-Awareness-BOF
 	DelegationBOF
+	FindObjects-BOF
 	HelpColor
 	Invoke-CredentialPhisher
 	LdapSignCheck
@@ -218,6 +233,7 @@ Scripts() {
 	RdpThief
 	SyscallPack
 	inject-assembly
+	injectAmsiBypass
 	nanodump
 }
 
