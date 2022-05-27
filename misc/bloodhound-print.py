@@ -4,7 +4,7 @@
 Print all node names to console (useful when developing the report).
 
 Example:
-$ bloodhound-print.py '<QUERY>'
+$ bloodhound-print.py {u|c|g|d|all} <QUERY>
 """
 
 import sys, json
@@ -30,15 +30,33 @@ driver = GraphDatabase.driver(uri, auth=(username, password), encrypted=False)
 
 with driver.session() as session:
 	with session.begin_transaction() as tx:
-		result = tx.run(sys.argv[1])
+		result = tx.run(sys.argv[2])
+
+label = sys.argv[1]
+if label == 'u':
+	label = 'User'
+elif label == 'c':
+	label = 'Computer'
+elif label == 'g':
+	label = 'Group'
+elif label == 'd':
+	label = 'Domain'
+else:
+	label = 'all'
 
 uniq = set()
 for record in result.data():
 	for path in record['p']:
 		for node in path.nodes:
+			labels = node.labels
 			name = node['name']
-			if name not in uniq:
-				uniq.add(name)
+			if (label == 'User' and '@' in name and label in labels)             \
+				or (label == 'Computer' and '@' not in name and label in labels) \
+				or (label == 'Group' and label in labels)                        \
+				or (label == 'Domain' and label in labels)                       \
+				or label == 'all':
+				if name not in uniq:
+					uniq.add(name)
 
 for name in sorted(uniq):
 	print(name)
