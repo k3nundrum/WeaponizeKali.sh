@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
 
+"""
+Recursively list all groups which the user is a member of.
+
+Example: get_ad_user_memberof.py 'SNOVVCRASH@MEGACORP.LOCAL'
+"""
+
 import sys
 import json
 import glob

@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
 
+"""
+Recursively list all members of a group.
+
+Example: get_ad_group_member.py 'DOMAIN ADMINS@MEGACORP.LOCAL'
+"""
+
 import sys
 import json
 import glob
