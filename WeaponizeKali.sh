@@ -763,6 +763,16 @@ enum4linux-ng() {
 	pipx install -f "git+https://github.com/cddmp/enum4linux-ng.git"
 }
 
+evil-winrm() {
+	_pushd tools
+	progress "evil-winrm"
+	mkdir evil-winrm
+	cd evil-winrm
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/evil-winrm.sh" evil-winrm.sh
+	chmod +x evil-winrm.sh
+	_popd
+}
+
 feroxbuster() {
 	_pushd tools
 	progress "feroxbuster"
@@ -935,11 +945,14 @@ masscan() {
 misc() {
 	FUNC=$(declare -f downloadRawFile)
 
+	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/bloodhound-print.py' /usr/local/bin/bloodhound-print.py"
+	sudo chmod +x /usr/local/bin/bloodhound-print.py
+
 	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/cidr_merge.py' /usr/local/bin/cidr_merge.py"
 	sudo chmod +x /usr/local/bin/cidr_merge.py
 
-	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/bloodhound-print.py' /usr/local/bin/bloodhound-print.py"
-	sudo chmod +x /usr/local/bin/bloodhound-print.py
+	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/cred_stasher.py' /usr/local/bin/cred_stasher.py"
+	sudo chmod +x /usr/local/bin/cred_stasher.py
 }
 
 mitm6() {
@@ -1367,6 +1380,7 @@ tools() {
 	dsniff
 	eavesarp
 	enum4linux-ng
+	evil-winrm
 	feroxbuster
 	ffuf
 	gMSADumper
