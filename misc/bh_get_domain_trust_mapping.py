@@ -26,7 +26,6 @@ def get_domain_trust_mapping():
 				row.append('WINDOWS_ACTIVE_DIRECTORY') # TrustType
 
 				# TrustAttributes
-				# https://github.com/fox-it/BloodHound.py/blob/master/bloodhound/ad/trusts.py
 				if trust['TrustType'] == 'ParentChild':
 					row.append('WITHIN_FOREST')
 				elif trust['TrustType'] == 'Forest':

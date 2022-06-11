@@ -945,11 +945,14 @@ masscan() {
 misc() {
 	FUNC=$(declare -f downloadRawFile)
 
-	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/get_ad_group_member.py' /usr/local/bin/get_ad_group_member.py"
-	sudo chmod +x /usr/local/bin/get_ad_group_member.py
+	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/bh_get_ad_group_member.py' /usr/local/bin/bh_get_ad_group_member.py"
+	sudo chmod +x /usr/local/bin/bh_get_ad_group_member.py
 
-	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/get_ad_user_memberof.py' /usr/local/bin/get_ad_user_memberof.py"
-	sudo chmod +x /usr/local/bin/get_ad_user_memberof.py
+	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/bh_get_ad_user_memberof.py' /usr/local/bin/bh_get_ad_user_memberof.py"
+	sudo chmod +x /usr/local/bin/bh_get_ad_user_memberof.py
+
+	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/bh_get_domain_trust_mapping.py' /usr/local/bin/bh_get_domain_trust_mapping.py"
+	sudo chmod +x /usr/local/bin/bh_get_domain_trust_mapping.py
 
 	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/bloodhound-print.py' /usr/local/bin/bloodhound-print.py"
 	sudo chmod +x /usr/local/bin/bloodhound-print.py

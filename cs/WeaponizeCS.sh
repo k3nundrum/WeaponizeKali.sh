@@ -196,6 +196,13 @@ SyscallPack() {
 	_popd
 }
 
+freeBokuLoader() {
+	_pushd CobaltStrike/Scripts
+	progress "freeBokuLoader"
+	cloneRepository "https://github.com/S4ntiagoP/freeBokuLoader.git"
+	_popd
+}
+
 inject-assembly() {
 	_pushd CobaltStrike/Scripts
 	progress "inject-assembly"
@@ -232,6 +239,7 @@ Scripts() {
 	PortBender
 	RdpThief
 	SyscallPack
+	freeBokuLoader
 	inject-assembly
 	injectAmsiBypass
 	nanodump
