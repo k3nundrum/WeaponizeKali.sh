@@ -52,7 +52,7 @@ To execute WeaponizeKali.sh with full set of arguments again after it has alread
 ```console
 ~$ cd
 ~$ pipx uninstall-all
-~$ sudo rm -rf ~/.local/pipx
+~$ sudo rm -rf ~/{.local/pipx,tools,www}
 ~$ ./WeaponizeKali.sh -idtw
 ```
 
