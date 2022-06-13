@@ -77,7 +77,16 @@ installDebPackage() {
 		warning "$pkg_name not found, installing with apt"
 		sudo apt install $pkg_name -y
 	fi
-	success "Installed deb package: $pkg_name"
+	success "Installed deb package(s): $pkg_name"
+}
+
+installSnapPackage() {
+	pkg_name=$1
+	if ! /usr/bin/snap info $pkg_name 2>&1 | /bin/grep "installed" > /dev/null; then
+		warning "$pkg_name not found, installing with snap"
+		sudo snap install $pkg_name --dangerous
+	fi
+	success "Installed snap package(s): $pkg_name"
 }
 
 installPipPackage() {
@@ -87,16 +96,7 @@ installPipPackage() {
 		warning "$pkg_name not found, installing with pip$V"
 		sudo "python${V}" -m pip install -U $pkg_name
 	fi
-	success "Installed pip$V package: $pkg_name"
-}
-
-installSnapPackage() {
-	pkg_name=$1
-	if ! /usr/bin/snap info $pkg_name 2>&1 | /bin/grep "installed" > /dev/null; then
-		warning "$pkg_name not found, installing with snap"
-		sudo snap install $pkg_name --dangerous
-	fi
-	success "Installed snap package: $pkg_name"
+	success "Installed pip$V package(s): $pkg_name"
 }
 
 cloneRepository() {
@@ -314,6 +314,13 @@ CrackMapExec() {
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/cme.conf" ~/.cme/cme.conf
 }
 
+DInjector() {
+	_pushd tools
+	progress "DInjector"
+	cloneRepository "https://github.com/snovvcrash/DInjector.git"
+	_popd
+}
+
 DLLsForHackers() {
 	_pushd tools
 	progress "DLLsForHackers"
@@ -415,6 +422,15 @@ MS17-010() {
 	_popd
 }
 
+Max() {
+	_pushd tools
+	progress "Max"
+	cloneRepository "https://github.com/knavesec/Max.git"
+	cd Max
+	python3 -m pip install -U -r requirements.txt
+	_popd
+}
+
 MeterPwrShell() {
 	_pushd tools
 	progress "MeterPwrShell"
@@ -435,9 +451,18 @@ Neo-reGeorg() {
 
 Nim() {
 	progress "Nim"
-	installDebPackage "mingw-w64 nim"
-	nimble install winim nimcrypto zippy -y
-	#curl https://nim-lang.org/choosenim/init.sh -sSf | CHOOSENIM_NO_ANALYTICS=1 sh
+	installDebPackage "mingw-w64" # "nim"
+	curl https://nim-lang.org/choosenim/init.sh -sSf | CHOOSENIM_NO_ANALYTICS=1 sh
+}
+
+Nimcrypt2() {
+	_pushd tools
+	progress "Nimcrypt2"
+	cloneRepository "https://github.com/icyguider/Nimcrypt2.git"
+	cd Nimcrypt2
+	installDebPackage "gcc mingw-w64 xz-utils git"
+	nimble install winim nimcrypto docopt ptr_math strenc -y
+	_popd
 }
 
 NimlineWhispers() {
@@ -702,6 +727,15 @@ bloodhound-quickwin() {
 	_popd
 }
 
+bloodyAD() {
+	_pushd tools
+	progress "bloodyAD"
+	cloneRepository "https://github.com/CravateRouge/bloodyAD.git"
+	cd bloodyAD
+	python3 -m pip install -U -r requirements.txt
+	_popd
+}
+
 certi() {
 	progress "certi"
 	pipx install -f "git+https://github.com/zer1t0/certi.git"
@@ -766,8 +800,6 @@ enum4linux-ng() {
 evil-winrm() {
 	_pushd tools
 	progress "evil-winrm"
-	mkdir evil-winrm
-	cd evil-winrm
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/evil-winrm.sh" evil-winrm.sh
 	chmod +x evil-winrm.sh
 	_popd
@@ -1335,9 +1367,10 @@ tools() {
 	CVE-2021-1675
 	Covenant
 	CrackMapExec
+	DInjector
 	DLLsForHackers
-	DonPAPI
 	DivideAndScan
+	DonPAPI
 	Ebowla
 	Empire
 	ItWasAllADream
@@ -1347,8 +1380,10 @@ tools() {
 	LightMe
 	MS17-010
 	#MANSPIDER
+	Max
 	MeterPwrShell
 	Nim
+	Nimcrypt2
 	NimlineWhispers
 	Obsidian
 	OffensiveNim
@@ -1381,6 +1416,7 @@ tools() {
 	bettercap
 	bloodhound-import
 	bloodhound-quickwin
+	bloodyAD
 	certi
 	chisel-server
 	crowbar
@@ -1452,7 +1488,7 @@ tools() {
 	wesng
 	windapsearch
 	wmiexec-RegOut
-	xc
+	#xc
 }
 
 # -----------------------------------------------------------------------------
@@ -1562,7 +1598,7 @@ HiveNightmare() {
 
 Intercepter-NG() {
 	_pushd www
-	downloadRawFile "http://sniff.su/Intercepter-NG.v1.0+.zip" intercepter-ng.zip
+	downloadRawFile "http://sniff.su/Intercepter-NG.v1.1.zip" intercepter-ng.zip
 	_popd
 }
 
