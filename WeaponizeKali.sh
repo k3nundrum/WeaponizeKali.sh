@@ -303,6 +303,10 @@ Certipy() {
 Covenant() {
 	_pushd tools
 	cloneRepository "https://github.com/cobbr/Covenant.git"
+	cd Covenant
+	cloneRepository "https://gist.github.com/S3cur3Th1sSh1t/967927eb89b81a5519df61440357f945.git" /tmp/Stageless_Covenant_HTTP
+	mv /tmp/Stageless_Covenant_HTTP/Stageless_Covenant_HTTP.cs GruntHTTPStageless.cs
+	rm -rf /tmp/Stageless_Covenant_HTTP
 	#cd Covenant/Covenant
 	#sudo /root/.dotnet/dotnet run
 	_popd

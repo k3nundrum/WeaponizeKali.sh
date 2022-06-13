@@ -126,7 +126,7 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [CVE-2020-1472-checker](https://github.com/SecuraBV/CVE-2020-1472)
 * [x] [CVE-2021-1675 (MS-RPRN)](https://github.com/cube0x0/CVE-2021-1675/blob/main/CVE-2021-1675.py) · [CVE-2021-1675 (MS-PAR)](https://github.com/cube0x0/CVE-2021-1675/blob/main/SharpPrintNightmare/CVE-2021-1675.py) · [impacket-cube0x0](https://github.com/cube0x0/impacket) · [SharpPrintNightmare](https://github.com/cube0x0/CVE-2021-1675/tree/main/SharpPrintNightmare)
 * [x] [Certipy](https://github.com/ly4k/Certipy)
-* [x] [Covenant](https://github.com/cobbr/Covenant)
+* [x] [Covenant](https://github.com/cobbr/Covenant) · [Stageless_Covenant_HTTP.cs](https://gist.github.com/S3cur3Th1sSh1t/967927eb89b81a5519df61440357f945)
 * [x] [CrackMapExec](https://github.com/byt3bl33d3r/CrackMapExec)
 * [x] [DInjector](https://github.com/snovvcrash/DInjector)
 * [x] [DLLsForHackers](https://github.com/Mr-Un1k0d3r/DLLsForHackers)
