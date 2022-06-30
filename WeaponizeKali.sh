@@ -2057,6 +2057,7 @@ chisel-clients() {
 	mv chisel.exe ../chisel.exe
 	cd ..
 	rm -rf tmp1 tmp2
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/chisel-garble.exe" chisel-garble.exe
 	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_Any/SharpChisel.exe" sharpchisel.exe
 	_popd
 }
