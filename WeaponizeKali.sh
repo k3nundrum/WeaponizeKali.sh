@@ -11,7 +11,7 @@ dark_gray="\033[1;30m"
 magenta_bold="\033[1;35m"
 
 SITE="https://github.com/penetrarnya-tm/WeaponizeKali.sh"
-VERSION="0.1.4"
+VERSION="0.1.5"
 
 echo -e "${red_bold}                                                         )${nocolor}"
 echo -e "${red_bold} (  (                                                  ( /(       (                )${nocolor}"
@@ -163,8 +163,9 @@ _python2() {
 
 _python3() {
 	installDebPackage "python3-pip python3-venv python3-dev"
-	installPipPackage 3 "setuptools poetry pipx"
+	installPipPackage 3 "setuptools pipx"
 	pipx ensurepath
+	curl -sSL https://install.python-poetry.org | python3 -
 }
 
 _krb5() {
@@ -211,6 +212,13 @@ dependencies() {
 # -----------------------------------------------------------------------------
 # ----------------------------------- tools -----------------------------------
 # -----------------------------------------------------------------------------
+
+AutoBlue-MS17-010() {
+	_pushd tools
+	progress "AutoBlue-MS17-010"
+	cloneRepository "https://github.com/3ndG4me/AutoBlue-MS17-010.git"
+	_popd
+}
 
 BloodHound() {
 	_pushd tools
@@ -770,6 +778,14 @@ dementor.py() {
 	_popd
 }
 
+dnsx() {
+	_pushd tools
+	progress "dnsx"
+	mkdir dnsx
+	eget -qs linux/amd64 projectdiscovery/dnsx --to dnsx
+	_popd
+}
+
 donut() {
 	_pushd tools
 	progress "donut"
@@ -950,6 +966,11 @@ ldapsearch-ad() {
 	cd ldapsearch-ad
 	python3 -m pip install -U -r requirements.txt
 	_popd
+}
+
+ldeep() {
+	progress "ldeep"
+	pipx install -f "git+https://github.com/franc-pentest/ldeep.git"
 }
 
 ligolo-ng-proxy() {
@@ -1363,6 +1384,7 @@ xc() {
 }
 
 tools() {
+	AutoBlue-MS17-010
 	BloodHound
 	BloodHound.py
 	Certipy
@@ -1425,6 +1447,7 @@ tools() {
 	chisel-server
 	crowbar
 	dementor.py
+	dnsx
 	donut
 	dsniff
 	eavesarp
@@ -1447,6 +1470,7 @@ tools() {
 	ldap_shell
 	ldapdomaindump
 	ldapsearch-ad
+	ldeep
 	ligolo-ng-proxy
 	lsassy
 	masscan

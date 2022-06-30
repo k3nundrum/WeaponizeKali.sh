@@ -119,6 +119,7 @@ Get a random name of a `.exe` or `.dll` binary:
 
 ### `tools/`
 
+* [x] [AutoBlue-MS17-010](https://github.com/3ndG4me/AutoBlue-MS17-010)
 * [x] [Amsi-Bypass-Powershell](https://github.com/S3cur3Th1sSh1t/Amsi-Bypass-Powershell/blob/master/README.md)
 * [x] [BloodHound](https://github.com/BloodHoundAD/BloodHound/releases)
 * [x] [BloodHound.py](https://github.com/fox-it/BloodHound.py)
@@ -183,6 +184,7 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [chisel](https://github.com/jpillora/chisel/releases) · [SharpChisel](https://github.com/shantanu561993/SharpChisel) · [EXE](https://github.com/Flangvik/SharpCollection/blob/master/NetFramework_4.0_Any/SharpChisel.exe)
 * [x] [crowbar](https://github.com/galkan/crowbar)
 * [x] [dementor.py](https://gist.github.com/3xocyte/cfaf8a34f76569a8251bde65fe69dccc#file-dementor-py)
+* [x] [dnsx](https://github.com/projectdiscovery/dnsx)
 * [x] [donut](https://github.com/S4ntiagoP/donut/tree/syscalls)
 * [x] [dsniff](https://github.com/tecknicaltom/dsniff)
 * [x] [eavesarp](https://github.com/arch4ngel/eavesarp)
@@ -205,6 +207,7 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [ldap_shell](https://github.com/PShlyundin/ldap_shell)
 * [x] [ldapdomaindump](https://github.com/dirkjanm/ldapdomaindump)
 * [x] [ldapsearch-ad](https://github.com/yaap7/ldapsearch-ad)
+* [x] [ldeep](https://github.com/franc-pentest/ldeep)
 * [x] [ligolo-proxy](https://github.com/tnpitsecurity/ligolo-ng)
 * [x] [lsassy](https://github.com/Hackndo/lsassy)
 * [x] [masscan](https://github.com/robertdavidgraham/masscan)
