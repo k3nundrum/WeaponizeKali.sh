@@ -1733,6 +1733,12 @@ JuicyPotato() {
 	_popd
 }
 
+KSC-Console() {
+	_pushd www
+	downloadRawFile "https://aes.s.kaspersky-labs.com/administrationkit/ksc10/13.2.0.1511/russian-7864598-ru/3439313231317c44454c7c31/ksc_13_13.2.0.1511_Console_ru.exe" ksc_console.exe
+	_popd
+}
+
 KrbRelay() {
 	_pushd www
 	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.7_Any/KrbRelay.exe" krbrelay.exe
@@ -1857,6 +1863,18 @@ ProcDump() {
 	downloadRawFile "https://download.sysinternals.com/files/Procdump.zip" procdump.zip
 	unzip -q procdump.zip
 	rm Eula.txt procdump64a.exe procdump.zip
+	_popd
+}
+
+Python-2.7.18() {
+	_pushd www
+	downloadRawFile "https://www.python.org/ftp/python/2.7.18/python-2.7.18.amd64.msi" python-2.7.18.amd64.msi
+	_popd
+}
+
+RawCopy() {
+	_pushd www
+	downloadRawFile "https://github.com/jschicht/RawCopy/raw/master/RawCopy64.exe" rawcopy64.exe
 	_popd
 }
 
@@ -2035,6 +2053,12 @@ WinPwn() {
 	_popd
 }
 
+Wireshark() {
+	_pushd www
+	downloadRawFile "https://1.eu.dl.wireshark.org/win64/WiresharkPortable64_3.6.6.paf.exe" wireshark-portable.exe
+	_popd
+}
+
 arpfox() {
 	_pushd www
 	downloadRelease "malfunkt/arpfox" arpfox_linux_amd64.gz arpfox.gz
@@ -2198,6 +2222,7 @@ www() {
 	Invoke-noPac
 	JAWS
 	JuicyPotato
+	KSC-Console
 	KrbRelay
 	KrbRelayUp
 	LaZagne
@@ -2218,6 +2243,8 @@ www() {
 	PrivescCheck
 	PSTools
 	ProcDump
+	Python-2.7.18
+	RawCopy
 	RemotePotato0
 	RoguePotato
 	Rubeus
@@ -2244,6 +2271,7 @@ www() {
 	VeraCryptThiefInjector
 	WerTrigger
 	WinPwn
+	Wireshark
 	arpfox
 	chisel-clients
 	ligolo-ng-agents
