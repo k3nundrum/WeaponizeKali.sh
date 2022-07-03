@@ -322,7 +322,7 @@ Covenant() {
 
 CrackMapExec() {
 	progress "CrackMapExec"
-	pipx install -f "git+https://github.com/byt3bl33d3r/CrackMapExec.git"
+	pipx install -f "git+https://github.com/Porchetta-Industries/CrackMapExec.git"
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/cme.conf" ~/.cme/cme.conf
 }
 
@@ -1670,6 +1670,12 @@ Invoke-Portscan() {
 	_popd
 }
 
+Invoke-RunOF() {
+	_pushd www
+	downloadRawFile "https://github.com/snovvcrash/RunOF/raw/master/bin/Invoke-RunOF.ps1" invoke-runof.ps1
+	_popd
+}
+
 Invoke-RunasCs() {
 	_pushd www
 	downloadRawFile "https://github.com/antonioCoco/RunasCs/raw/master/Invoke-RunasCs.ps1" invoke-runascs.ps1
@@ -2212,6 +2218,7 @@ www() {
 	Invoke-PSInject
 	Invoke-PatchWdigest
 	Invoke-Portscan
+	Invoke-RunOF
 	Invoke-RunasCs
 	Invoke-SMBClient
 	Invoke-SMBEnum
