@@ -1672,7 +1672,7 @@ Invoke-Portscan() {
 
 Invoke-RunOF() {
 	_pushd www
-	downloadRawFile "https://github.com/snovvcrash/RunOF/raw/master/bin/Invoke-RunOF.ps1" invoke-runof.ps1
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-RunOF.ps1" invoke-runof.ps1
 	_popd
 }
 

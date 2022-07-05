@@ -309,7 +309,7 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [RemotePotato0](https://github.com/antonioCoco/RemotePotato0/releases)
 * [x] [RoguePotato](https://github.com/antonioCoco/RoguePotato)
 * [x] [Rubeus](https://github.com/GhostPack/Rubeus) · [EXE](https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/blob/master/Rubeus.exe)
-* [x] [RunOF](https://github.com/nettitude/RunOF)  · [PS1](https://github.com/snovvcrash/RunOF/blob/master/bin/Invoke-RunOF.ps1)
+* [x] [RunOF](https://github.com/nettitude/RunOF)  · [PS1](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/bin/Invoke-RunOF.ps1)
 * [x] [SandboxDefender](https://github.com/plackyhacker/SandboxDefender) · [EXE](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/bin/SandboxDefender.exe)
 * [x] [Seatbelt](https://github.com/GhostPack/Seatbelt) · [EXE](https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/blob/master/Seatbelt.exe)
 * [x] [SessionGopher.ps1](https://github.com/Arvanaghi/SessionGopher/blob/master/SessionGopher.ps1)
