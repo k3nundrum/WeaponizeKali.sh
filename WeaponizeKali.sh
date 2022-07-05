@@ -1706,12 +1706,6 @@ Invoke-KeeTheftSyscalls() {
 	_popd
 }
 
-Invoke-SharpImpersonation() {
-	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-SharpImpersonation.ps1" invoke-sharpimpersonation.ps1
-	_popd
-}
-
 Invoke-WMIExec() {
 	_pushd www
 	downloadRawFile "https://github.com/Kevin-Robertson/Invoke-TheHash/raw/master/Invoke-WMIExec.ps1" invoke-wmiexec.ps1
@@ -2224,7 +2218,6 @@ www() {
 	Invoke-SMBEnum
 	Invoke-SMBExec
 	Invoke-KeeTheftSyscalls
-	Invoke-SharpImpersonation
 	Invoke-WMIExec
 	Invoke-noPac
 	JAWS
