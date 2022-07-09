@@ -10,9 +10,9 @@ function Invoke-RunOF
 	$g = New-Object System.IO.StringWriter
 	[System.Console]::SetOut($g)
 
-	[RunOF.Program]::Main([string[]]$args)
+	$h = [RunOF.Program]::Main([string[]]$args)
 
 	[System.Console]::SetOut($f)
-	$h = $g.ToString()
-	$h
+	$i = $g.ToString()
+	$i
 }
