@@ -308,6 +308,11 @@ Certipy() {
 	pipx install -f "git+https://github.com/ly4k/Certipy.git"
 }
 
+Coercer() {
+	progress "Coercer"
+	pipx install -f "git+https://github.com/p0dalirius/Coercer.git"
+}
+
 Covenant() {
 	_pushd tools
 	cloneRepository "https://github.com/cobbr/Covenant.git"
@@ -326,10 +331,21 @@ CrackMapExec() {
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/cme.conf" ~/.cme/cme.conf
 }
 
+DFSCoerce() {
+	_pushd tools
+	progress "DFSCoerce"
+	cloneRepository "https://github.com/Wh04m1001/DFSCoerce.git"
+	cd DFSCoerce
+	chmod +x dfscoerce.py
+	_popd
+}
+
 DInjector() {
 	_pushd tools
 	progress "DInjector"
 	cloneRepository "https://github.com/snovvcrash/DInjector.git"
+	cd DInjector
+	git checkout dev
 	_popd
 }
 
@@ -665,6 +681,15 @@ Windows-Exploit-Suggester() {
 ZeroTier() {
 	progress "ZeroTier"
 	curl -s https://install.zerotier.com | sudo bash
+}
+
+aced() {
+	_pushd tools
+	progress "aced"
+	cloneRepository "https://github.com/garrettfoster13/aced.git"
+	cd aced
+	python3 -m pip install -U -r requirements.txt
+	_popd
 }
 
 ack3() {
@@ -1129,6 +1154,23 @@ payloadGenerator() {
 	_popd
 }
 
+powerview.py() {
+	_pushd tools
+	progress "powerview.py"
+	cloneRepository "https://github.com/aniqfakhrul/powerview.py.git"
+	cd powerview.py
+	python3 -m pip install -U -r requirements.txt
+	_popd
+}
+
+pretender-tools() {
+	_pushd tools
+	progress "pretender"
+	mkdir pretender
+	eget -qs linux/amd64 RedTeamPentesting/pretender --to pretender
+	_popd
+}
+
 pyGPOAbuse() {
 	_pushd tools
 	progress "pyGPOAbuse"
@@ -1391,8 +1433,10 @@ tools() {
 	CVE-2019-1040-scanner
 	CVE-2020-1472-checker
 	CVE-2021-1675
+	Coercer
 	Covenant
 	CrackMapExec
+	DFSCoerce
 	DInjector
 	DLLsForHackers
 	DivideAndScan
@@ -1434,6 +1478,7 @@ tools() {
 	TrustVisualizer
 	Windows-Exploit-Suggester
 	ZeroTier
+	aced
 	#ack3
 	aclpwn.py
 	adidnsdump
@@ -1488,6 +1533,8 @@ tools() {
 	odat
 	paperify
 	payloadGenerator
+	powerview.py
+	pretender-tools
 	pyGPOAbuse
 	pyKerbrute
 	pypykatz
@@ -1571,6 +1618,12 @@ Certify() {
 	_popd
 }
 
+DDexec() {
+	_pushd www
+	downloadRawFile "https://github.com/arget13/DDexec/raw/main/ddexec.sh" ddexec.sh
+	_popd
+}
+
 DefenderStop() {
 	_pushd www
 	downloadRelease "dosxuz/DefenderStop" DefenderStop_x64.exe defenderstop.exe
@@ -1641,6 +1694,12 @@ Inveigh() {
 Invoke-ACLPwn() {
 	_pushd www
 	downloadRawFile "https://github.com/fox-it/Invoke-ACLPwn/raw/master/Invoke-ACLPwn.ps1" invoke-aclpwn.ps1
+	_popd
+}
+
+Invoke-ConPtyShell() {
+	_pushd www
+	downloadRawFile "https://github.com/antonioCoco/ConPtyShell/raw/master/Invoke-ConPtyShell.ps1" invoke-conptyshell.ps1
 	_popd
 }
 
@@ -1770,11 +1829,7 @@ Out-EncryptedScript() {
 }
 
 PEASS() {
-	_pushd www
-	downloadRelease "carlospolop/PEASS-ng" linpeas.sh linpeas.sh
-	downloadRelease "carlospolop/PEASS-ng" winPEASany.exe winpeas.exe
-	downloadRelease "carlospolop/PEASS-ng" winPEAS.bat winpeas.bat
-	_popd
+	installDebPackage "peass"
 }
 
 Physmem2profit-www() {
@@ -2008,6 +2063,12 @@ SharpWMI() {
 	_popd
 }
 
+SharpWebServer() {
+	_pushd www
+	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_Any/SharpWebServer.exe" sharpwebserver.exe
+	_popd
+}
+
 Sherlock() {
 	_pushd www
 	downloadRawFile "https://github.com/rasta-mouse/Sherlock/raw/master/Sherlock.ps1" sherlock.ps1
@@ -2141,6 +2202,12 @@ netcat-win() {
 	_popd
 }
 
+pamspy() {
+	_pushd www
+	eget -q citronneur/pamspy --to pamspy
+	_popd
+}
+
 plink() {
 	_pushd www
 	downloadRawFile "https://the.earth.li/~sgtatham/putty/latest/w64/plink.exe" plink.exe
@@ -2150,6 +2217,15 @@ plink() {
 powercat() {
 	_pushd www
 	downloadRawFile "https://github.com/besimorhino/powercat/raw/master/powercat.ps1" powercat.ps1
+	_popd
+}
+
+pretender-www() {
+	_pushd www
+	eget -qs linux/amd64 RedTeamPentesting/pretender --to pretender
+	chmod -x pretender
+	eget -qs windows/amd64 RedTeamPentesting/pretender --to pretender.exe
+	chmod -x pretender.exe
 	_popd
 }
 
@@ -2174,7 +2250,9 @@ rdp-tunnel-www() {
 revsocks-clients() {
 	_pushd www
 	eget -qs linux/amd64 kost/revsocks --to revsocks
+	chmod -x revsocks
 	eget -qs windows/amd64 kost/revsocks --to revsocks.exe
+	chmod -x revsocks.exe
 	_popd
 }
 
@@ -2198,6 +2276,7 @@ www() {
 	AccessChk
 	Amsi-Bypass-Powershell
 	Certify
+	DDexec
 	DefenderStop
 	Discover-PSMSExchangeServers
 	Discover-PSMSSQLServers
@@ -2208,6 +2287,7 @@ www() {
 	Intercepter-NG
 	Inveigh
 	Invoke-ACLPwn
+	Invoke-ConPtyShell
 	Invoke-ImpersonateUser-PTH
 	Invoke-PSInject
 	Invoke-PatchWdigest
@@ -2264,6 +2344,7 @@ www() {
 	SharpSecDump
 	SharpView
 	SharpWMI
+	SharpWebServer
 	Sherlock
 	Snaffler
 	SpoolSample
@@ -2279,8 +2360,10 @@ www() {
 	mimikatz
 	nanodump-www
 	netcat-win
+	pamspy
 	plink
 	powercat
+	pretender-www
 	pspy
 	pypykatz-exe
 	rdp-tunnel-www

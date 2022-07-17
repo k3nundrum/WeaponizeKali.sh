@@ -3,6 +3,7 @@ WeaponizeCS.sh
 
 ## `Scripts/`
 
+* [x] [BOFs](https://github.com/ajpc500/BOFs)
 * [x] [BofRoast](https://github.com/cube0x0/BofRoast)
 * [x] [BokuLoader](https://github.com/boku7/BokuLoader)
 * [x] [C2-Tool-Collection](https://github.com/outflanknl/C2-Tool-Collection)

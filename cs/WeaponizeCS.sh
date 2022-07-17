@@ -95,6 +95,13 @@ downloadRelease() {
 # ---------------------------------- Scripts ----------------------------------
 # -----------------------------------------------------------------------------
 
+BOFs() {
+	_pushd CobaltStrike/Scripts
+	progress "BOFs"
+	cloneRepository "https://github.com/ajpc500/BOFs.git"
+	_popd
+}
+
 BofRoast() {
 	_pushd CobaltStrike/Scripts
 	progress "BofRoast"
@@ -225,6 +232,7 @@ nanodump() {
 }
 
 Scripts() {
+	BOFs
 	BofRoast
 	BokuLoader
 	C2-Tool-Collection
