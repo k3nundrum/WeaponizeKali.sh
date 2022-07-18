@@ -9,6 +9,7 @@ WeaponizeCS.sh
 * [x] [C2-Tool-Collection](https://github.com/outflanknl/C2-Tool-Collection)
 * [x] [CS-Remote-OPs-BOF](https://github.com/trustedsec/CS-Remote-OPs-BOF)
 * [x] [CS-Situational-Awareness-BOF](https://github.com/trustedsec/CS-Situational-Awareness-BOF)
+* [x] [DInjector](https://github.com/snovvcrash/DInjector)
 * [x] [DelegationBOF](https://github.com/IcebreakerSecurity/DelegationBOF)
 * [ ] [ExecuteAssembly](https://github.com/med0x2e/ExecuteAssembly)
 * [x] [FindObjects-BOF](https://github.com/outflanknl/FindObjects-BOF)

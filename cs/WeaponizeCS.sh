@@ -12,7 +12,7 @@ magenta_bold="\033[1;35m"
 # -----------------------------------------------------------------------------
 
 filesystem() {
-	rm -rf CobaltStrike
+	#rm -rf CobaltStrike
 	mkdir -p CobaltStrike/{Profiles,Scripts,Toolkits}
 }
 
@@ -139,6 +139,13 @@ CS-Situational-Awareness-BOF() {
 	_popd
 }
 
+DInjector() {
+	_pushd CobaltStrike/Scripts
+	progress "DInjector"
+	cloneRepository "https://github.com/snovvcrash/DInjector.git"
+	_popd
+}
+
 DelegationBOF() {
 	_pushd CobaltStrike/Scripts
 	progress "DelegationBOF"
@@ -238,6 +245,7 @@ Scripts() {
 	C2-Tool-Collection
 	CS-Remote-OPs-BOF
 	CS-Situational-Awareness-BOF
+	DInjector
 	DelegationBOF
 	FindObjects-BOF
 	HelpColor
