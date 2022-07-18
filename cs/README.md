@@ -2,7 +2,6 @@ WeaponizeCS.sh
 ==========
 
 ```bash
-cd ~/tools/CobaltStrike
 bash <(curl -sL https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/cs/WeaponizeCS.sh)
 ```
 
