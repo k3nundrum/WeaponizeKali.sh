@@ -12,8 +12,7 @@ magenta_bold="\033[1;35m"
 # -----------------------------------------------------------------------------
 
 filesystem() {
-	#rm -rf CobaltStrike
-	mkdir -p CobaltStrike/{Profiles,Scripts,Toolkits}
+	mkdir Profiles Scripts Toolkits
 }
 
 # -----------------------------------------------------------------------------
@@ -96,42 +95,42 @@ downloadRelease() {
 # -----------------------------------------------------------------------------
 
 BOFs() {
-	_pushd CobaltStrike/Scripts
+	_pushd Scripts
 	progress "BOFs"
 	cloneRepository "https://github.com/ajpc500/BOFs.git"
 	_popd
 }
 
 BofRoast() {
-	_pushd CobaltStrike/Scripts
+	_pushd Scripts
 	progress "BofRoast"
 	cloneRepository "https://github.com/cube0x0/BofRoast.git"
 	_popd
 }
 
 BokuLoader() {
-	_pushd CobaltStrike/Scripts
+	_pushd Scripts
 	progress "BokuLoader"
 	cloneRepository "https://github.com/boku7/BokuLoader.git"
 	_popd
 }
 
 C2-Tool-Collection() {
-	_pushd CobaltStrike/Scripts
+	_pushd Scripts
 	progress "C2-Tool-Collection"
 	cloneRepository "https://github.com/outflanknl/C2-Tool-Collection.git"
 	_popd
 }
 
 CS-Remote-OPs-BOF() {
-	_pushd CobaltStrike/Scripts
+	_pushd Scripts
 	progress "CS-Remote-OPs-BOF"
 	cloneRepository "https://github.com/trustedsec/CS-Remote-OPs-BOF.git"
 	_popd
 }
 
 CS-Situational-Awareness-BOF() {
-	_pushd CobaltStrike/Scripts
+	_pushd Scripts
 	progress "CS-Situational-Awareness-BOF"
 	cloneRepository "https://github.com/trustedsec/CS-Situational-Awareness-BOF.git"
 	#cd CS-Situational-Awareness-BOF
@@ -140,56 +139,56 @@ CS-Situational-Awareness-BOF() {
 }
 
 DInjector() {
-	_pushd CobaltStrike/Scripts
+	_pushd Scripts
 	progress "DInjector"
 	cloneRepository "https://github.com/snovvcrash/DInjector.git"
 	_popd
 }
 
 DelegationBOF() {
-	_pushd CobaltStrike/Scripts
+	_pushd Scripts
 	progress "DelegationBOF"
 	cloneRepository "https://github.com/IcebreakerSecurity/DelegationBOF.git"
 	_popd
 }
 
 FindObjects-BOF() {
-	_pushd CobaltStrike/Scripts
+	_pushd Scripts
 	progress "FindObjects-BOF"
 	cloneRepository "https://github.com/outflanknl/FindObjects-BOF.git"
 	_popd
 }
 
 HelpColor() {
-	_pushd CobaltStrike/Scripts
+	_pushd Scripts
 	progress "HelpColor"
 	cloneRepository "https://github.com/outflanknl/HelpColor.git"
 	_popd
 }
 
 Invoke-CredentialPhisher() {
-	_pushd CobaltStrike/Scripts
+	_pushd Scripts
 	progress "Invoke-CredentialPhisher"
 	cloneRepository "https://github.com/fox-it/Invoke-CredentialPhisher.git"
 	_popd
 }
 
 LdapSignCheck() {
-	_pushd CobaltStrike/Scripts
+	_pushd Scripts
 	progress "LdapSignCheck"
 	cloneRepository "https://github.com/cube0x0/LdapSignCheck.git"
 	_popd
 }
 
 PersistBOF() {
-	_pushd CobaltStrike/Scripts
+	_pushd Scripts
 	progress "PersistBOF"
 	cloneRepository "https://github.com/IcebreakerSecurity/PersistBOF.git"
 	_popd
 }
 
 PortBender() {
-	_pushd CobaltStrike/Scripts
+	_pushd Scripts
 	progress "PortBender"
 	cloneRepository "https://github.com/praetorian-inc/PortBender.git"
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/PortBender64.dll" PortBender/static/PortBender.dll
@@ -197,42 +196,42 @@ PortBender() {
 }
 
 RdpThief() {
-	_pushd CobaltStrike/Scripts
+	_pushd Scripts
 	progress "RdpThief"
 	cloneRepository "https://github.com/0x09AL/RdpThief.git"
 	_popd
 }
 
 SyscallPack() {
-	_pushd CobaltStrike/Scripts
+	_pushd Scripts
 	progress "SyscallPack"
 	cloneRepository "https://github.com/cube0x0/SyscallPack.git"
 	_popd
 }
 
 freeBokuLoader() {
-	_pushd CobaltStrike/Scripts
+	_pushd Scripts
 	progress "freeBokuLoader"
 	cloneRepository "https://github.com/S4ntiagoP/freeBokuLoader.git"
 	_popd
 }
 
 inject-assembly() {
-	_pushd CobaltStrike/Scripts
+	_pushd Scripts
 	progress "inject-assembly"
 	cloneRepository "https://github.com/kyleavery/inject-assembly.git"
 	_popd
 }
 
 injectAmsiBypass() {
-	_pushd CobaltStrike/Scripts
+	_pushd Scripts
 	progress "injectAmsiBypass"
 	cloneRepository "https://github.com/boku7/injectAmsiBypass.git"
 	_popd
 }
 
 nanodump() {
-	_pushd CobaltStrike/Scripts
+	_pushd Scripts
 	progress "nanodump"
 	cloneRepository "https://github.com/helpsystems/nanodump.git"
 	_popd
@@ -266,28 +265,28 @@ Scripts() {
 # -----------------------------------------------------------------------------
 
 BC-SECURITY-Malleable-C2-Profiles() {
-	_pushd CobaltStrike/Profiles
+	_pushd Profiles
 	progress "BC-SECURITY-Malleable-C2-Profiles"
 	cloneRepository "https://github.com/BC-SECURITY/Malleable-C2-Profiles.git"
 	_popd
 }
 
 CobaltNotion() {
-	_pushd CobaltStrike/Profiles
+	_pushd Profiles
 	progress "CobaltNotion"
 	cloneRepository "https://github.com/HuskyHacks/CobaltNotion.git"
 	_popd
 }
 
 minimal-defender-bypass() {
-	_pushd CobaltStrike/Profiles
+	_pushd Profiles
 	progress "minimal-defender-bypass"
 	cloneRepository "https://gist.github.com/tothi/8abd2de8f4948af57aa2d027f9e59efe.git" minimal-defender-bypass
 	_popd
 }
 
 threatexpress-malleable-c2() {
-	_pushd CobaltStrike/Profiles
+	_pushd Profiles
 	progress "threatexpress-malleable-c2"
 	cloneRepository "https://github.com/threatexpress/malleable-c2.git"
 	_popd
