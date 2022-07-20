@@ -137,6 +137,7 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [DonPAPI](https://github.com/login-securite/DonPAPI)
 * [x] [Ebowla](https://github.com/Genetic-Malware/Ebowla)
 * [x] [Empire](https://github.com/BC-SECURITY/Empire)
+* [x] [InvisibilityCloak](https://github.com/h4wkst3r/InvisibilityCloak)
 * [x] [ItWasAllADream](https://github.com/byt3bl33d3r/ItWasAllADream)
 * [x] [LDAPPER](https://github.com/shellster/LDAPPER)
 * [x] [LDAPmonitor](https://github.com/p0dalirius/LDAPmonitor)

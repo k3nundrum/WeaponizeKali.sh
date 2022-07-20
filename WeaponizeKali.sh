@@ -395,6 +395,15 @@ Empire() {
 	_popd
 }
 
+InvisibilityCloak() {
+	_pushd tools
+	progress "InvisibilityCloak"
+	mkdir InvisibilityCloak
+	cd InvisibilityCloak
+	downloadRawFile "https://github.com/h4wkst3r/InvisibilityCloak/raw/main/InvisibilityCloak.py" InvisibilityCloak.py
+	_popd
+}
+
 ItWasAllADream() {
 	_pushd tools
 	progress "ItWasAllADream"
@@ -1443,6 +1452,7 @@ tools() {
 	DonPAPI
 	Ebowla
 	Empire
+	InvisibilityCloak
 	ItWasAllADream
 	LDAPPER
 	LDAPmonitor
