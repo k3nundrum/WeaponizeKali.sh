@@ -926,6 +926,15 @@ hashcat-utils() {
 	_popd
 }
 
+hoaxshell() {
+	_pushd tools
+	progress "hoaxshell"
+	cloneRepository "https://github.com/t3l3machus/hoaxshell.git"
+	cd hoaxshell
+	python3 -m pip install -U -r requirements.txt
+	_popd
+}
+
 http-server() {
 	progress "http-server"
 	sudo npm install http-server -g
@@ -1021,6 +1030,14 @@ ligolo-ng-proxy() {
 lsassy() {
 	progress "lsassy"
 	pipx install -f "git+https://github.com/Hackndo/lsassy.git"
+}
+
+mapcidr() {
+	_pushd tools
+	progress "mapcidr"
+	mkdir mapcidr
+	eget -qs linux/amd64 projectdiscovery/mapcidr --to mapcidr
+	_popd
 }
 
 masscan() {
@@ -1516,6 +1533,7 @@ tools() {
 	go-windapsearch
 	gobuster
 	hashcat-utils
+	hoaxshell
 	http-server
 	httpx
 	impacket
@@ -1528,6 +1546,7 @@ tools() {
 	ldeep
 	ligolo-ng-proxy
 	lsassy
+	mapcidr
 	masscan
 	misc
 	mitm6
