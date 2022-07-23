@@ -1794,6 +1794,12 @@ Invoke-KeeTheftSyscalls() {
 	_popd
 }
 
+Invoke-TokenDuplicator() {
+	_pushd www
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-TokenDuplicator.ps1" invoke-tokenduplicator.ps1
+	_popd
+}
+
 Invoke-WMIExec() {
 	_pushd www
 	downloadRawFile "https://github.com/Kevin-Robertson/Invoke-TheHash/raw/master/Invoke-WMIExec.ps1" invoke-wmiexec.ps1
@@ -2327,6 +2333,7 @@ www() {
 	Invoke-SMBEnum
 	Invoke-SMBExec
 	Invoke-KeeTheftSyscalls
+	Invoke-TokenDuplicator
 	Invoke-WMIExec
 	Invoke-noPac
 	JAWS

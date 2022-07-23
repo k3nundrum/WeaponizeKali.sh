@@ -342,6 +342,7 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [Snaffler](https://github.com/SnaffCon/Snaffler/releases)
 * [x] [SpoolSample](https://github.com/leechristensen/SpoolSample/) · [EXE](https://github.com/BlackDiverX/WinTools/blob/master/SpoolSample-Printerbug/SpoolSample.exe)
 * [x] [StandIn](https://github.com/FuzzySecurity/StandIn) · [EXE](https://github.com/Flangvik/SharpCollection/blob/master/NetFramework_4.0_Any/StandIn.exe)
+* [x] [tokenduplicator](https://github.com/magnusstubman/tokenduplicator) · [PS1](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/bin/Invoke-TokenDuplicator.ps1)
 * [x] [VeraCryptThiefInjector](https://github.com/snovvcrash/VeraCryptThief) · [EXE](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/bin/VeraCryptThiefInjector.exe) · [PS1](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/bin/Invoke-VeraCryptThiefInjector.ps1)
 * [x] [WerTrigger](https://github.com/sailay1996/WerTrigger)
 * [x] [WinPwn](https://github.com/S3cur3Th1sSh1t/WinPwn) · [PowerSharpPack](https://github.com/S3cur3Th1sSh1t/PowerSharpPack/tree/master/PowerSharpBinaries) · [Creds](https://github.com/S3cur3Th1sSh1t/Creds)
