@@ -1065,9 +1065,6 @@ misc() {
 	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/bloodhound-print.py' /usr/local/bin/bloodhound-print.py"
 	sudo chmod +x /usr/local/bin/bloodhound-print.py
 
-	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/cidr_merge.py' /usr/local/bin/cidr_merge.py"
-	sudo chmod +x /usr/local/bin/cidr_merge.py
-
 	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/cred_stasher.py' /usr/local/bin/cred_stasher.py"
 	sudo chmod +x /usr/local/bin/cred_stasher.py
 }
