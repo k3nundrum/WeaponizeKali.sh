@@ -1581,6 +1581,7 @@ tools() {
 ADCSPwn() {
 	_pushd www
 	downloadRelease "bats3c/ADCSPwn" ADCSPwn.exe adcspwn.exe
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-ADCSPwn.ps1" invoke-adcspwn.ps1
 	_popd
 }
 
@@ -1714,6 +1715,12 @@ Invoke-ConPtyShell() {
 Invoke-ImpersonateUser-PTH() {
 	_pushd www
 	downloadRawFile "https://github.com/S3cur3Th1sSh1t/NamedPipePTH/raw/main/Invoke-ImpersonateUser-PTH.ps1" invoke-impersonateuser-pth.ps1
+	_popd
+}
+
+Invoke-MirrorDump() {
+	_pushd www
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-MirrorDump.ps1" invoke-mirrordump.ps1
 	_popd
 }
 
@@ -2301,6 +2308,7 @@ www() {
 	Invoke-ACLPwn
 	Invoke-ConPtyShell
 	Invoke-ImpersonateUser-PTH
+	Invoke-MirrorDump
 	Invoke-PSInject
 	Invoke-PatchWdigest
 	Invoke-Portscan

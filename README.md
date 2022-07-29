@@ -260,7 +260,7 @@ Get a random name of a `.exe` or `.dll` binary:
 
 ### `www/`
 
-* [x] [ADCSPwn](https://github.com/bats3c/ADCSPwn/releases)
+* [x] [ADCSPwn](https://github.com/bats3c/ADCSPwn) · [PS1](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/ps1/Invoke-ADCSPwn.ps1)
 * [x] [ADRecon.ps1](https://github.com/adrecon/ADRecon/blob/master/ADRecon.ps1)
 * [x] [ADSearch](https://github.com/tomcarver16/ADSearch) · [EXE](https://github.com/Flangvik/SharpCollection/blob/master/NetFramework_4.7_Any/ADSearch.exe)
 * [x] [ASREPRoast.ps1](https://github.com/HarmJ0y/ASREPRoast/blob/master/ASREPRoast.ps1)
@@ -276,7 +276,7 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [HandleKatz](https://github.com/codewhitesec/HandleKatz) · [PS1](https://gist.github.com/S3cur3Th1sSh1t/9f328fc411ff103c0800294c523503e2#file-invoke-handlekatzinject-ps1)
 * [ ] [HiveNightmare](https://github.com/GossiTheDog/HiveNightmare/releases) · [ShadowSteal](https://github.com/HuskyHacks/ShadowSteal) · [EXE](https://github.com/FireFart/hivenightmare/blob/main/release/hive.exe)
 * [x] [Intercept-NG](http://sniff.su/)
-* [x] [Inveigh](https://github.com/Kevin-Robertson/Inveigh) · [PS1](https://github.com/Kevin-Robertson/Inveigh/blob/master/Inveigh.ps1)  · [EXE](https://github.com/Flangvik/SharpCollection/blob/master/NetFramework_4.0_Any/Inveigh.exe)
+* [x] [Inveigh](https://github.com/Kevin-Robertson/Inveigh) · [PS1](https://github.com/Kevin-Robertson/Inveigh/blob/master/Inveigh.ps1) · [EXE](https://github.com/Flangvik/SharpCollection/blob/master/NetFramework_4.0_Any/Inveigh.exe)
 * [x] [Invoke-ACLPwn.ps1](https://github.com/fox-it/Invoke-ACLPwn/blob/master/Invoke-ACLPwn.ps1)
 * [x] [Invoke-ConPtyShell.ps1](https://github.com/antonioCoco/ConPtyShell/blob/master/Invoke-ConPtyShell.ps1)
 * [x] [Invoke-ImpersonateUser-PTH.ps1](https://github.com/S3cur3Th1sSh1t/NamedPipePTH/blob/main/Invoke-ImpersonateUser-PTH.ps1)
@@ -296,6 +296,7 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [KrbRelay](https://github.com/cube0x0/KrbRelay) · [EXE](https://github.com/Flangvik/SharpCollection/blob/master/NetFramework_4.7_Any/KrbRelay.exe)
 * [x] [KrbRelayUp](https://github.com/Dec0ne/KrbRelayUp) · [EXE](https://github.com/Flangvik/SharpCollection/blob/master/NetFramework_4.7_Any/KrbRelayUp.exe)
 * [x] [LaZagne](https://github.com/AlessandroZ/LaZagne/releases)
+* [x] [MirrorDump](https://github.com/snovvcrash/MirrorDump) · [PS1](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/ps1/Invoke-MirrorDump.ps1)
 * [x] [OffensivePythonPipeline](https://github.com/Qazeer/OffensivePythonPipeline/tree/main/binaries)
 * [x] [Out-EncryptedScript.ps1](https://github.com/PowerShellMafia/PowerSploit/blob/master/ScriptModification/Out-EncryptedScript.ps1)
 * [x] [PEASS](https://github.com/carlospolop/PEASS-ng/releases)
@@ -317,7 +318,7 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [RemotePotato0](https://github.com/antonioCoco/RemotePotato0/releases)
 * [x] [RoguePotato](https://github.com/antonioCoco/RoguePotato)
 * [x] [Rubeus](https://github.com/GhostPack/Rubeus) · [EXE](https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/blob/master/Rubeus.exe)
-* [x] [RunOF](https://github.com/nettitude/RunOF)  · [PS1](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/ps1/Invoke-RunOF.ps1)
+* [x] [RunOF](https://github.com/nettitude/RunOF) · [PS1](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/ps1/Invoke-RunOF.ps1)
 * [x] [SandboxDefender](https://github.com/plackyhacker/SandboxDefender) · [EXE](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/exe/SandboxDefender.exe)
 * [x] [Seatbelt](https://github.com/GhostPack/Seatbelt) · [EXE](https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/blob/master/Seatbelt.exe)
 * [x] [SessionGopher.ps1](https://github.com/Arvanaghi/SessionGopher/blob/master/SessionGopher.ps1)
