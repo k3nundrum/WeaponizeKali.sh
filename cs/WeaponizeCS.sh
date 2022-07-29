@@ -166,6 +166,13 @@ HelpColor() {
 	_popd
 }
 
+InlineExecute-Assembly() {
+	_pushd Scripts
+	progress "InlineExecute-Assembly"
+	cloneRepository "https://github.com/anthemtotheego/InlineExecute-Assembly.git"
+	_popd
+}
+
 Invoke-CredentialPhisher() {
 	_pushd Scripts
 	progress "Invoke-CredentialPhisher"
@@ -191,7 +198,7 @@ PortBender() {
 	_pushd Scripts
 	progress "PortBender"
 	cloneRepository "https://github.com/praetorian-inc/PortBender.git"
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/PortBender64.dll" PortBender/static/PortBender.dll
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/dll/PortBender64.dll" PortBender/static/PortBender.dll
 	_popd
 }
 
@@ -248,6 +255,7 @@ Scripts() {
 	DelegationBOF
 	FindObjects-BOF
 	HelpColor
+	InlineExecute-Assembly
 	Invoke-CredentialPhisher
 	LdapSignCheck
 	PersistBOF

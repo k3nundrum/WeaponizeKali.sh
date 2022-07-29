@@ -328,7 +328,7 @@ Covenant() {
 CrackMapExec() {
 	progress "CrackMapExec"
 	pipx install -f "git+https://github.com/Porchetta-Industries/CrackMapExec.git"
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/cme.conf" ~/.cme/cme.conf
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/conf/cme.conf" ~/.cme/cme.conf
 }
 
 DFSCoerce() {
@@ -379,7 +379,7 @@ Ebowla() {
 	rm -rf .git
 	installDebPackage "golang mingw-w64 wine"
 	python2 -m pip install -U configobj pyparsing pycrypto
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/genetic.config" genetic.config
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/conf/genetic.config" genetic.config
 	_popd
 }
 
@@ -517,13 +517,6 @@ Obsidian() {
 	cp /var/lib/snapd/desktop/applications/obsidian_obsidian.desktop ~/Desktop/obsidian_obsidian.desktop
 }
 
-OffensiveNim() {
-	_pushd tools
-	progress "OffensiveNim"
-	cloneRepository "https://github.com/byt3bl33d3r/OffensiveNim.git"
-	_popd
-}
-
 PCredz() {
 	_pushd tools
 	progress "PCredz"
@@ -640,15 +633,6 @@ SharpGen() {
 	_popd
 }
 
-SharpShooter() {
-	_pushd tools
-	progress "SharpShooter"
-	cloneRepository "https://github.com/mdsecactivebreach/SharpShooter.git"
-	cd SharpShooter
-	python2 -m pip install -U -r requirements.txt
-	_popd
-}
-
 ShellPop() {
 	_pushd tools
 	progress "ShellPop"
@@ -754,8 +738,8 @@ bettercap() {
 	cd bettercap
 	eget -t v2.31.1 -qs linux/amd64 bettercap/bettercap
 	sudo ./bettercap -eval "caplets.update; ui.update; q"
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/arpspoof.cap" arpspoof.cap
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/wsus.cap" wsus.cap
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/cap/arpspoof.cap" arpspoof.cap
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/cap/wsus.cap" wsus.cap
 	_popd
 }
 
@@ -907,7 +891,7 @@ go-windapsearch() {
 	progress "go-windapsearch"
 	mkdir go-windapsearch
 	cd go-windapsearch
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/windapsearch" windapsearch
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/elf/windapsearch" windapsearch
 	chmod +x windapsearch
 	_popd
 }
@@ -1050,25 +1034,6 @@ masscan() {
 	_popd
 }
 
-misc() {
-	FUNC=$(declare -f downloadRawFile)
-
-	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/bh_get_ad_group_member.py' /usr/local/bin/bh_get_ad_group_member.py"
-	sudo chmod +x /usr/local/bin/bh_get_ad_group_member.py
-
-	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/bh_get_ad_user_memberof.py' /usr/local/bin/bh_get_ad_user_memberof.py"
-	sudo chmod +x /usr/local/bin/bh_get_ad_user_memberof.py
-
-	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/bh_get_domain_trust_mapping.py' /usr/local/bin/bh_get_domain_trust_mapping.py"
-	sudo chmod +x /usr/local/bin/bh_get_domain_trust_mapping.py
-
-	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/bloodhound-print.py' /usr/local/bin/bloodhound-print.py"
-	sudo chmod +x /usr/local/bin/bloodhound-print.py
-
-	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/cred_stasher.py' /usr/local/bin/cred_stasher.py"
-	sudo chmod +x /usr/local/bin/cred_stasher.py
-}
-
 mitm6() {
 	progress "mitm6"
 	pipx install -f "git+https://github.com/fox-it/mitm6.git"
@@ -1192,6 +1157,25 @@ pretender-tools() {
 	mkdir pretender
 	eget -qs linux/amd64 RedTeamPentesting/pretender --to pretender
 	_popd
+}
+
+py() {
+	FUNC=$(declare -f downloadRawFile)
+
+	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/py/bh_get_ad_group_member.py' /usr/local/bin/bh_get_ad_group_member.py"
+	sudo chmod +x /usr/local/bin/bh_get_ad_group_member.py
+
+	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/py/bh_get_ad_user_memberof.py' /usr/local/bin/bh_get_ad_user_memberof.py"
+	sudo chmod +x /usr/local/bin/bh_get_ad_user_memberof.py
+
+	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/py/bh_get_domain_trust_mapping.py' /usr/local/bin/bh_get_domain_trust_mapping.py"
+	sudo chmod +x /usr/local/bin/bh_get_domain_trust_mapping.py
+
+	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/py/bloodhound-print.py' /usr/local/bin/bloodhound-print.py"
+	sudo chmod +x /usr/local/bin/bloodhound-print.py
+
+	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/py/cred_stasher.py' /usr/local/bin/cred_stasher.py"
+	sudo chmod +x /usr/local/bin/cred_stasher.py
 }
 
 pyGPOAbuse() {
@@ -1480,7 +1464,6 @@ tools() {
 	Nimcrypt2
 	NimlineWhispers
 	Obsidian
-	OffensiveNim
 	PCredz
 	PEzor
 	PKINITtools
@@ -1495,7 +1478,6 @@ tools() {
 	ScareCrow
 	ShadowCoerce
 	SharpGen
-	SharpShooter
 	ShellPop
 	WebclientServiceScanner
 	Sliver
@@ -1545,7 +1527,6 @@ tools() {
 	lsassy
 	mapcidr
 	masscan
-	misc
 	mitm6
 	mscache
 	nac_bypass
@@ -1561,6 +1542,7 @@ tools() {
 	payloadGenerator
 	powerview.py
 	pretender-tools
+	py
 	pyGPOAbuse
 	pyKerbrute
 	pypykatz
@@ -1757,7 +1739,7 @@ Invoke-Portscan() {
 
 Invoke-RunOF() {
 	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-RunOF.ps1" invoke-runof.ps1
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-RunOF.ps1" invoke-runof.ps1
 	_popd
 }
 
@@ -1787,13 +1769,13 @@ Invoke-SMBExec() {
 
 Invoke-KeeTheftSyscalls() {
 	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-KeeTheftSyscalls.ps1" invoke-keetheftsyscalls.ps1
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-KeeTheftSyscalls.ps1" invoke-keetheftsyscalls.ps1
 	_popd
 }
 
 Invoke-TokenDuplicator() {
 	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-TokenDuplicator.ps1" invoke-tokenduplicator.ps1
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-TokenDuplicator.ps1" invoke-tokenduplicator.ps1
 	_popd
 }
 
@@ -1866,7 +1848,7 @@ PEASS() {
 
 Physmem2profit-www() {
 	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-Physmem2profit.ps1" invoke-physmem2profit.ps1
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-Physmem2profit.ps1" invoke-physmem2profit.ps1
 	_popd
 }
 
@@ -1989,7 +1971,7 @@ Rubeus() {
 
 SandboxDefender() {
 	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/SandboxDefender.exe" sandboxdefender.exe
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/exe/SandboxDefender.exe" sandboxdefender.exe
 	_popd
 }
 
@@ -2032,7 +2014,7 @@ SharpHandler() {
 SharpHound() {
 	_pushd www
 	downloadRawFile "https://github.com/BloodHoundAD/BloodHound/raw/master/Collectors/SharpHound.exe" sharphound.exe
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/SharpHound.ps1" sharphound.ps1
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/SharpHound.ps1" sharphound.ps1
 	_popd
 }
 
@@ -2045,7 +2027,7 @@ SharpLAPS() {
 SharpNamedPipePTH() {
 	_pushd www
 	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_Any/SharpNamedPipePTH.exe" sharpnamedpipepth.exe
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-SharpNamedPipePTH.ps1" invoke-sharpnamedpipepth.ps1
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-SharpNamedPipePTH.ps1" invoke-sharpnamedpipepth.ps1
 	_popd
 }
 
@@ -2057,15 +2039,14 @@ SharpRDP() {
 
 SharpRdpThiefInjector() {
 	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/SharpRdpThiefInjector.exe" sharprdpthiefinjector.exe
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-SharpRdpThiefInjector.ps1" invoke-sharprdpthiefinjector.ps1
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-SharpRdpThiefInjector.ps1" invoke-sharprdpthiefinjector.ps1
 	_popd
 }
 
 SharpRelay() {
 	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/SharpRelay.exe" sharprelay.exe
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/WinDivert64.sys" windivert64.sys
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/exe/SharpRelay.exe" sharprelay.exe
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/sys/WinDivert64.sys" windivert64.sys
 	_popd
 }
 
@@ -2077,9 +2058,9 @@ SharpSecDump() {
 
 SharpSystemTriggers() {
 	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/SharpDcomTrigger.exe" sharpdcomtrigger.exe
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/SharpEfsTrigger.exe" sharpefstrigger.exe
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/SharpSpoolTrigger.exe" sharpspooltrigger.exe
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/exe/SharpDcomTrigger.exe" sharpdcomtrigger.exe
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/exe/SharpEfsTrigger.exe" sharpefstrigger.exe
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/exe/SharpSpoolTrigger.exe" sharpspooltrigger.exe
 	_popd
 }
 
@@ -2127,8 +2108,7 @@ StandIn() {
 
 VeraCryptThiefInjector() {
 	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/VeraCryptThiefInjector.exe" veracryptthiefinjector.exe
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/Invoke-VeraCryptThiefInjector.ps1" invoke-veracryptthiefinjector.ps1
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-VeraCryptThiefInjector.ps1" invoke-veracryptthiefinjector.ps1
 	_popd
 }
 
@@ -2174,7 +2154,7 @@ chisel-clients() {
 	mv chisel.exe ../chisel.exe
 	cd ..
 	rm -rf tmp1 tmp2
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/bin/chisel-garble.exe" chisel-garble.exe
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/exe/chisel-garble.exe" chisel-garble.exe
 	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_Any/SharpChisel.exe" sharpchisel.exe
 	_popd
 }
